@@ -1,0 +1,71 @@
+site_name: BRT Documentation
+site_url: https://diana-uma.github.io/brt-library-docs/
+site_author: Diana Research Group - University of Malaga
+site_description: Documentation of the entire BRT tool ecosystem
+
+theme:
+  name: material
+  features:
+  - navigation.indexes
+  #- navigation.sections
+  - navigation.tabs  
+  - navigation.top  
+  - navigation.tracking
+  - navigation.path  
+  - toc.integrate
+  - toc.follow
+  - search.suggest
+  - search.highlight
+  - content.tabs.link
+  - content.code.annotation
+  - content.code.copy
+  logo: assets/SONICOMwave.png
+  favicon: assets/SONICOMwave.png
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: pink
+      accent: green
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: pink
+      accent: lime
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+copyright: 
+  Copyright &copy; 2024 <a href="https://www.diana.uma.es/" target="_blank" rel="noopener"> Diana Research Group</a>
+
+# Page tree
+nav:
+  - Home: index.md
+  - Examples: 
+    - Code blocks: example-code.md    
+    - Icons: example-emoji.md
+  - Setup:
+    - setup/index.md
+    - Installation: setup/installation.md
+  - Tutorials:
+      - tutorials/index.md
+      - "Integration":
+        - tutorials/tutorial1/basic.md        
