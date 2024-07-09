@@ -1,7 +1,7 @@
 site_name: BRT Documentation
 site_url: https://grupodiana.github.io/BRT-Documentation/
 site_author: Diana Research Group - University of Malaga
-site_description: Documentation of the entire BRT tool ecosystem
+site_description: Documentation site of the entire BRT ecosystem
 
 theme:
   name: material
