@@ -59,6 +59,8 @@ copyright:
 # Page tree
 nav:
   - Home: index.md
+  - BRT Library: library/index.md
+  - Applications: applications/index.md
   - Examples: 
     - Code blocks: example-code.md    
     - Icons: example-emoji.md
