@@ -4,7 +4,11 @@ The Binaural Rendering Toolbox (BRT) is a set of software libraries, application
 
 ## Quick Start Guide
 
-You can use BRT in two different ways depending on the level of integration which you need with your applications
+You can use BRT in two different ways depending on the level of integration which you need with your applications:
+
+* If tou are a C++ programmer building audio appliocations, you can use the [BRT Library](library/index.md), as a C++ library integrated in your own audio application, which handles audio inputs and outpus.
+
+* If you are using any other platform (Max MSP, PureData, Matlab, Unity, Python, etc.) and want to use BRT, you can use [BRT Applications](applications/index.md) controlled via OSC commands. BRT Renderer is a standalone application which manages audio interfaces and is able to read audio files. Is is controllable via OSC commands and is able to perform all functionalities available in the BRT Library.
 
 
 ## Components

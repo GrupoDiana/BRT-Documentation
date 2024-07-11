@@ -61,6 +61,9 @@ nav:
   - Home: index.md
   - BRT Library: library/index.md
   - Applications: applications/index.md
+  - OSC commands: 
+    - Overview: osc/index.md
+    - Source commands: osc/source.md
   - Examples: 
     - Code blocks: example-code.md    
     - Icons: example-emoji.md
