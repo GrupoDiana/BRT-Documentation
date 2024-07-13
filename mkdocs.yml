@@ -68,7 +68,10 @@ nav:
     - Listener Models: library/listener/models.md
     - Environment Models:
       - library/environment/models.md
-      - RIR models: library/environment/rirModels.md
+      - RIR models: 
+        - Overview: library/environment/rirModels.md
+        - Direct BRIR: library/environment/directBRIR.md
+        - Ambisonic BRIR: library/environment/ambisonicBRIR.md 
       - Virtual Sources: library/environment/virtualSources.md
   - Applications: applications/index.md
   - OSC commands: 
