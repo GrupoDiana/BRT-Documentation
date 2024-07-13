@@ -59,7 +59,17 @@ copyright:
 # Page tree
 nav:
   - Home: index.md
-  - BRT Library: library/index.md
+  - BRT Library: 
+    - library/index.md
+    - Source Models: 
+      - library/source/models.md
+      - Directivity Model: library/source/directivityModel.md
+      - Simple Model: library/source/simpleModel.md
+    - Listener Models: library/listener/models.md
+    - Environment Models:
+      - library/environment/models.md
+      - RIR models: library/environment/rirModels.md
+      - Virtual Sources: library/environment/virtualSources.md
   - Applications: applications/index.md
   - OSC commands: 
     - Overview: osc/index.md
