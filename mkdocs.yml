@@ -87,6 +87,7 @@ nav:
   - Setup:
     - setup/index.md
     - Installation: setup/installation.md
+    - Settings File: setup/settingsFile.md
   - Tutorials:
       - tutorials/index.md
       - "Integration":
