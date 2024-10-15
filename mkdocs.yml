@@ -84,6 +84,7 @@ nav:
     - Resources commands: osc/resources.md
     - Source commands: osc/source.md
     - Listener commands: osc/listener.md
+    - Environment commands: osc/environment.md
   - Examples: 
     - Code blocks: example-code.md    
     - Icons: example-emoji.md
