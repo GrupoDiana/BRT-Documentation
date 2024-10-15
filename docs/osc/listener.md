@@ -1,4 +1,7 @@
+In this section, we describe the various OSC commands used to control the listener. These commands not only manage basic parameters like position and orientation but also define the models applied for simulation. These models come with a range of controllable parameters and can simulate either just the listener’s head through a Head-Related Transfer Function (HRTF), or include the surrounding environment using a Binaural Room Impulse Response (BRIR), as the BRIR models the combined impulse response of a head situated within a room. See [listener models](/BRT-Documentation/library/listener/models) for more information.
+
 <!----------------------------------------------------------------------------------->
+---
 
 ## `/listener/location`
 
