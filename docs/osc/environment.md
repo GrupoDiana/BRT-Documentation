@@ -77,3 +77,55 @@ BeRTA receives: `/environment/setShoeBoxRoom SDN 6 8 3`
 
 <!----------------------------------------------------------------------------------->
 ---
+
+
+## `/environment/setWallAbsorption`
+
+Sets the absorption coeficients of a wall. These can be frequency independent, expressed with just one number between 0 and 1, or frequency dependent, expressed in thac case with nine numbers with absorptions corresponding to 62.5Hz, 125Hz, 250Hz, 500Hz, 1KHz, 2KHz, 4KHz, 8KHz and 16KHz.
+
+#### Syntax
+
+`/environment/setWallAbsorption <string environmentModel_id> <int wall_id> <float absorption_fullband>`
+
+`/environment/setWallAbsorption <string environmentModel_id> <int wall_id> <float abs62> <float abs125> <float abs250> <float abs500> <float abs1K> <float abs2K> <float abs4K> <float abs8K> <float abs16K>`
+
+`environmentModel_id`: identifier assigned to the model.
+
+`wall_id`: index of the wall to which the absorption apllies.
+
+`absoption_fulband`: absorption coefficient which is frequency independent.
+
+`abs62`: absorption coefficient of the band centered at 62.5Hz.
+
+`abs125`: absorption coefficient of the band centered at 125Hz.
+
+`abs250`: absorption coefficient of the band centered at 250Hz.
+
+`abs500`: absorption coefficient of the band centered at 500Hz.
+
+`abs1K`: absorption coefficient of the band centered at 1KHz.
+
+`abs2K`: absorption coefficient of the band centered at 2KHz.
+
+`abs4K`: absorption coefficient of the band centered at 4KHz.
+
+`abs8K`: absorption coefficient of the band centered at 8KHz.
+
+`abs16K`: absorption coefficient of the band centered at 16KHz.
+
+#### Return
+
+<!-- An echo is returned to all subscribers: `/environment/setShoeBoxRoom <string environmentModel_id> <float length> <float width> <float height>`
+-->
+
+#### Examples
+
+BeRTA receives: `environment/setWallAbsorption SDN 0 0.5`
+
+BeRTA receives: `environment/setWallAbsorption SDN 0 0.1 0.2 0.3 0.4 0.5 0.4 0.3 0.2 0.1`
+
+<!--BeRTA sends back to all subscribers: `environment/setWallAbsorption SDN 0 0.5`
+-->
+
+<!----------------------------------------------------------------------------------->
+---
