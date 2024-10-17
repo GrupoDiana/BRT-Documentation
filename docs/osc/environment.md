@@ -129,3 +129,58 @@ BeRTA receives: `environment/setWallAbsorption SDN 0 0.1 0.2 0.3 0.4 0.5 0.4 0.3
 
 <!----------------------------------------------------------------------------------->
 ---
+
+## `/environment/enableDirectPath`
+
+This command switches on or off the virtual source coresponding to the direct path, which actually is not virtual, but the real one. Disabling it will produce silence at its output. this feature can be implemented in all environment models. 
+
+#### Syntax
+
+`/environment/enableDirectPath <string environmentModel_id> <boolean enable>`
+
+`environmentModel_id`: identifier assigned to the model.
+
+`enable`: If true (1), enables the direct path source. If false (0), mutes the direct path source.
+
+#### Return
+
+<!-- An echo is returned to all subscribers: `/environment/enableDirectPath <string environmentModel_id> <boolean enable>`
+-->
+
+#### Example
+
+BeRTA receives: `/environment/enableDirectPath SDN false`
+
+<!--BeRTA sends back to all subscribers: `/environment/enableDirectPath SDN false`
+-->
+
+<!----------------------------------------------------------------------------------->
+---
+
+
+## `/environment/enableReverbPath`
+
+This command switches on or off all the virtual sources but the one of the direct path, which actually is not virtual. Disabling them will produce silence at all their outputs. this feature can be implemented in all environment models. 
+
+#### Syntax
+
+`/environment/enableReverbPath <string environmentModel_id> <boolean enable>`
+
+`environmentModel_id`: identifier assigned to the model.
+
+`enable`: If true (1), enables the reverb path sources. If false (0), mutes all reverb path sources.
+
+#### Return
+
+<!-- An echo is returned to all subscribers: `/environment/enableReverbPath <string environmentModel_id> <boolean enable>`
+-->
+
+#### Example
+
+BeRTA receives: `/environment/enableReverbPath SDN false`
+
+<!--BeRTA sends back to all subscribers: `/environment/enableReverbPath SDN false`
+-->
+
+<!----------------------------------------------------------------------------------->
+---
