@@ -1,3 +1,5 @@
+The OSC control commands allow to establish and manage connections with BeRTA over the network or locally. Below are detailed the basic commands for initiating and closing connections, as well as obtaining system and audio configuration information. Each command is designed to provide immediate feedback.
+
 <!----------------------------------------------------------------------------------->
 ---
 
