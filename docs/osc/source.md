@@ -16,14 +16,14 @@ Specifying a sound file with `source_path`, a new sound file is loaded from the 
 
 #### Return
 
-`/source/loadSource <string source_id> <bool loaded> <string description>`
+`/source/loadSource <string source_id> <bool loaded>`
 
-The return message will refer to the `source_id`, indicating `loaded=true`if the source is successfuly loaded and `loaded=false` if not. In both cases a `description`is added to give more details. 
+The return message will refer to the `source_id`, indicating `loaded=true`if the source is successfuly loaded <!--and `loaded=false` if not. In both cases a `description`is added to give more details. -->
 
 #### Example
 
 BeRTA receives: `/source/loadSource source1 speech.wav`
-BeRTA sends back: `/source/loadSource source1 true success` or `/source/loadSource source1 false error: Can not find the file`
+BeRTA sends back: `/source/loadSource source1 true` <!--or `/source/loadSource source1 false error: Can not find the file`-->
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -49,13 +49,13 @@ Adds a new source getting it from an audio input channel. Adding a new source do
 #### Return
 
 A confirmation is sent back to the sender: `/source/addLineIn <string source_id> <bool loaded> <string description>` 
-The return message will refer to the `source_id`, indicating `loaded=true`if the source is successfuly loaded and `loaded=false` if not. In both cases a `description`is added to give more details. 
+The return message will refer to the `source_id`, indicating `loaded=true`if the source is successfuly loaded <!--and `loaded=false` if not. In both cases a `description`is added to give more details. 
 
 #### Example
 
 BeRTA receives: `/source/addLineIn source1 1 DirectivityModel`
 
-BeRTA sends back to the sender: `/source/addLineIn source1 true success` or `/source/addLineIn source1 false error: not a valid channel`
+BeRTA sends back to the sender: `/source/addLineIn source1 true` <!--or `/source/addLineIn source1 false error: not a valid channel`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -71,11 +71,16 @@ Removes a sound source from the system
 
 `source_id`: identifier assigned to the sound source for further references to it
 
-No command is returned. If the `source_id` does not exist, the command is ignored
+#### Return
+
+A confirmation is sent back to all subscribers: `/source/removeSource <string source_id> <bool removed>` 
+The return message will refer to the `source_id`, indicating `removed=true`if the source is successfuly removed. If the source does not exist, the command is ignored
 
 #### Example
 
 BeRTA receives: `/source/remove source1`
+
+BeRTA sends back to all subscribiers: `/source/remove source1 true`
 
 <!----------------------------------------------------------------------------------->
 ---
