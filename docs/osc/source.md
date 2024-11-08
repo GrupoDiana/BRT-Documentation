@@ -170,14 +170,15 @@ Mutes a specific source. In the case of a source comming from a file, the applic
 
 #### Return
 
-An echo is returned to all subscribers: `/source/mute <string source_id>`
-
+No return is sent back.
+<!--An echo is returned to all subscribers: `/source/mute <string source_id>`
+-->
 #### Example
 
 BeRTA receives: `/source/mute source1`
 
-BeRTA sends back to all subscribers: `/source/mute source1`
-
+<!--BeRTA sends back to all subscribers: `/source/mute source1`
+-->
 <!----------------------------------------------------------------------------------->
 ---
 
@@ -194,14 +195,15 @@ Unmutes a specific source. In the case of a source comming from a file previousl
 
 #### Return
 
-An echo is returned to all subscribers: `/source/unmute <string source_id>`
-
+No return is sent back.
+<!--An echo is returned to all subscribers: `/source/unmute <string source_id>`
+-->
 #### Example
 
 BeRTA receives: `/source/unmute source1`
 
-BeRTA sends back to all subscribers: `/source/unmute source1`
-
+<!--BeRTA sends back to all subscribers: `/source/unmute source1`
+-->
 <!----------------------------------------------------------------------------------->
 ---
 
@@ -218,14 +220,15 @@ Mutes all sources but the the one indicated by this command. In the case of sour
 
 #### Return
 
-An echo is returned to all subscribers: `/source/solo <string source_id>`
-
+No return is sent back.
+<!--An echo is returned to all subscribers: `/source/solo <string source_id>`
+-->
 #### Example
 
 BeRTA receives: `/source/solo source1`
 
-BeRTA sends back to all subscribers: `/source/solo source1`
-
+<!--BeRTA sends back to all subscribers: `/source/solo source1`
+-->
 <!----------------------------------------------------------------------------------->
 ---
 
@@ -242,14 +245,15 @@ Unmutes all sources but the the one indicated by this command. If the `source_id
 
 #### Return
 
-An echo is returned to all subscribers: `/source/unsolo <string source_id>`
-
+No return is sent back.
+<!--An echo is returned to all subscribers: `/source/unsolo <string source_id>`
+-->
 #### Example
 
 BeRTA receives: `/source/unsolo source1`
 
-BeRTA sends back to all subscribers: `/source/unsolo source1`
-
+<!--BeRTA sends back to all subscribers: `/source/unsolo source1`
+-->
 <!----------------------------------------------------------------------------------->
 ---
 
@@ -268,14 +272,15 @@ Sets loop mode for the identified source. If loop mode is enabled, when reaching
 
 #### Return
 
-An echo is returned to all subscribers: `/source/loop <string source_id> <boolean enable>`
-
+No return is sent back.
+<!--An echo is returned to all subscribers: `/source/loop <string source_id> <boolean enable>`
+-->
 #### Example
 
 BeRTA receives: `/source/loop source1 false`
 
-BeRTA sends back to all subscribers: `/source/loop source1 false`
-
+<!--BeRTA sends back to all subscribers: `/source/loop source1 false`
+-->
 <!----------------------------------------------------------------------------------->
 ---
 
@@ -349,7 +354,7 @@ Sets source gain in dB. 0 dB indicates that the source is kept as it is read fro
 
 `/source/gain <string source_id> <float gain>`
 
-`source_id`: identifier assigned to the sound source for further references to it
+`source_id`: identifier assigned to the sound source for further references to it. If the source doesn't exist, the command is ignored.
 
 `gain`: Gain, expressed in dB. the source, as red from the file or the input channel is multiplied by 10^(gain/20)
 
@@ -375,7 +380,7 @@ Switch on or off the directivity of the source. For directivity to work, a Direc
 
 `/source/enableDirectivity <string source_id> <boolean enable>`
 
-`source_id`: identifier assigned to the sound source for further references to it
+`source_id`: identifier assigned to the sound source. if this the source doesn't exist, the command is ignored
 
 `enable`: if true (1) directivity is enabled. If false (0), directivity is disabled
 
@@ -407,7 +412,7 @@ Assigns a directivity which has been previously loaded using the command `/resou
 
 #### Return
 
-An echo is returned to all subscribers: `/source/setDirectivity <string source_id> <string DirectivityTF_id>`
+In case of success, an echo is returned to all subscribers: `/source/setDirectivity <string source_id> <string DirectivityTF_id>`
 
 #### Example
 
@@ -421,12 +426,14 @@ BeRTA sends back to all subscribers: `/source/setDirectivityTF source1 Directivi
 
 ## `/source/playAndRecord`
 
-Records a file of the specified duration with the delivered binaural sound and all the spatial information of sources and listener (location and orientation). The sound corresponds to the playback of this source from the beginning. The  file includes the structure needed to create a SOFA file with the new [AnnotatedReceiverAudio](https://www.sofaconventions.org/mediawiki/index.php/AnnotatedReceiverAudio) convention
+Records a file of the specified duration with the delivered binaural sound and all the spatial information of one source and listener (location and orientation). The sound corresponds to the playback of this source from the beginning. The  file includes the structure needed to create a SOFA file with the new [AnnotatedReceiverAudio](https://www.sofaconventions.org/mediawiki/index.php/AnnotatedReceiverAudio) convention
 
 
 #### Syntax
 
-`/source/playAndRecord <string filename> <string type> <float seconds>`
+`/source/playAndRecord <string source_id> <string filename> <string type> <float seconds>`
+
+`source_id`: identifier of the source to be played back and recorded.
 
 `string filename`: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten, an ordinal number will be added to the end of the new file name.
 
@@ -436,13 +443,17 @@ Records a file of the specified duration with the delivered binaural sound and a
 
 #### Return
 
+BeRTA will send back to all subscribers the applied stop and play commands for all sources
+
 Once the recording is completed, `/source/playAndRecord <string filename> true` is sent back to the sender. In case the recording is not possible, `/source/playAndRecord <string filename> false` is sent back to the sender.
 
 #### Example
 
-BeRTA receives: `/source/playAndRecord c:/tmp/file.mat mat 10`
+BeRTA receives: `/source/playAndRecord SoundSource1 C:/tmp/testingRecord mat 3`
 
-BeRTA sends back to the sender, after 10 seconds: `/source/playAndRecord c:/tmp/file.mat true`
+BeRTA immediately sends back to all subscribers: `/source/stop SoundSource1`, `/source/stop SoundSource2` and `/source/play SoundSource1`, 
+
+After 3 seconds, BeRTA sends back to the sender: `/source/playAndRecord c:/tmp/file.mat true`
 
 <!----------------------------------------------------------------------------------->
 ---
