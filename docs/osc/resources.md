@@ -44,15 +44,15 @@ Removes an HRTF from the loaded resources.
 
 #### Return
 
-`/resources/removeHRTF <string HRTF_id> <bool removed> <string description>`
+In case of success: `/resources/removeHRTF <string HRTF_id> <bool removed>`
 
-The return message is sent to all subscribers and refers to the `HRTF_id`, indicating `removed=true`if the HRTF is successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details. 
+In case of success, the return message is sent to all subscribers and refers to the `HRTF_id`, indicating `removed=true`. 
 
 #### Example
 
 BeRTA receives: `/resources/removeHRTF HRTF1`
 
-BeRTA sends back to all subscribers: `/resources/removeHRTF HRTF1 true` or just to the sender: `/resources/removeHRTF HRTF1 false error: HRTF not found in the list`
+BeRTA sends back to all subscribers: `/resources/removeHRTF HRTF1 true` 
 
 <!----------------------------------------------------------------------------------->
 ---

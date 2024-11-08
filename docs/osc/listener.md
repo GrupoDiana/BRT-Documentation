@@ -82,13 +82,13 @@ Sets an HRTF using the HRTF id. The HRTF should be load previously using the com
 
 #### Return
 
-An echo is returned to all subscribers: `/listener/setHRTF <string listener_id> <string HRTF_id>`
+In case of success, a message is sent to all subscribiers: `/listener/enableSpatialization <string listener_id> true` and an echo is returned to all subscribers as well: `/listener/setHRTF <string listener_id> <string HRTF_id>`
 
 #### Example
 
 BeRTA receives: `/listener/setHRTF defaultListener HRTF1`
 
-BeRTA sends back to all subscribers: `/listener/setHRTF defaultListener HRTF1`
+BeRTA sends back to all subscribers: `listener enableSpatialization defaultListener true` and `/listener/setHRTF defaultListener HRTF1`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -96,7 +96,7 @@ BeRTA sends back to all subscribers: `/listener/setHRTF defaultListener HRTF1`
 
 ## `/listener/setBRIR`
 
-Sets a BRIR using the BRIR id. The BRIR should be load previously using the command `/resources/loadBRIR`. The BRIR is assigned to all the models linked to the listener which may accept it. See the [Listener+Environment models](/BRT-Documentation/library/environment/rirModels) based on Room Impulse Responses for more infortmation. These models currently are:
+Sets a BRIR using the BRIR id. The BRIR should be loaded previously using the command `/resources/loadBRIR`. After receiving this command `listener/enableSpatialization` is called automatically. The BRIR is assigned to all the models linked to the listener which may accept it. See the [Listener+Environment models](/BRT-Documentation/library/environment/rirModels) based on Room Impulse Responses for more infortmation. These models currently are:
 
 * [Listener + Environment Model based on Direct Convolution with BRIR](/BRT-Documentation/library/environment/directBRIR). 
 
@@ -112,13 +112,13 @@ Sets a BRIR using the BRIR id. The BRIR should be load previously using the comm
 
 #### Return
 
-An echo is returned to all subscribers: `/listener/setBRIR <string listener_id> <string BRIR_id>`
+In case of success, a message is sent to all subscribiers: `/listener/enableSpatialization <string listener_id> true` and an echo is returned to all subscribers as well: `/listener/setBRIR <string listener_id> <string BRIR_id>`
 
 #### Example
 
 BeRTA receives: `/listener/setBRIR defaultListener BRIR1`
 
-BeRTA sends back to all subscribers: `/listener/setBRIR defaultListener BRIR1`
+BeRTA sends back to all subscribers: `listener enableSpatialization defaultListener true` and `/listener/setBRIR defaultListener BRIR1`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -317,7 +317,7 @@ Sets the order of the Ambisonic encoding used by the listener model. The listene
 
 #### Return
 
-An echo is returned to all subscribers: `/listener/setAmbisonicsOrder <string listenerModel_id> <int ambisonicsOrder>`
+On success, an echo is returned to all subscribers: `/listener/setAmbisonicsOrder <string listenerModel_id> <int ambisonicsOrder>`
 
 #### Example
 
@@ -348,7 +348,7 @@ Sets the normalization type used in the Ambisonic encoding used by the listener 
 
 #### Return
 
-An echo is returned to all subscribers: `/listener/setAmbisonicsNormalization <string listenerModel_id> <string ambisonicsNormalization>`
+On success, an echo is returned to all subscribers: `/listener/setAmbisonicsNormalization <string listenerModel_id> <string ambisonicsNormalization>`
 
 #### Example
 
