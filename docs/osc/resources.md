@@ -16,17 +16,17 @@ Loads a new HRTF in a SOFA file from the specified path and assign an identifier
 
 #### Return
 
-An echo is sent to all subscribers: `/resources/loadHRTF <string HRTF_id> <string HRTF_SOFAFile_path> <float spatialResolution>`
+A return message is sent back to the sender `control/actionResult /resources/loadHRTF <string HRTF_id> <boolean loaded> <string description>`, indicating `loaded=true`if the HTYF is successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
 
-A return message is sent back to the sender `/resources/loadHRTF <string HRTF_id> <boolean loaded> <string description>`, indicating `loaded=true`if the HTYF is successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
+In case of success, it sends an echo to all subscribers excepting the sender: `/resources/loadHRTF <string HRTF_id> <string HRTF_SOFAFile_path> <float spatialResolution>`
 
 #### Example
 
 BeRTA receives: `/resources/loadHRTF HRTF1 c:/tmp/hrtf.sofa 5`
 
-BeRTA sends back to the sender: `/resources/loadHRTF HRTF1 true success` or `/resources/loadHRTF HRTF1 false error: Can not find the file`. 
+BeRTA sends back to the sender: `control actionResult /resources/loadHRTF HRTF1 true success` or `control actionResult /resources/loadHRTF HRTF1 false error: Can not find the file`. 
 
-In case of success, it also sends to all subscribiers excepting the sender: `/resources/loadHRTF HRTF1 c:/tmp/hrtf.sofa 5`
+BeRTA sends an echo to all subscribiers excepting the sender: `/resources/loadHRTF HRTF1 c:/tmp/hrtf.sofa 5`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -44,9 +44,9 @@ Removes an HRTF from the loaded resources.
 
 #### Return
 
-`/resources/removeHRTF <string HRTF_id> <bool removed> <string description>`
+A return message is sent back to the sender `control/actionResult /resources/loadHRTF <string HRTF_id> <bool removed> <string description>`, indicating `removed=true`if the HRTF is successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details. 
 
-The return message is sent to all subscribers and refers to the `HRTF_id`, indicating `removed=true`if the HRTF is successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details. 
+In case of success, it sends an echo to all subscribers excepting the sender: `/resources/removeHRTF <string HRTF_id>`
 
 #### Example
 
@@ -54,6 +54,7 @@ BeRTA receives: `/resources/removeHRTF HRTF1`
 
 BeRTA sends back to all subscribers: `/resources/removeHRTF HRTF1 true` or just to the sender: `/resources/removeHRTF HRTF1 false error: HRTF not found in the list`
 
+BeRTA sends an echo to all subscribiers excepting the sender: `/resources/removeHRTF HRTF1`
 <!----------------------------------------------------------------------------------->
 ---
 
@@ -97,17 +98,16 @@ Sets the head radius to be stored into the HRTF. This value affects: (1) the pos
 
 #### Return
 
-<!--A message is sent back to the sender `/resources/setHRTFHeadRadius <string HRTF_id> <boolean changed> <string description>`, indicating if the change has been successsfuly applied and the reason in case of fail.
--->
+A return message is sent back to the sender `control/actionResult /resources/setHRTFHeadRadius <string HRTF_id> <bool set> <string description>`, indicating `set=true`if the HRTF is successfuly set and `set=false` if not. In both cases a `description` is added to give more details. 
 
-An echo is sent back to all subscribiers if success: `/resources/setHRTFHeadRadius <string HRTF_id> <float headRadius>`
+In case of success, it sends an echo to all subscribers but the sender: `/resources/setHRTFHeadRadius <string HRTF_id> <float headRadius>`
+
 
 #### Example
 
 BeRTA receives: `/resources/setHRTFHeadRadius HRTF1 0.09`
 
-<!--BeRTA sends back to the sender: `/resources/setHRTFHeadRadius HRTF1 true success` 
--->
+BeRTA sends back to the sender: `control/actionResult /resources/setHRTFHeadRadius HRTF1 true success` 
 
 BeRTA sends back to all subscribers but the sender: `/resources/setHRTFHeadRadius HRTF1 0.09` 
 
@@ -151,16 +151,16 @@ Sets the head radius of the HRTF to the one stored in the SOFA file as the posit
 
 #### Return
 
-<!--A message is sent back to the sender `/resources/restoreHRTFHeadRadius <string HRTF_id> <boolean changed> <string description>`, indicating if the change has been successsfuly applied and the reason in case of fail.
--->
+A return message is sent back to the sender `control/actionResult /resources/restoreHRTFHeadRadius <string HRTF_id> <bool restored> <string description>`, indicating `restored=true`if the HRTF is successfuly set and `restored=false` if not. In both cases a `description` is added to give more details. 
 
-An echo is sent back to all subscribiers if success: `/resources/restoreHRTFHeadRadius <string HRTF_id>`
+In case of success, it sends an echo to all subscribers but the sender: `/resources/restoreHRTFHeadRadius <string HRTF_id>`
+
+
 #### Example
 
 BeRTA receives: `/resources/restoreHRTFHeadRadius HRTF1`
 
-<!--BeRTA sends back to the sender: `/resources/restoreHRTFHeadRadius HRTF1 true success` 
--->
+BeRTA sends back to the sender: `control/actionResult /resources/restoreHRTFHeadRadius HRTF1 true success` 
 
 BeRTA sends back to all subscribers but the sender: `/resources/restoreHRTFHeadRadius HRTF1`
 
@@ -182,12 +182,17 @@ Enables or disables the calculation of the ITD based on the Woodworth formula, c
 
 #### Return
 
-An echo is sent back to all subscribiers if success: `/resources/enableWoodworthITD <string HRTF_id> <boolean enable>`
+A return message is sent back to the sender `control/actionResult /resources/enableWoodworthITD <string HRTF_id> <bool enabled> <string description>`, indicating `enabled=true`if the HRTF is successfuly set and `enabled=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, it sends an echo to all subscribers but the sender: `/resources/enableWoodworthITD <string HRTF_id> <boolean enable>`
+
 #### Example
 
 BeRTA receives: `/resources/enableWoodworthITD HRTF1 true`
 
-BeRTA sends back to all subscribers: `/resources/enableWoodworthITD HRTF1 true`
+BeRTA sends back to the sender: `control/actionResult /resources/enableWoodworthITD HRTF1 true success` 
+
+BeRTA sends back to all subscribers but the sender: `/resources/enableWoodworthITD HRTF1 true`
 
 <!----------------------------------------------------------------------------------->
 ---
