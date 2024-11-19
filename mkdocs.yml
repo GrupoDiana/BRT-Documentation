@@ -64,34 +64,57 @@ nav:
   - Home: index.md
   - BRT Library: 
     - library/index.md
+    
     - Source Models: 
-      - library/source/models.md
-      - Directivity Model: library/source/directivityModel.md
-      - Simple Model: library/source/simpleModel.md
-    - Listener Models: library/listener/models.md
+      - library/source-models/index.md
+      - Simple Model: library/source-models/simpleModel.md
+      - Directivity Model: library/sousource-modelsrce/directivityModel.md
+      - Virtual Source: library/source-models/virtualSource.md
+    - Listener Models: 
+      - library/listener-models/index.md
     - Environment Models:
-      - library/environment/models.md
+      - library/environment-models/index.md
       - RIR models: 
-        - Overview: library/environment/rirModels.md
-        - Direct BRIR: library/environment/directBRIR.md
-        - Ambisonic BRIR: library/environment/ambisonicBRIR.md 
-      - Virtual Sources: library/environment/virtualSources.md
-  - Applications: applications/index.md
-  - OSC commands: 
-    - Overview: osc/index.md
-    - Control commands: osc/control.md
-    - Overall commands: osc/overall.md
-    - Resources commands: osc/resources.md
-    - Source commands: osc/source.md
-    - Listener commands: osc/listener.md
-    - Environment commands: osc/environment.md
+        - Overview: library/environment-models/rirModels.md
+        - Direct BRIR: library/environment-models/directBRIR.md
+        - Ambisonic BRIR: library/environment-models/ambisonicBRIR.md 
+      - Virtual Sources: library/environment-models/virtualSources.md
+    - Binaural Filters:
+      - library/binaural-filters/index.md
+    - Services Modules: 
+      - library/services-modules/index.md      
+    - Readers: 
+      - library/readers/index.md        
+    - Common:
+      - library/common/index.md
+    - Base:
+      - library/base/index.md
+    - Connectivity: 
+      - library/connectivity/index.md
+      
+  - Applications: 
+    - applications/index.md
+    - BeRTA Rendeder: 
+      - applications/berta-renderer/index.md
+      - Settings File: applications/berta-renderer/settingsFile.md
+    - BeRTA GUI: applications/berta-gui.md
+    - OSC commands: 
+      - Overview: osc/index.md
+      - Control commands: osc/control.md
+      - Overall commands: osc/overall.md
+      - Resources commands: osc/resources.md
+      - Source commands: osc/source.md
+      - Listener commands: osc/listener.md
+      - Environment commands: osc/environment.md
+  
   - Examples: 
     - Code blocks: example-code.md    
     - Icons: example-emoji.md
+  
   - Setup:
     - setup/index.md
     - Installation: setup/installation.md
-    - Settings File: setup/settingsFile.md
+      
   - Tutorials:
       - tutorials/index.md
       - "Integration":
