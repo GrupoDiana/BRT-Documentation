@@ -13,14 +13,14 @@ Starts playing back all sources comming from audio files and starts streaming al
 
 #### Return
 
-An echo is returned to all subscribers for each of the sources being played: `/source/play <string source_id>`
+An echo is returned to all subscribers but the sender: `/play`.
 
 
 #### Example
 
-BeRTA receives: `/play`
+BeRTA receives: `/play`.
 
-BeRTA sends back to all subscribers: `/source/play source1`, `/source/play source2`, `/source/play source3`. 
+BeRTA sends back to all subscribers but the sender: `/play`. 
 
 
 <!----------------------------------------------------------------------------------->
@@ -38,14 +38,14 @@ Stops playing back all sources comming from audio files and also stops streaming
 
 #### Return
 
-An echo is returned to all subscribers for each of the sources being stopped: `/source/stop <string source_id>`
+An echo is returned to all subscribers but the sender: `/stop`.
 
 
 #### Example
 
-BeRTA receives: `/stop`
+BeRTA receives: `/stop`.
 
-BeRTA sends back to all subscribers: `/source/stop source1`, `/source/stop source2`, `/source/stop source3`. 
+BeRTA sends back to all subscribers but the sender: `/stop`. 
 
 
 <!----------------------------------------------------------------------------------->
@@ -63,15 +63,13 @@ Pauses all sources comming from audio files and stops streaming all sources comm
 
 #### Return
 
-<!--An echo is returned to all subscribers for each of the sources being paused: `/source/pause <string source_id>`
--->
+An echo is returned to all subscribers but the sender: `/pause`.
 
 #### Example
 
-BeRTA receives: `/pause`
+BeRTA receives: `/pause`.
 
-<!--BeRTA sends back to all subscribers: `/source/pause source1`, `/source/pause source2`, `/source/pause source3`. 
--->
+BeRTA sends back to all subscribers but the sender: `/pause`. 
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -88,20 +86,16 @@ Removes all sources.
 
 #### Return
 
-<!--An echo is returned to all subscribers for each of the sources being paused: `/source/remove <string source_id>`
--->
+An echo is returned to all subscribers but the sender: `/removeAllSources`.
 
 #### Example
 
-BeRTA receives: `/removeAllSources`
+BeRTA receives: `/removeAllSources`.
 
-<!--BeRTA sends back to all subscribers: `/source/remove source1`, `/source/remove source2`, `/source/remove source3`. 
--->
+BeRTA sends back to all subscribers but the sender: `/removeAllSources`. 
 
 <!----------------------------------------------------------------------------------->
 ---
-
-
 
 ## `/playAndRecord`
 
@@ -118,20 +112,19 @@ Records a file of the specified duration with spatialised sound (wav) and other 
 `time`: indicates the duration of the recording in seconds. If time is -1 the recording will finish automatically when the source stops.
 
 
-#### Return
+#### Return 
 
-BeRTA sends back to all subscribers messaves of stop and play for every source: `/source/stop <string source_id>`, `/source/play <string source_id>`. 
+A return message is sent back to the sender `control/actionResult /playAndRecord <string filename> <boolean success> <string description>`. If the recording was successfully completed (either because it reached the given time or because a stop was recevied while recording), `success` will be true in the confirmation message. If the recording cannot be completed for any reason, this response message will set `success` to false.
 
-After the recording is finished, a message is sent back to the sender indicating it: `/playAndRecord <String filename> <boolean success>`. If the recording was successfully completed (either because it reached the given time or because a stop was recevied while recording), `success` will be true in the confirmation message. If the recording cannot be completed for any reason, this response message will set `success` to false. 
-
+It sends an echo to all subscribers excepting the sender: `/playAndRecord <String filename> <String type> <float time>`
 
 #### Example
 
 BeRTA receives: `/playAndRecord c:/tmp/file.mat mat 10`
 
-Berta sends back to all subscribers:  `/source/stop source1`, `/source/stop source2`, `/source/stop source3`, `/source/play source1`, `/source/play source2`, `/source/play source3`.
+When the recording is finished (in this example after 10 seconds), BeRTA sends back to all subscribers: `control/actionResult /playAndRecord c:/tmp/file.mat true Recording completed. File saved : c:/tmp/file.mat` or `control/actionResult  /playAndRecord c:/tmp/file.mat false ERROR:Recording failed. File could not be created.`
 
-After 10 seconds, BeRTA sends back to the sender: `/playAndRecord c:/tmp/file.mat true`. 
+BeRTA sends to all subscribiers but the sender: `/playAndRecord c:/tmp/file.mat mat 10`
 
 
 <!----------------------------------------------------------------------------------->
