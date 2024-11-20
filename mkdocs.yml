@@ -3,6 +3,9 @@ site_url: https://grupodiana.github.io/BRT-Documentation/
 site_author: Diana Research Group - University of Malaga
 site_description: Documentation site of the entire BRT ecosystem
 
+repo_name: BRTLibrary
+repo_url: https://github.com/GrupoDiana/BRTLibrary
+
 theme:
   name: material
   features:
@@ -67,11 +70,13 @@ nav:
     
     - Source Models: 
       - library/source-models/index.md
-      - Simple Model: library/source-models/simpleModel.md
+      - Omnidirectional Model: library/source-models/simpleModel.md
       - Directivity Model: library/sousource-modelsrce/directivityModel.md
       - Virtual Source: library/source-models/virtualSource.md
     - Listener Models: 
       - library/listener-models/index.md
+      - Listener acoustic model based on HRTF: library/listener-models/listener-acoustic-model-hrtf.md
+      - Listener acoustic model based on BRIR: library/listener-models/listener-acoustic-model-brir.md
     - Environment Models:
       - library/environment-models/index.md
       - RIR models: 
@@ -95,10 +100,9 @@ nav:
   - Applications: 
     - applications/index.md
     - BeRTA Rendeder: 
-      - applications/berta-renderer/index.md
-      - Settings File: applications/berta-renderer/settingsFile.md
+      - applications/berta-renderer/index.md      
     - BeRTA GUI: applications/berta-gui.md
-    - OSC commands: 
+    - OSC Commands: 
       - Overview: osc/index.md
       - Control commands: osc/control.md
       - Overall commands: osc/overall.md
@@ -106,7 +110,8 @@ nav:
       - Source commands: osc/source.md
       - Listener commands: osc/listener.md
       - Environment commands: osc/environment.md
-  
+    - Settings File: applications/settingsFile.md
+    - Annotated Audio: applications/annotated-audio/index.md
   - Examples: 
     - Code blocks: example-code.md    
     - Icons: example-emoji.md

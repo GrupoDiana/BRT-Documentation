@@ -1,4 +1,4 @@
-# Welcome to BRT Library
+# Welcome to Binaural Rendering Toolbox
 
 The Binaural Rendering Toolbox (BRT) is a set of software libraries, applications, and definitions aimed as a virtual laboratory for psychoacoustic experimentation. The BRT is developed in the framework of the [SONICOM project](https://www.sonicom.eu/) and include the algorithms developed in the [3D Tune-In Toolkit](https://github.com/3DTune-In/3dti\_AudioToolkit) in a new open, extensible architecture. 
 
@@ -15,9 +15,9 @@ You can use BRT in two different ways depending on the level of integration whic
 
 * BRT Library.
 * BRT Applications.
-    * Renderer
-    * GUI
-* OSC commands to control BRT Renderer.
+    * BeRTA Renderer
+    * BeRTA GUI
+    * OSC commands
 * SOFA files format used in BRT.
 
 ## Credits
@@ -35,8 +35,6 @@ The current members of the development team are (in alphabetical order):
 * [Maria Cuevas-Rodriguez](https://github.com/mariacuevas) ([University of Malaga](https://www.uma.es/))
 
 * [Luis Molina-Tanco](https://github.com/lmtanco) ([University of Malaga](https://www.uma.es/))
-
-* [Francisco Morales-Benitez](https://github.com//FranMoraUma) ([University of Malaga](https://www.uma.es/))
 
 
 ## Copyright and License
