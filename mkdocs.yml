@@ -70,20 +70,21 @@ nav:
     
     - Source Models: 
       - library/source-models/index.md
-      - Omnidirectional Model: library/source-models/simpleModel.md
-      - Directivity Model: library/sousource-modelsrce/directivityModel.md
-      - Virtual Source: library/source-models/virtualSource.md
+      - Omnidirectional Model: library/source-models/simple-omnidirectional-source-model.md
+      - Directivity Model: library/source-models/directivity-source-model.md
+      - Virtual Source: library/source-models/virtual-source-model.md
     - Listener Models: 
       - library/listener-models/index.md
-      - Listener acoustic model based on HRTF: library/listener-models/listener-acoustic-model-hrtf.md
-      - Listener acoustic model based on BRIR: library/listener-models/listener-acoustic-model-brir.md
-    - Environment Models:
-      - library/environment-models/index.md
+      - HRTF Models:
+        - library/listener-models/hrtf-models/index.md
+        - Direct HRTF Convolution: library/listener-models/hrtf-models/listener-acoustic-model-hrtf.md
+        - Ambisonic HRTF Convoution model: library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf.md
       - RIR models: 
-        - Overview: library/environment-models/rirModels.md
-        - Direct BRIR: library/environment-models/directBRIR.md
-        - Ambisonic BRIR: library/environment-models/ambisonicBRIR.md 
-      - Virtual Sources: library/environment-models/virtualSources.md
+        - library/listener-models/rir-models/index.md                
+        - Direct BRIR Convolution Model:  library/listener-models/rir-models/listener-acoustic-environment-model-brir.md      
+        - Ambisoninc BRIR Convolution Model: library/listener-models/rir-models/listener-acoustic-environment-model-ambisonic-brir.md
+    - Environment Models:
+      - library/environment-models/index.md      
     - Binaural Filters:
       - library/binaural-filters/index.md
     - Services Modules: 
