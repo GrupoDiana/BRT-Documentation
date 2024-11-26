@@ -56,26 +56,29 @@ The library is organized into three layers, as previously discussed. From the pe
 
 ### High-Level Modules
 
-High-level modules are responsible for audio rendering. Each module models specific physical and/or psychoacoustic phenomena, depending on the use case. Currently, several types of models have been implemented, grouped into four categories:
+High-level modules are responsible for audio rendering. Each module models specific physical and/or psychoacoustic phenomena, depending on the use case. The following types of models have been implemented, grouped into four categories:
 
-- **Source Models: Simulate an audio source**
+- **Source Models**: Each monaural sound source to be rendered requires the instantiation of a source model. These models serve as the main entry points to the library for applications during rendering. At a minimum, applications must provide the audio samples of each source for every frame and, if applicable, update their position and orientation.
     - [Simple Omnidirectional Source Model](../library/source-models/simple-omnidirectional-source-model.md)
     - [Directional Source Model](../library/source-models/directivity-source-model.md)
 
-- **Listener Models**
-    - [HRTF Convolution Models](./listener-models/hrtf-models/index.md): These models use head impulse responses (HRTF) to realistically simulate the sound perceived by a user. They work by convolving the signals from the sound sources with the binaural head impulse response (HRTF). This HRTF data is usually read from a SOFA file. Currently two such models have been implemented: *Direct HRTF Convolution Model* and *Ambisonic BRIR Convolution Model*.
+- **Listener Models**: Listener models generate binaural audio by receiving a single audio channel per source and producing two output channels (left and right ears). They are categorized as follows:
+    - [HRTF Convolution Models](./listener-models/hrtf-models/index.md): 
+    These models simulate sound perception using Head-Related Transfer Functions (HRTF). Signals from sound sources are convolved with binaural impulse responses stored in HRTF Service modules. Whose data is usually read from a SOFA file. Currently two such models have been implemented: **Direct HRTF Convolution Model** and **Ambisonic BRIR Convolution Model**.
+    - [BRIR Convolution Models](./listener-models/rir-models/index.md): 
+    These models use Binaural Room Impulse Responses (BRIR) to simulate acoustic spaces, convolving source signals with room-specific responses stored in HRBRIR service modules. The RIR data will typically be read from a SOFA file and may contain impulse responses with the transmitter and receiver located at various locations in the room. Currently two models have been implemented: **Direct BRIR Convolution Model** and **Ambisonic BRIR Convolution Model**.
 
-    - [BRIR Convolution Models](./listener-models/rir-models/index.md): These models exploit room impulse responses (RIR) to simulate realistic acoustic spaces. They work by convolving the signals from the sound sources with the room's binaural impulse response (RIR). The RIR will typically be read from a SOFA file and may contain impulse responses with the transmitter and receiver located at various locations in the room. Currently two models have been implemented: *Direct BRIR Convolution Model* and *Ambisonic BRIR Convolution Model*.
-
-- **Environment Models**:
+- **Environment Models**: These models simulate various acoustic environments:
     - [Free Field](../library/environment-models/freefield-environment-model.md): Simulates propagation in a free-field environment, including propagation delay, attenuation, and filtering.
     - [SDN](../library/environment-models/sdn-environment-model.md): Simulates room reverberation using the Scattering Delay Networks method [URL].
     - *ISM*: Simulates room reverberation using the Image Source Method *(Under development)*.
     - *Hybrid: ISM + Convolution*: Simulates room reverberation where early reflections are modeled using the Image Source Method, and the reverberant tail is simulated through convolution with a BRIR *(Under development)*.
 
-- **Binaural Filters**:
+- **Binaural Filters**: They perform filtering on binaural signals.
     - [SOS Filters](../library/binaural-filters/sos-filters.md): Perform binaural filtering based on second-order sections, enabling the simulation of devices such as headphones.
 
+- **Listener**: Each listener instantiated in the BRT library represents a “real” listener for which you want to render binaural audio. The application must keep its position/position updated and must at the end of each audio frame collect the output samples. 
+ 
 ### Service Modules
 
 Service modules store the essential data required for rendering. This data typically comes from SOFA files, although other formats could be used. Key service modules include:
@@ -89,7 +92,30 @@ Service modules store the essential data required for rendering. This data typic
 
 ## Usage
 
-To render audio using the library, the required modules must be instantiated and interconnected based on the desired simulation (configuration). This is managed through the `brtManager` class [URL]. See the **Setup/Examples** section for detailed guidance. Below are examples of configurations that can be created:
+To render audio using the library, the required modules must be instantiated and interconnected based on the desired simulation (configuration). This is managed through the `brtManager` class [URL]. For detailed instructions, refer to the **Setup/Examples** section.
+
+### General Workflow
+
+The diagram below outlines the modular interconnections in the BRT Library and the typical workflow for rendering audio:
+
+1. **Source Models**: Instantiate a source model for each monaural sound source. The application is responsible for feeding these models with audio samples for each frame and updating their position and orientation as needed.
+
+2. **Listener Models**: Connect source models to listener models to generate binaural audio. If an environment simulation is required, source models should first be connected to environment models.
+
+3. **Environment Models (Optional)**: These models simulate acoustic spaces and produce virtual sources, which are then connected to the listener models. Applications only need to connect the modules; the library handles virtual source generation.
+
+4. **Binaural Filters (Optional)**: To simulate auditory devices, such as headphones, connect a binaural filter between listener models and listener outputs.
+
+5. **Listeners**: Instantiate one listener module for each real listener. The application must collect the output samples from each listener at the end of every audio frame.
+
+This modular approach provides flexibility while ensuring that all components interact seamlessly. The application is tasked with managing input and output data flow, while the library takes care of the processing.
+
+<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
+    <img src="../assets/BRTLibraryUsageDiagram.png" alt="Generic connection diagram of the BRT models." style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Generic connection diagram of the BRT models.</p>
+</div>
+
+Below are examples of configurations that can be created:
 
 **Example 1 - Basic Anechoic Simulation**: Combine a listener model with source models for anechoic rendering.
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">

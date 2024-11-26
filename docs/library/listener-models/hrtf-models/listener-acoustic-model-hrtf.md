@@ -1,6 +1,6 @@
 # Listener Acoustic Model based on HRTF direct convolution
 
-:warning:*(In progress)*:warning:
+:warning:*(Ready for review)*:warning:
 
 The **Listener HRTF model** module of the library allows the rendering of spatial audio from multiple sound sources. It simulates the direct path between source and listener by taking advantage of *direct convolution* with head impulse responses (HRTF). This module independently processes each of the input sources, taking into account their positions and the position and orientation of the listener.
 
@@ -124,12 +124,10 @@ if (listenerModel != nullptr) {
 <h2>Public methods</h2>
 
 ```cpp
-// HRTF
 bool SetHRTF(std::shared_ptr< BRTServices::CHRTF > _listenerHRTF) override
 std::shared_ptr<BRTServices::CHRTF> GetHRTF() const override
 void RemoveHRTF() override
 
-// Near field compesation filter
 bool SetNearFieldCompensationFilters(std::shared_ptr<BRTServices::CSOSFilters> _listenerILD) override
 std::shared_ptr<BRTServices::CSOSFilters> GetNearFieldCompensationFilters() const override
 void RemoveNearFierldCompensationFilters() override
@@ -158,10 +156,11 @@ void EnableModel() override
 void DisableModel() override
 void ResetProcessorBuffers()
 
-// Connect a new source to this listener model
+
 bool ConnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) override
-//Disconnect a new source to this listener model
+bool ConnectSoundSource(const std::string & _sourceID) override
 bool DisconnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) override
+bool DisconnectSoundSource(const std::string & _sourceID) override 
 
 bool ConnectEnvironmentModel(const std::string & _environmentModelID) override 
 bool DisconnectEnvironmentModel(const std::string & _environmentModelID) override
