@@ -1,6 +1,6 @@
-This section covers the OSC commands responsible for controlling the environment. These commands handle parameters related to the characteristics of the space, such as room geometry and the absorption profiles of the walls, particularly in models based on geometrical acoustics. These are the models implemented so far:
+This section covers the OSC commands responsible for controlling the environment. These commands handle parameters related to the characteristics of the space, such as room geometry and the absorption profiles of the walls, particularly in models based on geometrical acoustics. 
 
-- SDN
+<!--These are the models implemented so far:- SDN->
 
 
 <!----------------------------------------------------------------------------------->
@@ -21,15 +21,17 @@ This command switches on or off an environment model. When an environment model 
 
 #### Return
 
-<!-- An echo is returned to all subscribers: `/environment/enableModel <string environmentModel_id> <boolean enable>`
--->
+`control/actionResult /environment/enableModel <string environmentModel_id> <bool enable> <string description>`
+
+The return confirmation refers to the `environmentModel_id`, indicating `enable=true` if the model has been enabled and `enable=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/environment/enableModel SDN true`
+BeRTA receives and echoes back to all subscribiers but the sender: `/environment/enableModel SDN true`
 
-<!--BeRTA sends back to all subscribers: `/environment/enableModel SDN true`
--->
+BeRTA sends back to the sender: `control/actionResult /environment/enableModel SDN true "Environment model SDN enabled".`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -65,15 +67,17 @@ Sets up a shoebox room with six walls (four walls, plus floor and ceiling). The 
 
 #### Return
 
-<!-- An echo is returned to all subscribers: `/environment/setShoeBoxRoom <string environmentModel_id> <float length> <float width> <float height>`
--->
+`control/actionResult /environment/setShoeBoxRoom <string environmentModel_id> <bool set> <string description>`
+
+The return confirmation refers to the `environmentModel_id`, indicating `set=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/environment/setShoeBoxRoom SDN 6 8 3`
+BeRTA receives and echoes back to all subscribiers but the sender: `/environment/setShoeBoxRoom SDN 6 8 3`
 
-<!--BeRTA sends back to all subscribers: `/environment/setShoeBoxRoom SDN 6 8 3`
--->
+BeRTA sends back to the sender: `control/actionResult /environment/setShoeBoxRoom SDN true "ShoeBox Room set to SDN (Length, Width, Height): [6, 8, 3]"`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -115,17 +119,17 @@ Sets the absorption coeficients of a wall. These can be frequency independent, e
 
 #### Return
 
-<!-- An echo is returned to all subscribers: `/environment/setShoeBoxRoom <string environmentModel_id> <float length> <float width> <float height>`
--->
+`control/actionResult /environment/setWallAbsorption <string environmentModel_id> <bool set> <string description>`
+
+The return confirmation refers to the `environmentModel_id`, indicating `set=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Examples
 
-BeRTA receives: `environment/setWallAbsorption SDN 0 0.5`
+BeRTA receives and echoes back to all subscribiers but the sender: `environment/setWallAbsorption SDN 0 0.1 0.2 0.3 0.4 0.5 0.4 0.3 0.2 0.1`
 
-BeRTA receives: `environment/setWallAbsorption SDN 0 0.1 0.2 0.3 0.4 0.5 0.4 0.3 0.2 0.1`
-
-<!--BeRTA sends back to all subscribers: `environment/setWallAbsorption SDN 0 0.5`
--->
+BeRTA sends back to the sender: `control/actionResult /environment/setWallAbsorption SDN true "Wall absortion set to SDN, wall 0 : [0.1, ...]"`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -144,15 +148,18 @@ This command switches on or off the virtual source coresponding to the direct pa
 
 #### Return
 
-<!-- An echo is returned to all subscribers: `/environment/enableDirectPath <string environmentModel_id> <boolean enable>`
--->
+`control/actionResult /environment/enableDirectPath <string environmentModel_id> <bool enabled> <string description>`
+
+The return confirmation refers to the `environmentModel_id`, indicating `enabled=true` if the direct path has been enabled and `enabled=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
 
 #### Example
 
-BeRTA receives: `/environment/enableDirectPath SDN false`
+BeRTA receives and echoes back to all subscribiers but the sender: `/environment/enableDirectPath SDN false`
 
-<!--BeRTA sends back to all subscribers: `/environment/enableDirectPath SDN false`
--->
+BeRTA sends back to the sender: `control/actionResult /environment/enableDirectPath SDN true "Environment model SDN Direct path enabled"`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -172,15 +179,19 @@ This command switches on or off all the virtual sources but the one of the direc
 
 #### Return
 
-<!-- An echo is returned to all subscribers: `/environment/enableReverbPath <string environmentModel_id> <boolean enable>`
--->
+`control/actionResult /environment/enableReverbPath <string environmentModel_id> <bool enabled> <string description>`
+
+The return confirmation refers to the `environmentModel_id`, indicating `enabled=true` if the model direct path has been enabled and `enabled=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
 
 #### Example
 
-BeRTA receives: `/environment/enableReverbPath SDN false`
+BeRTA receives and echoes back to all subscribiers but the sender: `/environment/enableReverbPath SDN false`
 
-<!--BeRTA sends back to all subscribers: `/environment/enableReverbPath SDN false`
--->
+BeRTA sends back to the sender: `control/actionResult /environment/enableReverbPath SDN true "Environment model SDN Reverb path enabled"`. 
+
 
 <!----------------------------------------------------------------------------------->
 ---
