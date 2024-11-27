@@ -16,19 +16,20 @@ Specifying a sound file with `source_path`, a new sound file is loaded from the 
 
 #### Return
 
-`/source/loadSource <string source_id> <bool loaded>`
+`control/actionResult /source/loadSource <string source_id> <bool loaded> <string description>` .
 
-The return message will refer to the `source_id`, indicating `loaded=true`if the source is successfuly loaded <!--and `loaded=false` if not. In both cases a `description`is added to give more details. -->
+The return confirmation refers to the `source_id`, indicating `loaded=true`if the source is successfuly loaded and `loaded=false` if not. In both cases a `description`is added to give more details.
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/source/loadSource source1 speech.wav`
-BeRTA sends back: `/source/loadSource source1 true` <!--or `/source/loadSource source1 false error: Can not find the file`-->
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/loadSource source1 speech.wav`
+
+BeRTA sends back to the sender: `control/actionResult /source/loadSource source1 true Audio source source1 loop enabled` or `/source/loadSource source1 ERROR: The audio source source1 doesn't exist.`
 
 <!----------------------------------------------------------------------------------->
 ---
-
-
 
 ## `/source/addLineIn`
 
@@ -48,22 +49,24 @@ Adds a new source getting it from an audio input channel. Adding a new source do
 
 #### Return
 
-A confirmation is sent back to the sender: `/source/addLineIn <string source_id> <bool loaded> <string description>` 
-The return message will refer to the `source_id`, indicating `loaded=true`if the source is successfuly loaded <!--and `loaded=false` if not. In both cases a `description`is added to give more details. 
+`control/actionResult /source/addLineIn <string source_id> <bool loaded> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `loaded=true`if the source is successfuly loaded and `loaded=false` if not. In both cases a `description`is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/source/addLineIn source1 1 DirectivityModel`
+BeRTA receives and echoes back to all subscribiers but the sender:`/source/addLineIn source1 1 DirectivityModel`
 
-BeRTA sends back to the sender: `/source/addLineIn source1 true` <!--or `/source/addLineIn source1 false error: not a valid channel`
-
+BeRTA sends back to the sender: `control/actionResult /source/addLineIn source1 true AUDIO LINE-IN source1 configured succesfully` or `/source/addLineIn source1 false error: not a valid channel`
 <!----------------------------------------------------------------------------------->
 ---
 
 
 ## `/source/removeSource`
 
-Removes a sound source from the system
+Removes a sound source from the system. 
 
 #### Syntax
 
@@ -73,14 +76,18 @@ Removes a sound source from the system
 
 #### Return
 
-A confirmation is sent back to all subscribers: `/source/removeSource <string source_id> <bool removed>` 
-The return message will refer to the `source_id`, indicating `removed=true`if the source is successfuly removed. If the source does not exist, the command is ignored
+`control/actionResult /source/removeSource <string source_id> <bool removed> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `removed=true`if the source is successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
 
 #### Example
 
-BeRTA receives: `/source/remove source1`
+BeRTA receives and echoes back to all subscribiers but the sender:`/source/remove source1`
 
-BeRTA sends back to all subscribiers: `/source/remove source1 true`
+BeRTA sends back to the sender : `control/actionResult /source/remove source1 true Audio source removed: source1` or `control/actionResult /source/remove source1 false ERROR: The audio source source1 doesn't exist.`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -88,7 +95,7 @@ BeRTA sends back to all subscribiers: `/source/remove source1 true`
 
 ## `/source/play`
 
-Plays a specific source, starting to send frames to the library from either the audio file or the input channel. In the first case, it starts from the beginning of the file unless the source was previously started and a `/source/pause` command was sent before. In such case it resumes at the point it was paused. If the `source_id` does not exist, the command is ignored
+Plays a specific source, starting to send frames to the library from either the audio file or the input channel. In the first case, it starts from the beginning of the file unless the source was previously started and a `/source/pause` command was sent before. In such case it resumes at the point it was paused. 
 
 #### Syntax
 
@@ -98,13 +105,17 @@ Plays a specific source, starting to send frames to the library from either the 
 
 #### Return
 
-An echo is returned to all subscribers: `/source/play <string source_id>`
+`control/actionResult /source/play <string source_id> <bool played> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `played=true`if the source is successfuly played and `played=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/source/play source1`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/play source1`
 
-BeRTA sends back to all subscribers: `/source/play source1`
+BeRTA sends back to the sender: `control/actionResult /source/play source1 true Audio source source1 played back` 
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -112,7 +123,7 @@ BeRTA sends back to all subscribers: `/source/play source1`
 
 ## `/source/stop`
 
-Stops a specific source. In the case of a source comming from a file, this resets the source so that the next `/source/play` command will start at the beginning of the file. If the `source_id` does not exist, the command is ignored.
+Stops a specific source. In the case of a source comming from a file, this resets the source so that the next `/source/play` command will start at the beginning of the file. 
 
 #### Syntax
 
@@ -122,13 +133,17 @@ Stops a specific source. In the case of a source comming from a file, this reset
 
 #### Return
 
-An echo is returned to all subscribers: `/source/stop <string source_id>`
+`control/actionResult /source/stop <string source_id> <bool stopped> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `stopped=true` if the action has been successfully performed and `stopped=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/source/stop source1`
+BeRTA receives and echoes back to all subscribiers but the sender:  `/source/stop source1`
 
-BeRTA sends back to all subscribers: `/source/stop source1`
+BeRTA sends back to the sender: `control/actionResult /source/stop source1 true Audio source source1 removed.`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -142,17 +157,21 @@ Pauses a specific source. In the case of a source comming from a file, the next 
 
 `/source/pause <string source_id>`
 
-`source_id`: identifier assigned to the sound source for further references to it
+`sourc e_id`: identifier assigned to the sound source for further references to it
 
 #### Return
 
-An echo is returned to all subscribers: `/source/pause <string source_id>`
+`control/actionResult /source/pause <string source_id> <bool paused> <string description>`
+
+The return confirmation refers to the `source_id`,  indicating `paused=true` if the action has been successfully performed and `paused=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/source/pause source1`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/pause source1`
 
-BeRTA sends back to all subscribers: `/source/pause source1`
+BeRTA sends back to the sender: `control/actionResult /source/pause source1 true Audio source source1 paused.`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -170,15 +189,17 @@ Mutes a specific source. In the case of a source comming from a file, the applic
 
 #### Return
 
-No return is sent back.
-<!--An echo is returned to all subscribers: `/source/mute <string source_id>`
--->
+`control/actionResult /source/mute <string source_id> <bool muted> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `muted=true` if the action has been successfully performed and `muted=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
 #### Example
 
-BeRTA receives: `/source/mute source1`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/mute source1`
 
-<!--BeRTA sends back to all subscribers: `/source/mute source1`
--->
+BeRTA sends back to the sender: `control/actionResult /source/mute source1 true Audio source source1 muted.`
 <!----------------------------------------------------------------------------------->
 ---
 
@@ -195,15 +216,17 @@ Unmutes a specific source. In the case of a source comming from a file previousl
 
 #### Return
 
-No return is sent back.
-<!--An echo is returned to all subscribers: `/source/unmute <string source_id>`
--->
+`control/actionResult /source/unmute <string source_id> <bool unmuted> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `unmuted=true` if the action has been successfully performed and `unmuted=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
 #### Example
 
-BeRTA receives: `/source/unmute source1`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/unmute source1`
 
-<!--BeRTA sends back to all subscribers: `/source/unmute source1`
--->
+BeRTA sends back to the sender: `control/actionResult /source/unmute source1 true Audio source source1 unmuted.`
 <!----------------------------------------------------------------------------------->
 ---
 
@@ -220,15 +243,17 @@ Mutes all sources but the the one indicated by this command. In the case of sour
 
 #### Return
 
-No return is sent back.
-<!--An echo is returned to all subscribers: `/source/solo <string source_id>`
--->
+`control/actionResult /source/solo <string source_id> <bool solo> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `solo=true` if the action has been successfully performed and `solo=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
 #### Example
 
-BeRTA receives: `/source/solo source1`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/solo source1`
 
-<!--BeRTA sends back to all subscribers: `/source/solo source1`
--->
+BeRTA sends back to the sender:  `control/actionResult /source/solo source1 true Audio source source1 playing solo.`
 <!----------------------------------------------------------------------------------->
 ---
 
@@ -245,18 +270,20 @@ Unmutes all sources but the the one indicated by this command. If the `source_id
 
 #### Return
 
-No return is sent back.
-<!--An echo is returned to all subscribers: `/source/unsolo <string source_id>`
--->
+`control/actionResult /source/unsolo <string source_id> <bool unsolo> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `unsolo=true` if the action has been successfully performed and `unsolo=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
 #### Example
 
-BeRTA receives: `/source/unsolo source1`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/unsolo source1`
 
-<!--BeRTA sends back to all subscribers: `/source/unsolo source1`
--->
+BeRTA sends back to the sender:  `control/actionResult /source/unsolo source1 true All audio sources unmuted.`
+
 <!----------------------------------------------------------------------------------->
 ---
-
 
 ## `/source/loop`
 
@@ -272,19 +299,20 @@ Sets loop mode for the identified source. If loop mode is enabled, when reaching
 
 #### Return
 
-No return is sent back.
-<!--An echo is returned to all subscribers: `/source/loop <string source_id> <boolean enable>`
--->
+`control/actionResult /source/loop <string source_id> <bool loop> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `loop=true` if the action has been successfully performed and `loop=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
 #### Example
 
-BeRTA receives: `/source/loop source1 false`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/loop source1`
 
-<!--BeRTA sends back to all subscribers: `/source/loop source1 false`
--->
+BeRTA sends back to the sender: `control/actionResult /source/loop source1 true Audio source source1 enabled.`
+
 <!----------------------------------------------------------------------------------->
 ---
-
-
 
 ## `/source/location`
 
@@ -304,13 +332,13 @@ Set location of source. Position is set in global x,y,z coordinates, expressed i
 
 #### Return
 
-An echo is returned to all subscribers excepting the sender: `/source/location <string source_id> <float x> <float y> <float z>`
+Any confirmation message is sent back to the sender.
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/source/location source1 2 0 0`
-
-BeRTA sends back to all subscribers excepting the sender: `/source/location source1 2 0 0`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/location source1 2 0 0`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -334,13 +362,13 @@ Set orientation of the source. Orientation is set in egocentric coordinates yaw,
 
 #### Return
 
-An echo is returned to all subscribers excepting the sender: `/source/orientation <string source_id> <float yaw> <float pitch> <float roll>`
+Any confirmation message is sent back to the sender.
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/source/orientation source1 0 0 0`
-
-BeRTA sends back to all subscribers excepting the sender: `/source/orientation source1 0 0 0`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/orientation source1 0 0 0`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -360,13 +388,17 @@ Sets source gain in dB. 0 dB indicates that the source is kept as it is read fro
 
 #### Return
 
-An echo is returned to all subscribers: `/source/gain <string source_id> <float gain>`
+`control/actionResult /source/gain <string source_id> <bool setGain> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `setGain=true` if the action has been successfully performed and `setGain=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/source/gain source1 -3`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/gain source1 -3`
 
-BeRTA sends back to all subscribers: `/source/gain source1 -3`
+BeRTA sends back to the sender: `control/actionResult /source/gain source1 -3 true Audio source source1 gain updated to -3 dB`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -386,13 +418,17 @@ Switch on or off the directivity of the source. For directivity to work, a Direc
 
 #### Return
 
-An echo is returned to all subscribers: `/source/enableDirectivity <string source_id> <boolean enable>`
+`control/actionResult /source/enableDirectivity <string source_id> <bool enableDirectivity> <string description>`
+ 
+The return confirmation refers to the `source_id`,  indicating `enableDirectivity=true` if the action has been successfully performed and `enableDirectivity=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/source/enableDirectivity source1 true`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/enableDirectivity source1 true`
 
-BeRTA sends back to all subscribers: `/source/enableDirectivity source1 true`
+BeRTA sends back to the sender: `control/actionResult /source/enableDirectivity source1 true Audio source source1 directivity enabled`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -412,13 +448,17 @@ Assigns a directivity which has been previously loaded using the command `/resou
 
 #### Return
 
-In case of success, an echo is returned to all subscribers: `/source/setDirectivity <string source_id> <string DirectivityTF_id>`
+`control/actionResult /source/setDirectivity <string DirectivityTF_id> <bool setDirectivity> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `setDirectivity=true` if the action has been successfully performed and `setDirectivity=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/source/setDirectivityTF source1 DirectivityTF1`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/setDirectivityTF source1 DirectivityTF1`
 
-BeRTA sends back to all subscribers: `/source/setDirectivityTF source1 DirectivityTF1`
+BeRTA sends back to the sender: `control/actionResult /source/setDirectivityTF DirectivityTF1 true DirectivityTF: DirectivityTF1 has been set to SoundSource: source1`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -443,17 +483,17 @@ Records a file of the specified duration with the delivered binaural sound and a
 
 #### Return
 
-BeRTA will send back to all subscribers the applied stop and play commands for all sources
+`control/actionResult /source/playAndRecord <string source_id> <bool recorded> <string description>`
+ 
+The return confirmation refers to the `source_id`, indicating `recorded=true` if the action has been successfully performed and `recorded=false` if not. In both cases a `description` is added to give more details. 
 
-Once the recording is completed, `/source/playAndRecord <string filename> true` is sent back to the sender. In case the recording is not possible, `/source/playAndRecord <string filename> false` is sent back to the sender.
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives: `/source/playAndRecord SoundSource1 C:/tmp/testingRecord mat 3`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/playAndRecord SoundSource1 C:/tmp/testingRecord mat 3`
 
-BeRTA immediately sends back to all subscribers: `/source/stop SoundSource1`, `/source/stop SoundSource2` and `/source/play SoundSource1`, 
-
-After 3 seconds, BeRTA sends back to the sender: `/source/playAndRecord c:/tmp/file.mat true`
+BeRTA sends back to the sender: `control/actionResult /source/playAndRecord source1 true "Recording completed. File saved: C:/tmp/testingRecord`
 
 <!----------------------------------------------------------------------------------->
 ---
