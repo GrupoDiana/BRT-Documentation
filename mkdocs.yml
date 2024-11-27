@@ -84,7 +84,9 @@ nav:
         - Direct BRIR Convolution Model:  library/listener-models/rir-models/listener-acoustic-environment-model-brir.md      
         - Ambisoninc BRIR Convolution Model: library/listener-models/rir-models/listener-acoustic-environment-model-ambisonic-brir.md
     - Environment Models:
-      - library/environment-models/index.md      
+      - library/environment-models/index.md   
+      - Free Field Model: library/environment-models/freefield-environment-model.md   
+      - SDN Model: library/environment-models/sdn-environment-model.md
     - Binaural Filters:
       - library/binaural-filters/index.md
     - Services Modules: 
@@ -93,6 +95,10 @@ nav:
       - BRIR: library/service-modules/service-hrbrir.md
       - Directivity TF: library/service-modules/service-directivity-tf.md
       - SOS Filters: library/service-modules/service-sos-filters.md
+    - Processing Modules: 
+      - library/processing-modules/index.md
+      - Ambisonic Domain Convolver: library/processing-modules/ambisonic-domain-convolver.md
+      - Bilateral Ambisonic Encoder: library/processing-modules/bilateral-ambisonic-encoder.md
     - Readers: 
       - library/readers/index.md        
     - Common:

@@ -24,7 +24,7 @@ The operation of the convolucionator as well as its block diagram can be seen in
 
 ## Configuration Options
 
-This model allows configuration by calling its methods or by OSC:
+This model allows configuration by calling its methods or by BRT internal commands:
 
 - **Model (on/off)**: Silent when off.
 - **Spatialization (on/off)**: Transparent when off.
