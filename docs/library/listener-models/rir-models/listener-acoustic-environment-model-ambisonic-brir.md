@@ -1,69 +1,147 @@
-# Listener and Environment model based in convolution with BRIR in the Ambisonic Domain
+# Listener Acoustic Model based on BRIR convolution in the Ambisonics domain
 
-The Ambisonic BRIR Convolution Module of the Binaural Rendering Toolbox enables the spatial audio rendering of multiple sound sources in an ambisonic environment. By leveraging the convolution with Binaural Room Impulse Responses (BRIR) in the ambisonic domain, this module processes the input sources considering their positions and the listener's position and orientation. It supports ambisonic encoding of orders 1, 2, or 3, and uses to decode virtual loudspeakers located at the vertices of regular polyhedra (octahedron for first-order, icosahedron for second-order, and dodecahedron for third-order). In order to save some convolutions, the module convolves the ambisonic signal directly with the ambisonic mix of the virtual loudspeakers' impulse responses, subsequently mixing all right and left channels separately. Uniformly partitioned convolution is used to compute the convolution in the frequency domain.
+:warning:*(In progress)*:warning:
+
+The **Ambisonic BRIR Convolution Model** enables spatial audio rendering from multiple sound sources. It performs convolution in the ambisonic domain using binaural room impulse responses (BRIR[^1]) and the selected ambisonic order (currently up to third order). This process simulates both direct sound and reverberation, providing a complete representation of the acoustic interaction between the source and the listener. If the impulse responses do not include information about the direct path, the simulation is limited to the reverberation of the environment[^2]. The process consists of two main stages: ambisonic encoding and ambisonic convolution/decoding.
+
+[^1]: A BRIR captures the acoustic characteristics of a room from the perspective of a specific listener, as it is recorded using microphones placed in the listener's ears. This is why we refer to this model as both a listener and environment model.
+[^2]: This is the standard way we use the library.
+
+In the first stage, a ambisonic encoding is performed for each input sound source. This encoding generates (N) ambisonic channels per ear, where (N) depends on the selected ambisonic order, and per sound source.
+
+In the second stage, two tasks are performed simultaneously: convolution with impulse responses and ambisonic decoding (for more details, see the [AmbisonicBIR](../../service-modules/service-ambisonic-bir.md) section). 
+There are two convolution/decoding blocks, one for each ear, allowing independent processing for the left and right channels. Each block begins by separately mixing the ambisonic channels generated during the encoding stage. It then performs convolution in the frequency domain for each channel using precomputed impulse responses stored in the [AmbisonicBIR](../../service-modules/service-ambisonic-bir.md) service module. These impulse responses represent the ambisonic mixture of the virtual loudspeaker responses, enabling both convolution and ambisonic decoding to be executed simultaneously.
+Finally, the output is mixed and transformed back into the time domain, resulting in the final signal for the corresponding ear.
+
+This modular approach ensures efficient and precise spatial audio rendering. The linearity of the operations is leveraged to reduce computational overhead by minimizing the number of convolutions required. The result is a highly realistic simulation of the direct sound path in the ambisonic domain, offering support for scalable ambisonic orders up to the third order.
+
+For further details on the functionality of the [Bilateral Ambisonic Encoder](../../processing-modules/bilateral-ambisonic-encoder.md) and the [Ambisonic Domain Convolver](../../processing-modules/ambisonic-domain-convolver.md), refer to their respective sections in the documentation. 
 
 ## Architecture
 
-The architecture of the Ambisonic BRIR Convolution Module is designed to efficiently handle the spatial audio rendering process by utilizing linear operations. Here’s a step-by-step overview of the architecture:
+The internal block diagram of this class is as follows:
+<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
+    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Ambisonic BRIR Convolution Model - Internal diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Ambisonic BRIR Convolution Model - Internal diagram.</p>
+</div>
 
-![Ambisonic BRIR model architecture](/BRT-Documentation/assets/AmbisonicBRIR.png "Ambisonic BRIR model architecture")
+## Configuration Options
 
-1. **Input Handling**: The module accepts a set of audio sources along with their positions in space, as well as the position and orientation of the listener.
-2. **Ambisonic Encoding**: The relative positions of each source with respect to the listener are used to encode the sources into an ambisonic format of the specified order (1st, 2nd, or 3rd).
-3. **Virtual Loudspeaker**: Impulse responses are got from the BRIR file for those positions of teh virtual loudspeakers, arranged at the vertices of a regular polyhedron corresponding to the ambisonic order.
-4. **Convolution**: Rather than convolving each virtual loudspeaker signal with the HRIR individually, the module convolves the ambisonic signal directly with the ambisonic mix of the BRIRs for the virtual loudspeakers.
-5. **Channel Mixing**: The convoluted signals are mixed into separate left and right channels, resulting in the final binaural audio output.
+This model allows configuration by calling its methods or by BRT internal commands:
 
-## BRIR Format
+- **Model (on/off)**: Silent when off.
+- **BRIR to be used**: The BRIR service module to be used for rendering. The system supports dynamic, hot-swapping of the service module being used.
+- **Ambisonic Order**: The order of the ambisonic coding to be used. Currently only orders between 1 (default) and 3 are valid.
+- **Ambisonic Normalization**: The ambisonic normalization to be used. The available options are: N3D (default), SN3D, maxN 
 
-The BRIR (Binaural Room Impulse Response) should be given as a SOFA format file. Any convention with data type FIR or FIR-E is supported as long as only one emmitter is used. Depending on the Ambisonic order, the direction of the virtual loudspeakers are searched in the BRIR file. If some of them is not found, an interpolation among the three closest directions is performed. If different listener positions are provided, a different set of virtual loudspeakers will be created for every listener position. When rendering, the one with the closest position to the listener is selected to convolve. To determine if two positions are the same, a resolution of 1 meter is used.   
 
-Depending on how the BRIR is captured, several cases may be considered
+[^2]: To perform the convolution task correctly, avoiding comb filters, it is necessary that the delays of the impulse responses have been removed, for more information see (:warning:URL).
 
-* One fixed listener with several source positions around it
 
-* One listener position with different orientations and one fixed source
+## Connections
+Modules to which it supports connections: 
 
-* Different listener positions with sources around
+    - Source models    
 
-## Model API
+Modules to which it connects:
 
-### Class instantiation
+    - Listener
+    - Binaural Filter
 
-### SetHRBRIR
 
-SET the HRBRIR among all the available which ave been previously loaded using XXXXXXXXXXXXXXXXXX. Switching between two differetn BRIRs is allowed on the fly, while the model is rendering. In this case, all the buffers in the patitioned convolver are changed at the same time, so that the whole new impulse response is applied in the next audio frame. 
 
-`bool SetHRBRIR(std::shared_ptr< BRTServices::CHRBRIR > _listenerHRBRIR)`
+<details>
+<summary>For C++ developer</summary>
 
-`_listenerHRBRIR`: pointer to HRBRIR to be selected by the model
+<ul>
+<li><strong>File</strong>: /include/ListenerModels/ListenerAmbisonicEnvironmentBRIRModel.hpp</li>
+<li><strong>Class name</strong>: CListenerAmbisonicEnvironmentBRIRModel</li>
+<li><strong>Inheritance</strong>: CListenerModelBase</li>
+<li><strong>Namespace</strong>: BRTListenerModel</li>
+<li><strong>Classes that instance</strong>:
+    <ul>
+        <li>BRTProcessing::CAmbisonicDomainConvolverProcessor</li>
+        <li>BRTProcessing::CBilateralAmbisonicEncoderProcessor</li>
+    </ul>
+</li>
+</ul> 
 
-`return`: true if the IR could be set and false if not. No error code is reported to the error handler.
+<h2>Class inheritance diagram</h2>
+<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
+    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="ListenerAmbisonicEnvironmentBRIRModel class diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">ListenerAmbisonicEnvironmentBRIRModel class diagram.</p>
+</div>
+<br>
 
-### RemoveHRBRIR
+<h2>How to instantiate</h2>
 
-### SetAmbisonicOrder
 
-### GetAmbisonicOrder
+```cpp
+// Assuming that the ID of this listener model is contained in _listenerModelID.
+brtManager.BeginSetup();
+std::shared_ptr<BRTListenerModel::CListenerAmbisonicEnvironmentBRIRModel>listenerModel = brtManager.CreateListenerModel<BRTListenerModel::CListenerAmbisonicEnvironmentBRIRModel>(_listenerModelID);
+brtManager.EndSetup();
+if (listenerModel == nullptr) {
+    // ERROR
+}
+```
+<h2>How to connect</h2>
+Connect it to a listener.
 
-### SetAmbisonicNormalization
+```cpp
+// Assuming that the ID of this listener is contained in _listenerID and 
+// that the ID of this listener model is contained in _listenerModelID.
+std::shared_ptr<BRTBase::CListener> listener = brtManager.GetListener(_listenerID);
+if (listener != nullptr) {
+    brtManager.BeginSetup();
+    bool control = listener->ConnectListenerModel(_listenerModelID);
+    brtManager.EndSetup();
+}
+```
 
-### GetAmbisonincNormalization
+Connect a source model to it.
 
-### ConnectSoundSource
+```cpp
+// Assuming that the soundSource could be a ID(string) or a std::shared_ptr<BRTSourceModel::CSourceModelBase>;
+std::shared_ptr<BRTListenerModel::CListenerModelBase> listenerModel = brtManager->GetListenerModel<BRTListenerModel::CListenerModelBase>(_listenerModelID);
+if (listenerModel != nullptr) {			
+	bool control = listenerModel->ConnectSoundSource(soundSource);
+}
 
-### DisconnectSoundSource
+```
 
-### ConnectListenerTransform
 
-### DisconnectListenerTransform
+<h2>Public methods</h2>
 
-### EnableModel
+```cpp
+void EnableModel() override 
+void DisableModel() override
 
-### DisableModel
+bool SetAmbisonicOrder(int _ambisonicOrder) override
+int GetAmbisonicOrder() override 
 
-### ResetProcessorBuffers
+bool SetAmbisonicNormalization(Common::TAmbisonicNormalization _ambisonicNormalization) override 
+bool SetAmbisonicNormalization(std::string _ambisonicNormalization) override 
+Common::TAmbisonicNormalization GetAmbisonicNormalization() override 
 
-### Update
+bool SetHRBRIR(std::shared_ptr<BRTServices::CHRBRIR> _listenerBRIR) override
+std::shared_ptr<BRTServices::CHRBRIR> GetHRBRIR() const override
+void RemoveHRBRIR() override
 
-### UpdateCommand
+bool ConnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) override
+bool ConnectSoundSource(const std::string & _sourceID) override
+bool DisconnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) override
+bool DisconnectSoundSource(const std::string & _sourceID) override 
+
+void ResetProcessorBuffers()
+void UpdateCommand() override
+```
+
+
+</details>
+
+
+
+
+
+
