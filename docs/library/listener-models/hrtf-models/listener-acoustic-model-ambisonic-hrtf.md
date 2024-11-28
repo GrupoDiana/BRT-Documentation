@@ -1,39 +1,52 @@
-# Listener Acoustic model based on HRTF convolution in the Ambisonics domain
+# Listener Acoustic Model based on HRTF convolution in the Ambisonics domain
 
-:warning:*(In progress)*:warning:
+:warning:*(Ready for review)*:warning:
 
-The **Listener ....l** bla bla.
+The **Ambisonic HRTF Convolution Model** module enables spatial audio rendering from multiple sound sources by simulating the direct path between the source and the listener through convolution in the ambisonic domain. The process involves two main stages: bilateral ambisonic encoding and ambisonic convolution. 
 
+In the first stage, a bilateral ambisonic encoding is performed for each input sound source. This encoding generates (N) ambisonic channels per ear, where (N) depends on the selected ambisonic order (currently implemented up to order 3). The encoding process begins by introducing independent delays for each ear to simulate interaural time differences (ITD). Subsequently, a near-field correction is applied through independent filtering of the signals for each ear, with filter coefficients determined by the distance between the source and the listener as well as the interaural azimuth. Finally, ambisonic encoding is carried out separately for each ear, resulting in (N) ambisonic channels for each ear per sound source.
 
+In the second stage, the ambisonic signals are processed through independent convolutions for each ear. Each convolver combines the ambisonic channels generated in the encoding stage and convolves them in the frequency domain with precomputed impulse responses stored in the [AmbisonicBIR](../../service-modules/service-ambisonic-bir.md) service module. These impulse responses represent the ambisonic mixture of the virtual loudspeakers' responses. Following the convolution, the results are mixed to produce the final left and right ear channels.
 
+This modular approach ensures efficient and precise spatial audio rendering. The linearity of the operations is leveraged to reduce computational overhead by minimizing the number of convolutions required. The result is a highly realistic simulation of the direct sound path in the ambisonic domain, offering support for scalable ambisonic orders up to the third order.
+
+For further details on the functionality of the [Bilateral Ambisonic Encoder](../../processing-modules/bilateral-ambisonic-encoder.md) and the [Ambisonic Domain Convolver](../../processing-modules/ambisonic-domain-convolver.md), refer to their respective sections in the documentation. 
 
 ## Architecture
 
 The internal block diagram of this class is as follows:
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Listener HRTF Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Listener HRTF Model Internal diagram.</p>
+    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerAmbisonicHRTFModelInternalBlockDiagram.png" alt="Ambisonic HRTF Convolution Model - Internal diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Ambisonic HRTF Convolution Model - Internal diagram.</p>
 </div>
-
-The operation of the convolucionator as well as its block diagram can be seen in this link (:warning:URL).
 
 ## Configuration Options
 
-This model allows configuration by calling its methods or by OSC:
+This model allows configuration by calling its methods or by BRT internal commands:
 
 - **Model (on/off)**: Silent when off.
-- blabla
+- **Near Field Compensation (on/off)**: The near field correction is applied when on. 
+- **ITD Simulation (on/off)**: When activated, a separate delay is added to each ear to simulate the interaural time difference[^1]. This delay is provided by the HRTF service module and may be provided in the SOFA structure or will be calculated from the head size, for more information see (:warning:URL). When off, it does not simulate interaural time difference. 
+- **Parallax Correction (on/off)**: When it is switched on, a cross-ear parallax correction is apllied. This correction is based on calculating the projection of the vector from the ear to the source on the HRTF sphere (i.e. the sphere on the surface of which the HRTF was measured), giving a more accurate rendering, especially for near-field and far-field sound sources. When deactivated, the calculation is based on the centre of the listener's head.
+- **HRTF to be used**: The HRTF service module to be used for rendering. The system supports dynamic, hot-swapping of the service module being used.
+- **Nearfield filter (SOS filter) to be used**: The SOS filter service module to be used for rendering. The system supports dynamic, hot-swapping of the service module being used.
+- **Ambisonic Order**: The order of the ambisonic coding to be used. Currently only orders between 1 (default) and 3 are valid.
+- **Ambisonic Normalization**: The ambisonic normalization to be used. The available options are: N3D (default), SN3D, maxN 
+
+[^1]: To perform the convolution task correctly, avoiding comb filters, it is necessary that the delays of the impulse responses have been removed, for more information see (:warning:URL).
+
 
 ## Connections
 Modules to which it supports connections: 
 
-    - Bla models
-    - blat models
+    - Source models
+    - Environment models
 
 Modules to which it connects:
 
-    - Bla
-    - Bla
+    - Listener
+    - Binaural Filter
+
 
 
 <details>
@@ -122,8 +135,8 @@ void RemoveNearFierldCompensationFilters() override
 
 bool SetAmbisonicOrder(int _ambisonicOrder) override
 int GetAmbisonicOrder() override 
-bool SetAmbisonicNormalization(Common::TAmbisonicNormalization _ambisonicNormalization) override 
 
+bool SetAmbisonicNormalization(Common::TAmbisonicNormalization _ambisonicNormalization) override 
 bool SetAmbisonicNormalization(std::string _ambisonicNormalization) override 
 Common::TAmbisonicNormalization GetAmbisonicNormalization() override 
 

@@ -24,7 +24,7 @@ The operation of the convolucionator as well as its block diagram can be seen in
 
 ## Configuration Options
 
-This model allows configuration by calling its methods or by OSC:
+This model allows configuration by calling its methods or by BRT internal commands:
 
 - **Model (on/off)**: Silent when off.
 - **Spatialization (on/off)**: Transparent when off.
@@ -52,7 +52,7 @@ Modules to which it connects:
 <summary>For C++ developer</summary>
 
 <ul>
-<li><strong>File</strong>: \include\ListenerModels\ListenerHRTFModel.hpp</li>
+<li><strong>File</strong>: /include/ListenerModels/ListenerHRTFModel.hpp</li>
 <li><strong>Class name</strong>: CListenerHRTFModel</li>
 <li><strong>Inheritance</strong>: CListenerModelBase</li>
 <li><strong>Namespace</strong>: BRTListenerModel</li>
@@ -84,7 +84,7 @@ if (listenerModel == nullptr) {
 }
 ```
 <h2>How to connect</h2>
-Connect it to a listener model.
+Connect it to a listener.
 
 ```cpp
 // Assuming that the ID of this listener is contained in _listenerID and 
@@ -124,13 +124,8 @@ if (listenerModel != nullptr) {
 <h2>Public methods</h2>
 
 ```cpp
-bool SetHRTF(std::shared_ptr< BRTServices::CHRTF > _listenerHRTF) override
-std::shared_ptr<BRTServices::CHRTF> GetHRTF() const override
-void RemoveHRTF() override
-
-bool SetNearFieldCompensationFilters(std::shared_ptr<BRTServices::CSOSFilters> _listenerILD) override
-std::shared_ptr<BRTServices::CSOSFilters> GetNearFieldCompensationFilters() const override
-void RemoveNearFierldCompensationFilters() override
+void EnableModel() override 
+void DisableModel() override
 
 void EnableSpatialization() override 
 void DisableSpatialization() override
@@ -152,10 +147,13 @@ void EnableParallaxCorrection() override
 void DisableParallaxCorrection() override 
 bool IsParallaxCorrectionEnabled() override
 
-void EnableModel() override 
-void DisableModel() override
-void ResetProcessorBuffers()
+bool SetHRTF(std::shared_ptr< BRTServices::CHRTF > _listenerHRTF) override
+std::shared_ptr<BRTServices::CHRTF> GetHRTF() const override
+void RemoveHRTF() override
 
+bool SetNearFieldCompensationFilters(std::shared_ptr<BRTServices::CSOSFilters> _listenerILD) override
+std::shared_ptr<BRTServices::CSOSFilters> GetNearFieldCompensationFilters() const override
+void RemoveNearFierldCompensationFilters() override
 
 bool ConnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) override
 bool ConnectSoundSource(const std::string & _sourceID) override
@@ -165,6 +163,7 @@ bool DisconnectSoundSource(const std::string & _sourceID) override
 bool ConnectEnvironmentModel(const std::string & _environmentModelID) override 
 bool DisconnectEnvironmentModel(const std::string & _environmentModelID) override
 
+void ResetProcessorBuffers()
 void UpdateCommand() override
 ```
 
