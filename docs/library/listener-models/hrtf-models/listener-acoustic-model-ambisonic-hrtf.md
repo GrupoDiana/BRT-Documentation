@@ -1,12 +1,12 @@
 # Listener Acoustic Model based on HRTF convolution in the Ambisonics domain
 
-:warning:*(In progress)*:warning:
+:warning:*(Ready for review)*:warning:
 
 The **Ambisonic HRTF Convolution Model** module enables spatial audio rendering from multiple sound sources by simulating the direct path between the source and the listener through convolution in the ambisonic domain. The process involves two main stages: bilateral ambisonic encoding and ambisonic convolution. 
 
 In the first stage, a bilateral ambisonic encoding is performed for each input sound source. This encoding generates (N) ambisonic channels per ear, where (N) depends on the selected ambisonic order (currently implemented up to order 3). The encoding process begins by introducing independent delays for each ear to simulate interaural time differences (ITD). Subsequently, a near-field correction is applied through independent filtering of the signals for each ear, with filter coefficients determined by the distance between the source and the listener as well as the interaural azimuth. Finally, ambisonic encoding is carried out separately for each ear, resulting in (N) ambisonic channels for each ear per sound source.
 
-In the second stage, the ambisonic signals are processed through independent convolutions for each ear. Each convolver combines the ambisonic channels generated in the encoding stage and convolves them in the frequency domain with precomputed impulse responses stored in the **AmbisonicBIR** service module. These impulse responses represent the ambisonic mixture of the virtual loudspeakers' responses. Following the convolution, the results are mixed to produce the final left and right ear channels.
+In the second stage, the ambisonic signals are processed through independent convolutions for each ear. Each convolver combines the ambisonic channels generated in the encoding stage and convolves them in the frequency domain with precomputed impulse responses stored in the [AmbisonicBIR](../../service-modules/service-ambisonic-bir.md) service module. These impulse responses represent the ambisonic mixture of the virtual loudspeakers' responses. Following the convolution, the results are mixed to produce the final left and right ear channels.
 
 This modular approach ensures efficient and precise spatial audio rendering. The linearity of the operations is leveraged to reduce computational overhead by minimizing the number of convolutions required. The result is a highly realistic simulation of the direct sound path in the ambisonic domain, offering support for scalable ambisonic orders up to the third order.
 

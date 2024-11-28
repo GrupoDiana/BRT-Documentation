@@ -1,6 +1,6 @@
 # Listener & Environment models based on Room Impulse Response
 
-The BRT library includes environment models that leverage room impulse responses (RIRs) to simulate realistic acoustic spaces. These models function by convolving the signals from sound sources with the binaural room impulse response (BRIR) of the room. The RIR will be read from a SOFA file and can contain impulse responses with both emmitter and receiver located in several locations in the room. Two models are currently implemented:
+The BRT library includes environment models that leverage room impulse responses (RIRs) to simulate realistic acoustic spaces. These models function by convolving the signals from sound sources with the binaural room impulse response (BRIR) of the room. The RIR will (usually) be read from a SOFA file and can contain impulse responses with both emmitter and receiver located in several locations in the room. Two models are currently implemented:
 
 * [Direct BRIR Convolution Model](./listener-acoustic-environment-model-brir.md): In this model, each sound source signal is directly convolved with the corresponding BRIR. Each source needs a separate convolution with the BRIR, getting therefore the spatial resolution provided in the BRIR set 
 

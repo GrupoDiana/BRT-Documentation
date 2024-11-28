@@ -95,6 +95,7 @@ nav:
       - BRIR: library/service-modules/service-hrbrir.md
       - Directivity TF: library/service-modules/service-directivity-tf.md
       - SOS Filters: library/service-modules/service-sos-filters.md
+      - AmbisonicBIR: library/service-modules/service-ambisonic-bir.md
     - Processing Modules: 
       - library/processing-modules/index.md
       - Ambisonic Domain Convolver: library/processing-modules/ambisonic-domain-convolver.md
