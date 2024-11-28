@@ -1,7 +1,7 @@
 # Listener & Environment Acoustic Model based on BRIR direct convolution
 :warning:*(In progress)*:warning:
 
-The **Listener & Environment BRIR Model** module enables spatial audio rendering from multiple sound sources. It uses direct convolution with the binaural room impulse responses (BRIR[^1]) to simulate both direct sound and reverberation, offering a comprehensive representation of the acoustic interaction between the source and the listener. If the impulse responses do not include information about the direct path, the simulation is limited to the reverberation of the environment[^2].  
+The **Listener & Environment BRIR Model** module enables spatial audio rendering from multiple sound sources. It uses direct convolution with the binaural room impulse responses (BRIR[^1]) to simulate both direct sound and reverberation, providing a complete representation of the acoustic interaction between the source and the listener. If the impulse responses do not include information about the direct path, the simulation is limited to the reverberation of the environment[^2].  
 
 [^1]: A BRIR captures the acoustic characteristics of a room from the perspective of a specific listener, as it is recorded using microphones placed in the listener's ears. This is why we refer to this module as both a listener and environment model.
 [^2]: This is the typical way we use the library.
@@ -30,8 +30,6 @@ This model allows configuration by calling its methods or by BRT internal comman
 - **Interpolation (on/off)**: When switched on, BRIRs are calculated at the exact position (relative source-listener position). For this purpose, barycentric interpolation is performed, starting from the three closest points. When it is switched off, the HRIR with the closest position are chosen.
 - **BRIR to be used**: The BRIR service module to be used for rendering. The system supports dynamic, hot-swapping of the service module being used.
 
-
-[^1]: To perform the convolution task correctly, avoiding comb filters, it is necessary that the delays of the impulse responses have been removed, for more information see (:warning:URL).
 ## Connections
 Modules to which it supports connections: 
 
