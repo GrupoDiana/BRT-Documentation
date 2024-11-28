@@ -104,6 +104,7 @@ nav:
       - library/readers/index.md        
     - Common:
       - library/common/index.md
+      - Uniform Partitioned Convolution: library/common/uniform-partitioned-convolution.md
     - Base:
       - library/base/index.md
     - Connectivity: 
