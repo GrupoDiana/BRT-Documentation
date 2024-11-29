@@ -1,5 +1,5 @@
 # Listener & Environment Acoustic Model based on BRIR direct convolution
-:warning:*(In progress)*:warning:
+:warning:*(Ready for review)*:warning:
 
 The **Listener & Environment BRIR Model** module enables spatial audio rendering from multiple sound sources. It uses direct convolution with the binaural room impulse responses (BRIR[^1]) to simulate both direct sound and reverberation, providing a complete representation of the acoustic interaction between the source and the listener. If the impulse responses do not include information about the direct path, the simulation is limited to the reverberation of the environment[^2].  
 

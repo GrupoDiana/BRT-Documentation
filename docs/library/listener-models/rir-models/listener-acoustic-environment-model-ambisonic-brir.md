@@ -1,6 +1,6 @@
 # Listener Acoustic Model based on BRIR convolution in the Ambisonics domain
 
-:warning:*(In progress)*:warning:
+:warning:*(Ready for review)*:warning:
 
 The **Ambisonic BRIR Convolution Model** enables spatial audio rendering from multiple sound sources. It performs convolution in the ambisonic domain using binaural room impulse responses (BRIR[^1]) and the selected ambisonic order (currently up to third order). This process simulates both direct sound and reverberation, providing a complete representation of the acoustic interaction between the source and the listener. If the impulse responses do not include information about the direct path, the simulation is limited to the reverberation of the environment[^2]. The process consists of two main stages: ambisonic encoding and ambisonic convolution/decoding.
 
@@ -33,10 +33,6 @@ This model allows configuration by calling its methods or by BRT internal comman
 - **BRIR to be used**: The BRIR service module to be used for rendering. The system supports dynamic, hot-swapping of the service module being used.
 - **Ambisonic Order**: The order of the ambisonic coding to be used. Currently only orders between 1 (default) and 3 are valid.
 - **Ambisonic Normalization**: The ambisonic normalization to be used. The available options are: N3D (default), SN3D, maxN 
-
-
-[^2]: To perform the convolution task correctly, avoiding comb filters, it is necessary that the delays of the impulse responses have been removed, for more information see (:warning:URL).
-
 
 ## Connections
 Modules to which it supports connections: 
