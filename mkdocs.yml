@@ -124,7 +124,7 @@ nav:
       - Listener commands: osc/listener.md
       - Environment commands: osc/environment.md
     - Settings File: applications/settingsFile.md
-    - Annotated Audio: applications/annotated-audio/index.md
+    - Annotated Audio: applications/annotated-audio.md
   - Examples: 
     - Code blocks: example-code.md    
     - Icons: example-emoji.md
