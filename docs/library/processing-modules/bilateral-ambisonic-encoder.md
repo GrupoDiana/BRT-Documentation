@@ -1,6 +1,6 @@
 # Bilateral Ambisonic Encoder Processor
 
-:warning:*(In progress)*:warning:
+:warning:*(Section under construction)*:warning:
 
 The **Bilateral Ambisonic Encoder Processor** ...
 

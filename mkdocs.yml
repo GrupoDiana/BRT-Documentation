@@ -89,6 +89,7 @@ nav:
       - SDN Model: library/environment-models/sdn-environment-model.md
     - Binaural Filters:
       - library/binaural-filters/index.md
+      - SOS filters: library/binaural-filters/sos-filters.md
     - Services Modules: 
       - library/service-modules/index.md
       - HRTF: library/service-modules/service-hrtf.md
@@ -104,7 +105,8 @@ nav:
       - library/readers/index.md        
     - Common:
       - library/common/index.md
-      - Uniform Partitioned Convolution: library/common/uniform-partitioned-convolution.md
+      - Ambisonic Encoder: library/common/ambisonic-encoder.md
+      - Uniform Partitioned Convolution: library/common/uniform-partitioned-convolution.md      
     - Base:
       - library/base/index.md
     - Connectivity: 

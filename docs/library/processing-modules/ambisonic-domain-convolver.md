@@ -1,6 +1,6 @@
 # Ambisonic Domain Convolver Processor
 
-:warning:*(In progress)*:warning:
+:warning:*(Section under construction)*:warning:
 
 The **Ambisonic Domain Convolver Processor** ...
 
