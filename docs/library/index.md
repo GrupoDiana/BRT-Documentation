@@ -18,6 +18,7 @@ The BRT Library was developed as part of the SONICOM project to address the incr
 2. **Dynamic Virtual Acoustics**:
     - Supports anechoic and reverberant environments.
     - Enables simulation of near-field effects and dynamic HRTF swapping.
+    - Supports 6DoF for both Listeners and sources
 3. **Applications and Portability**:
     - Easily deployable on various systems, including standalone executables, mobile and wearable devices.
 
@@ -26,8 +27,9 @@ The BRT Library was developed as part of the SONICOM project to address the incr
 The BRT Library provides a flexible and extensible framework tailored to the needs of researchers and developers in psychoacoustics, auditory modeling, and immersive audio rendering. Its design supports a variety of use cases, including:
 
 - **Custom Binaural Rendering Pipelines**: Configure and implement tailored audio rendering workflows for specific experimental or application needs.
-- **Dynamic Auditory Modeling**: Test and validate auditory models with dynamic scenarios, including moving listeners and sources.
-- **Realistic Environment Simulation**: Accurately simulate real-time auditory environments, incorporating effects such as reverberation and HRTF-based spatialization.
+- **Dynamic Auditory Modeling**: Test and validate auditory models with dynamic scenarios, supporting 6DoF of both listeners and sources.
+- **Rapid Testing of Simulated Characteristics**: Use integrated applications for quick testing of BRIRs, HRTFs, and other auditory properties.
+- **Full Process Chain Characterization**: Characterize complete models, including source, environment, and listener chains, as directional impulse responses or log binaural stimuli along with the position and orientation data used for synthesis.
 
 ### Developer-Friendly Design
 
@@ -38,13 +40,12 @@ The library minimizes the complexity of implementing novel algorithms and adapti
 
 ### Active Development and Future Capabilities
 
-The BRT Library is actively maintained and continuously evolving to meet the growing demands of the research and development community. Planned enhancements include:
+The BRT Library is actively maintained and continuously evolving. Planned enhancements include:
 
 - Support for **multi-listener scenarios**, enabling collaborative and interactive auditory experiments.
-- Integration of **advanced reverberation models**, such as hybrid methods combining image sources and convolution.
+- Integration of **advanced reverberation models**, such as hybrid methods combining Image Source Methods (ISM) with other techniques for the reverberation tail.
 - Development of **hearing loss and hearing aid simulations**, broadening the scope of auditory applications.
 
-By combining flexibility, precision, and extensibility, the BRT Library empowers users to push the boundaries of psychoacoustics and immersive audio research.
 
 ---
 
@@ -62,7 +63,7 @@ High-level modules are responsible for audio rendering. Each module models speci
     - [Simple Omnidirectional Source Model](../library/source-models/simple-omnidirectional-source-model.md)
     - [Directional Source Model](../library/source-models/directivity-source-model.md)
 
-- **Listener Models**: Listener models generate binaural audio by receiving a single audio channel per source and producing two output channels (left and right ears). They are categorized as follows:
+- **Listener Models**: Listener models generate binaural audio by receiving a single audio channel per source and producing two output channels (left and right ears). They can actually include Listener+Environment models using Binaural Room Impulse Responses (BRIR). They are categorized as follows:
     - [HRTF Convolution Models](./listener-models/hrtf-models/index.md): 
     These models simulate sound perception using Head-Related Transfer Functions (HRTF). Signals from sound sources are convolved with binaural impulse responses stored in HRTF Service modules. Whose data is usually read from a SOFA file. Currently two such models have been implemented: **Direct HRTF Convolution Model** and **Ambisonic BRIR Convolution Model**.
     - [BRIR Convolution Models](./listener-models/rir-models/index.md): 
@@ -75,7 +76,8 @@ High-level modules are responsible for audio rendering. Each module models speci
     - *Hybrid: ISM + Convolution*: Simulates room reverberation where early reflections are modeled using the Image Source Method, and the reverberant tail is simulated through convolution with a BRIR *(Under development)*.
 
 - **Binaural Filters**: They perform filtering on binaural signals.
-    - [SOS Filters](../library/binaural-filters/sos-filters.md): Perform binaural filtering based on second-order sections, enabling the simulation of devices such as headphones.
+    - [SOS Filters](../library/binaural-filters/sos-filters.md): Generic module to perform binaural filtering based on second-order sections, enabling the simulation of devices such as ear protection devices of headphone compensations.
+    - *Hearing Loss Models*: simulate different type of hearing loss *(Under development)*.
 
 - **Listener**: Each listener instantiated in the BRT library represents a “real” listener for which you want to render binaural audio. The application must keep its position/position updated and must at the end of each audio frame collect the output samples. 
  
