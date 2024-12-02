@@ -12,9 +12,9 @@ The BRT Library was developed as part of the SONICOM project to address the incr
 1. **Modularity and Extensibility**:
     - The library adopts a header-only structure, simplifying integration into various projects.
     - It is organized into three layers:
-        - **Bottom Layer**: Implements low-level, template-based interconnection mechanisms using the observer design pattern.
-        - **Middle Layer**: Contains processing modules (e.g., convolvers, filters) and service modules (e.g., SOFA file readers).
-        - **Top Layer**: Combines modules into high-level models (e.g., listener, source, and environment models).
+        - **Top Layer**: This layer comprises high-level modules, referred to as "models," which include listener, source, and environment models. These modules are interconnected to create diverse acoustic scenarios. *Developers using the BRT Library* to build audio applications will primarily interact with this layer, as it provides a straightforward interface for simulating complex binaural environments.
+        - **Middle Layer**: This layer contains a collection of signal processing and service modules that serve as the foundation for the high-level models. Signal processing modules include components like convolvers and filters, while service modules manage data such as impulse responses. *Developers contributing new algorithms or models* to the library will need to understand this layer, as it provides the building blocks for extending the library's functionality.
+        - **Bottom Layer**: At the core of the library, this layer consists of foundational classes and templates that define the modular architecture. It implements mechanisms for interconnecting modules and ensures the flexibility and scalability of the library. This layer is primarily relevant for developers seeking to modify or enhance the library's architecture itself.
 2. **Dynamic Virtual Acoustics**:
     - Supports anechoic and reverberant environments.
     - Enables simulation of near-field effects and dynamic HRTF swapping.
