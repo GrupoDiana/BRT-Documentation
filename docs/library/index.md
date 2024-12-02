@@ -125,15 +125,15 @@ Below are examples of configurations that can be created:
     <p style="text-align: center;">Configuration with an anechoic simulation.</p>
 </div>
 
-**Example 2 - Room Simulation**: Add an environment model to simulate reverberation.
+**Example 2 - Propagation simulation**: Add an environment model to simulate propagation.
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="../assets/anechoic-reverb-simulation.png" alt="Configuration with anechoic and reverberation simulation." style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Configuration with anechoic and reverberation simulation.</p>
+    <img src="../assets/anechoic-freefield-environment.png" alt="Configuration with anechoic and free field environment simulation." style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Configuration with anechoic and free field simulation.</p>
 </div>
 
-**Example 3 - Custom Filters**: Incorporate binaural filters for simulating specific devices like headphones or earmuffs.
+**Example 3 - Room Simulation and Custom Filters**: Incorporate a room simulation and binaural filters for simulating specific devices like headphones or earmuffs.
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="../assets/anechoic-reverb-earmuff-simulation.png" alt="Configuration with anechoic and reverberation simulation, plus filtering." style="display: block; margin: 0 auto;">
+    <img src="../assets/anechoic-reverb-binaural-simulation.png" alt="Configuration with anechoic and reverberation simulation, plus filtering." style="display: block; margin: 0 auto;">
     <p style="text-align: center;">Configuration with anechoic and reverberation simulation, plus filtering.</p>
 </div>
 
