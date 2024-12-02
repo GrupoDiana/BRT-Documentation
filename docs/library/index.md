@@ -79,7 +79,7 @@ High-level modules are responsible for audio rendering. Each module models speci
     - [SOS Filters](../library/binaural-filters/sos-filters.md): Generic module to perform binaural filtering based on second-order sections, enabling the simulation of devices such as ear protection devices of headphone compensations.
     - *Hearing Loss Models*: simulate different type of hearing loss *(Under development)*.
 
-- **Listener**: Each listener instantiated in the BRT library represents a “real” listener for which you want to render binaural audio. The application must keep its position/position updated and must at the end of each audio frame collect the output samples. 
+- **Listener**: Each listener instantiated in the BRT library represents a “real” listener for which you want to render binaural audio. The application must keep its position/orientation updated and must at the end of each audio frame collect the output samples. 
  
 ### Service Modules
 
@@ -89,7 +89,7 @@ Service modules store the essential data required for rendering. This data typic
 - [BRIR](../library/service-modules/service-brir.md): Stores room-related impulse responses indexed by azimuth and elevation.
 - [DirectivityTF](../library/service-modules/service-directivity-tf.md): Stores transfer functions of a sound source based on the position of the listener and the sources.
 - [SOSFilters](../library/service-modules/service-sos-filters.md): Stores coefficients for second-order sections of a filter, which can be fixed or vary based on distance, azimuth, and/or elevation.
-
+- [AmbisonicBIR](./service-modules/service-ambisonic-bir.md): Stores the impulse responses of the virtual loudspeakers in the ambisonic domains, in order to achieve a process with simultaneous impulse responses convolution and ambisonic decoding.
 ---
 
 ## Usage
