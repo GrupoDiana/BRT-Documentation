@@ -118,7 +118,7 @@ nav:
       - applications/berta-renderer/index.md      
     - BeRTA GUI: applications/berta-gui.md
     - OSC Commands: 
-      - Overview: osc/index.md
+      - osc/index.md
       - Control commands: osc/control.md
       - Overall commands: osc/overall.md
       - Resources commands: osc/resources.md

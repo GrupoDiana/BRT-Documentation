@@ -43,7 +43,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 
 
-### Source Control Commands Index
+### Source Models Commands Index
 
 - [`/source/addLineIn`](source.md#sourceaddlinein): Adds a new source from an audio input channel.
 - [`/source/enableDirectivity`](source.md#sourceenabledirectivity): Enable or disable the directivity of a sound source.
@@ -65,7 +65,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 
 
-### Listener Control Commands Index
+### Listener Models Commands Index
 
 - [`/listener/enableInterpolation`](listener.md#listenerenableinterpolation): Enable or disable interpolation among HRIRs.
 - [`/listener/enableITD`](listener.md#listenerenableitd): Enable or disable the simulation of Interaural Time Difference (ITD).
@@ -81,10 +81,12 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/listener/setSOSFilters`](listener.md#listenersetsosfilters): Set filters for Near Field Compensation (NFC) after HRTF convolution.
 
 
-# Environment Control Commands Index
+### Environment Models Commands Index
 
 - [`/environment/enableDirectPath`](environment.md#environmentenabledirectpath): Toggle the direct path source in the environment model.
 - [`/environment/enableModel`](environment.md#environmentenablemodel): Enable or disable a specified environment model.
 - [`/environment/enableReverbPath`](environment.md#environmentenablereverbpath): Toggle the reverb path sources in the environment model.
 - [`/environment/setShoeBoxRoom`](environment.md#environmentsetshoeboxroom): Set up a shoebox-shaped room with specified dimensions.
 - [`/environment/setWallAbsorption`](environment.md#environmentsetwallabsorption): Set absorption coefficients for a wall.
+
+### Binaural Filters Commands Index
