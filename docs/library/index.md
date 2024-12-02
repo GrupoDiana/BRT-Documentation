@@ -71,7 +71,7 @@ High-level modules are responsible for audio rendering. Each module models speci
 
 - **Environment Models**: These models simulate various acoustic environments:
     - [Free Field](../library/environment-models/freefield-environment-model.md): Simulates propagation in a free-field environment, including propagation delay, attenuation, and filtering.
-    - [SDN](../library/environment-models/sdn-environment-model.md): Simulates room reverberation using the Scattering Delay Networks method [URL].
+    - [SDN](../library/environment-models/sdn-environment-model.md): Simulates room reverberation using the Scattering Delay Networks method.
     - *ISM*: Simulates room reverberation using the Image Source Method *(Under development)*.
     - *Hybrid: ISM + Convolution*: Simulates room reverberation where early reflections are modeled using the Image Source Method, and the reverberant tail is simulated through convolution with a BRIR *(Under development)*.
 

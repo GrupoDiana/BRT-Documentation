@@ -27,6 +27,7 @@ The operation of the convolucionator as well as its block diagram can be seen in
 This model allows configuration by calling its methods or by BRT internal commands:
 
 - **Model (on/off)**: Silent when off.
+- **Gain (float)**: Extra gain to be applied to the model output.
 - **Spatialization (on/off)**: Transparent when off.
 - **Interpolation (on/off)**: When switched on, HRIRs and delays are calculated at the exact position (relative source-listener position). For this purpose, barycentric interpolation is performed, starting from the three closest points. When it is switched off, the HRIR and delay with the closest position are chosen.
 - **Near Field Compensation (on/off)**: The near field correction is applied when on. 
