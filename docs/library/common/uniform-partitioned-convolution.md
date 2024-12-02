@@ -1,4 +1,4 @@
-:warning:*(Section under construction)*:warning:
+:warning:*(Ready for review)*:warning:
 
 For both anechoic and reverberation paths, the BRT utilizes the Uniformly Partition Overlap-Save (UPOLS) convolution method in the frequency domain, as described by <a href="https://www.researchgate.net/publication/280979094_Partitioned_convolution_algorithms_for_real-time_auralization" target="_blank">Wefers (2015)</a>. This FFT-based approach divides the impulse response (IR) into multiple blocks, each matching the frame size (N). These blocks are processed individually as separate IRs using a standard overlap-save technique. This method enables efficient convolution with long IRs by breaking them into shorter, more manageable segments. It is particularly advantageous for long IRs, such as BRIRs.
 
@@ -10,3 +10,23 @@ Additionally, UPOLS assumes a stable impulse response, which is suitable for sta
     <img src="/BRT-Documentation/assets/partitioned_convolution.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
     <p style="text-align: center;">Uniformly Partition Overlap-Save (UPOLS).</p>
 </div>
+
+## Functional Overview
+
+The methods of the UPOLS convolution class are designed to efficiently manage and execute frequency-domain convolution for both anechoic and reverberation paths. The process begins with the **Setup method**, where the input size, frequency block size, number of IR blocks, and memory usage settings are configured to prepare the system for operation. Convolution can then be performed using **ProcessUPConvolution method**, which processes the input signal with the given impulse responses (IRs) and outputs the result. For scenarios with moving source and listener, **Process UPConvolution With Memory** extends this functionality. These methods collectively enable efficient convolution with long IRs by leveraging the Uniformly Partitioned Overlap-Save (UPOLS) algorithm.
+
+
+### Configuration Options
+
+The methods provided by this class are as follows.
+
+- **Setup**: Configures the system for UPOLS convolution with specified input and IR settings.
+- **Process UPConvolution**: Executes convolution of the input signal with the provided impulse responses, generating the output.
+- **Process UPConvolutionWithMemory**: Performs convolution while retaining intermediate states, for scenarios with moving sources and listener.
+- **Calculate IFFT**: Computes the inverse FFT of a buffer for frequency-to-time domain transformation.
+- **Reset**: Resets the system, clearing all internal states and memory for a fresh start.
+
+<details>
+<summary>For C++ developer</summary>
+Section under construction
+</details>
