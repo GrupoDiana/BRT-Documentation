@@ -22,7 +22,7 @@ The methods provided by this class are as follows.
 
 - **Setup**: Configures the system for UPOLS convolution with specified input and IR settings.
 - **Process UPConvolution**: Executes convolution of the input signal with the provided impulse responses, generating the output.
-- **Process UPConvolutionWithMemory**: Performs convolution while retaining intermediate states, for scenarios wirh moving sources and listener.
+- **Process UPConvolutionWithMemory**: Performs convolution while retaining intermediate states, for scenarios with moving sources and listener.
 - **Calculate IFFT**: Computes the inverse FFT of a buffer for frequency-to-time domain transformation.
 - **Reset**: Resets the system, clearing all internal states and memory for a fresh start.
 
