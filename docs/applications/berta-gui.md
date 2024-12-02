@@ -1,8 +1,10 @@
-#BeRTA GUI
+# BeRTA GUI
 
-BeRTA GUI is a cross-platform interface (Windows x64 and macOS) for controlling the BeRTA Renderer via OSC. It enables seamless setup and management of the renderer, including launching, relaunching with custom settings, and loading essential resources like HRTFs and BRIRs. The GUI provides real-time control over sound sources, listener movement, and rendering features while visually displaying the scene's layout.
+BeRTA GUI is a cross-platform interface (Windows x64 and macOS) for controlling the BeRTA Renderer via OSC. It is a demonstration tool intended to facilitate the exploration of the main BRT features, allows to test (or show) custom audio scenes using a specific configuration of BeRTA Renderer. 
 
-The key functionalities include:
+Specifically, **BeRTA GUI** enables seamless setup and management of the renderer, including launching, relaunching with custom settings, and loading essential resources like HRTFs and BRIRs. The GUI provides real-time control over sound sources, listener movement, and rendering features while visually displaying the scene's layout.
+
+## The key functionalities include:
 
 - **Setting BeRTA Renderer**: 
     - Launching BeRTA GUI Will launch BeRTA Renderer and connect both.
@@ -16,7 +18,6 @@ The key functionalities include:
 - **Scene display**:
     - Showing graphically the position and orientation of sources with respect to the listener.
     - Receiving and showing updates on the scene sent to BeRTA Renderer by a third application (e.g. an app running in Unity which updates the Listener position)
-
  
  <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="/BRT-Documentation/assets/berta_gui.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">

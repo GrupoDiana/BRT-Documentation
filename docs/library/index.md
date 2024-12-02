@@ -12,9 +12,9 @@ The BRT Library was developed as part of the SONICOM project to address the incr
 1. **Modularity and Extensibility**:
     - The library adopts a header-only structure, simplifying integration into various projects.
     - It is organized into three layers:
-        - **Bottom Layer**: Implements low-level, template-based interconnection mechanisms using the observer design pattern.
-        - **Middle Layer**: Contains processing modules (e.g., convolvers, filters) and service modules (e.g., SOFA file readers).
-        - **Top Layer**: Combines modules into high-level models (e.g., listener, source, and environment models).
+        - **Top Layer**: This layer comprises high-level modules, referred to as "models," which include listener, source, and environment models. These modules are interconnected to create diverse acoustic scenarios. *Developers using the BRT Library* to build audio applications will primarily interact with this layer, as it provides a straightforward interface for simulating complex binaural environments.
+        - **Middle Layer**: This layer contains a collection of signal processing and service modules that serve as the foundation for the high-level models. Signal processing modules include components like convolvers and filters, while service modules manage data such as impulse responses. *Developers contributing new algorithms or models* to the library will need to understand this layer, as it provides the building blocks for extending the library's functionality.
+        - **Bottom Layer**: At the core of the library, this layer consists of foundational classes and templates that define the modular architecture. It implements mechanisms for interconnecting modules and ensures the flexibility and scalability of the library. This layer is primarily relevant for developers seeking to modify or enhance the library's architecture itself.
 2. **Dynamic Virtual Acoustics**:
     - Supports anechoic and reverberant environments.
     - Enables simulation of near-field effects and dynamic HRTF swapping.
@@ -79,7 +79,7 @@ High-level modules are responsible for audio rendering. Each module models speci
     - [SOS Filters](../library/binaural-filters/sos-filters.md): Generic module to perform binaural filtering based on second-order sections, enabling the simulation of devices such as ear protection devices of headphone compensations.
     - *Hearing Loss Models*: simulate different type of hearing loss *(Under development)*.
 
-- **Listener**: Each listener instantiated in the BRT library represents a “real” listener for which you want to render binaural audio. The application must keep its position/position updated and must at the end of each audio frame collect the output samples. 
+- **Listener**: Each listener instantiated in the BRT library represents a “real” listener for which you want to render binaural audio. The application must keep its position/orientation updated and must at the end of each audio frame collect the output samples. 
  
 ### Service Modules
 
@@ -89,7 +89,7 @@ Service modules store the essential data required for rendering. This data typic
 - [BRIR](../library/service-modules/service-brir.md): Stores room-related impulse responses indexed by azimuth and elevation.
 - [DirectivityTF](../library/service-modules/service-directivity-tf.md): Stores transfer functions of a sound source based on the position of the listener and the sources.
 - [SOSFilters](../library/service-modules/service-sos-filters.md): Stores coefficients for second-order sections of a filter, which can be fixed or vary based on distance, azimuth, and/or elevation.
-
+- [AmbisonicBIR](./service-modules/service-ambisonic-bir.md): Stores the impulse responses of the virtual loudspeakers in the ambisonic domains, in order to achieve a process with simultaneous impulse responses convolution and ambisonic decoding.
 ---
 
 ## Usage
@@ -125,15 +125,15 @@ Below are examples of configurations that can be created:
     <p style="text-align: center;">Configuration with an anechoic simulation.</p>
 </div>
 
-**Example 2 - Room Simulation**: Add an environment model to simulate reverberation.
+**Example 2 - Propagation simulation**: Add an environment model to simulate propagation.
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="../assets/anechoic-reverb-simulation.png" alt="Configuration with anechoic and reverberation simulation." style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Configuration with anechoic and reverberation simulation.</p>
+    <img src="../assets/anechoic-freefield-environment.png" alt="Configuration with anechoic and free field environment simulation." style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Configuration with anechoic and free field simulation.</p>
 </div>
 
-**Example 3 - Custom Filters**: Incorporate binaural filters for simulating specific devices like headphones or earmuffs.
+**Example 3 - Room Simulation and Custom Filters**: Incorporate a room simulation and binaural filters for simulating specific devices like headphones or earmuffs.
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="../assets/anechoic-reverb-earmuff-simulation.png" alt="Configuration with anechoic and reverberation simulation, plus filtering." style="display: block; margin: 0 auto;">
+    <img src="../assets/anechoic-reverb-binaural-simulation.png" alt="Configuration with anechoic and reverberation simulation, plus filtering." style="display: block; margin: 0 auto;">
     <p style="text-align: center;">Configuration with anechoic and reverberation simulation, plus filtering.</p>
 </div>
 

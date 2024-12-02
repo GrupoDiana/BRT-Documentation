@@ -5,9 +5,8 @@ Service modules are auxiliary components designed to manage and supply the essen
 
 Currently, five service modules are implemented:
 
-- [HRTF](service-hrtf.md)
-- [BRIR](service-hrbrir.md)
-- [Directivity TF](service-directivity-tf.md)
-- [SOS FIlters](service-sos-filters.md)
-- [Ambisonincs BIR](./service-ambisonic-bir.md)
-
+- [HRTF](service-hrtf.md): Stores head-related impulse responses indexed by azimuth and elevation.
+- [BRIR](service-hrbrir.md):  Stores room-related impulse responses indexed by azimuth and elevation.
+- [Directivity TF](service-directivity-tf.md): Stores transfer functions of a sound source based on the position of the listener and the sources.
+- [SOS Filters](service-sos-filters.md): Stores coefficients for second-order sections of a filter, which can be fixed or vary based on distance, azimuth, and/or elevation.
+- [Ambisonincs BIR](./service-ambisonic-bir.md): Stores the impulse responses of the virtual loudspeakers in the ambisonic domains, in order to achieve a process with simultaneous impulse responses convolution and ambisonic decoding.
