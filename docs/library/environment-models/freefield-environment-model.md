@@ -96,9 +96,9 @@ if (listenerModel != nullptr) {
 }
 ```
 
-Connect an source model to it.
+Connect a source model to it.
 ```cpp
-// Assuming that the ID of this source model is contained in _sourceID.
+// Assuming that the ID of this source model is contained in _sourceID and 
 // that the ID of this environment is contained in _environmentModelID.
 std::shared_ptr<BRTEnvironmentModel::CEnviromentModelBase> environmentModel = brtManager->GetEnvironmentModel<BRTEnvironmentModel::CEnviromentModelBase>(_environmentModelID);
 if (environmentModel != nullptr) {			
@@ -110,7 +110,26 @@ if (environmentModel != nullptr) {
 <h2>Public methods</h2>
 
 ```cpp
+void EnableModel() override 
+void DisableModel() override
 
+void EnableDistanceAttenuation() override
+void DisableDistanceAttenuation() override
+bool IsDistanceAttenuationEnabled() override
+
+void EnablePropagationDelay() override
+void DisablePropagationDelay() override
+bool IsPropagationDelayEnabled() override
+
+bool ConnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) override
+bool ConnectSoundSource(const std::string & _sourceID) override
+
+bool DisconnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) override
+bool DisconnectSoundSource(const std::string & _sourceID) override
+
+void ResetProcessorBuffers()
+
+void UpdateCommand() override
 ```
 
 
