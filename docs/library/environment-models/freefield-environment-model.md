@@ -27,7 +27,7 @@ The delay line is dynamically updated to account for changes in the relative pos
 The internal block diagram of this class is as follows:
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Free field environment Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Free field HRTF environment Model Internal diagram.</p>
+    <p style="text-align: center;">Free field environment Model Internal diagram.</p>
 </div>
 
 ## Configuration Options
@@ -113,13 +113,24 @@ if (environmentModel != nullptr) {
 void EnableModel() override 
 void DisableModel() override
 
-void EnableDistanceAttenuation() override
-void DisableDistanceAttenuation() override
-bool IsDistanceAttenuationEnabled() override
+void SetGain(float _gain) override
+float GetGain() 
 
-void EnablePropagationDelay() override
-void DisablePropagationDelay() override
-bool IsPropagationDelayEnabled() override
+bool SetupShoeBoxRoom(float length, float width, float height)
+Common::CRoom GetRoom()
+
+bool SetRoomWallAbsortion(int wallIndex, float absortion)
+bool SetRoomAllWallsAbsortion(float _absortion)
+bool SetRoomWallAbsortion(int wallIndex, std::vector<float> absortionPerBand)
+bool SetRoomAllWallsAbsortion(std::vector<float> absortionPerBand)
+
+void EnableDirectPath() override
+void DisableDirectPath() override
+bool IsDirectPathEnabled() override
+
+void EnableReverbPath() override
+void DisableReverbPath() override
+bool IsReverbPathEnabled() override
 
 bool ConnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) override
 bool ConnectSoundSource(const std::string & _sourceID) override
