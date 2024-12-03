@@ -29,7 +29,7 @@ The methods in the **HRTF class** are designed to facilitate the loading and man
 </div>
 
 
-### Configuration Options
+## Configuration Options
 
 The methods provided by this service are as follows.
 
