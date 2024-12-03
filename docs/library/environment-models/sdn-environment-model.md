@@ -1,5 +1,5 @@
 # SDN Environment Model  
-:warning:*(Section under construction)*:warning:
+:warning:*(Ready for review)*:warning:
 
 The **SDN Environment Model** implements an acoustic room simulation using **Scattering Delay Networks (SDNs)**. This approach models the acoustics of a room by employing acoustic reverberators, as described by Enso De Sena et al. in the paper <a href="https://ieeexplore.ieee.org/document/7113826" target="_blank">Efficient Synthesis of Room Acoustics via Scattering Delay Networks</a>.
 

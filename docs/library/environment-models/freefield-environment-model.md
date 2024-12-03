@@ -1,5 +1,5 @@
 # Free Field Environment Model
-:warning:*(Section under construction)*:warning:
+:warning:*(Ready for review)*:warning:
   
  The **Free Field Environment Model** simulates sound propagation in a free-field environment, focusing on the direct sound path. Specifically, it models the propagation delay, distance-based attenuation, and filtering effects caused by the medium.  
 
@@ -116,21 +116,13 @@ void DisableModel() override
 void SetGain(float _gain) override
 float GetGain() 
 
-bool SetupShoeBoxRoom(float length, float width, float height)
-Common::CRoom GetRoom()
+void EnableDistanceAttenuation() override
+void DisableDistanceAttenuation() override
+bool IsDistanceAttenuationEnabled() override
 
-bool SetRoomWallAbsortion(int wallIndex, float absortion)
-bool SetRoomAllWallsAbsortion(float _absortion)
-bool SetRoomWallAbsortion(int wallIndex, std::vector<float> absortionPerBand)
-bool SetRoomAllWallsAbsortion(std::vector<float> absortionPerBand)
-
-void EnableDirectPath() override
-void DisableDirectPath() override
-bool IsDirectPathEnabled() override
-
-void EnableReverbPath() override
-void DisableReverbPath() override
-bool IsReverbPathEnabled() override
+void EnablePropagationDelay() override
+void DisablePropagationDelay() override
+bool IsPropagationDelayEnabled() override
 
 bool ConnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) override
 bool ConnectSoundSource(const std::string & _sourceID) override
