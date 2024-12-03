@@ -1,12 +1,15 @@
-:warning:*(Section under construction)*:warning:
+# Source Models
+:warning:*(Ready for review)*:warning:
 
-# Overview
-Source models are components associated to sound sources. Every sound source has to be connected to a source model which may transform the sound sreeam as a function of the source position (location and orientation) and the listener location. 
+Each monaural sound source to be rendered requires the instantiation of a source model. Each sound source must be connected to a source model that can transform the sound depending on the source position (location and orientation).
+These models therefore serve as the main library entry points for applications during rendering. At a minimum, applications must provide the audio samples of each source for each frame and, if applicable, update their position and orientation.
 
-Currently, two source models are implemented:
+There are currently two fundamental source models and a single virtual source model:
 
-* [Directivity Model](directivityModel.md)
+- [Simple Omnidirectional Model](simple-omnidirectional-source-model.md)
+- [Directivity Model](directivity-source-model.md)
+- [Virtual Sources Model](virtual-source-model.md)
 
-* [Simple Omnidirectional Model](simpleModel.md)
+
 
 
