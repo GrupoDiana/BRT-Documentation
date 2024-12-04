@@ -1,8 +1,8 @@
 :warning:*(Ready for review)*:warning:
 
-The SOFA Reader class is designed to handle the reading and parsing of audio resource data from files in the SOFA (Spatially Oriented Format for Acoustics) format. SOFA is an open standard used for storing spatial acoustic data, such as Head-Related Transfer Functions (HRTFs), Binaural Room Impulse Responses (BRIRs), and other directional audio characteristics. This format is widely adopted in spatial audio applications due to its flexibility and compatibility with 3D audio systems.
+The SOFA Reader class is designed to handle the reading and parsing of audio resource data from files in the <a href="https://www.sofaconventions.org/mediawiki/index.php/SOFA_(Spatially_Oriented_Format_for_Acoustics)" target="_blank">SOFA</a> (Spatially Oriented Format for Acoustics) format. SOFA is an open standard used for storing spatial acoustic data, such as Head-Related Transfer Functions (HRTFs), Binaural Room Impulse Responses (BRIRs), and other directional audio characteristics. This format is widely adopted in spatial audio applications due to its flexibility and compatibility with 3D audio systems.
 
-This reader is provided to simplify the resource loading process for the BRT (Binaural Renderer Toolkit). The BRT includes a set of service models that offer interfaces for integrating spatial audio data into the library. The SOFA Reader bridges the gap between the SOFA format and the BRT's service models, ensuring efficient data loading and compatibility. By offering a way to load resources into the BRT, the SOFA Reader ensures that spatial acoustic data is accurately and efficiently prepared for use within the renderer, enhancing the overall workflow and integration process. 
+This reader is provided to simplify the resource loading process for the BRT. The renderer includes a set of service models that offer interfaces for integrating spatial audio data into the library. The SOFA Reader bridges the gap between the SOFA format and the BRT's service models, ensuring efficient data loading and compatibility. 
 
 **Conventions implemented by this reader are**:
 
@@ -27,4 +27,7 @@ The methods provided by this class are as follows.
 - **Read BRIR From Sofa**: Extracts BRIR data from a SOFA file, loading into a service class while applying windowing parameters for smooth transitions.  
 
 
-
+<details>
+<summary>For C++ developer</summary>
+Section under construction
+</details>
