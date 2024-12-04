@@ -53,7 +53,7 @@ Modules to which it connects:
 <summary>For C++ developer</summary>
 
 <ul>
-<li><strong>File</strong>: /include/EnvironmentModels/CSDNEnvironmentModel.hpp</li>
+<li><strong>File</strong>: /include/EnvironmentModels/SDNEnvironmentModel.hpp</li>
 <li><strong>Class name</strong>: CSDNEnvironmentModel</li>
 <li><strong>Inheritance</strong>: CEnviromentModelBase</li>
 <li><strong>Namespace</strong>: BRTEnvironmentModel</li>

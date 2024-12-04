@@ -53,7 +53,7 @@ Modules to which it connects:
 <summary>For C++ developer</summary>
 
 <ul>
-<li><strong>File</strong>: /include/EnvironmentModels/CFreeFieldEnvironmentModel.hpp</li>
+<li><strong>File</strong>: /include/EnvironmentModels/FreeFieldEnvironmentModel.hpp</li>
 <li><strong>Class name</strong>: CFreeFieldEnvironmentModel</li>
 <li><strong>Inheritance</strong>: CEnviromentModelBase</li>
 <li><strong>Namespace</strong>: BRTEnvironmentModel</li>
