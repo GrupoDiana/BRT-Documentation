@@ -72,7 +72,7 @@ nav:
       - library/source-models/index.md
       - Omnidirectional Model: library/source-models/simple-omnidirectional-source-model.md
       - Directivity Model: library/source-models/directivity-source-model.md
-      - Virtual Source: library/source-models/virtual-source-model.md
+      - Virtual Source Model: library/source-models/virtual-source-model.md
     - Listener Models: 
       - library/listener-models/index.md
       - HRTF Models:
