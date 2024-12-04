@@ -106,6 +106,7 @@ nav:
     - Common:
       - library/common/index.md
       - Ambisonic Encoder: library/common/ambisonic-encoder.md
+      - Room:  library/common/room.md
       - Uniform Partitioned Convolution: library/common/uniform-partitioned-convolution.md      
     - Base:
       - library/base/index.md

@@ -16,7 +16,7 @@ Additionally, UPOLS assumes a stable impulse response, which is suitable for sta
 The methods of the UPOLS convolution class are designed to efficiently manage and execute frequency-domain convolution for both anechoic and reverberation paths. The process begins with the **Setup method**, where the input size, block size and number of blocks are configured to prepare the system for operation. Convolution can then be performed using **ProcessUPConvolution method**, which processes the input signal with the given impulse responses (IRs) and outputs the result. For scenarios with moving source and listener, **Process UPConvolution With Memory** extends this functionality. These methods collectively enable efficient convolution with long IRs by leveraging the Uniformly Partitioned Overlap-Save (UPOLS) algorithm.
 
 
-### Configuration Options
+## Configuration Options
 
 The methods provided by this class are as follows.
 
