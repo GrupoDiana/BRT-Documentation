@@ -1,4 +1,5 @@
 # Annotated Audio SOFA Convention
+:warning:*(Ready for review)*:warning:
 
 The AnnotatedReceiverAudio is a proposed <a href="https://www.sofaconventions.org/mediawiki/index.php/SOFA_(Spatially_Oriented_Format_for_Acoustics)" target="_blank">SOFA (Spatially Oriented Format for Acoustics)</a> convention to record and store (binaural) audio data at the receivers, annotated with geometric information. It is being currently discussed and considered as work in progress for the SOFA standard. 
 

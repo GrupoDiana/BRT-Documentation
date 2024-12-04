@@ -1,5 +1,7 @@
 # Configuration File Setup
 
+:warning:*(Under construction)*:warning:
+
 This section explains how to define a configuration file in JSON format that is read when the application starts. If the program is launched without arguments, it will look for a file called `settings.json` in the same folder. Alternatively, a custom configuration file can be provided as an argument, for example, `mysettings.json`.  This file defines the audio interface settings, the model architecture, and, optionally, a set of resources to be re-loaded at the beguining and a complete scenario with sources and listeners.
 
 ## General Structure
