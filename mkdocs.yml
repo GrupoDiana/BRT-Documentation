@@ -107,7 +107,6 @@ nav:
       - library/readers/index.md        
     - Common:
       - library/common/index.md
-      - Room:  library/common/room.md  
     - Base:
       - library/base/index.md
     - Connectivity: 

@@ -13,7 +13,7 @@
 - **IR Windowing**: Applies a window function to impulse responses (IRs).  
 - **Profiler**: Monitors and measures the performance of various components within the renderer, tracking the CPU usage of the rendering process.  
 - **Quaternion**: Represents rotational transformations in 3D space, crucial for accurately positioning sound sources and listeners.  
-- **[Room](room.md)**: Enable the creation and management of 3D room geometries and acoustic properties, supporting predefined shapes and wall configurations.  
+- **Room**: Enable the creation and management of 3D room geometries and acoustic properties, supporting predefined shapes and wall configurations.  
 - **Transform**: Handles spatial transformations like translation, rotation, and scaling for positioning sources or listeners.  
 - **Vector3**: Represents 3D vectors, often used for positions, directions, or velocity in spatial audio calculations.  
 - **Wall**: Models a physical wall to simulate reflections and obstructions in room acoustics.  
