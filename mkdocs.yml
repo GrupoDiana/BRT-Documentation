@@ -99,15 +99,15 @@ nav:
       - AmbisonicBIR: library/service-modules/service-ambisonic-bir.md
     - Processing Modules: 
       - library/processing-modules/index.md
+      - Ambisonic Encoder: library/common/ambisonic-encoder.md
       - Ambisonic Domain Convolver: library/processing-modules/ambisonic-domain-convolver.md
       - Bilateral Ambisonic Encoder: library/processing-modules/bilateral-ambisonic-encoder.md
+      - Uniform Partitioned Convolution: library/common/uniform-partitioned-convolution.md    
     - Readers: 
       - library/readers/index.md        
     - Common:
       - library/common/index.md
-      - Ambisonic Encoder: library/common/ambisonic-encoder.md
-      - Room:  library/common/room.md
-      - Uniform Partitioned Convolution: library/common/uniform-partitioned-convolution.md      
+      - Room:  library/common/room.md  
     - Base:
       - library/base/index.md
     - Connectivity: 
