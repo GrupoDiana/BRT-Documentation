@@ -15,13 +15,13 @@ The following diagram illustrates the processing performed on the HRTF table bef
     <p style="text-align: center;">BRIR offline process.</p>
 </div>
 
-
 ## Architecture
 
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
     <p style="text-align: center;">Head-Related BRIR class diagram.</p>
 </div>
+
 
 ## Functional Overview
 

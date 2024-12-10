@@ -17,16 +17,16 @@ The following diagram illustrates the processing performed on the HRTF table bef
     <p style="text-align: center;">HRTF offline process.</p>
 </div>
 
-## Functional Overview
-
-The methods in the **HRTF class** are designed to facilitate the loading and management of HRTFs within the renderer. This service allows loading multiple HRTFs as needed, enabling flexible spatial audio configurations. To load an HRTF file, a separate [Reader](../readers/index.md) class is required to parse the file and add HRIRs to the HRTF class one by one. The process begins by calling the **Begin Setup** method to initialize the configuration. HRIRs are then added incrementally using the **Add HRIR** method. Once all the data has been loaded, the **End Setup** method finalizes the setup, generating a complete HRTF table for use. Additionally, the class provides various configuration options, such as setting the sampling rate, adjusting the angular grid resolution, enabling the Woodworth ITD model, and defining head and ear properties, as detailed in the methods below. These features ensure precise and efficient integration of HRTFs into the rendering pipeline.
-
 ## Architecture
 
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
     <p style="text-align: center;">HRTF class diagram.</p>
 </div>
+
+## Functional Overview
+
+The methods in the **HRTF class** are designed to facilitate the loading and management of HRTFs within the renderer. This service allows loading multiple HRTFs as needed, enabling flexible spatial audio configurations. To load an HRTF file, a separate [Reader](../readers/index.md) class is required to parse the file and add HRIRs to the HRTF class one by one. The process begins by calling the **Begin Setup** method to initialize the configuration. HRIRs are then added incrementally using the **Add HRIR** method. Once all the data has been loaded, the **End Setup** method finalizes the setup, generating a complete HRTF table for use. Additionally, the class provides various configuration options, such as setting the sampling rate, adjusting the angular grid resolution, enabling the Woodworth ITD model, and defining head and ear properties, as detailed in the methods below. These features ensure precise and efficient integration of HRTFs into the rendering pipeline.
 
 
 ## Configuration Options
