@@ -1,8 +1,5 @@
 # Directivity Source Model  
-
 :warning:*(Ready for review)*:warning:
-
-# Directivity Source Model  
 
 The **Directivity Source Model** provides an interface for applications to interact with the BRT Library while implementing frequency-dependent directivity for sound sources. This model takes into account the direction of the listener relative to the source and applies a corresponding filter to transform the audio signal as it would be radiated in that direction. Once processed, the model transmits the filtered audio samples to the connected modules, such as listener or environment models, while also providing real-time updates on the source's position and orientation. Applications must supply monaural audio samples for each frame and dynamically update the source's position and orientation as needed.  
 
