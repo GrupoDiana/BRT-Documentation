@@ -26,7 +26,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/loadHRTF HRTF1 c:/tmp/hrtf.sofa 5`
 
-BeRTA sends back to the sender: `control actionResult /resources/loadHRTF HRTF1 true HRTF HRTF1 loaded successfully, with a spatial resolution of 5, from the file: c:/tmp/hrtf.sofa` or `control actionResult /resources/loadHRTF HRTF1 false HRTF sofa file couldn't be loaded from HRTF1;`. 
+BeRTA sends back to the sender: `control/actionResult /resources/loadHRTF HRTF1 true HRTF HRTF1 loaded successfully, with a spatial resolution of 5, from the file: c:/tmp/hrtf.sofa` or `control/actionResult /resources/loadHRTF HRTF1 false HRTF sofa file couldn't be loaded from HRTF1;`. 
 
 
 <!----------------------------------------------------------------------------------->
@@ -230,7 +230,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:`/resources/loadDirectivityTF DirectivityTF1 c:/tmp/directivityTF.sofa 15`
 
-BeRTA sends back to the sender: `control/actionResult /resources/loadDirectivityTF DirectivityTF1 true Directivity directivityTF1 loaded` or `/resources/loadDirectivityTF DirectivityTF1 false Directivity sofa file couldn't be loaded from c:/tmp/directivityTF.sofa`. 
+BeRTA sends back to the sender: `control/actionResult /resources/loadDirectivityTF DirectivityTF1 true Directivity directivityTF1 loaded` or `control/actionResult /resources/loadDirectivityTF DirectivityTF1 false Directivity sofa file couldn't be loaded from c:/tmp/directivityTF.sofa`. 
 
 
 <!----------------------------------------------------------------------------------->
@@ -259,7 +259,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/removeDirectivityTF directivityTF1`
 
-BeRTA sends back to the sender: ` control/ actionResult /resources/removeDirectivityTF directivityTF1 true DirectivityTF directivityTF1 removed` or `control actionResult /resources/removeDirectivityTF directivityTF1 false ERROR deleting DirectivityTF.  directivityTF1 not found in the list`
+BeRTA sends back to the sender: ` control/actionResult /resources/removeDirectivityTF directivityTF1 true DirectivityTF directivityTF1 removed` or `control/actionResult /resources/removeDirectivityTF directivityTF1 false ERROR deleting DirectivityTF.  directivityTF1 not found in the list`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -333,7 +333,7 @@ Removes a set of Near Field Compensation (NFC) filters from the loaded resources
 
 #### Return
 
- `control/actionResult/resources/removeSOSFilters <string SOSFilters_id> <bool removed> <string description>`
+ `control/actionResult /resources/removeSOSFilters <string SOSFilters_id> <bool removed> <string description>`
  
  The return confirmation refers to the `SOSFilters_id`, indicating `removed=true`if the NFC Filters are successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details.
 
@@ -402,7 +402,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/loadBRIR BRIR1 c:/tmp/BRIR.sofa 15 0.005 0.001 0.5 0.01`
 
-BeRTA sends back to the sender: `/resources/loadBRIR BRIR1 true BRIR BRIR1 loaded successfully, with a spatial resolution of 15, from the file: c:/tmp/BRIR.sofa` or `/resources/loadBRIR BRIR1 false BRIR sofa file couldn't be loaded from c:/tmp/BRIR.sofa`. 
+BeRTA sends back to the sender: `control/actionResult /resources/loadBRIR BRIR1 true BRIR BRIR1 loaded successfully, with a spatial resolution of 15, from the file: c:/tmp/BRIR.sofa` or `control/actionResult /resources/loadBRIR BRIR1 false BRIR sofa file couldn't be loaded from c:/tmp/BRIR.sofa`. 
 
 
 <!----------------------------------------------------------------------------------->
@@ -431,7 +431,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:`/resources/removeBRIR BRIR1`
 
-BeRTA sends back to all subscribers: `/resources/removeBRIR BRIR1 true BRIR BRIR1 removed` or just to the sender: `/resources/removeBRIR BRIR1 false ERROR deleting BRIR.  BRIR1 not found in the list`
+BeRTA sends back to all subscribers: `control/actionResult /resources/removeBRIR BRIR1 true BRIR BRIR1 removed` or just to the sender: `control/actionResult /resources/removeBRIR BRIR1 false ERROR deleting BRIR.  BRIR1 not found in the list`
 
 <!----------------------------------------------------------------------------------->
 ---
