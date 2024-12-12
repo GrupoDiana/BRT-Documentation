@@ -16,7 +16,7 @@ Loads a new HRTF in a SOFA file from the specified path and assign an identifier
 
 #### Return
 
-`control/actionResult /resources/loadHRTF <string HRTF_id> <boolean loaded> <string description>`
+`/control/actionResult /resources/loadHRTF <string HRTF_id> <boolean loaded> <string description>`
 
 The return confirmation refers to the `HRTF_id`,indicating `loaded=true`if the HTYF is successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
 
@@ -26,7 +26,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/loadHRTF HRTF1 c:/tmp/hrtf.sofa 5`
 
-BeRTA sends back to the sender: `control/actionResult /resources/loadHRTF HRTF1 true HRTF HRTF1 loaded successfully, with a spatial resolution of 5, from the file: c:/tmp/hrtf.sofa` or `control/actionResult /resources/loadHRTF HRTF1 false HRTF sofa file couldn't be loaded from HRTF1;`. 
+BeRTA sends back to the sender: `/control/actionResult /resources/loadHRTF HRTF1 true HRTF HRTF1 loaded successfully, with a spatial resolution of 5, from the file: c:/tmp/hrtf.sofa` or `/control/actionResult /resources/loadHRTF HRTF1 false HRTF sofa file couldn't be loaded from HRTF1;`. 
 
 
 <!----------------------------------------------------------------------------------->
@@ -45,7 +45,7 @@ Removes an HRTF from the loaded resources.
 
 #### Return
 
-`control/actionResult /resources/loadHRTF <string HRTF_id> <bool removed> <string description>`
+`/control/actionResult /resources/loadHRTF <string HRTF_id> <bool removed> <string description>`
 
 The return confirmation refers to the `HRTF_id`,indicating `removed=true`if the HRTF is successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details. 
 
@@ -55,7 +55,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/removeHRTF HRTF1`
 
-BeRTA sends back to all subscribers: `control/actionResult /resources/removeHRTF HRTF1 true HRTF HRTF1 removed` or `control/actionResult /resources/removeHRTF HRTF1 false error: HRTF not found in the list`
+BeRTA sends back to all subscribers: `/control/actionResult /resources/removeHRTF HRTF1 true HRTF HRTF1 removed` or `/control/actionResult /resources/removeHRTF HRTF1 false error: HRTF not found in the list`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -100,7 +100,7 @@ Sets the head radius to be stored into the HRTF. This value affects: (1) the pos
 
 #### Return
 
-`control/actionResult /resources/setHRTFHeadRadius <string HRTF_id> <bool set> <string description>`
+`/control/actionResult /resources/setHRTFHeadRadius <string HRTF_id> <bool set> <string description>`
 
 The return confirmation refers to the `HRTF_id`, indicating `set=true`if the HRTF is successfuly set and `set=false` if not. In both cases a `description` is added to give more details. 
 
@@ -111,7 +111,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/setHRTFHeadRadius HRTF1 0.09`
 
-BeRTA sends back to the sender: `control/actionResult /resources/setHRTFHeadRadius HRTF1 true success` 
+BeRTA sends back to the sender: `/control/actionResult /resources/setHRTFHeadRadius HRTF1 true success` 
 
 
 <!----------------------------------------------------------------------------------->
@@ -154,7 +154,7 @@ Sets the head radius of the HRTF to the one stored in the SOFA file as the posit
 
 #### Return
 
-`control/actionResult /resources/restoreHRTFHeadRadius <string HRTF_id> <bool restored> <string description>`
+`/control/actionResult /resources/restoreHRTFHeadRadius <string HRTF_id> <bool restored> <string description>`
 
 The return confirmation refers to the `HRTF_id`, indicating `restored=true`if the HRTF is successfuly set and `restored=false` if not. In both cases a `description` is added to give more details. 
 
@@ -165,7 +165,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/restoreHRTFHeadRadius HRTF1`
 
-BeRTA sends back to the sender: `control/actionResult /resources/restoreHRTFHeadRadius HRTF1 true success` 
+BeRTA sends back to the sender: `/control/actionResult /resources/restoreHRTFHeadRadius HRTF1 true success` 
 
 
 <!----------------------------------------------------------------------------------->
@@ -186,7 +186,7 @@ Enables or disables the calculation of the ITD based on the Woodworth formula, c
 
 #### Return
 
-`control/actionResult /resources/enableWoodworthITD <string HRTF_id> <bool enabled> <string description>`
+`/control/actionResult /resources/enableWoodworthITD <string HRTF_id> <bool enabled> <string description>`
 
 The return confirmation refers to the `HRTF_id`, indicating `enabled=true`if the HRTF is successfuly set and `enabled=false` if not. In both cases a `description` is added to give more details. 
 
@@ -196,7 +196,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/enableWoodworthITD HRTF1 true`
 
-BeRTA sends back to the sender: `control/actionResult /resources/enableWoodworthITD HRTF1 true success` 
+BeRTA sends back to the sender: `/control/actionResult /resources/enableWoodworthITD HRTF1 true success` 
 
 
 <!----------------------------------------------------------------------------------->
@@ -219,7 +219,7 @@ Loads a new Directivity Transfer Function in a SOFA file from the specified path
 
 #### Return
 
-`control/actionResult /resources/loadDirectivityTF <string directivityTF_id> <boolean loaded> <string description>`
+`/control/actionResult /resources/loadDirectivityTF <string directivityTF_id> <boolean loaded> <string description>`
 
 The return confirmation refers to the `directivityTF_id`, indicating `loaded=true`if the directivityTF is successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
 
@@ -230,7 +230,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:`/resources/loadDirectivityTF DirectivityTF1 c:/tmp/directivityTF.sofa 15`
 
-BeRTA sends back to the sender: `control/actionResult /resources/loadDirectivityTF DirectivityTF1 true Directivity directivityTF1 loaded` or `control/actionResult /resources/loadDirectivityTF DirectivityTF1 false Directivity sofa file couldn't be loaded from c:/tmp/directivityTF.sofa`. 
+BeRTA sends back to the sender: `/control/actionResult /resources/loadDirectivityTF DirectivityTF1 true Directivity directivityTF1 loaded` or `/control/actionResult /resources/loadDirectivityTF DirectivityTF1 false Directivity sofa file couldn't be loaded from c:/tmp/directivityTF.sofa`. 
 
 
 <!----------------------------------------------------------------------------------->
@@ -249,7 +249,7 @@ Removes a Directivity Transfer Function from the loaded resources.
 
 #### Return
 
-`control/actionResult /resources/removeDirectivityTF <string directivityTF_id> <bool removed>`
+`/control/actionResult /resources/removeDirectivityTF <string directivityTF_id> <bool removed>`
 
 The return confirmation refers to the `directivityTF_id`, indicating `removed=true`if the directivityTF is successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details.
 
@@ -259,7 +259,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/removeDirectivityTF directivityTF1`
 
-BeRTA sends back to the sender: ` control/actionResult /resources/removeDirectivityTF directivityTF1 true DirectivityTF directivityTF1 removed` or `control/actionResult /resources/removeDirectivityTF directivityTF1 false ERROR deleting DirectivityTF.  directivityTF1 not found in the list`
+BeRTA sends back to the sender: ` /control/actionResult /resources/removeDirectivityTF directivityTF1 true DirectivityTF directivityTF1 removed` or `/control/actionResult /resources/removeDirectivityTF directivityTF1 false ERROR deleting DirectivityTF.  directivityTF1 not found in the list`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -304,7 +304,7 @@ Loads a new set of Second Order Section (SOS) filters in a SOFA file from the sp
 
 #### Return
 
- `control/actionResult /resources/loadSOSFilters <string SOSFilters_id> <boolean loaded>`
+ `/control/actionResult /resources/loadSOSFilters <string SOSFilters_id> <boolean loaded>`
  
  The return confirmation refers to the `SOSFilters_id`, indicating `loaded=true`if SOS NFC Filters are successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
 
@@ -314,7 +314,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:`/resources/loadSOSFilters SOSF1 c:/tmp/SOSilters.sofa`
 
-BeRTA sends back to the sender: `control/actionResult /resources/loadSOSFilters NFCF1 true SOS filter SOSF1 loaded successfully, from the file: c:/tmp/SOSilters.sofa` or `/resources/loadSOSFilters SOSF1 false ERROR deleting SOS filter.  SOSF1 not found in the list`. 
+BeRTA sends back to the sender: `/control/actionResult /resources/loadSOSFilters NFCF1 true SOS filter SOSF1 loaded successfully, from the file: c:/tmp/SOSilters.sofa` or `/resources/loadSOSFilters SOSF1 false ERROR deleting SOS filter.  SOSF1 not found in the list`. 
 
 
 <!----------------------------------------------------------------------------------->
@@ -333,7 +333,7 @@ Removes a set of Near Field Compensation (NFC) filters from the loaded resources
 
 #### Return
 
- `control/actionResult /resources/removeSOSFilters <string SOSFilters_id> <bool removed> <string description>`
+ `/control/actionResult /resources/removeSOSFilters <string SOSFilters_id> <bool removed> <string description>`
  
  The return confirmation refers to the `SOSFilters_id`, indicating `removed=true`if the NFC Filters are successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details.
 
@@ -343,7 +343,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/removeSOSFilters SOSF1`
 
-BeRTA sends back to the sender: `control/actionResult /resources/removeSOSFilters SOSF1 true SOSF1 removed from the list` or `control/actionResult /resources/removeSOSFilters SOSF1 false ERROR deleting SOS Filters.  SOSF1 not found in the SOS Filters list`
+BeRTA sends back to the sender: `/control/actionResult /resources/removeSOSFilters SOSF1 true SOSF1 removed from the list` or `/control/actionResult /resources/removeSOSFilters SOSF1 false ERROR deleting SOS Filters.  SOSF1 not found in the SOS Filters list`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -392,7 +392,7 @@ The loaded BRIR can be windowed. For this purpose, a fade-in and fade-out mechan
 
 #### Return
 
-`control/actionResult /resources/loadBRIR <string BRIR_id> <boolean loaded>`
+`/control/actionResult /resources/loadBRIR <string BRIR_id> <boolean loaded>`
 
 The return confirmation refers to the `BRIR_id`, indicating `loaded=true`if the BRIR is successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details.
 
@@ -402,7 +402,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/loadBRIR BRIR1 c:/tmp/BRIR.sofa 15 0.005 0.001 0.5 0.01`
 
-BeRTA sends back to the sender: `control/actionResult /resources/loadBRIR BRIR1 true BRIR BRIR1 loaded successfully, with a spatial resolution of 15, from the file: c:/tmp/BRIR.sofa` or `control/actionResult /resources/loadBRIR BRIR1 false BRIR sofa file couldn't be loaded from c:/tmp/BRIR.sofa`. 
+BeRTA sends back to the sender: `/control/actionResult /resources/loadBRIR BRIR1 true BRIR BRIR1 loaded successfully, with a spatial resolution of 15, from the file: c:/tmp/BRIR.sofa` or `/control/actionResult /resources/loadBRIR BRIR1 false BRIR sofa file couldn't be loaded from c:/tmp/BRIR.sofa`. 
 
 
 <!----------------------------------------------------------------------------------->
@@ -421,7 +421,7 @@ Removes a Binaural Room Impulse Response (BRIR) from the loaded resources.
 
 #### Return
 
-`control/actionResult /resources/removeBRIR <string BRIR_id> <bool removed> <string description>`
+`/control/actionResult /resources/removeBRIR <string BRIR_id> <bool removed> <string description>`
 
 The return confirmation refers to the `BRIR_id`, indicating `removed=true`if the BRIR successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details.
 
@@ -431,7 +431,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:`/resources/removeBRIR BRIR1`
 
-BeRTA sends back to all subscribers: `control/actionResult /resources/removeBRIR BRIR1 true BRIR BRIR1 removed` or just to the sender: `control/actionResult /resources/removeBRIR BRIR1 false ERROR deleting BRIR.  BRIR1 not found in the list`
+BeRTA sends back to all subscribers: `/control/actionResult /resources/removeBRIR BRIR1 true BRIR BRIR1 removed` or just to the sender: `/control/actionResult /resources/removeBRIR BRIR1 false ERROR deleting BRIR.  BRIR1 not found in the list`
 
 <!----------------------------------------------------------------------------------->
 ---

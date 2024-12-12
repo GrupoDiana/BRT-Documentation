@@ -77,7 +77,7 @@ Sets an HRTF using the HRTF id. The HRTF should be load previously using the com
 
 #### Return
 
-`control/actionResult /listener/setHRTF <string listener_id> <bool set> <string description>`
+`/control/actionResult /listener/setHRTF <string listener_id> <bool set> <string description>`
 
 The return confirmation refers to the `listener_id`, indicating `set=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
 
@@ -87,7 +87,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/listener/setHRTF defaultListener HRTF1`
 
-BeRTA sends back to the sender: `control/actionResult /listener/setHRTF defaultListener true "HRTF HRTF1 has been set to listener defaultListener"`
+BeRTA sends back to the sender: `/control/actionResult /listener/setHRTF defaultListener true "HRTF HRTF1 has been set to listener defaultListener"`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -111,7 +111,7 @@ Sets a BRIR using the BRIR id. The BRIR should be loaded previously using the co
 
 #### Return
 
-`control/actionResult /listener/setBRIR <string listener_id> <bool set> <string description>`
+`/control/actionResult /listener/setBRIR <string listener_id> <bool set> <string description>`
 
 The return confirmation refers to the `listener_id`, indicating `set=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
 
@@ -121,7 +121,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/listener/setBRIR defaultListener BRIR1`
 
-BeRTA sends back to the sender: `control/actionResult /listener/BRIR1 defaultListener true "BRIR BRIR1 has been set to listener defaultListener"`
+BeRTA sends back to the sender: `/control/actionResult /listener/BRIR1 defaultListener true "BRIR BRIR1 has been set to listener defaultListener"`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -145,7 +145,7 @@ Sets a set of filters for the Near Field Compensation to be applied afgter the c
 
 #### Return
 
-`control/actionResult /listener/setSOSFilters <string listener_id> <bool set> <string description>`
+`/control/actionResult /listener/setSOSFilters <string listener_id> <bool set> <string description>`
 
 The return confirmation refers to the `listener_id`, indicating `set=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
 
@@ -155,7 +155,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/listener/setSOSFilters DefaultListener NFCFilters1`
 
-BeRTA sends back to the sender: `control/actionResult /listener/setSOSFilters defaultListener true "SOSFilters NFCFilters1 has been set to listener defaultListener"`
+BeRTA sends back to the sender: `/control/actionResult /listener/setSOSFilters defaultListener true "SOSFilters NFCFilters1 has been set to listener defaultListener"`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -175,7 +175,7 @@ In the case of a [Listener Model based on Direct Convolution with HRTF](/BRT-Doc
 
 #### Return
 
-`control/actionResult /listener/enableInterpolation <string listener_id> <bool enable> <string description>`
+`/control/actionResult /listener/enableInterpolation <string listener_id> <bool enable> <string description>`
 
 The return confirmation refers to the `listener_id`, indicating `enable=true` if the model has been enabled and `enable=false` if not. In both cases a `description` is added to give more details. 
 
@@ -185,7 +185,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:`/listener/enableInterpolation DefaultListener true`
 
-BeRTA sends back to the sender: `control/actionResult /listener/enableInterpolation defaultListener true "Interpolation enabled to defaultListener"`
+BeRTA sends back to the sender: `/control/actionResult /listener/enableInterpolation defaultListener true "Interpolation enabled to defaultListener"`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -209,7 +209,7 @@ This command switches on or off the  Near Field Compensation (NFC) applied toget
 
 #### Return
 
-`control/actionResult /listener/enableNearFieldEffect <string listener_id> <bool enable> <string description>`
+`/control/actionResult /listener/enableNearFieldEffect <string listener_id> <bool enable> <string description>`
 
 The return confirmation refers to the `listener_id`, indicating `enable=true` if the model has been enabled and `enable=false` if not. In both cases a `description` is added to give more details. 
 
@@ -220,7 +220,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:``/listener/enableNearFieldEffect DefaultListener true`
 
-BeRTA sends back to the sender: `control/actionResult /listener/enableNearFieldEffect DefaultListener true "NearField Effect enabled to DefaultListener"`
+BeRTA sends back to the sender: `/control/actionResult /listener/enableNearFieldEffect DefaultListener true "NearField Effect enabled to DefaultListener"`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -244,7 +244,7 @@ This command switches on or off the simulation of ITD separate from the intrinsi
 
 #### Return
 
-`control/actionResult /listener/enableITD <string listener_id> <bool enable> <string description>`
+`/control/actionResult /listener/enableITD <string listener_id> <bool enable> <string description>`
 
 The return confirmation refers to the `listener_id`, indicating `enable=true` if the model has been enabled and `enable=false` if not. In both cases a `description` is added to give more details. 
 
@@ -254,7 +254,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:`/listener/enableITD DefaultListener true`
 
-BeRTA sends back to the sender: `control/actionResult /listener/enableITD DefaultListener true "ITD enabled to DefaultListener"`
+BeRTA sends back to the sender: `/control/actionResult /listener/enableITD DefaultListener true "ITD enabled to DefaultListener"`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -279,7 +279,7 @@ This command switches on or off the parallax correction used to calculate the di
 
 #### Return
 
-`control/actionResult /listener/enableITD <string listener_id> <bool enable> <string description>`
+`/control/actionResult /listener/enableITD <string listener_id> <bool enable> <string description>`
 
 The return confirmation refers to the `listener_id`, indicating `enable=true` if the model has been enabled and `enable=false` if not. In both cases a `description` is added to give more details. 
 
@@ -289,7 +289,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:`/listener/enableParallaxCorrection DefaultListener true`
 
-BeRTA sends back to the sender: `control/actionResult /listener/enableParallaxCorrection DefaultListener true "Parallax Correction enabled to DefaultListener"`
+BeRTA sends back to the sender: `/control/actionResult /listener/enableParallaxCorrection DefaultListener true "Parallax Correction enabled to DefaultListener"`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -310,7 +310,7 @@ This command switches on or off a listener model. When a listener model is disab
 
 #### Return
 
-`control/actionResult /listener/enableModel <string listenerModel_id> <bool enable> <string description>`
+`/control/actionResult /listener/enableModel <string listenerModel_id> <bool enable> <string description>`
 
 The return confirmation refers to the `listenerModel_id`, indicating `enable=true` if the model has been enabled and `enable=false` if not. In both cases a `description` is added to give more details. 
 
@@ -320,7 +320,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:`/listener/enableModel DirectPath true`
 
-BeRTA sends back to the sender: `control/actionResult /listener/enableModel DirectPath true "Listener model DirectPath enabled."`
+BeRTA sends back to the sender: `/control/actionResult /listener/enableModel DirectPath true "Listener model DirectPath enabled."`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -345,7 +345,7 @@ Sets the order of the Ambisonic encoding used by the listener model. The listene
 
 #### Return
 
-`control/actionResult /listener/setAmbisonicsOrder <string listenerModel_id> <bool set> <string description>`
+`/control/actionResult /listener/setAmbisonicsOrder <string listenerModel_id> <bool set> <string description>`
 
 The return confirmation refers to the `listener_id`, indicating `set=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
 
@@ -355,7 +355,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:`/listener/setAmbisonicsOrder DirectPath 3`
 
-BeRTA sends back to the sender: `control/actionResult /listener/setAmbisonicsOrder DirectPath true "Ambisonics order set to 3"`
+BeRTA sends back to the sender: `/control/actionResult /listener/setAmbisonicsOrder DirectPath true "Ambisonics order set to 3"`
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -380,7 +380,7 @@ Sets the normalization type used in the Ambisonic encoding used by the listener 
 
 #### Return
 
-`control/actionResult /listener/setAmbisonicsNormalization <string listenerModel_id> <bool set> <string description>`
+`/control/actionResult /listener/setAmbisonicsNormalization <string listenerModel_id> <bool set> <string description>`
 
 The return confirmation refers to the `listener_id`, indicating `set=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
 
@@ -390,7 +390,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender:`/listener/setAmbisonicsNormalization ReverbPath N3D`
 
-BeRTA sends back to the sender: `control/actionResult /listener/setAmbisonicsNormalization DirectPath true "Ambisonics normalization set to N3D"`. 
+BeRTA sends back to the sender: `/control/actionResult /listener/setAmbisonicsNormalization DirectPath true "Ambisonics normalization set to N3D"`. 
 
 
 <!----------------------------------------------------------------------------------->

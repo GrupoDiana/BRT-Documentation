@@ -107,7 +107,7 @@ Records a file of the specified duration with spatialised sound (wav) and other 
 
 #### Return 
 
-`control/actionResult /playAndRecord <string filename> <boolean success> <string description>`. 
+`/control/actionResult /playAndRecord <string filename> <boolean success> <string description>`. 
 
 The return confirmation refers to the `filename`, indicating `success=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
 
@@ -117,7 +117,7 @@ It sends an echo to all subscribers excepting the sender: `/playAndRecord <Strin
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/playAndRecord c:/tmp/file.mat mat 10`
 
-When the recording is finished (in this example after 10 seconds), BeRTA sends back to all subscribers: `control/actionResult /playAndRecord c:/tmp/file.mat true Recording completed. File saved : c:/tmp/file.mat` or `control/actionResult  /playAndRecord c:/tmp/file.mat false ERROR:Recording failed. File could not be created.`
+When the recording is finished (in this example after 10 seconds), BeRTA sends back to all subscribers: `/control/actionResult /playAndRecord c:/tmp/file.mat true Recording completed. File saved : c:/tmp/file.mat` or `/control/actionResult  /playAndRecord c:/tmp/file.mat false ERROR:Recording failed. File could not be created.`
 
 
 
