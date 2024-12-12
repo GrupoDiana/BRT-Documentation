@@ -182,5 +182,18 @@ BeRTA sends back to the sender: `/control/bufferFrames 2`.
 <!----------------------------------------------------------------------------------->
 ---
 
+## `/control/actionResult `
+
+Command received when an action has been carried out from the application (triggered by a previously received OSC command). It informs about the outcome of the executed action.
+
+#### Syntax
+
+`/control/actionResult <actionCommand> <string id> <bool success> <string description>`
+
+
+#### Example
+
+BeRTA receives: `/control/actionResult /resources/removeHRTF HRTF1 true HRTF HRTF1 removed`
+
 
 
