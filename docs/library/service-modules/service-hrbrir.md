@@ -1,5 +1,4 @@
 # BRIR Service Module
-:warning:*(Section ready for review)*:warning:
 
 The BRIR service module is responsible for managing the reading, storage, and processing of BRIRs. These functions are crucial for enabling the system to simulate room reverberation and provide accurate spatial audio rendering [(read more)](../environment-models/freefield-environment-model.md). This module ensures that the BRIR data is well-organized and easily accessible, facilitating efficient processing and seamless integration within the overall audio rendering pipeline.
 
@@ -15,12 +14,14 @@ The following diagram illustrates the processing performed on the HRTF table bef
     <p style="text-align: center;">BRIR offline process.</p>
 </div>
 
+<!--
 ## Architecture
 
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
     <p style="text-align: center;">Head-Related BRIR class diagram.</p>
 </div>
+-->
 
 
 ## Functional Overview

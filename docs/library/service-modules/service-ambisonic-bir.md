@@ -1,6 +1,5 @@
 # Ambisonic BRIR
-:warning:*(Ready for review)*:warning:
- 
+
 The Ambisonic BRIR Convolution Module of the Binaural Rendering Toolbox enables the spatial audio rendering of multiple sound sources in an ambisonic environment. By leveraging the convolution with Binaural Room Impulse Responses (BRIR) in the ambisonic domain, this module processes the input sources considering their positions and the listener's position and orientation. It supports ambisonic encoding of orders 1, 2, or 3, and uses to decode virtual loudspeakers located at the vertices of regular polyhedra (octahedron for first-order, icosahedron for second-order, and dodecahedron for third-order). 
 
 In order to optimize the process, the module convolves the ambisonic signal directly with the ambisonic mix of the virtual loudspeakers' impulse responses, subsequently mixing all right and left channels separately, as it's shown in the diagram shown below. [Uniformly partitioned convolution](../processing-modules/uniform-partitioned-convolution.md) is used to compute the convolution in the frequency domain.
@@ -18,14 +17,14 @@ The diagram below illustrates the key components of the system and how they work
     <p style="text-align: center;">Ambisonic BRIR model diagram.</p>
 </div>
 
-
+<!--
 ## Architecture
 
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
     <p style="text-align: center;">Ambisonics class diagram.</p>
 </div>
-
+-->
 
 ## Functional Overview
 

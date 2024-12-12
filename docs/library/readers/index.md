@@ -1,5 +1,4 @@
 # Readers
-:warning:*(Ready for review)*:warning:
 
 The SOFA Reader class is designed to handle the reading and parsing of audio resource data from files in the <a href="https://www.sofaconventions.org/mediawiki/index.php/SOFA_(Spatially_Oriented_Format_for_Acoustics)" target="_blank">SOFA</a> (Spatially Oriented Format for Acoustics) format. SOFA is an open standard used for storing spatial acoustic data, such as Head-Related Transfer Functions (HRTFs), Binaural Room Impulse Responses (BRIRs), and other directional audio characteristics. This format is widely adopted in spatial audio applications due to its flexibility and compatibility with 3D audio systems.
 

@@ -1,5 +1,4 @@
 # HRTF Service Module
-:warning:*(Ready for Review)*:warning:
 
 The HRTF service module is responsible for handling the reading, storage, and processing of HRTFs. These functions are essential for enabling the listener model to render spatial audio [(read more)](../listener-models/hrtf-models/listener-acoustic-model-hrtf.md). This module optimizes the accessibility and organization of the HRTF data, ensuring efficient processing and integration within the overall rendering pipeline.
 
@@ -17,12 +16,14 @@ The following diagram illustrates the processing performed on the HRTF table bef
     <p style="text-align: center;">HRTF offline process.</p>
 </div>
 
+<!--
 ## Architecture
 
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
     <p style="text-align: center;">HRTF class diagram.</p>
 </div>
+-->
 
 ## Functional Overview
 

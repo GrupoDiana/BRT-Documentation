@@ -1,17 +1,17 @@
 # Directivity Service Module
-:warning:*(Ready for review)*:warning:
 
 The Directivity TF service module is responsible for handling the reading, storage, and processing of the transfer functions of the directivity of a sound source. These functions are essential for enabling the source model to render the directionality of a sound source [(read more)](../source-models/directivity-source-model.md). This module optimizes the accessibility and organization of the Directivity TF data, ensuring efficient processing and integration within the overall rendering pipeline.
 
 A Directivity TF table consists of a collection of Directivity Transfer Functions, each associated with specific measurement directions, including azimuth (left-right) and elevation (up-down) and distance. The BRT is designed to handle arbitrary distributions of mesurement, meaning it does not rely on a regular or complete directional grid and imposes no minimum density requirements. The Directivity Service Module is in charge of estimating the Directivity transfer function for the exact direction and distance of the listener if these are not explicitly included in the loaded table. For this estimation, the algorithm selects the three nearest points at which the Directivity was measured, and performs a barycentric interpolation among the transfer functions corresponding to these three locations. In this way, this module stores the Directivity TF in the form of a regular grid, enabling more efficient use of resources during binaural rendering. For more details about this grid, click [here](../../assets/technical-report/SONICOM_TR3.1_BRT%20REGULAR%20GRID%20DISTRIBUTION%20OF%20POINTS%20IN%20THE%20SPHERE%20USED%20BY%20THE%20BRT.pdf). 
 
-
+<!--
 ## Architecture
 
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
     <p style="text-align: center;">Directivity class diagram.</p>
 </div>
+-->
 
 ## Functional Overview
 
