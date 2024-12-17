@@ -136,7 +136,7 @@ BeRTA sends back to the sender: `/control/actionResult /environment/setWallAbsor
 
 ## `/environment/enableDirectPath`
 
-This command switches on or off the virtual source coresponding to the direct path, which actually is not virtual, but the real one. Disabling it will produce silence at its output. this feature can be implemented in all environment models. 
+This command switches on or off the virtual source coresponding to the direct path, which actually is not virtual, but the real one. Disabling it will produce silence at its output. This feature can be implemented in all environment models. 
 
 #### Syntax
 
@@ -167,7 +167,7 @@ BeRTA sends back to the sender: `/control/actionResult /environment/enableDirect
 
 ## `/environment/enableReverbPath`
 
-This command switches on or off all the virtual sources but the one of the direct path, which actually is not virtual. Disabling them will produce silence at all their outputs. this feature can be implemented in all environment models. 
+This command switches on or off all the virtual sources but the one of the direct path, which actually is not virtual. Disabling them will produce silence at all their outputs. This feature can be implemented in all environment models. 
 
 #### Syntax
 
@@ -191,6 +191,69 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 BeRTA receives and echoes back to all subscribiers but the sender: `/environment/enableReverbPath SDN false`
 
 BeRTA sends back to the sender: `/control/actionResult /environment/enableReverbPath SDN true "Environment model SDN Reverb path enabled"`. 
+
+
+<!----------------------------------------------------------------------------------->
+---
+
+
+## `/environment/enablePropagationDelay`
+
+This command enables or disables the simulation of propagation delay throughout the entire environment, allowing users to control whether or not the system accounts for delays in signal propagation during audio rendering. 
+
+#### Syntax
+
+`/environment/enablePropagationDelay <string environmentModel_id> <boolean enable>`
+
+`environmentModel_id`: identifier assigned to the model.
+
+`enable`: If true (1), enables the simulation of the propagation delay. If false (0), disable the simulation of the propagation delay.
+
+#### Return
+
+`/control/actionResult /environment/enablePropagationDelay <string environmentModel_id> <bool enabled> <string description>`
+
+The return confirmation refers to the `environmentModel_id`, indicating `enabled=true` if the propagation delay has been enabled and `enabled=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/environment/enablePropagationDelay FreeFieldEnvironmentModel true`
+
+BeRTA sends back to the sender: `/control/actionResult /environment/enablePropagationDelay FreeFieldEnvironmentModel true "Propagation delay in the FreeFieldEnvironmentModel model enabled."`. 
+
+
+<!----------------------------------------------------------------------------------->
+---
+
+## `/environment/enableDistanceAttenuation`
+
+This command enables or disables the simulation of distance throughout the entire environment, which consists of applying a global attenuation, where doubling the distance between the source and the listener reduces the sound level by a predefined attenuation value.
+
+#### Syntax
+
+`/environment/enableDistanceAttenuation <string environmentModel_id> <boolean enable>`
+
+`environmentModel_id`: identifier assigned to the model.
+
+`enable`: If true (1), enables the simulation of the distance attenuation. If false (0), disable the simulation of the distance attenuation.
+
+#### Return
+
+`/control/actionResult /environment/enableDistanceAttenuation <string environmentModel_id> <bool enabled> <string description>`
+
+The return confirmation refers to the `environmentModel_id`, indicating `enabled=true` if the distance attenuation has been enabled and `enabled=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/environment/enableDistanceAttenuation FreeFieldEnvironmentModel true`
+
+BeRTA sends back to the sender: `/control/actionResult /environment/enableDistanceAttenuation FreeFieldEnvironmentModel true "Distance attenuation enabled in the model (FreeFieldEnvironmentModel)."`. 
 
 
 <!----------------------------------------------------------------------------------->
