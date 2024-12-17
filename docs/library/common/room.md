@@ -1,5 +1,4 @@
 # Room
-:warning:*(under construction)*:warning:
 
 The Room class provides tools to define, configure, and manipulate the geometry and properties of a 3D room for audio rendering simulations. It supports both predefined shapes, like shoebox rooms, and custom geometries by defining individual walls and their properties. The class also includes functionality to manage wall properties, such as absorption coefficients, and to check spatial relationships within the room. Below is a summary of its key capabilities:
 

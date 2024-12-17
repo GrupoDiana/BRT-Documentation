@@ -1,7 +1,5 @@
 # Listener Acoustic Model based on BRIR convolution in the Ambisonics domain
 
-:warning:*(Ready for review)*:warning:
-
 The **Ambisonic BRIR Convolution Model** enables spatial audio rendering from multiple sound sources. It performs convolution in the ambisonic domain using binaural room impulse responses (BRIR[^1]) and the selected ambisonic order (currently up to third order). This process simulates both direct sound and reverberation, providing a complete representation of the acoustic interaction between the source and the listener. If the impulse responses do not include information about the direct path, the simulation is limited to the reverberation of the environment[^2]. The process consists of two main stages: ambisonic encoding and ambisonic convolution/decoding.
 
 [^1]: A BRIR captures the acoustic characteristics of a room from the perspective of a specific listener, as it is recorded using microphones placed in the listener's ears. This is why we refer to this model as both a listener and environment model.
@@ -17,13 +15,15 @@ This modular approach ensures efficient and precise spatial audio rendering. The
 
 For further details on the functionality of the [Bilateral Ambisonic Encoder](../../processing-modules/bilateral-ambisonic-encoder.md) and the [Ambisonic Domain Convolver](../../processing-modules/ambisonic-domain-convolver.md), refer to their respective sections in the documentation. 
 
+<!--
 ## Architecture
 
 The internal block diagram of this class is as follows:
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Ambisonic BRIR Convolution Model - Internal diagram" style="display: block; margin: 0 auto;">
     <p style="text-align: center;">Ambisonic BRIR Convolution Model - Internal diagram.</p>
-</div>
+</div>>
+-->
 
 ## Configuration Options
 

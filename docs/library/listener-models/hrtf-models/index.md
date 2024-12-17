@@ -1,5 +1,4 @@
 # Listener Models Based on HRTFs  
-:warning:*(Ready for review)*:warning:
 
 The BRT Library includes listener models that utilize **Head-Related Transfer Functions (HRTFs)** to realistically simulate the sound perceived by a listener. An HRTF is a mathematical representation of how an individual’s head, ears, and torso affect the sound arriving from a specific direction before reaching the eardrums. This representation captures how the human auditory system localizes sound in a 3D space, including cues such as interaural time differences (ITD) and interaural level differences (ILD). 
 

@@ -1,5 +1,4 @@
 # Listener & Environment Models Based on BRIRs  
-:warning:*(Ready for review)*:warning:
 
 The BRT Library includes environment models that use **Room Impulse Responses (RIRs)** to simulate realistic acoustic spaces. These models function by convolving the signals from sound sources with the **Binaural Room Impulse Response (BRIR)** of a specific room. A BRIR is an extension of the RIR that captures not only the acoustic characteristics of the room but also the binaural filtering effects caused by the listener's anatomy. This allows for a highly immersive audio experience, as the BRIR models how sound interacts with both the environment and the listener's physiology.
 

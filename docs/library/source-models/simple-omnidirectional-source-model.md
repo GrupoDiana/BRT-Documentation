@@ -1,5 +1,4 @@
 # Omnidirectional Source Model  
-:warning:*(Ready for review)*:warning:
 
 The **Omnidirectional Source Model** serves as a straightforward interface for applications to interact with the BRT Library during the rendering process. This model is characterized by its simplicity, as it primarily passes the source's position and the audio samples provided by the application to the connected modules. These modules can include listener models and environment models. Applications must supply monaural audio samples for each frame and update the source's position and orientation when necessary.  
 

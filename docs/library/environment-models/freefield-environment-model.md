@@ -1,5 +1,4 @@
 # Free Field Environment Model
-:warning:*(Ready for review)*:warning:
   
  The **Free Field Environment Model** simulates sound propagation in a free-field environment, focusing on the direct sound path. Specifically, it models the propagation delay, distance-based attenuation, and filtering effects caused by the medium.  
 

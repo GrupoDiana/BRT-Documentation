@@ -1,5 +1,4 @@
 # Listener Acoustic Models
-:warning:*(Ready for review)*:warning:
 
 Listener models are high-level modules of the BRT library that handle audio rendering. More specifically these modules try to simulate the binaural sound perceived by the subjects. These models can simulate only the direct sound, or only the reverberation, or all of them together. Currently, four models have been implemented, grouped into two categories:
 

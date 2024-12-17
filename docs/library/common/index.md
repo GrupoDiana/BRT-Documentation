@@ -1,5 +1,4 @@
 # Common
-:warning:*(Ready for review)*:warning:
 
 - **Biquad filter**: Provides tools for applying second-order IIR filtering to audio signals. It supports filter setup using specified coefficients.
 - **Buffer**: Manages temporary storage of audio data during processing, ensuring efficient data flow through the renderer.  

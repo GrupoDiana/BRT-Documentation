@@ -1,7 +1,5 @@
 # Listener Acoustic Model based on HRTF direct convolution
 
-:warning:*(Ready for review)*:warning:
-
 The **Listener HRTF model** module of the library allows the rendering of spatial audio from multiple sound sources. It simulates the direct path between source and listener by taking advantage of *direct convolution* with head impulse responses (HRTF). This module independently processes each of the input sources, taking into account their positions and the position and orientation of the listener.
 
 Subsequently, this model performs a *near-field correction*, independent for each of the sources. This correction is made by filtering the signals corresponding to each ear. The coefficients of these filters are dependent on the distance between source and listener and the interaural azimuth.
@@ -9,7 +7,7 @@ Subsequently, this model performs a *near-field correction*, independent for eac
 Finally, the model mixes all channels, left and right separately, to give a single output per ear.
 
 The convolutions are performed in the frequency domain using the uniformly partitioned convolution algorithm. Filtering is performed in the time domain.
-The HRTF service module is responsible for providing the impulse responses in each frame. While the SOS filter module is in charge of providing the filters coefficients. Both classes must have been previously configured, read more in the services section (:warning:URL).
+The HRTF service module is responsible for providing the impulse responses in each frame. While the SOS filter module is in charge of providing the filters coefficients. Both classes must have been previously configured, read more in the [services modules section](../../service-modules/index.md).
 
 
 ## Architecture

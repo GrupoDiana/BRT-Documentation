@@ -109,10 +109,10 @@ nav:
         - Uniform Partitioned Convolution: library/processing-modules/uniform-partitioned-convolution.md    
       - Common:
         - library/common/index.md
-      - Base:
-        - library/base/index.md
-      - Connectivity: 
-        - library/connectivity/index.md
+      #- Base:
+      #  - library/base/index.md
+      #- Connectivity: 
+      #  - library/connectivity/index.md
       
   - Applications: 
     - applications/index.md

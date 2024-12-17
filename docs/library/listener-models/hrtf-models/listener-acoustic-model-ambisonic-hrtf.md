@@ -1,7 +1,5 @@
 # Listener Acoustic Model based on HRTF convolution in the Ambisonics domain
 
-:warning:*(Ready for review)*:warning:
-
 The **Ambisonic HRTF Convolution Model** module enables spatial audio rendering from multiple sound sources by simulating the direct path between the source and the listener through convolution in the ambisonic domain. This is based on the impulse responses stored in an HRTF and the selected ambisonic order (currently implemented up to order 3). The process involves two main stages: a bilateral ambisonic encoding and an ambisonic convolution/decoding. 
 
 In the first stage, a bilateral ambisonic encoding is performed for each input sound source. This encoding generates (N) ambisonic channels per ear, where (N) depends on the selected ambisonic order. The encoding process begins by introducing independent delays for each ear to simulate interaural time differences (ITD). Subsequently, a near-field correction is applied through independent filtering of the signals for each ear, with filter coefficients determined by the distance between the source and the listener as well as the interaural azimuth. Finally, ambisonic encoding is carried out separately for each ear, resulting in (N) ambisonic channels for each ear per sound source.
@@ -28,14 +26,14 @@ This model allows configuration by calling its methods or by BRT internal comman
 
 - **Model (on/off)**: Silent when off.
 - **Near Field Compensation (on/off)**: The near field correction is applied when on. 
-- **ITD Simulation (on/off)**: When activated, a separate delay is added to each ear to simulate the interaural time difference[^2]. This delay is provided by the HRTF service module and may be provided in the SOFA structure or will be calculated from the head size, for more information see (:warning:URL). When off, it does not simulate interaural time difference. 
+- **ITD Simulation (on/off)**: When activated, a separate delay is added to each ear to simulate the interaural time difference[^2]. This delay is provided by the HRTF service module and may be provided in the SOFA structure or will be calculated from the head size. When off, it does not simulate interaural time difference. 
 - **Parallax Correction (on/off)**: When it is switched on, a cross-ear parallax correction is apllied. This correction is based on calculating the projection of the vector from the ear to the source on the HRTF sphere (i.e. the sphere on the surface of which the HRTF was measured), giving a more accurate rendering, especially for near-field and far-field sound sources. When deactivated, the calculation is based on the centre of the listener's head.
 - **HRTF to be used**: The HRTF service module to be used for rendering. The system supports dynamic, hot-swapping of the service module being used.
 - **Nearfield filter (SOS filter) to be used**: The SOS filter service module to be used for rendering. The system supports dynamic, hot-swapping of the service module being used.
 - **Ambisonic Order**: The order of the ambisonic coding to be used. Currently only orders between 1 (default) and 3 are valid.
 - **Ambisonic Normalization**: The ambisonic normalization to be used. The available options are: N3D (default), SN3D, maxN 
 
-[^2]: To perform the convolution task correctly, avoiding comb filters, it is necessary that the delays of the impulse responses have been removed, for more information see (:warning:URL).
+[^2]: To perform the convolution task correctly, avoiding comb filters, it is necessary that the delays of the impulse responses have been removed.
 
 
 ## Connections

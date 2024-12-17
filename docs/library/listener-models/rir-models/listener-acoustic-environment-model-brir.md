@@ -1,5 +1,4 @@
 # Listener & Environment Acoustic Model based on BRIR direct convolution
-:warning:*(Ready for review)*:warning:
 
 The **Listener & Environment BRIR Model** module enables spatial audio rendering from multiple sound sources. It uses direct convolution with the binaural room impulse responses (BRIR[^1]) to simulate both direct sound and reverberation, providing a complete representation of the acoustic interaction between the source and the listener. If the impulse responses do not include information about the direct path, the simulation is limited to the reverberation of the environment[^2].  
 
@@ -10,7 +9,7 @@ Each sound source is processed independently, considering its relative position 
 
 Convolutions are performed in the frequency domain using the uniform partitioned convolution algorithm. These impulse responses are provided by the **BRIR service module** for each audio frame. To ensure proper functioning, the service module must be configured beforehand. More information can be found in the [service section](../../service-modules/service-hrbrir.md).
 
-
+<!--
 ## Architecture
 
 The internal block diagram of this class is as follows:
@@ -20,7 +19,7 @@ The internal block diagram of this class is as follows:
 </div>
 
 The operation of the convolucionator as well as its block diagram can be seen in this link (:warning:URL).
-
+-->
 ## Configuration Options
 
 This model allows configuration by calling its methods or by BRT internal commands:
