@@ -103,7 +103,7 @@ nav:
       - library/infrastructure-entities/index.md
       - Processing Modules: 
         - library/processing-modules/index.md
-        - Ambisonic Encoder: library/processing-modules/ambisonic-encoder.md
+       # - Ambisonic Encoder: library/processing-modules/ambisonic-encoder.md
         - Ambisonic Domain Convolver: library/processing-modules/ambisonic-domain-convolver.md
         - Bilateral Ambisonic Encoder: library/processing-modules/bilateral-ambisonic-encoder.md
         - Uniform Partitioned Convolution: library/processing-modules/uniform-partitioned-convolution.md    

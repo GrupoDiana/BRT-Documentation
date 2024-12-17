@@ -1,5 +1,4 @@
 # Infrastructure Entities  
-:warning:*(Ready for review)*:warning:
 
 The **Infrastructure Entities** encompass the medium- and low-level modules of the BRT Library. These modules form the foundational elements upon which the high-level models are built and operate. While they are essential to the library's functionality and architecture, understanding them is not required unless you plan to extend the library or modify its architecture.  
 

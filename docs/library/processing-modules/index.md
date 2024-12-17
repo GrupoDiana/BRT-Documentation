@@ -1,5 +1,4 @@
 # Processing Modules
-:warning:*(Section under construction)*:warning:
 
 The **Processing Modules** encompass a variety of signal processing components used by high-level models to perform simulations and audio rendering tasks. These modules handle essential operations such as convolution, filtering, and encoding, acting as the core signal processing units for the BRT Library's functionality.  
 
@@ -22,13 +21,14 @@ This modular design not only streamlines development within the BRT Library but 
 
 ## List of signal processor modules
 
-- [Ambisonic Domain Convolver & Processor](./ambisonic-domain-convolver.md):  The module performs ambisonic convolution for the N channels of each of the M different input sources, resulting in a monaural signal.
+- **[Ambisonic Domain Convolver & Processor](./ambisonic-domain-convolver.md)**:  The module performs ambisonic convolution for the N channels of each of the M different input sources, resulting in a monaural signal.
 - **Ambisonic Encoder**: Encodes sound sources into an ambisonic format for spatial audio processing and rendering.  
-- [Bilateral Ambisonic Encode & Processor](./bilateral-ambisonic-encoder.md):  bla bla
-- **Binaural Filter**:  
-- **DirectivityTFConvolver**:
+- **[Bilateral Ambisonic Encode & Processor](./bilateral-ambisonic-encoder.md)**:  Process an audio source by applying delay and spatial expansion, simulating near-field effects through binaural filtering, and finally encoding the signals into left and right Ambisonic channels for spatial audio rendering.
+- **Binaural Filter**:  Implement binaural filtering from second-order stages.
+- **Directivity TF Convolver**: Process audio signals by applying a source's directional transfer function (Directivity TF) to simulate realistic sound propagation. 
 - **Distance Attenuator**: Implements distance-based attenuation to simulate the natural decrease in sound intensity over distance.  
-- **HRTFConvolver & Processor**:
-- **NearFieldEffectProcessor**:
-- **[Uniform Partitioned Convolution](uniform-partitioned-convolution.md)**:  
-  Implements efficient frequency-domain convolution using uniformly partitioned overlap-save methods, optimized for long impulse responses.  
+- **[Uniform Partitioned Convolution](uniform-partitioned-convolution.md)**: Implements efficient frequency-domain convolution using uniformly partitioned overlap-save methods, optimized for long impulse responses.  
+- **HRTF Convolver & Processor**: Manage the convolution of the input signals, using the [Uniform Partitioned Convolution](uniform-partitioned-convolution.md).
+- **Near Field Effect Processor**:  Integrate connectivity features to manage binaural filter processing
+
+
