@@ -1,7 +1,5 @@
 # BeRTA Renderer
 
-:warning:*(Ready for review)*:warning:
-
 BeRTA Renderer is the flagship application of the BRT Toolbox, providing a high degree of configurability for real-time spatial audio rendering. The application integrates the BRT library and works for Windows x64 (Windows 10 and 11) and MacOS Universal. 
 
 Key functionalities include:

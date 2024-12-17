@@ -1,5 +1,4 @@
 # BRT Applications: General Overview
-:warning:*(Ready for review)*:warning:
 
 The **Binaural Rendering Toolbox (BRT)** includes a collection of applications designed to provide researchers and developers with ready-to-use tools for creating, testing, and deploying immersive audio experiences. These applications leverage the core functionalities of the BRT Library and extend them into practical, real-time tools for diverse use cases. This section introduces the main applications, their features, and intended use cases.
 

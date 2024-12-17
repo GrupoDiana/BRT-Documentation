@@ -1,7 +1,5 @@
 # Annotated Audio SOFA Convention
 
-:warning:*(Ready for review)*:warning:
-
 The AnnotatedReceiverAudio is a proposed <a href="https://www.sofaconventions.org/mediawiki/index.php/SOFA_(Spatially_Oriented_Format_for_Acoustics)" target="_blank">SOFA (Spatially Oriented Format for Acoustics)</a> convention to record and store (binaural) audio data at the receivers, annotated with geometric information. It is being currently discussed and considered as work in progress for the SOFA standard. 
 
 SOFA is an open standard developed to store, exchange, and manage spatial acoustic data efficiently. It is widely used in the fields of 3D audio, virtual reality, and acoustics research to handle data such as Head-Related Transfer Functions (HRTFs), Binaural Room Impulse Responses (BRIRs), and other spatially oriented measurements.
