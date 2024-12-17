@@ -89,7 +89,6 @@ nav:
       - SDN Model: library/environment-models/sdn-environment-model.md
     - Binaural Filters:
       - library/binaural-filters/index.md
-      - SOS filters: library/binaural-filters/sos-filters.md
     - Services Modules: 
       - library/service-modules/index.md
       - HRTF: library/service-modules/service-hrtf.md
