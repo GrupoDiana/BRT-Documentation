@@ -13,7 +13,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/control/sampleRate`](control.md#controlsamplerate): Request the current audio sample rate.
 - [`/control/version`](control.md#controlversion): Retrieve the current BeRTA version.
 
-### OSC Overall Commands Index
+### OSC Overall Commands 
 
 - [`/pause`](overall.md#pause): Pauses file sources and stops streaming from input channels.
 - [`/play`](overall.md#play): Starts playback of file sources and streaming from input channels.
@@ -22,7 +22,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/stop`](overall.md#stop): Stops playback of file sources and streaming from input channels.
 
 
-### Resources Commands Index
+### Resources Commands 
 
 - [`/resources/enableWoodworthITD`](resources.md#resourcesenablewoodworthitd): Enables or disables the calculation of the ITD using the Woodworth formula.
 - [`/resources/getBRIRInfo`](resources.md#resourcesgetbririnfo): Gets information about one of the loaded Binaural Room Impulse Responses (BRIR).
@@ -43,7 +43,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 
 
-### Source Models Commands Index
+### Source Models Commands 
 
 - [`/source/addLineIn`](source.md#sourceaddlinein): Adds a new source from an audio input channel.
 - [`/source/enableDirectivity`](source.md#sourceenabledirectivity): Enable or disable the directivity of a sound source.
@@ -65,7 +65,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 
 
-### Listener Models Commands Index
+### Listener Models Commands 
 
 - [`/listener/enableInterpolation`](listener.md#listenerenableinterpolation): Enable or disable interpolation among HRIRs.
 - [`/listener/enableITD`](listener.md#listenerenableitd): Enable or disable the simulation of Interaural Time Difference (ITD).
@@ -81,7 +81,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/listener/setSOSFilters`](listener.md#listenersetsosfilters): Set filters for Near Field Compensation (NFC) after HRTF convolution.
 
 
-### Environment Models Commands Index
+### Environment Models Commands 
 
 - [`/environment/enableDirectPath`](environment.md#environmentenabledirectpath): Toggle the direct path source in the environment model.
 - [`/environment/enableModel`](environment.md#environmentenablemodel): Enable or disable a specified environment model.
@@ -89,4 +89,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/environment/setShoeBoxRoom`](environment.md#environmentsetshoeboxroom): Set up a shoebox-shaped room with specified dimensions.
 - [`/environment/setWallAbsorption`](environment.md#environmentsetwallabsorption): Set absorption coefficients for a wall.
 
-### Binaural Filters Commands Index
+### Binaural Filters Commands 
+
+- [`/binauralFilter/setSOSFilter`](binaural-filter.md#binauralfiltersetsosfilter): Set up sos filter for an specific listener.
+- [`/binauralFilter/enableModel`](binaural-filter.md#binauralfilterenablemodel): Enable or disable a specified binaural filter.

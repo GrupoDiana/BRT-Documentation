@@ -126,6 +126,7 @@ nav:
       - Source commands: osc/source.md
       - Listener commands: osc/listener.md
       - Environment commands: osc/environment.md
+      - Binaural Filter commands: osc/binaural-filter.md
     - Settings File: applications/settingsFile.md
     - Annotated Audio: applications/annotated-audio.md
   #- Examples: 
