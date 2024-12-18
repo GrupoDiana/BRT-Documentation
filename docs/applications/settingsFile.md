@@ -1,7 +1,7 @@
 # Configuration File Setup
 :warning:*(Under construction)*:warning:
 
-This section explains how to define a configuration file in JSON format that is read when the application starts. If the program is launched without arguments, it will look for a file called `settings.json` in the same folder. Alternatively, a custom configuration file can be provided as an argument, for example, `mysettings.json`.  This file defines the audio interface settings, the model architecture, and, optionally, a set of resources to be re-loaded at the beguining and a complete scenario with sources and listeners.
+This section explains how to define a configuration file in JSON format that is read when the application starts. If the program is launched without arguments, it will look for a file called `settings.json` in the same folder. Alternatively, a custom configuration file can be provided as an argument, for example, `mysettings.json`.  This file defines the audio interface settings, the model architecture, and, optionally, a set of resources to be re-loaded at the begining and a complete scenario with sources and listeners.
 
 ## General Structure
 
@@ -35,10 +35,11 @@ Example:
 This section defines the models used for sound rendering, including listeners and environment models.
 
 - **Listeners**: Defines the physical listener(s) by ID. Example: `["DefaultListener"]`.
-- **ListenerModels**: Specifies the listener models, identified by an ID and model type. The available types include `ListenerHRTFModel`, `ListenerAmbisonicHRTFModel`, `ListenerEnvironmentBRIRModel`, and others.
-- **EnvironmentModels**: Specifies the environment models, such as the `SDNEnvironmentModel`.
+- **ListenerModels**: Specifies the listener models, identified by an ID and model type. The available types include `ListenerHRTFModel`, `ListenerAmbisonicHRTFModel`, `ListenerEnvironmentBRIRModel`, and `ListenerAmbisonicEnvironmentBRIRModel`.
+- **EnvironmentModels**: Specifies the environment models, such as the `SDNEnvironmentModel` and the `FreeFieldEnvironmentModel`.
+- **Binaural Filters**: Specifies the binaural filter used. The available binaural filter model is the `SOSBinauralFilter`.
 - **ConnectSourcesTo**: Defines which models the audio sources connect to when loaded. Sources can be connected to either listener models or environment models.
-- **ConnectEnvironmentToListenerModel**: Specifies how environment models are connected to listener models. The output from environment models is sent to the listener models for further processing.
+- **Model2ModelConnections**: Defines how are the interconnections between the different models (environment, listening and binaural filters).  The outputs of the `OriginID` models will be connected to the inputs of the `DestinationID` models.
 - **ConnectToListener**: Specifies how the listener models are connected to the listener. The output of the listener models is connected to the listener for mixing.
 
 Example:
@@ -47,9 +48,9 @@ Example:
 "ModelsArchitecture": {
   "Listeners": ["DefaultListener"],
   "ListenerModels": [{"ID": "DirectPath", "Model": "ListenerHRTFModel"}],
-  "EnvironmentModels": [{"ID": "SDN", "Model": "SDNEnvironmentModel"}],
-  "ConnectSourcesTo": ["SDN"],
-  "ConnectEnvironmentToListenerModel": [{"EnvironmentModelID": "SDN", "ListenerModelID": "DirectPath"}],
+  "EnvironmentModels": [{"ID": "FreeField", "Model": "FreeFieldEnvironmentModel"}],
+  "ConnectSourcesTo": ["FreeField"],
+  "Model2ModelConnections": [{"OriginID":"FreeField", "DestinationID":"DirectPath"}],
   "ConnectToListener": [{"ModelID": "DirectPath", "ListenerID": "DefaultListener"}]
 },
 ```
@@ -60,7 +61,7 @@ This section lists the resources such as HRTFs, BRIRs, NearField Filters, and Di
 
 - **HRTFs**: A list of HRTFs (Head-Related Transfer Functions) to load. If no HRTFs should be loaded, leave the list empty (`[]`).
 - **BRIRs**: A list of BRIRs (Binaural Room Impulse Responses) to load. BRIRs can provide spatial audio information specific to a particular room. If none should be loaded, leave this list empty (`[]`).
-- **NearFieldFilters**: Defines the near-field filters to load. These filters are used to compensate for the effects of sound sources being very close to the listener.
+- **SOSFilters**: Defines the SOS filters to load. If no SOS Filter should be loaded, leave the list empty (`[]`)
 - **DirectivityTFs**: A list of Directivity Transfer Functions (TFs) to apply to sound sources. These describe how sound is emitted in different directions from a sound source.
 
 Example: 
@@ -75,10 +76,10 @@ Example:
     }
   ],
   "BRIRs": [],
-  "NearFieldFilters": [
+  "SOSFilters": [
     {
       "ID": "DefaultNFFilters",
-      "fileName": "resources/NearFieldFilters/NearFieldCompensation_ILD_1.2m_48Khz.sofa"
+      "fileName": "resources/SOSFilters/NearFieldCompensation_ILD_1.2m_48Khz.sofa"
     }
   ],
   "DirectivityTFs": []
@@ -123,13 +124,8 @@ Example:
 "SceneConfiguration": [
     {"command": "/source/loop", "parameters": ["SoundSource1", "true"]},
     {"command": "/listener/setHRTF", "parameters": ["DefaultListener", "HRTF1"]},
-    {"command": "/listener/setNFCFilters", "parameters": ["DefaultListener", "DefaultNFFilters"]},
-    {"command": "/environment/setShoeBoxRoom", "parameters": ["SDN", 6, 8, 3]},
-    {"command": "/environment/setWallAbsorption", "parameters": ["SDN", 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.4, 0.3, 0.2, 0.1]},
-    {"command": "/environment/setWallAbsorption", "parameters": ["SDN", 1, 0.5]},
-    {"command": "/environment/setWallAbsorption", "parameters": ["SDN", 2, 0.5]},
-    {"command": "/environment/setWallAbsorption", "parameters": ["SDN", 3, 0.5]},
-    {"command": "/environment/setWallAbsorption", "parameters": ["SDN", 4, 0.5]},
-    {"command": "/environment/setWallAbsorption", "parameters": ["SDN", 5, 0.5]}
+    {"command": "/listener/setSOSFilters", "parameters": ["DefaultListener", "DefaultNFFilters"]},
+    {"command": "/listener/setBRIR", "parameters": ["DefaultListener", "BRIR1"]},
+    {"command": "/binauralFilter/setSOSFilter", "parameters": ["DefaultListener", "Earmuffs"]},
   ],
 ```
