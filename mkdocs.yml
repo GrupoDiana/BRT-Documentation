@@ -127,6 +127,7 @@ nav:
       - Listener commands: osc/listener.md
       - Environment commands: osc/environment.md
       - Binaural Filter commands: osc/binaural-filter.md
+    - Unity OSC Package: applications/unity-osc-package.md
     - Settings File: applications/settingsFile.md
     - Annotated Audio: applications/annotated-audio.md
   #- Examples: 
