@@ -1,5 +1,4 @@
 # Configuration File Setup
-:warning:*(Under construction)*:warning:
 
 This section explains how to define a configuration file in JSON format that is read when the application starts. If the program is launched without arguments, it will look for a file called `settings.json` in the same folder. Alternatively, a custom configuration file can be provided as an argument, for example, `mysettings.json`.  This file defines the audio interface settings, the model architecture, and, optionally, a set of resources to be re-loaded at the begining and a complete scenario with sources and listeners.
 
@@ -45,14 +44,21 @@ This section defines the models used for sound rendering, including listeners an
 Example:
 
 ```
-"ModelsArchitecture": {
-  "Listeners": ["DefaultListener"],
-  "ListenerModels": [{"ID": "DirectPath", "Model": "ListenerHRTFModel"}],
-  "EnvironmentModels": [{"ID": "FreeField", "Model": "FreeFieldEnvironmentModel"}],
-  "ConnectSourcesTo": ["FreeField"],
-  "Model2ModelConnections": [{"OriginID":"FreeField", "DestinationID":"DirectPath"}],
-  "ConnectToListener": [{"ModelID": "DirectPath", "ListenerID": "DefaultListener"}]
-},
+	"ModelsArchitecture": {	
+		"Listeners": ["DefaultListener"],		
+		"ListenerModels": [
+			{"ID": "DirectPath", "Model": "ListenerHRTFModel"},							
+			{"ID": "ReverbPath", "Model": "ListenerAmbisonicEnvironmentBRIRModel"}	
+		],
+		"EnvironmentModels": [{"ID": "FreeField", "Model": "FreeFieldEnvironmentModel"}],
+		"BinauralFilters":[],
+		"ConnectSourcesTo":["FreeField", "ReverbPath"],				
+		"Model2ModelConnections": [{"OriginID":"FreeField", "DestinationID":"DirectPath"}],		
+		"ConnectToListener":[
+      {"ModelID":"DirectPath", "ListenerID":"DefaultListener"},
+			{"ModelID":"ReverbPath", "ListenerID":"DefaultListener"}
+		],
+  },
 ```
 
 ### 3. Resources
@@ -68,22 +74,13 @@ Example:
 
 ```
 "Resources" : {
-  "HRTFs": [
-    {
-      "ID": "HRTF1",
-      "fileName": "resources/HRTF/3DTI_HRTF_SADIE_II_D2_256s_48000Hz_resampled5.sofa",
-      "spatialResolution": 5
-    }
-  ],
-  "BRIRs": [],
-  "SOSFilters": [
-    {
-      "ID": "DefaultNFFilters",
-      "fileName": "resources/SOSFilters/NearFieldCompensation_ILD_1.2m_48Khz.sofa"
-    }
-  ],
-  "DirectivityTFs": []
-},
+		"HRTFs": [{"ID": "HRTF1", "fileName": "resources//HRTF//3DTI_HRTF_SADIE_II_D2_256s_48000Hz_resampled5.sofa", "spatialResolution": 5}],		
+		"BRIRs": [{"ID": "BRIR1", "fileName": "resources//BRIR//3DTI_BRIR_Trapezoid_48000Hz_3D.sofa", "spatialResolution": 15, "fadeInWindowThreshold" : 0, "fadeInWindowRiseTime": 0, "fadeOutWindowThreshold" : 0, "fadeOutWindowRiseTime": 0}],		
+		"SOSFilters": [
+			{"ID": "DefaultNFFilters", "fileName": "resources//SOSFilters//NearFieldCompensation_ILD_1.2m_48Khz.sofa"},
+			],
+		"DirectivityTFs": [], 
+	},
 ```
 
 ### 4. Sound Sources
@@ -97,18 +94,10 @@ This section defines the sound sources to be loaded at startup. Each source must
 Example: 
 
 ```
-"SoundSources": [
-    {
-      "ID": "SoundSource1",
-      "fileName": "resources/MusArch_Sample_48kHz_Anechoic_FemaleSpeech.wav",
-      "sourceModel": "SimpleModel"
-    },
-    {
-      "ID": "SoundSource2",
-      "fileName": "resources/MusArch_Sample_48kHz_Anechoic_MaleSpeech.wav",
-      "sourceModel": "DirectivityModel"
-    }
-  ],
+	"SoundSources": [
+		{"ID": "SoundSource1", "fileName": "resources//MusArch_Sample_48kHz_Anechoic_FemaleSpeech.wav", "sourceModel":"SimpleModel"},
+		{"ID": "SoundSource2", "fileName": "resources//MusArch_Sample_48kHz_Anechoic_MaleSpeech.wav", "sourceModel":"SimpleModel"}
+	],
 ```
 
 ### 5. Scene Configuration
@@ -121,11 +110,10 @@ This section allows you to define the scene by specifying commands in OSC (Open 
 Example:
 
 ```
-"SceneConfiguration": [
-    {"command": "/source/loop", "parameters": ["SoundSource1", "true"]},
-    {"command": "/listener/setHRTF", "parameters": ["DefaultListener", "HRTF1"]},
-    {"command": "/listener/setSOSFilters", "parameters": ["DefaultListener", "DefaultNFFilters"]},
-    {"command": "/listener/setBRIR", "parameters": ["DefaultListener", "BRIR1"]},
-    {"command": "/binauralFilter/setSOSFilter", "parameters": ["DefaultListener", "Earmuffs"]},
-  ],
+	"SceneConfiguration": [
+		{"command": "/source/loop", "parameters": ["SoundSource1", "true"]},		
+		{"command": "/listener/setHRTF", "parameters": ["DefaultListener", "HRTF1"]},
+		{"command": "/listener/setSOSFilters", "parameters": ["DefaultListener", "DefaultNFFilters"]},		
+		{"command": "/listener/setBRIR", "parameters": ["DefaultListener", "BRIR1"]}
+	],
 ```
