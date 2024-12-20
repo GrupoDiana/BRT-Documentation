@@ -20,7 +20,7 @@ The model’s signal processing involves three main stages. First, the input sig
 
 The delay line is dynamically updated to account for changes in the relative positions of the source and the listener, maintaining accurate modeling of propagation effects in real-time. This dynamic behavior makes the Free Field Environment Model a vital component for simulating direct sound paths in spatial audio systems.  
 
-
+<!--
 ## Architecture
 
 The internal block diagram of this class is as follows:
@@ -28,7 +28,7 @@ The internal block diagram of this class is as follows:
     <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Free field environment Model Internal diagram" style="display: block; margin: 0 auto;">
     <p style="text-align: center;">Free field environment Model Internal diagram.</p>
 </div>
-
+-->
 ## Configuration Options
 
 This model allows configuration by calling its methods or by BRT internal commands:
