@@ -1,4 +1,4 @@
-# Annotated Audio SOFA Convention
+# Annotated Receiver Audio SOFA Convention
 
 The AnnotatedReceiverAudio is a proposed <a href="https://www.sofaconventions.org/mediawiki/index.php/SOFA_(Spatially_Oriented_Format_for_Acoustics)" target="_blank">SOFA (Spatially Oriented Format for Acoustics)</a> convention to record and store (binaural) audio data at the receivers, annotated with geometric information. It is being currently discussed and considered as work in progress for the SOFA standard. 
 
@@ -19,5 +19,7 @@ The AnnotatedReceiverAudio convention aims at storing all the raw data during an
 - **SourcePosition**: positions of the virtual set.
 - **Response**: the subject's responses. If an experiment is being performed, it allows storing the subject's response under these conditions.
 
-[BeRTA Renderer](berta-renderer/index.md) is able to record files using this AnnotatedReceiverAudio convention including the delivered binaural audio together with all the above information siynchronized with the audio. See [`/playAndRecord`](/BRT-Documentation/osc/overall#playandrecord) and [`/source/playAndRecord`](/BRT-Documentation/osc/source#sourceplayandrecord) for more information about the OSC commands to use this feature. these commands can also be sent by [BeRTA GUI](berta-gui.md)
+[BeRTA Renderer](berta-renderer/index.md) is able to record files using this AnnotatedReceiverAudio convention including the delivered binaural audio together with all the above information siynchronized with the audio. See [`/playAndRecord`](/BRT-Documentation/osc/overall#playandrecord) and [`/source/playAndRecord`](/BRT-Documentation/osc/source#sourceplayandrecord) for more information about the OSC commands to use this feature. these commands can also be sent by [BeRTA GUI](berta-gui.md).
+
+An example of AnnotatedReceiverAudio sofa file can be download from our [repository](https://github.com/GrupoDiana/BRTLibrary/releases).
 

@@ -129,7 +129,7 @@ nav:
       - Binaural Filter commands: osc/binaural-filter.md
     - Unity OSC Package: applications/unity-osc-package.md
     - Settings File: applications/settingsFile.md
-    - Annotated Audio: applications/annotated-audio.md
+    - Annotated Receiver Audio: applications/annotated-audio.md
   #- Examples: 
    # - Code blocks: example-code.md    
    # - Icons: example-emoji.md
