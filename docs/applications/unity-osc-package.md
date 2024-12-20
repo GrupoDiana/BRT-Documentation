@@ -4,7 +4,7 @@ This package enables the integration of a Unity scene with applications from the
 
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="/BRT-Documentation/assets/Unity_OSCPackage_communication.png" alt="OSC communication" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">OSC communication btewwen Unity and BRT Application</p>
+    <p style="text-align: center;">OSC communication between Unity and BRT Application</p>
 </div>
 
 ## Package Contents
@@ -26,9 +26,9 @@ This script sends the listener's position and orientation to the BRT renderer vi
 To use this:
 
 - Attach the script to your scene's camera object, or
-- Instantiate the `CenterEarAnchor.prefab`.
+- Instantiate our prefab (`CenterEarAnchor.prefab`) in the scene, as a child of a camera object.
 
-The following image illustrates how the previously described scripts appear in the Unity Inspector.
+For the scripts described above to work, they must be added to the same object, as illustrated in the following image.
 
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="/BRT-Documentation/assets/scripts.png" alt="Scripts impoted in Unity." style="display: block; margin: 0 auto;">
