@@ -18,7 +18,7 @@ The internal block diagram of this class is as follows:
     <p style="text-align: center;">Listener HRTF Model Internal diagram.</p>
 </div>
 
-The operation of the convolucionator as well as its block diagram can be seen in this link (:warning:URL).
+<!--The operation of the convolucionator as well as its block diagram can be seen in this link (:warning:URL).-->
 
 ## Configuration Options
 
@@ -29,12 +29,12 @@ This model allows configuration by calling its methods or by BRT internal comman
 - **Spatialization (on/off)**: Transparent when off.
 - **Interpolation (on/off)**: When switched on, HRIRs and delays are calculated at the exact position (relative source-listener position). For this purpose, barycentric interpolation is performed, starting from the three closest points. When it is switched off, the HRIR and delay with the closest position are chosen.
 - **Near Field Compensation (on/off)**: The near field correction is applied when on. 
-- **ITD Simulation (on/off)**: When activated, a separate delay is added to each ear to simulate the interaural time difference[^1]. This delay is provided by the HRTF service module and may be provided in the SOFA structure or will be calculated from the head size, for more information see (:warning:URL). When off, it does not simulate interaural time difference. 
+- **ITD Simulation (on/off)**: When activated, a separate delay is added to each ear to simulate the interaural time difference[^1]. This delay is provided by the HRTF service module and may be provided in the SOFA structure or will be calculated from the head size, for more information see [HRTF Service Module](../../service-modules/service-hrtf.md). When off, it does not simulate interaural time difference. 
 - **Parallax Correction (on/off)**: When it is switched on, a cross-ear parallax correction is apllied. This correction is based on calculating the projection of the vector from the ear to the source on the HRTF sphere (i.e. the sphere on the surface of which the HRTF was measured), giving a more accurate rendering, especially for near-field and far-field sound sources. When deactivated, the calculation is based on the centre of the listener's head.
 - **HRTF to be used**: The HRTF service module to be used for rendering. The system supports dynamic, hot-swapping of the service module being used.
 - **Nearfield filter (SOS filter) to be used**: The SOS filter service module to be used for rendering. The system supports dynamic, hot-swapping of the service module being used.
 
-[^1]: To perform the convolution task correctly, avoiding comb filters, it is necessary that the delays of the impulse responses have been removed, for more information see (:warning:URL).
+[^1]: To perform the convolution task correctly, avoiding comb filters, it is necessary that the delays of the impulse responses have been removed, for more information see [HRTF Service Module](../../service-modules/service-hrtf.md).
 ## Connections
 Modules to which it supports connections: 
 
