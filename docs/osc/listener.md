@@ -1,4 +1,4 @@
-In this section, we describe the various OSC commands used to control the listener. These commands not only manage basic parameters like position and orientation but also define the models applied for simulation. These models come with a range of controllable parameters and can simulate either just the listener’s head through a Head-Related Transfer Function (HRTF), or include the surrounding environment using a Binaural Room Impulse Response (BRIR), as the BRIR models the combined impulse response of a head situated within a room. See [listener models](/BRT-Documentation/library/listener/models) for more information.
+In this section, we describe the various OSC commands used to control the listener. These commands not only manage basic parameters like position and orientation but also define the models applied for simulation. These models come with a range of controllable parameters and can simulate either just the listener’s head through a Head-Related Transfer Function (HRTF), or include the surrounding environment using a Binaural Room Impulse Response (BRIR), as the BRIR models the combined impulse response of a head situated within a room. See [listener models](../library/listener-models/index.md) for more information.
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -60,11 +60,11 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/listener/or
 
 ## `/listener/setHRTF`
 
-Sets an HRTF using the HRTF id. The HRTF should be load previously using the command `/resources/loadHRTF`. After set the HRTF the command `listener/enableSpatialization` is called automatically. The HRTF is assigned to all the listener models which may accept it. See [listener models](/BRT-Documentation/library/listener/models) for more information. Currently, these are the Listener models accepting it:
+Sets an HRTF using the HRTF id. The HRTF should be load previously using the command `/resources/loadHRTF`. After set the HRTF the command `listener/enableSpatialization` is called automatically. The HRTF is assigned to all the listener models which may accept it. See [listener models](../library/listener-models/index.md) for more information. Currently, these are the Listener models accepting it:
 
-* [Listener Model based on Direct Convolution with HRTF](/BRT-Documentation/library/listener/directHRTF). 
+* [Listener Model based on Direct Convolution with HRTF](../library/listener-models/hrtf-models/listener-acoustic-model-hrtf.md). 
 
-* [Listener Model based on convolution with HRTF in the Ambisonic domain](/BRT-Documentation/library/listener/ambisonicHRTF)
+* [Listener Model based on convolution with HRTF in the Ambisonic domain](../library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf.md)
 
 
 #### Syntax
@@ -95,11 +95,11 @@ BeRTA sends back to the sender: `/control/actionResult /listener/setHRTF default
 
 ## `/listener/setBRIR`
 
-Sets a BRIR using the BRIR id. The BRIR should be loaded previously using the command `/resources/loadBRIR`. After receiving this command `listener/enableSpatialization` is called automatically. The BRIR is assigned to all the models linked to the listener which may accept it. See the [Listener+Environment models](/BRT-Documentation/library/environment/rirModels) based on Room Impulse Responses for more infortmation. These models currently are:
+Sets a BRIR using the BRIR id. The BRIR should be loaded previously using the command `/resources/loadBRIR`. After receiving this command `listener/enableSpatialization` is called automatically. The BRIR is assigned to all the models linked to the listener which may accept it. See the [Listener+Environment models](../library/listener-models/rir-models/index.md) based on Room Impulse Responses for more infortmation. These models currently are:
 
-* [Listener + Environment Model based on Direct Convolution with BRIR](/BRT-Documentation/library/environment/directBRIR). 
+* [Listener + Environment Model based on Direct Convolution with BRIR](../library/listener-models/rir-models/listener-acoustic-environment-model-brir.md). 
 
-* [Listener + Environment Model based on convolution with BRIR in the Ambisonic domain](/BRT-Documentation/library/environment/ambisonicBRIR)
+* [Listener + Environment Model based on convolution with BRIR in the Ambisonic domain](../library/listener-models/rir-models/listener-acoustic-environment-model-ambisonic-brir.md)
 
 #### Syntax
 
@@ -131,9 +131,9 @@ BeRTA sends back to the sender: `/control/actionResult /listener/BRIR1 defaultLi
 
 Sets a set of filters for the Near Field Compensation to be applied afgter the convolution with the HRTF. The filters are identified by an id, which was defined when they were previously loaded using the command `/resources/loadSOSFilters`. The NFC filters are assigned to all the models linked to the listener which may accept it. These currently are:
 
-* [Listener Model based on Direct Convolution with HRTF](/BRT-Documentation/library/listener/directHRTF). 
+* [Listener Model based on Direct Convolution with HRTF](../library/listener-models/hrtf-models/listener-acoustic-model-hrtf.md). 
 
-* [Listener Model based on convolution with HRTF in the Ambisonic domain](/BRT-Documentation/library/listener/ambisonicHRTF)
+* [Listener Model based on convolution with HRTF in the Ambisonic domain](../library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf.md)
 
 #### Syntax
 
@@ -160,10 +160,40 @@ BeRTA sends back to the sender: `/control/actionResult /listener/setSOSFilters d
 <!----------------------------------------------------------------------------------->
 ---
 
+## `/listener/enableSpatialization`
+
+ In the case of a [Listener Model based on Direct Convolution with HRTF](../library/listener-models/hrtf-models/listener-acoustic-model-hrtf.md) and [Listener Model based on BRIR](../library/listener-models/rir-models/listener-acoustic-environment-model-brir.md), this command switch on or off the simulation of the spatial audio. In case it is off, the sound is played without spatialization.
+
+#### Syntax
+
+`/listener/enableSpatialization <string listener_id> <boolean enable>`
+
+`listener_id`: identifier assigned to the listener.
+
+`enable`: If true (1), enables spatilization for the listener. If false (0), spatilization is disabled.
+
+#### Return
+
+`/control/actionResult /listener/enableSpatialization <string listener_id> <bool enable> <string description>`
+
+The return confirmation refers to the `listener_id`, indicating `enable=true` if the spatialization has been enabled and `enable=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender:`/listener/enableSpatialization DefaultListener true`
+
+BeRTA sends back to the sender: `/control/actionResult /listener/enableSpatialization defaultListener true "Spatialization enabled"`
+
+
+<!----------------------------------------------------------------------------------->
+---
+
 
 ## `/listener/enableInterpolation`
 
-In the case of a [Listener Model based on Direct Convolution with HRTF](/BRT-Documentation/library/listener/directHRTF), this command switch on or off the interpolation among HRIRs. In case it is on, a barycentric interpolation is applied among the three nearest HRIRs surrounding the source direction of arrival. See [HRTF grids]() for more information. If there are several models based on direct convolution with HRTF linked to the listener, this command will affect all of them.
+IIn the case of a [Listener Model based on Direct Convolution with HRTF](../library/listener-models/hrtf-models/listener-acoustic-model-hrtf.md) and [Listener Model based on BRIR](../library/listener-models/rir-models/listener-acoustic-environment-model-brir.md), this command switch on or off the interpolation among HRIRs. In case it is on, a barycentric interpolation is applied among the three nearest HRIRs surrounding the source direction of arrival. See [HRTF grids]() for more information. If there are several models based on direct convolution with HRTF linked to the listener, this command will affect all of them.
 
 #### Syntax
 
@@ -195,9 +225,9 @@ BeRTA sends back to the sender: `/control/actionResult /listener/enableInterpola
 
 This command switches on or off the  Near Field Compensation (NFC) applied together with the convolution with the HRTF. For the NFC to work, a set of NFC filters must first be loaded from a SOFA file (`/resources/loadNFCFilters`) and then assigned to the listener model (`/listener/setNFCFilters`). If there are several models with the NFC feature linked to the listener, this command will affect all of them. The models with this feature currently are:
 
-* [Listener Model based on Direct Convolution with HRTF](/BRT-Documentation/library/listener/directHRTF). 
+* [Listener Model based on Direct Convolution with HRTF](../library/listener-models/hrtf-models/listener-acoustic-model-hrtf.md). 
 
-* [Listener Model based on convolution with HRTF in the Ambisonic domain](/BRT-Documentation/library/listener/ambisonicHRTF)
+* [Listener Model based on convolution with HRTF in the Ambisonic domain](../library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf.md)
 
 #### Syntax
 
@@ -230,9 +260,9 @@ BeRTA sends back to the sender: `/control/actionResult /listener/enableNearField
 
 This command switches on or off the simulation of ITD separate from the intrinsic ITD which could be included as initial delays in HRIRs. For the ITD simnulation to make sense, HRIRs stored in the HRTF SOFA file should be aligned. Then the ITD can be extracted from the initial delays stored in the Data.Delay field of the SOFA structure. However, the ITD simulation can also use a spherical head modelto sintesize ITD. See also the commands `/resources/enableWoodworthITD` and `/resources/setHRTFHeadRadius` for more information. If there are several models with the ITD simulation feature, this command will affect all of them. The models with this feature currently are:
 
-* [Listener Model based on Direct Convolution with HRTF](/BRT-Documentation/library/listener/directHRTF). 
+* [Listener Model based on Direct Convolution with HRTF](../library/listener-models/hrtf-models/listener-acoustic-model-hrtf.md). 
 
-* [Listener Model based on convolution with HRTF in the Ambisonic domain](/BRT-Documentation/library/listener/ambisonicHRTF)
+* [Listener Model based on convolution with HRTF in the Ambisonic domain](../library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf.md)
 
 #### Syntax
 
@@ -265,9 +295,9 @@ BeRTA sends back to the sender: `/control/actionResult /listener/enableITD Defau
 
 This command switches on or off the parallax correction used to calculate the direction of arrival to each of the two ears. To do so, the head radius is needed and it is taken from the HRTF SOFA file or the radius provided by the `/resources/setHRTFHeadRadius` command. If there are several models with this parallax correction feature, this command will affect all of them. The models with this feature currently are:
 
-* [Listener Model based on Direct Convolution with HRTF](/BRT-Documentation/library/listener/directHRTF). 
+* [Listener Model based on Direct Convolution with HRTF](../library/listener-models/hrtf-models/listener-acoustic-model-hrtf.md). 
 
-* [Listener Model based on convolution with HRTF in the Ambisonic domain](/BRT-Documentation/library/listener/ambisonicHRTF)
+* [Listener Model based on convolution with HRTF in the Ambisonic domain](../library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf.md)
 
 #### Syntax
 
@@ -298,7 +328,7 @@ BeRTA sends back to the sender: `/control/actionResult /listener/enableParallaxC
 
 ## `/listener/enableModel`
 
-This command switches on or off a listener model. When a listener model is disabled it does not process the input signal and provides silence at its output. This feature must be implemented in all listener models. The listener model to be enabled or disabled is didentified by an identifier defined in the used [settings file](/BRT-Documentation/setup/settingsFile).
+This command switches on or off a listener model. When a listener model is disabled it does not process the input signal and provides silence at its output. This feature must be implemented in all listener models. The listener model to be enabled or disabled is didentified by an identifier defined in the used [settings file](../applications/settingsFile.md).
 
 #### Syntax
 
@@ -331,9 +361,9 @@ BeRTA sends back to the sender: `/control/actionResult /listener/enableModel Dir
 
 Sets the order of the Ambisonic encoding used by the listener model. The listener model is didentified by an identifier defined in the used [settings file](/BRT-Documentation/setup/settingsFile). This command can be only used with models based on Ambisonics. If it is referred to a different model it will be ignored. The models with this feature currently are:
 
-* [Listener Model based on convolution with HRTF in the Ambisonic domain](/BRT-Documentation/library/listener/ambisonicHRTF)
+* [Listener Model based on convolution with HRTF in the Ambisonic domain](../library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf.md)
 
-* [Listener + Environment Model based on convolution with BRIR in the Ambisonic domain](/BRT-Documentation/library/environment/ambisonicBRIR)
+* [Listener + Environment Model based on convolution with BRIR in the Ambisonic domain](../library/listener-models/rir-models/listener-acoustic-environment-model-ambisonic-brir.md)
 
 #### Syntax
 
@@ -364,11 +394,11 @@ BeRTA sends back to the sender: `/control/actionResult /listener/setAmbisonicsOr
 
 ## `/listener/setAmbisonicsNormalization`
 
-Sets the normalization type used in the Ambisonic encoding used by the listener model. The listener model is didentified by an identifier defined in the used [settings file](/BRT-Documentation/setup/settingsFile). This command can be only used with models based on Ambisonics. If it is referred to a different model it will be ignored. The models based on Ambisonics currently are:
+Sets the normalization type used in the Ambisonic encoding used by the listener model. The listener model is didentified by an identifier defined in the used [settings file](../applications/settingsFile.md). This command can be only used with models based on Ambisonics. If it is referred to a different model it will be ignored. The models based on Ambisonics currently are:
 
-* [Listener Model based on convolution with HRTF in the Ambisonic domain](/BRT-Documentation/library/listener/ambisonicHRTF)
+* [Listener Model based on convolution with HRTF in the Ambisonic domain](../library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf.md)
 
-* [Listener + Environment Model based on convolution with BRIR in the Ambisonic domain](/BRT-Documentation/library/environment/ambisonicBRIR)
+* [Listener + Environment Model based on convolution with BRIR in the Ambisonic domain](../library/listener-models/rir-models/listener-acoustic-environment-model-ambisonic-brir.md)
 
 #### Syntax
 
