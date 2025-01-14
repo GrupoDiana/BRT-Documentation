@@ -5,6 +5,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 ### OSC Control Commands 
 
+- [`/control/actionResult`](control.md#controlbufferframes): Retrieve the result of the action performed in another application after receiving an OSC command.
 - [`/control/bufferFrames`](control.md#controlbufferframes): Query the number of buffered audio frames.
 - [`/control/connect`](control.md#controlconnect): Establish a connection with an IP and port.
 - [`/control/disconnect`](control.md#controldisconnect): Terminate the connection and unsubscribe from updates.
@@ -12,6 +13,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/control/ping`](control.md#controlping): Check if BeRTA is listening by sending an echo.
 - [`/control/sampleRate`](control.md#controlsamplerate): Request the current audio sample rate.
 - [`/control/version`](control.md#controlversion): Retrieve the current BeRTA version.
+
 
 ### OSC Overall Commands 
 

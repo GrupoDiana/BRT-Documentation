@@ -188,7 +188,7 @@ Command received when an action has been carried out from the application (trigg
 
 #### Syntax
 
-`/control/actionResult <actionCommand> <string id> <bool success> <string description>`
+`/control/actionResult <string actionCommand> <string id> <bool success> <string description>`
 
 
 #### Example
