@@ -195,5 +195,132 @@ Command received when an action has been carried out from the application (trigg
 
 BeRTA receives: `/control/actionResult /resources/removeHRTF HRTF1 true HRTF HRTF1 removed`
 
+<!----------------------------------------------------------------------------------->
+---
 
+## `/control/playCalibration `
 
+Start the calibration process by playing an audio file at the dBFS volume specified in the parameter.
+
+#### Syntax
+
+`/control/playCalibration <float dBFS>`
+
+#### Return 
+
+`/control/actionResult /control/playCalibration <string actionName> <boolean success> <string description>`. 
+
+The return confirmation refers to the action `calibration`, indicating `success=true` if the calibration has been successfully performed and `success=false` if not. In both cases a `description` is added to give more details. 
+
+#### Example
+
+BeRTA receives: `/control/playCalibration -40`
+
+BeRTA sends back to the sender: `/control/actionResult /control/playCalibration calibration true "Calibration sound played"`. 
+
+<!----------------------------------------------------------------------------------->
+---
+
+## `/control/setCalibration`
+
+Set the calibration values using the dBFS playback volume and the dBSPL output level measured in the headphones, both specified in the parameters. For more details, refer to the calibration section.
+
+#### Syntax
+
+`/control/setCalibration <float dBFS> <float dBSPL>`
+
+#### Return 
+
+`/control/actionResult /control/setCalibration <string actionName> <boolean success> <string description>`. 
+
+The return confirmation refers to the action `calibrationDone`, indicating `success=true` if the calibration has been successfully performed and `success=false` if not. In both cases a `description` is added to give more details. 
+
+#### Example
+
+BeRTA receives: `/control/setCalibration -40 60`
+
+BeRTA sends back to the sender: `/control/actionResult /control/setCalibration calibrationDone true "Calibration done with -40 dB FS and 60 dB SPL."`. 
+
+<!----------------------------------------------------------------------------------->
+---
+
+## `/control/playCalibrationTest`
+
+Play the calibration test sound at a volume adjusted to match the dBSPL specified in the parameter, allowing verification with the sound level meter. See the calibration section for more details.
+
+#### Syntax
+
+`/control/playCalibrationTest <float dBFS> <float dBSPL>`
+
+#### Return 
+
+`/control/actionResult /control/playCalibrationTest <string actionName> <boolean success> <string description>`. 
+
+The return confirmation refers to the action `calibrationTest`, indicating `success=true` if the calibration has been successfully performed and `success=false` if not. In both cases a `description` is added to give more details. 
+
+#### Example
+
+BeRTA receives: `/control/playCalibrationTest 80`
+
+BeRTA sends back to the sender: `/control/actionResult /control/playCalibrationTest calibrationTest true "Calibration done with -40 dB FS and 60 dB SPL."`. 
+
+<!----------------------------------------------------------------------------------->
+---
+
+## `/control/stopCalibrationTest`
+
+Stop the calibration test sound playback.
+
+#### Syntax
+
+`/control/stopCalibrationTest`
+
+#### Return 
+
+`/control/actionResult /control/stopCalibrationTest <string actionName> <boolean success> <string description>`. 
+
+The return confirmation refers to the action `calibrationTest`, indicating `success=true` if the stop of the calibration has been successfully performed and `success=false` if not. In both cases a `description` is added to give more details. 
+
+#### Example
+
+BeRTA receives: `/control/stopCalibrationTest`
+
+BeRTA sends back to the sender: `/control/actionResult /control/stopCalibrationTest calibrationTest true "Calibration test stopped."`. 
+
+<!----------------------------------------------------------------------------------->
+---
+
+## `/control/setSoundLevelLimit`
+
+Set the sound level limit to the dBSPL value specified in the parameter.
+
+#### Syntax
+
+`/control/setSoundLevelLimit`
+
+#### Return 
+
+`/control/actionResult /control/setSoundLevelLimit <string actionName> <boolean success> <string description>`. 
+
+The return confirmation refers to the action `calibrationTest`, indicating `success=true` if the set has been successfully performed and `success=false` if not. In both cases a `description` is added to give more details. 
+
+#### Example
+
+BeRTA receives: `/control/setSoundLevelLimit -40 60`
+
+BeRTA sends back to the sender: `/control/actionResult /control/setSoundLevelLimit calibrationTest false "ERROR Sound level limit has not been set becasuse BeRTA has not been calibrated."`. 
+
+<!----------------------------------------------------------------------------------->
+---
+
+## `/control/getSoundLevel`
+
+Get the current sound level in dBSPL.
+
+#### Syntax
+
+`/control/getSoundLevel`
+
+#### Example
+
+BeRTA receives: `/control/getSoundLevel -40 60`
