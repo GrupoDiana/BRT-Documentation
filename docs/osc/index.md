@@ -13,6 +13,12 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/control/ping`](control.md#controlping): Check if BeRTA is listening by sending an echo.
 - [`/control/sampleRate`](control.md#controlsamplerate): Request the current audio sample rate.
 - [`/control/version`](control.md#controlversion): Retrieve the current BeRTA version.
+- [`/control/playCalibration`](control.md#controlversion): Start the calibration process.
+- [`/control/setCalibration`](control.md#controlversion): Set the calibration values.
+- [`/control/playCalibrationTest`](control.md#controlversion): Play the calibration test sound at a specified volume.
+- [`/control/stopCalibrationTest`](control.md#controlversion): Stop the calibration test sound playback.
+- [`/control/setSoundLevelLimit`](control.md#controlversion): Set the sound level limit to a specified volume.
+- [`/control/getSoundLevel`](control.md#controlversion): Get the current sound level.
 
 
 ### OSC Overall Commands 
