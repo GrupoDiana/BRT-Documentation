@@ -204,7 +204,9 @@ Start the calibration process by playing an audio file at the dBFS volume specif
 
 #### Syntax
 
-`/control/playCalibration <float dBFS>`
+`/control/playCalibration <float leveldBFS>`
+
+`leveldBFS`: The signal level at which the calibration audio was played, measured in dBFS.
 
 #### Return 
 
@@ -227,7 +229,11 @@ Set the calibration values using the dBFS playback volume and the dBSPL output l
 
 #### Syntax
 
-`/control/setCalibration <float dBFS> <float dBSPL>`
+`/control/setCalibration <float leveldBFS> <float leveldBSPL>`
+
+`leveldBFS`: The signal level at which the calibration audio was played, measured in dBFS.
+
+`leveldBSPL`: The output sound level measured at the headphones (expressed in dBSPL) when the system is calibrated and delivering the dBFS specified in the leveldBFS parameter.
 
 #### Return 
 
@@ -250,7 +256,9 @@ Play the calibration test sound at a volume adjusted to match the dBSPL specifie
 
 #### Syntax
 
-`/control/playCalibrationTest <float dBFS> <float dBSPL>`
+`/control/playCalibrationTest  <float leveldBSPL>`
+
+`leveldBSPL`: The signal level (in dBSPL) measured at the headphones when reproducing the calibration audio.
 
 #### Return 
 
@@ -262,7 +270,7 @@ The return confirmation refers to the action `calibrationTest`, indicating `succ
 
 BeRTA receives: `/control/playCalibrationTest 80`
 
-BeRTA sends back to the sender: `/control/actionResult /control/playCalibrationTest calibrationTest true "Calibration done with -40 dB FS and 60 dB SPL."`. 
+BeRTA sends back to the sender: `/control/actionResult /control/playCalibrationTest calibrationTest false "ERROR BeRTA has not been calibrated yet"`. 
 
 <!----------------------------------------------------------------------------------->
 ---
@@ -292,11 +300,13 @@ BeRTA sends back to the sender: `/control/actionResult /control/stopCalibrationT
 
 ## `/control/setSoundLevelLimit`
 
-Set the sound level limit to the dBSPL value specified in the parameter.
+Set the sound level limit to the dBSPL value specified in the parameter. See the safety limitter section for more details.
 
 #### Syntax
 
-`/control/setSoundLevelLimit`
+`/control/setSoundLevelLimit <float levelLimitdBSPL>`
+
+`levelLimitdBSPL`: The maximum allowable sound level, in dBSPL, used by the limiter to ensure safe listening levels for the user.
 
 #### Return 
 
@@ -306,7 +316,7 @@ The return confirmation refers to the action `calibrationTest`, indicating `succ
 
 #### Example
 
-BeRTA receives: `/control/setSoundLevelLimit -40 60`
+BeRTA receives: `/control/setSoundLevelLimit 100`
 
 BeRTA sends back to the sender: `/control/actionResult /control/setSoundLevelLimit calibrationTest false "ERROR Sound level limit has not been set becasuse BeRTA has not been calibrated."`. 
 
@@ -315,12 +325,20 @@ BeRTA sends back to the sender: `/control/actionResult /control/setSoundLevelLim
 
 ## `/control/getSoundLevel`
 
-Get the current sound level in dBSPL.
+Get the current sound level in dBSPL for left and right channel. See the safety limitter section for more details.
 
 #### Syntax
 
 `/control/getSoundLevel`
 
+#### Return
+
+`/resources/getSoundLevel <float leftChannelSoundLevel> <float rightChannelSoundLevel>`
+
+The return message is sent back to the sender, indicating the asked sound level for the left and the right channel. 
+
 #### Example
 
-BeRTA receives: `/control/getSoundLevel -40 60`
+BeRTA receives: `/control/getSoundLevel`
+
+BeRTA sends: `/control/getSoundLevel 60 62`
