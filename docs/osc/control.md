@@ -190,7 +190,6 @@ Command received when an action has been carried out from the application (trigg
 
 `/control/actionResult <string actionCommand> <string id> <bool success> <string description>`
 
-
 #### Example
 
 BeRTA receives: `/control/actionResult /resources/removeHRTF HRTF1 true HRTF HRTF1 removed`
@@ -342,3 +341,18 @@ The return message is sent back to the sender, indicating the asked sound level 
 BeRTA receives: `/control/getSoundLevel`
 
 BeRTA sends: `/control/getSoundLevel 60 62`
+
+<!----------------------------------------------------------------------------------->
+---
+
+## `/control/soundLevelAlert`
+
+Sent when the output sound level exceeds the threshold set in the sound level limiter. This is a send-only command from BeRTA. It does not receive any parameters but triggers an alert when the limit is surpassed.
+
+#### Syntax
+
+`/control/soundLevelAlert`
+
+#### Example
+
+BeRTA sends: `/control/soundLevelAlert 60 62`
