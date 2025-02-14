@@ -328,13 +328,15 @@ Get the current sound level in dBSPL for left and right channel. See the safety 
 
 #### Syntax
 
-`/control/getSoundLevel`
+`/control/getSoundLevel <string listener_id>`
+
+`listener_id`: identifier assigned to the listener.
 
 #### Return
 
-`/resources/getSoundLevel <float leftChannelSoundLevel> <float rightChannelSoundLevel>`
+`/resources/getSoundLevel <string listener_id> <float leftChannelSoundLevel> <float rightChannelSoundLevel>`
 
-The return message is sent back to the sender, indicating the asked sound level for the left and the right channel. 
+The return confirmation refers to the `listener_id`, indicating the sound level for the left (`leftChannelSoundLevel`) and the right channel (`rightChannelSoundLevel`). 
 
 #### Example
 
