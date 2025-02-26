@@ -17,8 +17,8 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/control/setCalibration`](control.md#controlsetcalibration): Set the calibration values.
 - [`/control/playCalibrationTest`](control.md#controlplaycalibrationtest): Play the calibration test sound at a specified volume.
 - [`/control/stopCalibrationTest`](control.md#controlstopcalibrationtest): Stop the calibration test sound playback.
-- [`/control/setSoundLevelLimit`](control.md#controlsetsoundlevellimit): Set the sound level limit to a specified volume.
 - [`/control/getSoundLevel`](control.md#controlgetsoundlevel): Get the current sound level.
+- [`/control/setSoundLevelLimit`](control.md#controlsetsoundlevellimit): Set the sound level limit to a specified volume.
 - [`/control/soundLevelAlert`](control.md#controlsoundlevelalert): Alert sent when the output sound level exceeds the threshold set in the limiter. 
 
 
