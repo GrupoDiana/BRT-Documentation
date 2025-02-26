@@ -131,6 +131,7 @@ nav:
     - Settings File: applications/settingsFile.md
     - Annotated Receiver Audio: applications/annotated-audio.md
     - Calibration: applications/calibration.md
+    - Safety Limiter: applications/safety-limiter.md
   #- Examples: 
    # - Code blocks: example-code.md    
    # - Icons: example-emoji.md
