@@ -54,18 +54,13 @@ The methods provided by this service are as follows.
 <li><strong>Class name</strong>: CHRTF</li>
 <li><strong>Inheritance</strong>: CServicesBase</li>
 <li><strong>Namespace</strong>: BRTServices</li>
-<li><strong>Classes that instance</strong>:
-    <ul>
-        <li></li>
-    </ul>
-</li>
 </ul> 
 
 <h2>Class inheritance diagram</h2>
-<!-- <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/HRTFListenerModel.png" alt="Listener HRTF Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Listener HRTF Model Internal diagram.</p>
-</div> -->
+<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
+    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="HRTF Class diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">HRTF Class diagram.</p>
+</div>
 <br>
 
 <h2>How to instantiate and load</h2>
