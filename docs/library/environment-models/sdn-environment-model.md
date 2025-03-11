@@ -34,8 +34,8 @@ This model allows configuration by calling its methods or by BRT internal comman
 - **Gain (float)**: Extra gain to be applied to the model output.
 - **Direct path (on/off)**: Direct path silent when off.
 - **Reverb path (on/off)**: Reverb path silent when off.
-- **Setup ShoeBox Room (dimensions)**: Set the room geometry.
-- **Setup Room Wall Absortion (absortion)**: Set walls absortion coefficients.
+- **Setup ShoeBox Room (dimensions)**: Set the room geometry. Only shoebox rooms (six walls) are allowed for the SDN model
+- **Setup Room Wall Absortion (absortion)**: Set walls absortion coefficients. Absorptions are set for nine octave bands: 62.5Hz, 125Hz, 250Hz, 500Hz, 1KHz, 2KHz, 4KHz, 8KHz and 16KHZ
 
 
 ## Connections
