@@ -48,7 +48,89 @@ The methods provided by this service are as follows.
 
 <details>
 <summary>For C++ developer</summary>
-Section under construction
+
+<ul>
+<li><strong>File</strong>: /include/LServiceModules/HRTF.hpp</li>
+<li><strong>Class name</strong>: CHRTF</li>
+<li><strong>Inheritance</strong>: CServicesBase</li>
+<li><strong>Namespace</strong>: BRTServices</li>
+<li><strong>Classes that instance</strong>:
+    <ul>
+        <li></li>
+    </ul>
+</li>
+</ul> 
+
+<h2>Class inheritance diagram</h2>
+<!-- <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
+    <img src="/BRT-Documentation/assets/sysmldiagrams/HRTFListenerModel.png" alt="Listener HRTF Model Internal diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Listener HRTF Model Internal diagram.</p>
+</div> -->
+<br>
+
+<h2>How to instantiate and load</h2>
+
+
+```cpp
+// Assuming SOFA_FILEPATH contains the SOFA filename including the path
+std::shared_ptr<BRTServices::CHRTF> hrtf = std::make_shared<BRTServices::CHRTF>();
+bool hrtfSofaLoaded = AppUtils::LoadSofaFile(SOFA_FILEPATH, hrtf);        
+    if (!hrtfSofaLoaded) {
+        // ERROR
+    }
+```
+
+<h2>How to connect it to a listener</h2>
+
+```cpp
+// Assuming that the ID of this listener is contained in _listenerID and 
+// that the HRTF is already lsuccessfuly loaded into hrtf.
+std::shared_ptr<BRTBase::CListener> listener = brtManager->GetListener(listenerID);
+listener->SetHRTF(hrtf);
+```
+
+
+<h2>Public methods</h2>
+
+```cpp
+int32_t GetHRIRLength() const
+void SetGridSamplingStep(int _samplingStep) 
+int GetGridSamplingStep() 
+
+bool BeginSetup(int32_t _HRIRLength, BRTServices::TEXTRAPOLATION_METHOD _extrapolationMethod) override 
+void AddHRTFTable(T_HRTFTable&& newTable)
+void AddHRIR(double _azimuth, double _elevation, double _distance, Common::CVector3 listenerPosition, THRIRStruct&& newHRIR) override 
+bool EndSetup() override 
+
+void EnableWoodworthITD() 
+void DisableWoodworthITD() 
+bool IsWoodworthITDEnabled() 
+
+const std::vector<CMonoBuffer<float>> GetHRIRPartitioned(Common::T_ear ear, float _azimuth, float _elevation, bool runTimeInterpolation, const Common::CTransform& /* _listenerLocation*/ ) const override
+THRIRPartitionedStruct GetHRIRDelay(Common::T_ear ear, float _azimuthCenter, float _elevationCenter, bool runTimeInterpolation,	Common::CTransform& _listenerLocation) 
+const int32_t GetHRIRNumberOfSubfilters() const 
+const int32_t GetHRIRSubfilterLength() const override 
+bool IsHRTFLoaded()
+float GetHRTFDistanceOfMeasurement() override 
+
+void SetTitle(std::string _title) override 
+void SetDatabaseName(std::string _databaseName) override 
+void SetListenerShortName(std::string _listenerShortName) override 
+
+void SetFilename(std::string _fileName) override 
+std::string GetFilename() override 
+
+void SetHeadRadius(float _headRadius) override
+float GetHeadRadius() override 
+
+void SetEarPosition(Common::T_ear _ear, Common::CVector3 _earPosition) override 
+void SetCranialGeometryAsDefault() override 
+Common::CVector3 GetEarLocalPosition(Common::T_ear _ear) 
+
+void SetSamplingRate(int _samplingRate) 
+
+```
+
 </details>
 
 
