@@ -1,6 +1,6 @@
 <!----------------------------------------------------------------------------------->
 
-## `/source/loadSource`
+### **/source/loadSource**
 
 Adds a new source loading a sound file (wav, mp3 and aif formats supported). Adding a new source does not imply playing it back. When adding the source an ID string is associated. That ID can be used later to control the source using other OSC commands.
 
@@ -29,9 +29,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/load
 BeRTA sends back to the sender: `/control/actionResult /source/loadSource source1 true Audio source source1 loop enabled` or `/source/loadSource source1 ERROR: The audio source source1 doesn't exist.`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-## `/source/addLineIn`
+### **/source/addLineIn**
 
 Adds a new source getting it from an audio input channel. Adding a new source does not imply playing it back. When adding the source an ID string is associated. That ID can be used later to control the source using other OSC commands.
 
@@ -61,10 +61,9 @@ BeRTA receives and echoes back to all subscribiers but the sender:`/source/addLi
 
 BeRTA sends back to the sender: `/control/actionResult /source/addLineIn source1 true AUDIO LINE-IN source1 configured succesfully` or `/source/addLineIn source1 false error: not a valid channel`
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/removeSource`
+### **/source/removeSource**
 
 Removes a sound source from the system. 
 
@@ -90,10 +89,9 @@ BeRTA receives and echoes back to all subscribiers but the sender:`/source/remov
 BeRTA sends back to the sender : `/control/actionResult /source/remove source1 true Audio source removed: source1` or `/control/actionResult /source/remove source1 false ERROR: The audio source source1 doesn't exist.`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/play`
+### **/source/play**
 
 Plays a specific source, starting to send frames to the library from either the audio file or the input channel. In the first case, it starts from the beginning of the file unless the source was previously started and a `/source/pause` command was sent before. In such case it resumes at the point it was paused. 
 
@@ -118,10 +116,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/play
 BeRTA sends back to the sender: `/control/actionResult /source/play source1 true Audio source source1 played back` 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/stop`
+### **/source/stop**
 
 Stops a specific source. In the case of a source comming from a file, this resets the source so that the next `/source/play` command will start at the beginning of the file. 
 
@@ -146,10 +143,9 @@ BeRTA receives and echoes back to all subscribiers but the sender:  `/source/sto
 BeRTA sends back to the sender: `/control/actionResult /source/stop source1 true Audio source source1 removed.`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/pause`
+### **/source/pause**
 
 Pauses a specific source. In the case of a source comming from a file, the next `/source/play` command will resume, sarting at the same point where it was paused. If the `source_id` does not exist, the command is ignored.
 
@@ -174,10 +170,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/paus
 BeRTA sends back to the sender: `/control/actionResult /source/pause source1 true Audio source source1 paused.`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/mute`
+### **/source/mute**
 
 Mutes a specific source. In the case of a source comming from a file, the application keeps getting the sound stream from the file at the same rate, but silently. The `/source/unmute` command will make the source sound again. If the `source_id` does not exist, the command is ignored.
 
@@ -201,10 +196,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/mute
 
 BeRTA sends back to the sender: `/control/actionResult /source/mute source1 true Audio source source1 muted.`
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/unmute`
+### **/source/unmute**
 
 Unmutes a specific source. In the case of a source comming from a file previously muted, the application has kept getting the sound stream from the file at the same rate, but silently. The `/source/unmute` command will make the source sound again. If the `source_id` does not exist, the command is ignored.
 
@@ -228,10 +222,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/unmu
 
 BeRTA sends back to the sender: `/control/actionResult /source/unmute source1 true Audio source source1 unmuted.`
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/solo`
+### **/source/solo**
 
 Mutes all sources but the the one indicated by this command. In the case of sources comming from files, the application keeps getting the sound stream from them at the same rate, but silently. The `/source/unsolo` command will make all the sources sound again. Individual commands `/source/unmute` addressed to those sources muted as a consecuence of an `/source/solo`command will have the same effect making them sound again. If the `source_id` does not exist, the command is ignored.
 
@@ -255,10 +248,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/solo
 
 BeRTA sends back to the sender:  `/control/actionResult /source/solo source1 true Audio source source1 playing solo.`
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/unsolo`
+### **/source/unsolo**
 
 Unmutes all sources but the the one indicated by this command. If the `source_id` does not exist, the command is ignored.
 
@@ -283,9 +275,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/unso
 BeRTA sends back to the sender:  `/control/actionResult /source/unsolo source1 true All audio sources unmuted.`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-## `/source/loop`
+### **/source/loop**
 
 Sets loop mode for the identified source. If loop mode is enabled, when reaching the end, the source will start again. If loop mode is disabled, when reaching the end, the source will stop.
 
@@ -312,9 +304,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/loop
 BeRTA sends back to the sender: `/control/actionResult /source/loop source1 true Audio source source1 enabled.`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-## `/source/location`
+### **/source/location**
 
 Set location of source. Position is set in global x,y,z coordinates, expressed in meters. The new location is sent to all remotes except the one has sent the message.
 
@@ -341,10 +333,9 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 BeRTA receives and echoes back to all subscribiers but the sender: `/source/location source1 2 0 0`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/orientation`
+### **/source/orientation**
 
 Set orientation of the source. Orientation is set in egocentric coordinates yaw, pitch and roll, expressed in radians and applied in that order (Yaw, Pitch and Roll). An orinetation of (0, 0, 0) corresponds to be oriented towards positive X. The new orientation is sent to all remotes except the one has sent the message.
 
@@ -371,10 +362,9 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 BeRTA receives and echoes back to all subscribiers but the sender: `/source/orientation source1 0 0 0`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/gain`
+### **/source/gain**
 
 Sets source gain in dB. 0 dB indicates that the source is kept as it is read from the file or the input channel.
 
@@ -401,10 +391,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/gain
 BeRTA sends back to the sender: `/control/actionResult /source/gain source1 -3 true Audio source source1 gain updated to -3 dB`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/enableDirectivity`
+### **/source/enableDirectivity**
 
 Switch on or off the directivity of the source. For directivity to work, a DirectivityTF must first be loaded from a SOFA file (`/resources/loadDirectivityTF`) and then assigned to the source (`/source/setDirectivity`).
 
@@ -431,10 +420,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/enab
 BeRTA sends back to the sender: `/control/actionResult /source/enableDirectivity source1 true Audio source source1 directivity enabled`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/setDirectivity`
+### **/source/setDirectivity**
 
 Assigns a directivity which has been previously loaded using the command `/resources/loadDirectivityTF`. 
 
@@ -461,10 +449,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/setD
 BeRTA sends back to the sender: `/control/actionResult /source/setDirectivityTF DirectivityTF1 true DirectivityTF: DirectivityTF1 has been set to SoundSource: source1`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/source/playAndRecord`
+### **/source/playAndRecord**
 
 Records a file of the specified duration with the delivered binaural sound and all the spatial information of one source and listener (location and orientation). The sound corresponds to the playback of this source from the beginning. The  file includes the structure needed to create a SOFA file with the new [AnnotatedReceiverAudio](https://www.sofaconventions.org/mediawiki/index.php/AnnotatedReceiverAudio) convention
 
@@ -496,5 +483,5 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/source/play
 BeRTA sends back to the sender: `/control/actionResult /source/playAndRecord source1 true "Recording completed. File saved: C:/tmp/testingRecord`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 

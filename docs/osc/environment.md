@@ -4,7 +4,7 @@ This section covers the OSC commands responsible for /controlling the environmen
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
 
 ## `/environment/enableModel`
@@ -34,10 +34,10 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/environment
 BeRTA sends back to the sender: `/control/actionResult /environment/enableModel SDN true "Environment model SDN enabled".`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
 
-## `/environment/setShoeBoxRoom`
+### **/environment/setShoeBoxRoom**
 
 Sets up a shoebox room with six walls (four walls, plus floor and ceiling). The six walls are automatically created with the centre of the room at 0, 0, 0.  The following ID are assigned for each wall: 
 
@@ -80,10 +80,10 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/environment
 BeRTA sends back to the sender: `/control/actionResult /environment/setShoeBoxRoom SDN true "ShoeBox Room set to SDN (Length, Width, Height): [6, 8, 3]"`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
 
-## `/environment/setWallAbsorption`
+### **/environment/setWallAbsorption**
 
 Sets the absorption coeficients of a wall. These can be frequency independent, expressed with just one number between 0 and 1, or frequency dependent, expressed in thac case with nine numbers with absorptions corresponding to 62.5Hz, 125Hz, 250Hz, 500Hz, 1KHz, 2KHz, 4KHz, 8KHz and 16KHz.
 
@@ -132,9 +132,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `environment/
 BeRTA sends back to the sender: `/control/actionResult /environment/setWallAbsorption SDN true "Wall absortion set to SDN, wall 0 : [0.1, ...]"`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-## `/environment/enableDirectPath`
+### **/environment/enableDirectPath**
 
 This command switches on or off the virtual source coresponding to the direct path, which actually is not virtual, but the real one. Disabling it will produce silence at its output. This feature can be implemented in all environment models. 
 
@@ -162,10 +162,10 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/environment
 BeRTA sends back to the sender: `/control/actionResult /environment/enableDirectPath SDN true "Environment model SDN Direct path enabled"`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
 
-## `/environment/enableReverbPath`
+### **/environment/enableReverbPath**
 
 This command switches on or off all the virtual sources but the one of the direct path, which actually is not virtual. Disabling them will produce silence at all their outputs. This feature can be implemented in all environment models. 
 
@@ -194,10 +194,10 @@ BeRTA sends back to the sender: `/control/actionResult /environment/enableReverb
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
 
-## `/environment/enablePropagationDelay`
+### **/environment/enablePropagationDelay**
 
 This command enables or disables the simulation of propagation delay throughout the entire environment, allowing users to control whether or not the system accounts for delays in signal propagation during audio rendering. 
 
@@ -226,9 +226,9 @@ BeRTA sends back to the sender: `/control/actionResult /environment/enablePropag
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-## `/environment/enableDistanceAttenuation`
+### **/environment/enableDistanceAttenuation**
 
 This command enables or disables the simulation of distance throughout the entire environment, which consists of applying a global attenuation, where doubling the distance between the source and the listener reduces the sound level by a predefined attenuation value.
 
@@ -257,4 +257,4 @@ BeRTA sends back to the sender: `/control/actionResult /environment/enableDistan
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">

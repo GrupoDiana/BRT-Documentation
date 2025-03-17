@@ -1,6 +1,6 @@
 <!----------------------------------------------------------------------------------->
 
-## `/resources/loadHRTF`
+### **/resources/loadHRTF**
 
 Loads a new HRTF in a SOFA file from the specified path and assign an identifier to it. If there is already another HRTF with the same identifier, it is substituted by the new one. The SOFA file must use FIR or FIR-E as data type but can follow any convention using these data types. When loading, the HRTF is spatially resampled to fit the [HRTF grids](). This way the real time processor can get fast enough the three HRIRs to be interpolated and convolved.
 
@@ -30,10 +30,9 @@ BeRTA sends back to the sender: `/control/actionResult /resources/loadHRTF HRTF1
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/removeHRTF`
+### **/resources/removeHRTF**
 
 Removes an HRTF from the loaded resources. 
 
@@ -58,10 +57,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/resources/r
 BeRTA sends back to all subscribers: `/control/actionResult /resources/removeHRTF HRTF1 true HRTF HRTF1 removed` or `/control/actionResult /resources/removeHRTF HRTF1 false error: HRTF not found in the list`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/getHRTFInfo`
+### **/resources/getHRTFInfo**
 
 Gets some information about one of the loaded HRTFs. this information consists of the filename and the spatial resolution used to resample it in the [HRTF grid]().
 #### Syntax
@@ -83,10 +81,9 @@ BeRTA receives: `/resources/getHRTFInfo HRTF1`
 BeRTA sends back: `/resources/getHRTFInfo HRTF1 hrtf.sofa 5` 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/setHRTFHeadRadius`
+### **/resources/setHRTFHeadRadius**
 
 Sets the head radius to be stored into the HRTF. This value affects: (1) the position of the ears used in the parallax correction when getting HRIRs; and (2) the calculation of the ITD when using the simulation based on the Woodworth formula whcih is activated or deactivated by the `/resources/enableWoodworthITD` command. If this command is not received, the position of receivers in the HRTF SOFA file is used as the default value. See `/resources/restoreHRTFHeadRadius` as a related command.
 
@@ -115,10 +112,9 @@ BeRTA sends back to the sender: `/control/actionResult /resources/setHRTFHeadRad
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/getHRTFHeadRadius`
+### **/resources/getHRTFHeadRadius**
 
 Gets the head radius of one of the HRTFs loaded as a resource. 
 
@@ -139,10 +135,10 @@ BeRTA receives: `/resources/getHRTFHeadRadius HRTF1`
 BeRTA sends back to the sender: `/resources/getHRTFHeadRadius HRTF1 0.09` 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
 
-## `/resources/restoreHRTFHeadRadius`
+### **/resources/restoreHRTFHeadRadius**
 
 Sets the head radius of the HRTF to the one stored in the SOFA file as the position of receivers. This value affects: (1) the position of the ears used in the parallax correction when getting HRIRs; and (2) the calculation of the ITD when using the simulation based on the Woodworth formula whcih is activated or deactivated by the `/resources/enableWoodworthITD` command. 
 
@@ -169,10 +165,9 @@ BeRTA sends back to the sender: `/control/actionResult /resources/restoreHRTFHea
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/enableWoodworthITD`
+### **/resources/enableWoodworthITD**
 
 Enables or disables the calculation of the ITD based on the Woodworth formula, considering head radius, or it is extracted from the delays in the HRTF SOFA file. The Woodworth formula needs the head radius set by commands `/resources/setHRTFHeadRadius` and `/resources/restoreHRTFHeadRadius`. By default, the use of the Woodworth formula is disabled.
 #### Syntax
@@ -200,10 +195,9 @@ BeRTA sends back to the sender: `/control/actionResult /resources/enableWoodwort
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/loadDirectivityTF`
+### **/resources/loadDirectivityTF**
 
 Loads a new Directivity Transfer Function in a SOFA file from the specified path and assign an identifier to it. If there is already another Directivity with the same identifier, it is substituted by the new one. The SOFA file must use TF as data type with the same number of frequency bins as the frame size configured in BeRTA. When loading, the DirectivityTF is spatially resampled to fit the [BRT grids](). This way the real time processor can get fast enough the three Directivities to be interpolated and convolved.
 
@@ -234,10 +228,9 @@ BeRTA sends back to the sender: `/control/actionResult /resources/loadDirectivit
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/removeDirectivityTF`
+### **/resources/removeDirectivityTF**
 
 Removes a Directivity Transfer Function from the loaded resources. 
 
@@ -262,10 +255,9 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/resources/r
 BeRTA sends back to the sender: ` /control/actionResult /resources/removeDirectivityTF directivityTF1 true DirectivityTF directivityTF1 removed` or `/control/actionResult /resources/removeDirectivityTF directivityTF1 false ERROR deleting DirectivityTF.  directivityTF1 not found in the list`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/getDirectivityTFInfo`
+### **/resources/getDirectivityTFInfo**
 
 Gets some information about one of the loaded Directivity Transfer Functions. This information consists of the filename and the spatial resolution used to resample it in the [BRT grid]().
 #### Syntax
@@ -287,10 +279,9 @@ BeRTA receives: `/resources/getDirectivityTFInfo directivityTF1`
 BeRTA sends back: `/resources/getDirectivityTFInfo directivityTF1 directivityTF.sofa 15` 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/loadSOSFilters`
+### **/resources/loadSOSFilters**
 
 Loads a new set of Second Order Section (SOS) filters in a SOFA file from the specified path and assign an identifier to it. If there is already another set of SOS filters with the same identifier, it is substituted by the new one. The SOFA file must use SOS as data type. 
 
@@ -318,10 +309,9 @@ BeRTA sends back to the sender: `/control/actionResult /resources/loadSOSFilters
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/removeSOSFilters`
+### **/resources/removeSOSFilters**
 
 Removes a set of Near Field Compensation (NFC) filters from the loaded resources. 
 
@@ -346,10 +336,10 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/resources/r
 BeRTA sends back to the sender: `/control/actionResult /resources/removeSOSFilters SOSF1 true SOSF1 removed from the list` or `/control/actionResult /resources/removeSOSFilters SOSF1 false ERROR deleting SOS Filters.  SOSF1 not found in the SOS Filters list`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
 
-## `/resources/getSOSFiltersInfo`
+### **/resources/getSOSFiltersInfo**
 
 Gets some information about one of the loaded set of Near Field Compensation (NFC) filters. This information consists of the name of the file from which it was loaded.
 #### Syntax
@@ -371,10 +361,9 @@ BeRTA receives: `/resources/getSOSFiltersInfo NFCF1`
 BeRTA sends back: `/resources/getSOSFiltersInfo NFCF1 NFCFilters.sofa` 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/loadBRIR`
+### **/resources/loadBRIR**
 
 Loads a new Binaural Room Impulse Response (BRIR) from a SOFA file at the specified path and assign an identifier to it. If there is already another BRIR with the same identifier, it is substituted by the new one. The SOFA file must use FIR or FIR-E as data type but can follow any convention using these data types. When loading, the HRTF is spatially resampled to fit the [BRT grids](). 
 
@@ -406,10 +395,9 @@ BeRTA sends back to the sender: `/control/actionResult /resources/loadBRIR BRIR1
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/removeBRIR`
+### **/resources/removeBRIR**
 
 Removes a Binaural Room Impulse Response (BRIR) from the loaded resources. 
 
@@ -434,10 +422,9 @@ BeRTA receives and echoes back to all subscribiers but the sender:`/resources/re
 BeRTA sends back to all subscribers: `/control/actionResult /resources/removeBRIR BRIR1 true BRIR BRIR1 removed` or just to the sender: `/control/actionResult /resources/removeBRIR BRIR1 false ERROR deleting BRIR.  BRIR1 not found in the list`
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-
-## `/resources/getBRIRInfo`
+### **/resources/getBRIRInfo**
 
 Gets some information about one of the loaded Binaural Room Impulse Response (BRIR). This information consists of the name of the file from which it was loaded, the spatial resolution and all the parameters of the window with which the BRIR is windowed.
 
@@ -460,5 +447,5 @@ BeRTA receives: `/resources/getBRIRInfo BRIR1`
 BeRTA sends back: `/resources/getBRIRInfo BRIR1 BRIR.sofa 15 0.005 0.001 0.5 0.01` 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 

@@ -2,7 +2,8 @@ The OSC control commands allow to establish and manage connections with BeRTA ov
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
-## `/control/connect`
+
+### **/control/connect**
 
 Open an OSC connection to the indicated IP and port to send the information back. After opening the communicating the following response is sent back: same command with the IP and listening port of BeRTA. Once the connection is stablished, the sender is considered as a suscriber to all the updates which berta sends back.
 
@@ -28,13 +29,14 @@ BeRTA sends back to the sender: `/control/connect localhost 10017`.
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
-## `/control/disconnect`
+
+### **/control/disconnect**
 
 Stops the communication through which BeRTA sent information back. This is equivalent to unsibscribe the sender from updates sent back by BrRTA. When this message is received the same message is sent back.
 
 #### Syntax
 
-`/control/disconnect`. 
+`/control/disconnect`
 
 #### Return
 
@@ -49,13 +51,13 @@ BeRTA sends back to the sender: `/control/disconnect`.
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-## `/control/ping`
+### **/control/ping**
 
 Responds with the same message to indicate that BeRTA is listening to the external app. 
 
 #### Syntax
 
-`/control/ping`. 
+`/control/ping`
 
 #### Return
 
@@ -69,13 +71,14 @@ BeRTA sends back to the sender: `/control/ping`.
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
-## `/control/version`
+
+### **/control/version**
 
 Responds with a message to indicate the version of BeRTA. 
 
 #### Syntax
 
-`/control/version`. 
+`/control/version`
 
 #### Return
 
@@ -90,13 +93,14 @@ BeRTA sends back to the sender: `/control/version BeRTA-Renderer v3.0.0`.
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
-## `/control/sampleRate`
+
+### **/control/sampleRate**
 
 Asks for the sample rate which BeRTA is using. This parameter is defined in the used [settings file](/BRT-Documentation/setup/settingsFile).
 
 #### Syntax
 
-`/control/sampleRate`. 
+`/control/sampleRate`
 
 #### Return
 
@@ -106,20 +110,21 @@ An echo is sent back to the sender including the sample rate: `/control/sampleRa
 
 #### Example
 
-BeRTA receives: `/control/sampleRate`.
+BeRTA receives: `/control/sampleRate`
 
 BeRTA sends back to the sender: `/control/sampleRate 48000`. 
 
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
-## `/control/frameSize`
+
+### **/control/frameSize**
 
 Asks for the size of the audio frame which BeRTA is using. This parameter is defined in the used [settings file](/BRT-Documentation/setup/settingsFile).
 
 #### Syntax
 
-`/control/frameSize`. 
+`/control/frameSize`
 
 #### Return
 
@@ -137,12 +142,12 @@ BeRTA sends back to the sender: `/control/frameSize 512`.
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-## `/control/bufferFrames`
+### **/control/bufferFrames**
 Asks for the number of audio frames that are stored in the buffer to prevent audio dropout or system failure due to frame underrun. Since the operating system is not real-time, there can be instances where it prioritizes other tasks, potentially delaying the provision of a new audio frame. By setting an adequate buffer size, the system ensures continuous audio playback, even if the operating system momentarily allocates resources to higher-priority processes. This buffer acts as a safeguard against timing inconsistencies, allowing the audio processing thread to retrieve preloaded frames, maintaining uninterrupted audio output. However, as a trade-off, increasing the number of buffered frames results in higher system latency. To minimize latency, this parameter should be set to 0, which eliminates buffering but requires the system to deliver new audio frames in real time without delay. This parameter is defined in the used [settings file](/BRT-Documentation/setup/settingsFile).
 
 #### Syntax
 
-`/control/bufferFrames`. 
+`/control/bufferFrames` 
 
 #### Return
 
@@ -159,7 +164,7 @@ BeRTA sends back to the sender: `/control/bufferFrames 2`.
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-## `/control/actionResult `
+### **/control/actionResult**
 
 Command received when an action has been carried out from the application (triggered by a previously received OSC command). It informs about the outcome of the executed action.
 
@@ -176,8 +181,8 @@ BeRTA receives: `/control/actionResult /resources/removeHRTF HRTF1 true HRTF HRT
 
 ## **Calibration**
 
-### `/control/playCalibration `
-<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
+### **/control/playCalibration**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
 
 Start the calibration process by playing an audio file at the dBFS volume specified in the parameter. For more details, refer to the [calibration](/BRT-Documentation/applications/calibration/) section. 
 
@@ -203,8 +208,8 @@ BeRTA sends back to the sender: `/control/actionResult /control/playCalibration 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-### `/control/setCalibration` 
-<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
+### **/control/setCalibration**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
 
 Set the calibration values using the dBFS playback volume and the dBSPL output level measured in the headphones, both specified in the parameters. For more details, refer to the [calibration](/BRT-Documentation/applications/calibration/) section.
 
@@ -229,10 +234,10 @@ BeRTA receives: `/control/setCalibration -40 60`
 BeRTA sends back to the sender: `/control/actionResult /control/setCalibration calibrationDone true "Calibration done with -40 dB FS and 60 dB SPL."`. 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-### `/control/playCalibrationTest`
-<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
+### **/control/playCalibrationTest**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
 
 Play the calibration test sound at a volume adjusted to match the dBSPL specified in the parameter, allowing verification with the sound level meter. See the [calibration](/BRT-Documentation/applications/calibration/) section for more details.
 
@@ -255,10 +260,10 @@ BeRTA receives: `/control/playCalibrationTest 80`
 BeRTA sends back to the sender: `/control/actionResult /control/playCalibrationTest calibrationTest false "ERROR BeRTA has not been calibrated yet"`. 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-### `/control/stopCalibrationTest`
-<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
+### **/control/stopCalibrationTest**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
 
 Stop the calibration test sound playback.
 
@@ -279,10 +284,10 @@ BeRTA receives: `/control/stopCalibrationTest`
 BeRTA sends back to the sender: `/control/actionResult /control/stopCalibrationTest calibrationTest true "Calibration test stopped."`. 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-### `/control/getSoundLevel`
-<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
+### **/control/getSoundLevel**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
 
 Get the current sound level in dBSPL for left and right channel. For more details, refer to the [calibration](/BRT-Documentation/applications/calibration/) section.
 
@@ -309,8 +314,8 @@ BeRTA sends: `/control/getSoundLevel 60 62`
 
 ## **Safety Limiter**
 
-### `/control/setSoundLevelLimit`
-<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
+### **/control/setSoundLevelLimit**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
 
 Set the sound level limit to the dBSPL value specified in the parameter. See the [safety limitter](/BRT-Documentation/applications/safety-limiter/) for more details.
 
@@ -334,8 +339,9 @@ BeRTA sends back to the sender: `/control/actionResult /control/setSoundLevelLim
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
-### `/control/soundLevelAlert`
-<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
+
+### **/control/soundLevelAlert**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
 
 Sent when the output sound level exceeds the threshold set in the sound level limiter. This is a send-only command from BeRTA. It does not receive any parameters but triggers an alert when the limit is surpassed. See the [safety limitter](/BRT-Documentation/applications/safety-limiter/) for more details.
 

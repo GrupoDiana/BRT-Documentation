@@ -1,6 +1,8 @@
 This section covers the OSC commands responsible for controlling the binaural filters using second order section filters.
 
-## `/binauralFilter/setSOSFilter`
+<hr style="border:1px solid gray">
+
+### **/binauralFilter/setSOSFilter**
 
 This command set the resource (the Second Order Section filters) to the simulation of the binaural filter model. 
 
@@ -30,9 +32,9 @@ BeRTA sends back to the sender: `/control/actionResult /binauralFilter/setSOSFil
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">
 
-## `/binauralFilter/enableModel`
+### **/binauralFilter/enableModel**
 
 This command enables or disables the simulation of binaural filter.
 
@@ -61,4 +63,4 @@ BeRTA sends back to the sender: `/control/actionResult /binauralFilter/enableMod
 
 
 <!----------------------------------------------------------------------------------->
----
+<hr style="border:1px solid gray">

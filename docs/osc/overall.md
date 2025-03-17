@@ -3,7 +3,7 @@ These commands affects all sound sources and therefore, they don't need the `/so
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-## `/play`
+### **/play**
 Starts playing back all sources comming from audio files and starts streaming all sources comming form input channels.
 
 #### Syntax
@@ -18,7 +18,7 @@ BeRTA receives and echoes back to all subscribiers but the sender:  `/play`.
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-## `/stop`
+### **/stop**
 Stops playing back all sources comming from audio files and also stops streaming all sources comming form input channels.
 
 #### Syntax
@@ -34,7 +34,7 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/stop`.
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-## `/pause`
+### **/pause**
 Pauses all sources comming from audio files and stops streaming all sources comming form input channels. While file sources will resume with a later play at the same point they were paused, for sources connected to an input channel the effect of `/pause` is identical to the effect of `/stop`. 
 
 #### Syntax
@@ -49,7 +49,7 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/pause`.
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-## `/removeAllSources`
+### **/removeAllSources**
 Removes all sources. 
 
 #### Syntax
@@ -64,7 +64,7 @@ BeRTA receives and echoes back to all subscribiers but the sender:`/removeAllSou
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-## `/playAndRecord`
+### **/playAndRecord**
 Records a file of the specified duration with spatialised sound (wav) and other data (mat) corresponding to the playback of all sources from the beginning. If the type is mat, the produced file will follow the structure of the [AnnotatedReceiverAudio SOFA convention](https://www.sofaconventions.org/mediawiki/index.php/AnnotatedReceiverAudio). Before starting the recording, all sources are stopped and played back since the begining. 
 
 #### Syntax
@@ -91,7 +91,9 @@ When the recording is finished (in this example after 10 seconds), BeRTA sends b
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-## `/enableModel`
+### **/enableModel**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.6.0</span>
+
 This command switches on or off a model. When a model is disabled it does not process the input signal and provides ~~silence~~ at its output. This feature must be implemented in all listener, enviroment models and in all the Binaural Filters. The model to be enabled or disabled is identified by an identifier defined in the used [settings file](../applications/settingsFile.md).
 
 #### Syntax
@@ -116,7 +118,10 @@ BeRTA sends back to the sender: `/control/actionResult /enableModel DirectPath t
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-## `/modelGain`
+### **/modelGain**
+
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.6.0</span>
+
 This command sets the output gain of the model in dB. This is a gain that is applied to the model output after processing. A gain of 0 dB, default value, indicates that no gain is applied to the output samples after processing. The model to be enabled or disabled is identified by an identifier defined in the used [settings file](../applications/settingsFile.md).
 
 #### Syntax
