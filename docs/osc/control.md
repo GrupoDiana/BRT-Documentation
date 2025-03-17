@@ -177,7 +177,7 @@ BeRTA receives: `/control/actionResult /resources/removeHRTF HRTF1 true HRTF HRT
 ## **Calibration**
 
 ### `/control/playCalibration `
-<p style='text-align: right;color:IndianRed;'>From BeRTA release 3.4.0</p>
+<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
 
 Start the calibration process by playing an audio file at the dBFS volume specified in the parameter. For more details, refer to the [calibration](/BRT-Documentation/applications/calibration/) section. 
 
@@ -203,8 +203,8 @@ BeRTA sends back to the sender: `/control/actionResult /control/playCalibration 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-### `/control/setCalibration`
-<p style='text-align: right;color:IndianRed;'>From BeRTA release 3.4.0</p>
+### `/control/setCalibration` 
+<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
 
 Set the calibration values using the dBFS playback volume and the dBSPL output level measured in the headphones, both specified in the parameters. For more details, refer to the [calibration](/BRT-Documentation/applications/calibration/) section.
 
@@ -232,7 +232,7 @@ BeRTA sends back to the sender: `/control/actionResult /control/setCalibration c
 ---
 
 ### `/control/playCalibrationTest`
-<p style='text-align: right;color:IndianRed;'>From BeRTA release 3.4.0</p>
+<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
 
 Play the calibration test sound at a volume adjusted to match the dBSPL specified in the parameter, allowing verification with the sound level meter. See the [calibration](/BRT-Documentation/applications/calibration/) section for more details.
 
@@ -258,7 +258,7 @@ BeRTA sends back to the sender: `/control/actionResult /control/playCalibrationT
 ---
 
 ### `/control/stopCalibrationTest`
-<p style='text-align: right;color:IndianRed;'>From BeRTA release 3.4.0</p>
+<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
 
 Stop the calibration test sound playback.
 
@@ -282,7 +282,7 @@ BeRTA sends back to the sender: `/control/actionResult /control/stopCalibrationT
 ---
 
 ### `/control/getSoundLevel`
-<p style='text-align: right;color:IndianRed;'>From BeRTA release 3.4.0</p>
+<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
 
 Get the current sound level in dBSPL for left and right channel. For more details, refer to the [calibration](/BRT-Documentation/applications/calibration/) section.
 
@@ -310,7 +310,7 @@ BeRTA sends: `/control/getSoundLevel 60 62`
 ## **Safety Limiter**
 
 ### `/control/setSoundLevelLimit`
-<p style='text-align: right;color:IndianRed;'>From BeRTA release 3.4.0</p>
+<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
 
 Set the sound level limit to the dBSPL value specified in the parameter. See the [safety limitter](/BRT-Documentation/applications/safety-limiter/) for more details.
 
@@ -335,7 +335,7 @@ BeRTA sends back to the sender: `/control/actionResult /control/setSoundLevelLim
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 ### `/control/soundLevelAlert`
-<p style='text-align: right;color:IndianRed;'>From BeRTA release 3.4.0</p>
+<p style='text-align: right;color:IndianRed;'>From BeRTA v3.4.0</p>
 
 Sent when the output sound level exceeds the threshold set in the sound level limiter. This is a send-only command from BeRTA. It does not receive any parameters but triggers an alert when the limit is surpassed. See the [safety limitter](/BRT-Documentation/applications/safety-limiter/) for more details.
 
