@@ -14,7 +14,13 @@ The **Free Field Environment Model** simulates sound propagation in open spaces.
 
 ### Signal Processing Chain  
 
-The model’s signal processing involves three main stages. First, the input signal is attenuated based on the distance between the source and the listener, replicating the natural reduction in sound intensity over distance. Although not yet implemented, a filtering stage will eventually simulate the frequency-dependent attenuation effects caused by propagation through air. Finally, the signal passes through a delay line that accurately models the propagation delay corresponding to the distance between the source and listener. This sequence ensures that the output signals reflect realistic free-field sound propagation.  
+The model’s signal processing involves three main stages. First, the input signal is **attenuated based on the distance** between the source and the listener, replicating the natural reduction in sound intensity over distance. This means that a fixed amount of attenuation is applied to the signal each time the distance is doubled from a reference distance. By default, this attenuation has a value of -6.0206 dB and the reference distance is 1 metre. Thus, the applied attenuation is calculated using the following expression: 
+
+$attenuation = 10^{(Distance Attenuation Factor/ -6.0206 dB) * log_{10}(ReferenceDistance / distance)}$
+
+Although *not yet implemented*, a **filtering** stage will eventually simulate the frequency-dependent attenuation effects caused by propagation through air 
+
+Finally, the signal passes through a **delay line** that accurately models the propagation delay corresponding to the distance between the source and listener. This sequence ensures that the output signals reflect realistic free-field sound propagation.  
 
 ### Dynamic Adaptation  
 

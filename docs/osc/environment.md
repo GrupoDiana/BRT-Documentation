@@ -7,7 +7,8 @@ This section covers the OSC commands responsible for /controlling the environmen
 <hr style="border:1px solid gray">
 
 
-## `/environment/enableModel`
+### **/environment/enableModel**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Deprecated since BeRTA v3.6.0, use '/enableModel' instead.</span>
 
 This command switches on or off an environment model. When an environment model is disabled it does not process the input signal and provides silence at its output. this feature must be implemented in all environment models. The environment model to be enabled or disabled is didentified by an identifier defined in the [settings file](/BRT-Documentation/setup/settingsFile).
 
@@ -258,3 +259,32 @@ BeRTA sends back to the sender: `/control/actionResult /environment/enableDistan
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
+
+### **/environment/setDistanceAttenuationFactor**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.6.0</span>
+
+This command allows you to change the attenuation factor per distance, in decibels. This is the amount of attenuation applied to the signal each time the distance is doubled from the reference distance. By default, this attenuation has a value of -6.0206 dB and the default reference distance is 1 meter. The value to set must always be negative. For more information, see the [section](/BRT-Documentation/library/environment-models/freefield-environment-model/) on the environment model.
+
+#### Syntax
+
+`/environment/setDistanceAttenuationFactor <string environmentModel_id> <float distanceAttenuationFactor>`
+
+`environmentModel_id`: identifier assigned to the model.
+
+`distanceAttenuationFactor`: a float value, expressed in dB, representing the distance attenuation factor. This value must be negative. 
+
+#### Return
+
+`/control/actionResult /environment/setDistanceAttenuationFactor <string environmentModel_id> <bool setAttenuation> <string description>`
+
+The return confirmation refers to the `environmentModel_id`, indicating `setAttenuation=true` if the attenuation has been set and `setAttenuation=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/environment/setDistanceAttenuationFactor FreeField -3`
+
+BeRTA sends back to the sender: `/control/actionResult /environment/setDistanceAttenuationFactor FreeField true "Distance Attenuation Factor updated in the model (FreeField) to -3".`
+
+<!----------------------------------------------------------------------------------->
