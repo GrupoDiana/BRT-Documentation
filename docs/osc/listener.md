@@ -321,6 +321,7 @@ BeRTA sends back to the sender: `/control/actionResult /listener/enableParallaxC
 <hr style="border:1px solid gray">
 
 ### **/listener/enableModel**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Deprecated since BeRTA v3.6.0, use '/enableModel' instead.</span>
 
 This command switches on or off a listener model. When a listener model is disabled it does not process the input signal and provides silence at its output. This feature must be implemented in all listener models. The listener model to be enabled or disabled is didentified by an identifier defined in the used [settings file](../applications/settingsFile.md).
 

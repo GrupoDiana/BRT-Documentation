@@ -35,6 +35,7 @@ BeRTA sends back to the sender: `/control/actionResult /binauralFilter/setSOSFil
 <hr style="border:1px solid gray">
 
 ### **/binauralFilter/enableModel**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Deprecated since BeRTA v3.6.0, use '/enableModel' instead.</span>
 
 This command enables or disables the simulation of binaural filter.
 
