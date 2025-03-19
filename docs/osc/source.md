@@ -388,7 +388,7 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/source/gain source1 -3`
 
-BeRTA sends back to the sender: `/control/actionResult /source/gain source1 -3 true Audio source source1 gain updated to -3 dB`
+BeRTA sends back to the sender: `/control/actionResult /source/gain source1 true Audio source source1 gain updated to -3 dB`
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">

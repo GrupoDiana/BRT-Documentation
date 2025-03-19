@@ -119,7 +119,6 @@ BeRTA sends back to the sender: `/control/actionResult /enableModel DirectPath t
 <hr style="border:1px solid gray">
 
 ### **/modelGain**
-
 <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.6.0</span>
 
 This command sets the output gain of the model in dB. This is a gain that is applied to the model output after processing. A gain of 0 dB, default value, indicates that no gain is applied to the output samples after processing. The model to be enabled or disabled is identified by an identifier defined in the used [settings file](../applications/settingsFile.md).
@@ -129,7 +128,7 @@ This command sets the output gain of the model in dB. This is a gain that is app
 
 `model_id`: identifier assigned to the model.
 
-`gain`: Gain, expressed in dB. the source, as red from the file or the input channel is multiplied by $10^{gain / 20}$. 
+`gain`: A floating value, expressed in dB, representing the gain. The model output is multiplied by $10^{gain / 20}$. 
 
 
 #### Return
