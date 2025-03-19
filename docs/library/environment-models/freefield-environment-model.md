@@ -43,6 +43,7 @@ This model allows configuration by calling its methods or by BRT internal comman
 - **Gain (float)**: Extra gain to be applied to the model output.
 - **Distance Attenuation (on/off)**: No attenuation is applied when disabled.
 - **Propagation Delay (on/off)**: No delay is applied when disabled.
+- **Distance Attenuation Factor**: Sets a new distance attenuation factor, default is -6.0206dB.
 
 ## Connections
 Modules to which it supports connections: 
@@ -115,30 +116,32 @@ if (environmentModel != nullptr) {
 <h2>Public methods</h2>
 
 ```cpp
-void EnableModel() override 
-void DisableModel() override
+void EnableModel()  
+void DisableModel() 
 
-void SetGain(float _gain) override
+void SetGain(float _gain) 
 float GetGain() 
 
-void EnableDistanceAttenuation() override
-void DisableDistanceAttenuation() override
-bool IsDistanceAttenuationEnabled() override
+void EnableDistanceAttenuation() 
+void DisableDistanceAttenuation() 
+bool IsDistanceAttenuationEnabled() 
 
-void EnablePropagationDelay() override
-void DisablePropagationDelay() override
-bool IsPropagationDelayEnabled() override
+void EnablePropagationDelay() 
+void DisablePropagationDelay() 
+bool IsPropagationDelayEnabled() 
 
-bool ConnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) override
-bool ConnectSoundSource(const std::string & _sourceID) override
+bool SetDistanceAttenuationFactor(float _distanceAttenuationFactorDB)
+float GetDistanceAttenuationFactor()
 
-bool DisconnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) override
-bool DisconnectSoundSource(const std::string & _sourceID) override
+bool ConnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) 
+bool ConnectSoundSource(const std::string & _sourceID) 
+
+bool DisconnectSoundSource(std::shared_ptr<BRTSourceModel::CSourceModelBase> _source) 
+bool DisconnectSoundSource(const std::string & _sourceID) 
 
 void ResetProcessorBuffers()
 
-void UpdateCommand() override
+void UpdateCommand() 
 ```
-
 
 </details>
