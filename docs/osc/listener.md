@@ -413,8 +413,66 @@ BeRTA receives and echoes back to all subscribiers but the sender:`/listener/set
 
 BeRTA sends back to the sender: `/control/actionResult /listener/setAmbisonicsNormalization DirectPath true "Ambisonics normalization set to N3D"`. 
 
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/listener/enableDistanceAttenuation**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.6.0</span>
+
+This command enables or disables the distance simulation in the listener model, *only available in the combined listener/environment models*. This simulation consists in applying a global attenuation, where doubling the distance between the source and the listener reduces the sound level by a predefined attenuation value.
+
+#### Syntax
+
+`/listener/enableDistanceAttenuation <string listenerModel_id> <boolean enable>`
+
+`listenerModel_id`: identifier assigned to the model.
+
+`enable`: If true (1), enables the simulation of the distance attenuation. If false (0), disable the simulation of the distance attenuation.
+
+#### Return
+
+`/control/actionResult /listener/enableDistanceAttenuation <string listenerModel_id> <bool enabled> <string description>`
+
+The return confirmation refers to the `listenerModel_id`, indicating `enabled=true` if the distance attenuation has been enabled and `enabled=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/listener/enableDistanceAttenuation ReverbPath true`
+
+BeRTA sends back to the sender: `/control/actionResult /listener/enableDistanceAttenuation ReverbPath true "Distance attenuation enabled in the model (ReverbPath)."`. 
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
+### **/listener/setDistanceAttenuationFactor**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.6.0</span>
+
+This command allows you to change the attenuation factor per distance, in decibels. This is the amount of attenuation applied to the signal each time the distance is doubled from the reference distance. By default, this attenuation has a value of -3 dB and the default reference distance is 1 meter. The value to set must always be negative. For more information, see the [section](/BRT-Documentation/library/listener-models/rir-models/) on the listener and environment combined models.
+
+#### Syntax
+
+`/listener/setDistanceAttenuationFactor <string listenerModel_id> <float distanceAttenuationFactor>`
+
+`listenerModel_id`: identifier assigned to the model.
+
+`distanceAttenuationFactor`: a float value, expressed in dB, representing the distance attenuation factor. This value must be negative. 
+
+#### Return
+
+`/control/actionResult /listener/setDistanceAttenuationFactor <string listenerModel_id> <float distanceAttenuationFactor> <string description>`
+
+The return confirmation refers to the `listenerModel_id`, indicating if the attenuation factor `distanceAttenuationFactor` has been set or not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/listener/setDistanceAttenuationFactor ReverbPath -3`
+
+BeRTA sends back to the sender: `/control/actionResult /listener/setDistanceAttenuationFactor ReverbPath true "Distance Attenuation Factor updated in the model (ReverbPath) to -3".`
+
+<!----------------------------------------------------------------------------------->
 

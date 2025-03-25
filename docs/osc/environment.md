@@ -230,8 +230,9 @@ BeRTA sends back to the sender: `/control/actionResult /environment/enablePropag
 <hr style="border:1px solid gray">
 
 ### **/environment/enableDistanceAttenuation**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.6.0</span>
 
-This command enables or disables the simulation of distance throughout the entire environment, which consists of applying a global attenuation, where doubling the distance between the source and the listener reduces the sound level by a predefined attenuation value.
+This command enables or disables the distance simulation in the environment model, if available. This simulation consists in applying a global attenuation, where doubling the distance between the source and the listener reduces the sound level by a predefined attenuation value.
 
 #### Syntax
 
@@ -277,7 +278,7 @@ This command allows you to change the attenuation factor per distance, in decibe
 
 `/control/actionResult /environment/setDistanceAttenuationFactor <string environmentModel_id> <bool setAttenuation> <string description>`
 
-The return confirmation refers to the `environmentModel_id`, indicating `setAttenuation=true` if the attenuation has been set and `setAttenuation=false` if not. In both cases a `description` is added to give more details. 
+The return confirmation refers to the `environmentModel_id`, indicating if the attenuation factor has been set or not. In both cases a `description` is added to give more details. 
 
 In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
