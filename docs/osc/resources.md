@@ -1,3 +1,6 @@
+These commands are responsible for managing the resources used in the virtual audio scene.
+
+<hr style="border:1px solid gray">
 <!----------------------------------------------------------------------------------->
 
 ### **/resources/loadHRTF**

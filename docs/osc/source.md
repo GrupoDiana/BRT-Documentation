@@ -1,3 +1,6 @@
+These commands provide a comprehensive set of tools for managing and controlling audio sources within the virtual scene. These commands allow for the addition, manipulation, and control of sound sources, including their playback, position, orientation, and various audio properties.
+
+<hr style="border:1px solid gray">
 <!----------------------------------------------------------------------------------->
 
 ### **/source/loadSource**
