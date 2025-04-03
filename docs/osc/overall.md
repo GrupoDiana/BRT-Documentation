@@ -96,8 +96,8 @@ When the recording is finished (in this example after 10 seconds), BeRTA sends b
 
 This command enables or disables a model. This function is implemented in all listener, environment models and in all binaural filters. The model to be enabled or disabled is identified by an identifier defined in the [configuration](../applications/settingsFile.md) file used. When a model is deactivated it does not process the input signal and provides: 
 
-- Silence on its output in the case of listener models.
-- Let the signal pass through unaltered in the case of environment models and binaural filters. 
+- *Silence* on its output in the case of listener models.
+- Let the signal *pass through unaltered* in the case of environment models and binaural filters. 
 
 
 #### Syntax
