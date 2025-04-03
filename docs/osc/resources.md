@@ -367,12 +367,13 @@ BeRTA sends back: `/resources/getSOSFiltersInfo NFCF1 NFCFilters.sofa`
 <hr style="border:1px solid gray">
 
 ### **/resources/loadBRIR**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Parameters renamed from BeRTA v3.6.0</span>
 
 Loads a new Binaural Room Impulse Response (BRIR) from a SOFA file at the specified path and assign an identifier to it. If there is already another BRIR with the same identifier, it is substituted by the new one. The SOFA file must use FIR or FIR-E as data type but can follow any convention using these data types. When loading, the HRTF is spatially resampled to fit the [BRT grids](). 
 
 #### Syntax
 
-`/resources/loadBRIR <string BRIR_id> <string BRIR_SOFAFile_path> <float spatialResolution> <float fadeInWindowThreshold> <float fadeInWindowRiseTime> <float fadeOutWindowThreshold> <float fadeOutWindowFallTime>`
+`/resources/loadBRIR <string BRIR_id> <string BRIR_SOFAFile_path> <float spatialResolution> <float fadeInBegin> <float riseTime> <float fadeOutCutoff> <float fallTime>`
 
 `BRIR_id`: Identifier to be assigned to the BRIR for later references to it. If there is already another BRIR with the same identifier, it is substituted by the new one. Otherwise, a new BRIR is created.
 
@@ -380,7 +381,7 @@ Loads a new Binaural Room Impulse Response (BRIR) from a SOFA file at the specif
 
 `spatialResolution`: This parameter indicates the interpolation step in the horizontal plane of zero elevation. To learn more about the interpolation mechanism, please refer to [BRT grids]().
 
-The loaded BRIR can be windowed. For this purpose, a fade-in and fade-out mechanism has been enabled using raised-cosines. The parameter `fadeInWindowThreshold` indicates the midpoint (50%) of the rising slope of the window, in seconds, the `fadeInWindowRisetime` indicates the rising time, also in seconds. Analogously, the parameter `fadeOutWindowThreshold` indicates the midpoint (50%) of the falling slope of the window, and `fadeOutWindowFalltime` indicates the falling time, all in seconds.
+The loaded BRIR can be windowed. For this purpose, a fade-in and fade-out mechanism has been enabled using raised-cosines. The parameter `fadeInBegin` indicates the midpoint (50%) of the rising slope of the window, in seconds, the `risetime` indicates the rising time, also in seconds. Analogously, the parameter `fadeOutCutoff` indicates the midpoint (50%) of the falling slope of the window, and `fallTime` indicates the falling time, all in seconds.
 
 #### Return
 
