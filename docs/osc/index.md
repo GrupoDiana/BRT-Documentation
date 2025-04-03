@@ -24,12 +24,13 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 ### OSC Overall Commands 
 
-- [`/pause`](overall.md#pause): Pauses file sources and stops streaming from input channels.
 - [`/play`](overall.md#play): Starts playback of file sources and streaming from input channels.
-- [`/playAndRecord`](overall.md#playandrecord): Records spatialized sound and data during playback.
-- [`/removeAllSources`](overall.md#removeallsources): Removes all sound sources.
+- [`/pause`](overall.md#pause): Pauses file sources and stops streaming from input channels.
 - [`/stop`](overall.md#stop): Stops playback of file sources and streaming from input channels.
-
+- [`/removeAllSources`](overall.md#removeallsources): Removes all sound sources.
+- [`/playAndRecord`](overall.md#playandrecord): Records spatialized sound and data during playback.
+- [`/enableModel`](overall.md#enablemodel): Enables or disables a model.
+- [`/modelGain`](overall.md#modelgain): Sets the output gain of the model in dB.
 
 ### Resources Commands 
 
@@ -78,7 +79,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 - [`/listener/enableInterpolation`](listener.md#listenerenableinterpolation): Enable or disable interpolation among HRIRs.
 - [`/listener/enableITD`](listener.md#listenerenableitd): Enable or disable the simulation of Interaural Time Difference (ITD).
-- [`/listener/enableModel`](listener.md#listenerenablemodel): Enable or disable a listener model.
+- [`/listener/enableModel`](listener.md#listenerenablemodel): Enable or disable a listener model. <span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/enableModel' instead.)</span>
 - [`/listener/enableNearFieldEffect`](listener.md#listenerenablenearfieldeffect): Enable or disable Near Field Compensation (NFC) with HRTF.
 - [`/listener/enableParallaxCorrection`](listener.md#listenerenableparallaxcorrection): Enable or disable parallax correction for direction of arrival.
 - [`/listener/location`](listener.md#listenerlocation): Set the global location of the listener in x, y, z coordinates.
@@ -93,7 +94,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 ### Environment Models Commands 
 
 - [`/environment/enableDirectPath`](environment.md#environmentenabledirectpath): Toggle the direct path source in the environment model.
-- [`/environment/enableModel`](environment.md#environmentenablemodel): Enable or disable a specified environment model.
+- [`/environment/enableModel`](environment.md#environmentenablemodel): Enable or disable a specified environment model. <span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/enableModel' instead.)</span>
 - [`/environment/enableReverbPath`](environment.md#environmentenablereverbpath): Toggle the reverb path sources in the environment model.
 - [`/environment/setShoeBoxRoom`](environment.md#environmentsetshoeboxroom): Set up a shoebox-shaped room with specified dimensions.
 - [`/environment/setWallAbsorption`](environment.md#environmentsetwallabsorption): Set absorption coefficients for a wall.
@@ -101,4 +102,4 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 ### Binaural Filters Commands 
 
 - [`/binauralFilter/setSOSFilter`](binaural-filter.md#binauralfiltersetsosfilter): Set up sos filter for an specific listener.
-- [`/binauralFilter/enableModel`](binaural-filter.md#binauralfilterenablemodel): Enable or disable a specified binaural filter.
+- [`/binauralFilter/enableModel`](binaural-filter.md#binauralfilterenablemodel): Enable or disable a specified binaural filter. <span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/enableModel' instead.)</span>
