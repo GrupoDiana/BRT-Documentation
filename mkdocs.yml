@@ -56,7 +56,7 @@ markdown_extensions:
   - pymdownx.mark
   - attr_list
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.arithmatex:
       generic: true
@@ -64,7 +64,7 @@ markdown_extensions:
 extra_javascript:
   - javascripts/katex.js
   - https://unpkg.com/katex@0/dist/katex.min.js
-  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js  
 
 extra_css:
   - https://unpkg.com/katex@0/dist/katex.min.css
@@ -72,6 +72,46 @@ extra_css:
 copyright: 
   Copyright &copy; 2024 <a href="https://www.diana.uma.es/" target="_blank" rel="noopener"> Diana Research Group</a>
 
+plugins:
+    - with-pdf:
+        author: Diana Research Group - University of Malaga
+        copyright:  Copyright &copy; 2024 Diana Research Group
+        #
+        cover: true        
+        cover_title: BRT Library
+        cover_subtitle: Technical documentation
+        cover_logo: assets/SONICOMwave.png
+        #back_cover: true
+        #custom_template_path: TEMPLATES PATH
+        #
+        #toc_title: TOC TITLE TEXT
+        #heading_shift: false
+        #toc_level: 3
+        #ordered_chapter_level: 2
+        #excludes_children:
+        #    - 'release-notes/:upgrading'
+        #    - 'release-notes/:changelog'
+        #
+        #exclude_pages:
+        #    - 'bugs/'
+        #    - 'appendix/contribute/'
+        #convert_iframe:
+        #    - src: IFRAME SRC
+        #      img: POSTER IMAGE URL
+        #      text: ALTERNATE TEXT
+        #    - src: ...
+        #two_columns_level: 3
+        #
+        #render_js: true
+        #headless_chrome_path: headless-chromium
+        #
+        output_path: assets/brt-documentation.pdf
+        #enabled_if_env: ENABLE_PDF_EXPORT
+        #
+        #debug_html: true
+        #show_anchors: true
+        #verbose: true
+        
 # Page tree
 nav:
   - Home: index.md
