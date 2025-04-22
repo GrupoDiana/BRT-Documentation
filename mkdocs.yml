@@ -8,6 +8,7 @@ repo_url: https://github.com/GrupoDiana/BRTLibrary
 
 theme:
   name: material
+  custom_dir: docs/custom_theme
   features:
   - navigation.indexes
   #- navigation.sections
