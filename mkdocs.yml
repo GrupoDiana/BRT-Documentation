@@ -109,7 +109,7 @@ plugins:
         #headless_chrome_path: headless-chromium
         #
         output_path: assets/brt-documentation.pdf
-        enabled_if_env: GITHUB_ACTIONS              #commnent this line to enable the plugin in local builds
+        enabled_if_env: ENABLE_PDF_EXPORT              #commnent this line to enable the plugin in local builds
         #
         #debug_html: true
         #show_anchors: true
