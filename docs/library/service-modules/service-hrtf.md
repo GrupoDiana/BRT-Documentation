@@ -7,7 +7,7 @@ An HRTF consists of a collection of HRIRs, each associated with specific measure
 
 Interpolating between HRIRs with varying ITDs can lead to issues, such as audible artifacts and reduced rendering quality. To address this, the HRTF Service Module handles ITDs independently from the interpolation and convolution processes. To do so, user-imported HRIRs should be provided with ITDs stored separately. The ITDs to be added after interpolation can be either estimated by interpolating among those corresponding to the three closest HRIRs, or synthesised using data about the location of the sound source (specifically the interaural azimuth) and the head circumference of the listener.
 
-Each HRIR is partitioned in chunks to match the input buffer length. This is done in order to use the  [UPOLS convolution](../common/uniform-partitioned-convolution.md). In addition, an FFT is applied to each of the HRIR partitions and stored in memory by the Service Module, since the convolution is done in the frequency domain.
+Each HRIR is partitioned in chunks to match the input buffer length. This is done in order to use the  [UPOLS convolution](../processing-modules/uniform-partitioned-convolution.md). In addition, an FFT is applied to each of the HRIR partitions and stored in memory by the Service Module, since the convolution is done in the frequency domain.
 
 The following diagram illustrates the processing performed on the HRTF table before it is stored. This processing is performed offline, ensuring that, in real-time, we have a regular table that is faster to access.
 

@@ -84,7 +84,7 @@ High-level modules are responsible for audio rendering. Each module models speci
 Service modules store the essential data required for rendering. This data typically comes from SOFA files, although other formats could be used. Key service modules include:
 
 - [HRTF](../library/service-modules/service-hrtf.md): Stores head-related impulse responses indexed by azimuth and elevation.
-- [BRIR](../library/service-modules/service-brir.md): Stores room-related impulse responses indexed by azimuth and elevation.
+- [BRIR](../library/service-modules/service-hrbrir.md): Stores room-related impulse responses indexed by azimuth and elevation.
 - [DirectivityTF](../library/service-modules/service-directivity-tf.md): Stores transfer functions of a sound source based on the position of the listener and the sources.
 - [SOSFilters](../library/service-modules/service-sos-filters.md): Stores coefficients for second-order sections of a filter, which can be fixed or vary based on distance, azimuth, and/or elevation.
 - [AmbisonicBIR](./service-modules/service-ambisonic-bir.md): Stores the impulse responses of the virtual loudspeakers in the ambisonic domains, in order to achieve a process with simultaneous impulse responses convolution and ambisonic decoding.

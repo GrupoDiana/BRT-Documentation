@@ -6,7 +6,7 @@ The **Directivity Source Model** provides an interface for applications to inter
 
 After instantiating the Directivity Source Model and connecting it to the desired modules (listener and/or environment models), the application manages the source’s position and orientation using the `SetSourceTransform` method. This allows for dynamic updates to the source's state. For each audio frame, the application must also provide the corresponding monaural audio samples via the `SetBuffer` method.
 
-When the model receives the audio samples, it performs a convolution with the directivity data to account for the directional characteristics of the source. This data is supplied by the [DirectivityTF service module](../service-modules/service-directivity-tf.md), which provides frequency responses based on the source's orientation and the relative position between the source and the listener. The convolutions are executed in the frequency domain using the [uniformly partitioned convolution](../common/uniform-partitioned-convolution.md) algorithm, ensuring efficient and accurate processing.  
+When the model receives the audio samples, it performs a convolution with the directivity data to account for the directional characteristics of the source. This data is supplied by the [DirectivityTF service module](../service-modules/service-directivity-tf.md), which provides frequency responses based on the source's orientation and the relative position between the source and the listener. The convolutions are executed in the frequency domain using the [uniformly partitioned convolution](../processing-modules/uniform-partitioned-convolution.md) algorithm, ensuring efficient and accurate processing.  
 
 
 ## Architecture
