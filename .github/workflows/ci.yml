@@ -5,7 +5,7 @@ on:
       - master 
       - main
 env:
-  ENABLE_PDF_EXPORT: true  
+  ENABLE_PDF_EXPORT: 'true'
 permissions:
   contents: write
 jobs:
@@ -31,3 +31,7 @@ jobs:
             mkdocs-material-
       - run: pip install mkdocs-material 
       - run: mkdocs gh-deploy --force
+      - name: Print name
+        run: echo "Var $ENABLE_PDF_EXPORT"
+      - name: Print name2
+        run: echo "Var $GITHUB_ACTIONS"
