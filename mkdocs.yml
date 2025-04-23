@@ -70,24 +70,23 @@ extra_javascript:
 extra_css:
   - https://unpkg.com/katex@0/dist/katex.min.css
 
-copyright: 
-  Copyright &copy; 2024 <a href="https://www.diana.uma.es/" target="_blank" rel="noopener"> Diana Research Group</a>
+
 
 plugins:
     - with-pdf:
         author: Diana Research Group - University of Malaga
-        copyright:  Copyright &copy; 2024 Diana Research Group
+        copyright:  This document - Copyright &copy; 2024 Diana Research Group
         #
         cover: true        
-        cover_title: BRT Library
+        cover_title: Binaural Rendering Toolbox (BRT)
         cover_subtitle: Technical documentation
-        cover_logo: assets/SONICOMwave.png
+        cover_logo:  assets/logos/sonicom_logo.png
         #back_cover: true
-        #custom_template_path: TEMPLATES PATH
+        #custom_template_path: templates
         #
         #toc_title: TOC TITLE TEXT
         #heading_shift: false
-        #toc_level: 3
+        toc_level: 3
         #ordered_chapter_level: 2
         #excludes_children:
         #    - 'release-notes/:upgrading'
@@ -101,13 +100,13 @@ plugins:
         #      img: POSTER IMAGE URL
         #      text: ALTERNATE TEXT
         #    - src: ...
-        #two_columns_level: 3
+        two_columns_level: 3
         #
         #render_js: true
         #headless_chrome_path: headless-chromium
         #
         output_path: assets/brt-documentation.pdf
-        #enabled_if_env: ENABLE_PDF_EXPORT
+        enabled_if_env: GITHUB_ACTIONS              #commnent this line to enable the plugin in local builds
         #
         #debug_html: true
         #show_anchors: true
