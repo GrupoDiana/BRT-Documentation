@@ -189,9 +189,11 @@ Start the calibration process by playing an audio file at the dBFS volume specif
 
 #### Syntax
 
-`/control/playCalibration <float leveldBFS>`
+`/control/playCalibration <float leveldBFS> <int channelNumber>`
 
 `leveldBFS`: The signal level at which the calibration audio was played, measured in dBFS.
+
+`channelNumber`: This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
 
 #### Return 
 
@@ -201,7 +203,7 @@ The return confirmation refers to the action `calibration`, indicating `success=
 
 #### Example
 
-BeRTA receives: `/control/playCalibration -40`
+BeRTA receives: `/control/playCalibration -40 0`
 
 BeRTA sends back to the sender: `/control/actionResult /control/playCalibration calibration true "Calibration sound played"`. 
 
@@ -215,11 +217,13 @@ Set the calibration values using the dBFS playback volume and the dBSPL output l
 
 #### Syntax
 
-`/control/setCalibration <float leveldBFS> <float leveldBSPL>`
+`/control/setCalibration <float leveldBFS> <float leveldBSPL> <int channelNumber>`
 
 `leveldBFS`: The signal level at which the calibration audio was played, measured in dBFS.
 
 `leveldBSPL`: The output sound level measured at the headphones (expressed in dBSPL) when the system is calibrated and delivering the dBFS specified in the leveldBFS parameter.
+
+`channelNumber`: This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
 
 #### Return 
 
@@ -229,7 +233,7 @@ The return confirmation refers to the action `calibrationDone`, indicating `succ
 
 #### Example
 
-BeRTA receives: `/control/setCalibration -40 60`
+BeRTA receives: `/control/setCalibration -40 60 0`
 
 BeRTA sends back to the sender: `/control/actionResult /control/setCalibration calibrationDone true "Calibration done with -40 dB FS and 60 dB SPL."`. 
 
@@ -243,9 +247,11 @@ Play the calibration test sound at a volume adjusted to match the dBSPL specifie
 
 #### Syntax
 
-`/control/playCalibrationTest  <float leveldBSPL>`
+`/control/playCalibrationTest  <float leveldBSPL> <int channelNumber>`
 
 `leveldBSPL`: The signal level (in dBSPL) measured at the headphones when reproducing the calibration audio.
+
+`channelNumber`: This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
 
 #### Return 
 
@@ -255,7 +261,7 @@ The return confirmation refers to the action `calibrationTest`, indicating `succ
 
 #### Example
 
-BeRTA receives: `/control/playCalibrationTest 80`
+BeRTA receives: `/control/playCalibrationTest 80 2`
 
 BeRTA sends back to the sender: `/control/actionResult /control/playCalibrationTest calibrationTest false "ERROR BeRTA has not been calibrated yet"`. 
 
@@ -269,7 +275,9 @@ Stop the calibration test sound playback.
 
 #### Syntax
 
-`/control/stopCalibrationTest`
+`/control/stopCalibrationTest <int channelNumber>`
+
+`channelNumber`: This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
 
 #### Return 
 
@@ -279,7 +287,7 @@ The return confirmation refers to the action `calibrationTest`, indicating `succ
 
 #### Example
 
-BeRTA receives: `/control/stopCalibrationTest`
+BeRTA receives: `/control/stopCalibrationTest 0`
 
 BeRTA sends back to the sender: `/control/actionResult /control/stopCalibrationTest calibrationTest true "Calibration test stopped."`. 
 
@@ -321,9 +329,11 @@ Set the sound level limit to the dBSPL value specified in the parameter. See the
 
 #### Syntax
 
-`/control/setSoundLevelLimit <float levelLimitdBSPL>`
+`/control/setSoundLevelLimit <float levelLimitdBSPL> <int channelNumber>`
 
 `levelLimitdBSPL`: The maximum allowable sound level, in dBSPL, used by the limiter to ensure safe listening levels for the user.
+
+`channelNumber`: This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
 
 #### Return 
 
@@ -333,7 +343,7 @@ The return confirmation refers to the action `calibrationTest`, indicating `succ
 
 #### Example
 
-BeRTA receives: `/control/setSoundLevelLimit 100`
+BeRTA receives: `/control/setSoundLevelLimit 100 0`
 
 BeRTA sends back to the sender: `/control/actionResult /control/setSoundLevelLimit calibrationTest false "ERROR Sound level limit has not been set becasuse BeRTA has not been calibrated."`. 
 
