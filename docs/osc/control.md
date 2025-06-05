@@ -193,7 +193,7 @@ Start the calibration process by playing an audio file at the dBFS volume specif
 
 `leveldBFS`: The signal level at which the calibration audio was played, measured in dBFS.
 
-`channelNumber`: This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
+`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead. 
 
 #### Return 
 
@@ -223,7 +223,7 @@ Set the calibration values using the dBFS playback volume and the dBSPL output l
 
 `leveldBSPL`: The output sound level measured at the headphones (expressed in dBSPL) when the system is calibrated and delivering the dBFS specified in the leveldBFS parameter.
 
-`channelNumber`: This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
+`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
 
 #### Return 
 
@@ -251,7 +251,7 @@ Play the calibration test sound at a volume adjusted to match the dBSPL specifie
 
 `leveldBSPL`: The signal level (in dBSPL) measured at the headphones when reproducing the calibration audio.
 
-`channelNumber`: This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
+`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
 
 #### Return 
 
@@ -277,7 +277,7 @@ Stop the calibration test sound playback.
 
 `/control/stopCalibrationTest <int channelNumber>`
 
-`channelNumber`: This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
+`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
 
 #### Return 
 
@@ -333,7 +333,7 @@ Set the sound level limit to the dBSPL value specified in the parameter. See the
 
 `levelLimitdBSPL`: The maximum allowable sound level, in dBSPL, used by the limiter to ensure safe listening levels for the user.
 
-`channelNumber`: This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
+`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
 
 #### Return 
 
