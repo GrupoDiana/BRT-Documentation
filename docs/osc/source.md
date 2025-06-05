@@ -488,3 +488,37 @@ BeRTA sends back to the sender: `/control/actionResult /source/playAndRecord sou
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
+### **/source/record**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span>
+
+Generates a file of the specified duration with the delivered binaural sound and all the spatial information of one source and listener (location and orientation), by processing the source from the beginning *without real-time playback*. This allows the operation to be executed significantly faster. The file includes the structure needed to create a SOFA file with the new [AnnotatedReceiverAudio](https://www.sofaconventions.org/mediawiki/index.php/AnnotatedReceiverAudio) convention.
+
+#### Syntax
+
+`/source/record <string source_id> <string filename> <string type> <float seconds>`
+
+`source_id`: identifier of the source to be processed and recorded.
+
+`filename`: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten—an ordinal number will be added to the end of the new file name.
+
+`type`: indicates the extension of the file: wav (not implemented yet) or mat (MATLAB binary data container).
+
+`seconds`: indicates the duration of the recording. **This value must be greater than 0.** Unlike `/source/playAndRecord`, the special value `-1` is *not* allowed.
+
+#### Return
+
+`/control/actionResult /source/record <string source_id> <bool recorded> <string description>`
+
+The return confirmation refers to the `source_id`, indicating `recorded=true` if the action has been successfully performed and `recorded=false` if not. In both cases a `description` is added to give more details.
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribers except the sender:  
+`/source/record SoundSource1 C:/tmp/testingRecord mat 3`
+
+BeRTA sends back to the sender:  
+`/control/actionResult /source/record SoundSource1 true "Recording completed. File saved: C:/tmp/testingRecord"`  
+or  
+`/control/actionResult /source/record SoundSource1 false "ERROR: Recording failed. File could not be created."`

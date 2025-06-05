@@ -91,6 +91,38 @@ When the recording is finished (in this example after 10 seconds), BeRTA sends b
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
+### **/record**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span>
+
+Generates a file of the specified duration with spatialised sound (wav) and other data (mat) by processing all sources from the beginning *without real-time playback*. This allows the operation to be executed significantly faster. If the type is mat, the produced file will follow the structure of the [AnnotatedReceiverAudio SOFA convention](https://www.sofaconventions.org/mediawiki/index.php/AnnotatedReceiverAudio). All sources are stopped and processed from the beginning before the recording starts.
+
+#### Syntax
+`/record <String filename> <String type> <float time>`
+
+`filename`: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten—an ordinal number will be added to the end of the new file name.
+
+`type`: indicates the extension of the file: wav (not implemented yet) or mat (MATLAB binary data container).
+
+`time`: indicates the duration of the recording in seconds. **This value must be greater than 0**. Unlike `/playAndRecord`, the special value `-1` is *not* allowed.
+
+#### Return 
+`/control/actionResult /record <string filename> <boolean success> <string description>`.
+
+The return confirmation refers to the `filename`, indicating `success=true` if the action has been successfully performed and `success=false` if not. In both cases a `description` is added to give more details.
+
+It sends an echo to all subscribers except the sender: `/record <String filename> <String type> <float time>`
+
+#### Example
+BeRTA receives and echoes back to all subscribers except the sender: `/record c:/tmp/file.mat mat 10`
+
+When the processing is finished (in this example after 10 seconds), BeRTA sends back to all subscribers:  
+`/control/actionResult /record c:/tmp/file.mat true Recording completed. File saved : c:/tmp/file.mat`  
+or  
+`/control/actionResult /record c:/tmp/file.mat false ERROR:Recording failed. File could not be created.`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
 ### **/enableModel**
 <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.6.0</span>
 

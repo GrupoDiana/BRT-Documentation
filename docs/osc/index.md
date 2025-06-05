@@ -29,6 +29,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/stop`](overall.md#stop): Stops playback of file sources and streaming from input channels.
 - [`/removeAllSources`](overall.md#removeallsources): Removes all sound sources.
 - [`/playAndRecord`](overall.md#playandrecord): Records spatialized sound and data during playback.
+- [`/record`](overall.md#record): Records spatialised sound and data without real-time playback.
 - [`/enableModel`](overall.md#enablemodel): Enables or disables a model.
 - [`/modelGain`](overall.md#modelgain): Sets the output gain of the model in dB.
 
@@ -66,6 +67,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/source/pause`](source.md#sourcepause): Pauses a specific sound source.
 - [`/source/play`](source.md#sourceplay): Plays a specific sound source.
 - [`/source/playAndRecord`](source.md#sourceplayandrecord): Record a file of specified duration with the source's audio and spatial information.
+- [`/source/record`](source.md#sourcerecord): Record a file of specified duration with the source's audio and spatial information without real-time playback.
 - [`/source/removeSource`](source.md#sourceremovesource): Removes a sound source from the system.
 - [`/source/setDirectivity`](source.md#sourcesetdirectivity): Assign a directivity to a sound source.
 - [`/source/solo`](source.md#sourcesolo): Mutes all sources except the specified one.
