@@ -180,7 +180,8 @@ nav:
       - Listener commands: osc/listener.md
       - Environment commands: osc/environment.md
       - Binaural Filter commands: osc/binaural-filter.md
-    - Unity OSC Package: applications/unity-osc-package.md
+    - BRT OSC API for Unity: applications/unity-osc-package.md
+    - BRT OSC API for Matlab: applications/matlab-osc-package.md
     - Settings File: applications/settingsFile.md
     - Annotated Receiver Audio: applications/annotated-audio.md
     - Calibration: applications/calibration.md
