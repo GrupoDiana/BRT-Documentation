@@ -65,7 +65,7 @@ To use this:
 
 <hr style="border:1px solid gray">
 
-### Getting Started: Basic Unity Setup
+## Getting Started: Basic Unity Setup
 
 This guide explains how to set up a basic Unity scene that communicates with **BeRTA** using our Unity integration package. The setup includes **one static audio source** and **one listener**.
 
