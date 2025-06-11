@@ -65,13 +65,13 @@ To use this:
 
 <hr style="border:1px solid gray">
 
-## 🛠️ Getting Started: Basic Unity Setup with One Source and One Listener
+### Getting Started: Basic Unity Setup
 
 This guide explains how to set up a basic Unity scene that communicates with **BeRTA** using our Unity integration package. The setup includes **one static audio source** and **one listener**.
 
 ---
 
-### ✅ Step-by-Step Guide
+### Step-by-Step Guide
 
 #### 1. Import the Unity Package
 Import the Unity package provided for BeRTA integration into your Unity project.
@@ -110,13 +110,13 @@ Import the Unity package provided for BeRTA integration into your Unity project.
 
 ---
 
-### 📌 Notes
+### Notes
 
 - `BRTManager.cs`, `BRTCommands.cs`, and `OSC.cs` must be attached to the **same GameObject**.
 - Both the **audio source** and the **listener prefab** must reference this GameObject through their `BRTCommands` field.
 - Ensure your network settings and firewall allow OSC communication.
 
----
+<hr style="border:1px solid gray">
 
 ## License
 
