@@ -16,7 +16,7 @@ Two BRIR-based environment models are currently available in the BRT Library:
 
 - **[Direct BRIR Convolution Model](./listener-acoustic-environment-model-brir.md)**: In this model, each sound source signal is convolved independently with the corresponding BRIR. This approach ensures the spatial resolution defined in the BRIR dataset, as each source has its own dedicated convolution process.  
 
-- **[Ambisonic BRIR Convolution Model](./listener-acoustic-environment-model-ambisonic-brir.md)**: This model encodes all sound sources into an ambisonic format of order 1, 2, or 3 before performing convolution in the ambisonic domain. By convolving the ambisonic signals with the BRIR, this model achieves more efficient processing when rendering multiple sources, as it requires fewer BRIR datasets for the directions of arrival.  
+- **[Ambisonic Reverberant Virtual Loudspeakers (RVL) Model](./listener-acoustic-environment-model-ambisonic-brir.md)**: This model encodes all sound sources into an ambisonic format of order 1, 2, or 3 before performing convolution in the ambisonic domain. By convolving the ambisonic signals with the BRIR, this model achieves more efficient processing when rendering multiple sources, as it requires fewer BRIR datasets for the directions of arrival.  
 
 ### Refining the Impulse Response  
 

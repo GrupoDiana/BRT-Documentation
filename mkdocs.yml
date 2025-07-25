@@ -131,11 +131,11 @@ nav:
       - HRTF Models:
         - library/listener-models/hrtf-models/index.md
         - Direct HRTF Convolution: library/listener-models/hrtf-models/listener-acoustic-model-hrtf.md
-        - Ambisonic HRTF Convoution model: library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf.md
+        - Ambisonic Virtual Loudspeakers: library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf.md
       - RIR models: 
         - library/listener-models/rir-models/index.md                
         - Direct BRIR Convolution Model:  library/listener-models/rir-models/listener-acoustic-environment-model-brir.md      
-        - Ambisoninc BRIR Convolution Model: library/listener-models/rir-models/listener-acoustic-environment-model-ambisonic-brir.md
+        - Ambisonic Reverberant Virtual Loudspeakers (RVL): library/listener-models/rir-models/listener-acoustic-environment-model-ambisonic-brir.md
     - Environment Models:
       - library/environment-models/index.md   
       - Free Field Model: library/environment-models/freefield-environment-model.md   

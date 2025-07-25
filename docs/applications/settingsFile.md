@@ -37,7 +37,7 @@ Example:
 This section defines the models used for sound rendering, including listeners and environment models.
 
 - **Listeners**: Defines the physical listener(s) by ID. Example: `["DefaultListener"]`.
-- **ListenerModels**: Specifies the listener models, identified by an ID and model type. The available types include `ListenerHRTFModel`, `ListenerAmbisonicHRTFModel`, `ListenerEnvironmentBRIRModel`, and `ListenerAmbisonicEnvironmentBRIRModel`.
+- **ListenerModels**: Specifies the listener models, identified by an ID and model type. The available types include `ListenerDirectHRTFConvolution`, `ListenerDirectBRIRConvolutionModel`, `ListenerAmbisonicVirtualLoudspeakersModel`, and `ListenerAmbisonicReverberantVirtualLoudspeakersModel`.
 - **EnvironmentModels**: Specifies the environment models, such as the `SDNEnvironmentModel` and the `FreeFieldEnvironmentModel`.
 - **Binaural Filters**: Specifies the binaural filter used. The available binaural filter model is the `SOSBinauralFilter`.
 - **ConnectSourcesTo**: Defines which models the audio sources connect to when loaded. Sources can be connected to either listener models or environment models.
@@ -50,8 +50,8 @@ Example:
 	"ModelsArchitecture": {	
 		"Listeners": ["DefaultListener"],		
 		"ListenerModels": [
-			{"ID": "DirectPath", "Model": "ListenerHRTFModel"},							
-			{"ID": "ReverbPath", "Model": "ListenerAmbisonicEnvironmentBRIRModel"}	
+			{"ID": "DirectPath", "Model": "ListenerDirectHRTFConvolution"},							
+			{"ID": "ReverbPath", "Model": "ListenerAmbisonicReverberantVirtualLoudspeakersModel"}	
 		],
 		"EnvironmentModels": [{"ID": "FreeField", "Model": "FreeFieldEnvironmentModel"}],
 		"BinauralFilters":[],
