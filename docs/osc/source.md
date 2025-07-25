@@ -13,7 +13,7 @@ Adds a new source loading a sound file (wav, mp3 and aif formats supported). Add
 
 Specifying a sound file with `source_path`, a new sound file is loaded from the specified path and an identifier `source_id` is assigned to it. If there is already another source with the same identifier, it is substituted by the new one. Otherwise, a new source is created. 
 
-`source_model` indicates the source model to be used, possible values are: `SimpleModel`, `DirectivityModel`. See [Source Models](/BRT-Documentation/library/source/models/) for more details.
+`source_model` indicates the source model to be used, possible values are: `OmnidirectionalModel`, `DirectivityModel`. See [Source Models](/BRT-Documentation/library/source/models/) for more details.
 
 `modelToConnectTo` is optional and indicates to which listener model this source will be connected. If left blank, the source will be connected to all listener models that have been indicated in the application configuration.
 

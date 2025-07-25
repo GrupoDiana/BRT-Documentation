@@ -17,8 +17,8 @@ Modules to which it connects:
 <summary>For C++ developer</summary>
 
 <ul>
-<li><strong>File</strong>: /include/SourceModels/SourceSimpleModel.hpp</li>
-<li><strong>Class name</strong>: CSourceSimpleModel</li>
+<li><strong>File</strong>: /include/SourceModels/SourceOmnidirectionalModel.hpp</li>
+<li><strong>Class name</strong>: CSourceOmnidirectionalModel</li>
 <li><strong>Inheritance</strong>: CSourceModelBase</li>
 <li><strong>Namespace</strong>: BRTSourceModel</li>
 </ul> 
@@ -35,7 +35,7 @@ Modules to which it connects:
 ```cpp
 // Assuming that the ID of this environment model is contained in _environmentID.
 brtManager.BeginSetup();
-std::shared_ptr<BRTSourceModel::CSourceSimpleModel> brtSoundSource = brtManager->CreateSoundSource<BRTSourceModel::CSourceSimpleModel>(soundSourceID);
+std::shared_ptr<BRTSourceModel::CSourceOmnidirectionalModel> brtSoundSource = brtManager->CreateSoundSource<BRTSourceModel::CSourceOmnidirectionalModel>(soundSourceID);
 brtManager.EndSetup();
 if (brtSoundSource == nullptr) {
 	// error	

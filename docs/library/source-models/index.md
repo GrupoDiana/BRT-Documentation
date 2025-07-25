@@ -5,7 +5,7 @@ These models therefore serve as the main library entry points for applications d
 
 There are currently two fundamental source models and one virtual source model:
 
-- [Simple Omnidirectional Model](simple-omnidirectional-source-model.md)
+- [Omnidirectional Model](simple-omnidirectional-source-model.md)
 - [Directivity Model](directivity-source-model.md)
 - [Virtual Sources Model](virtual-source-model.md)
 
