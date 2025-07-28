@@ -25,8 +25,8 @@ Modules to which it connects:
 
 <h2>Class inheritance diagram</h2>
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Free field Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Free field Model Internal diagram.</p>
+    <img src="/BRT-Documentation/assets/sysmldiagrams/SourceModelsClassDiagram.png" alt="Omnidirectional Source Model Class diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Omnidirectional Source Model Class diagram.</p>
 </div>
 <br>
 
@@ -35,9 +35,9 @@ Modules to which it connects:
 ```cpp
 // Assuming that the ID of this environment model is contained in _environmentID.
 brtManager.BeginSetup();
-std::shared_ptr<BRTSourceModel::CSourceOmnidirectionalModel> brtSoundSource = brtManager->CreateSoundSource<BRTSourceModel::CSourceOmnidirectionalModel>(soundSourceID);
+std::shared_ptr<BRTSourceModel::CSourceOmnidirectionalModel> soundSource = brtManager->CreateSoundSource<BRTSourceModel::CSourceOmnidirectionalModel>(soundSourceID);
 brtManager.EndSetup();
-if (brtSoundSource == nullptr) {
+if (soundSource == nullptr) {
 	// error	
 }
 ```

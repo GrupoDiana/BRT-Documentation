@@ -14,8 +14,8 @@ The HRTF service module is responsible for providing the impulse responses in ea
 
 The internal block diagram of this class is as follows:
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerHRTFModel_InternalBlockDiagram.png" alt="Listener HRTF Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Listener HRTF Model Internal diagram.</p>
+    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerDirectHRTFConvolutionModel Internal Block diagram.png" alt="Listener Direct HRTF Convolution Model Internal diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Listener Direct HRTF Convolution Model Internal Block diagram.</p>
 </div>
 
 <!--The operation of the convolucionator as well as its block diagram can be seen in this link (:warning:URL).-->
@@ -44,15 +44,15 @@ Modules to which it supports connections:
 Modules to which it connects:
 
     - Listener
-    - Binaural Filter
+    - Billateral Filter
 
 
 <details>
 <summary>For C++ developer</summary>
 
 <ul>
-<li><strong>File</strong>: /include/ListenerModels/ListenerHRTFModel.hpp</li>
-<li><strong>Class name</strong>: CListenerHRTFModel</li>
+<li><strong>File</strong>: /include/ListenerModels/ListenerDirectHRTFConvolution.hpp</li>
+<li><strong>Class name</strong>: CListenerDirectHRTFConvolutionModel</li>
 <li><strong>Inheritance</strong>: CListenerModelBase</li>
 <li><strong>Namespace</strong>: BRTListenerModel</li>
 <li><strong>Classes that instance</strong>:
@@ -65,7 +65,7 @@ Modules to which it connects:
 
 <h2>Class inheritance diagram</h2>
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/HRTFListenerModel.png" alt="Listener HRTF Model Internal diagram" style="display: block; margin: 0 auto;">
+    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerDirectHRTFConvolutionModel Class Diagram.png" alt="Listener HRTF Model Internal diagram" style="display: block; margin: 0 auto;">
     <p style="text-align: center;">Listener HRTF Model Internal diagram.</p>
 </div>
 <br>
@@ -76,7 +76,7 @@ Modules to which it connects:
 ```cpp
 // Assuming that the ID of this listener model is contained in _listenerModelID.
 brtManager.BeginSetup();
-std::shared_ptr<BRTListenerModel::CListenerHRTFModel>listenerModel = brtManager.CreateListenerModel<BRTListenerModel::CListenerHRTFModel>(_listenerModelID);
+std::shared_ptr<BRTListenerModel::CListenerDirectHRTFConvolutionModel>listenerModel = brtManager.CreateListenerModel<BRTListenerModel::CListenerDirectHRTFConvolutionModel>(_listenerModelID);
 brtManager.EndSetup();
 if (listenerModel == nullptr) {
     // ERROR

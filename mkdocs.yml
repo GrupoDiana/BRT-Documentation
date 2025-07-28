@@ -140,8 +140,8 @@ nav:
       - library/environment-models/index.md   
       - Free Field Model: library/environment-models/freefield-environment-model.md   
       - SDN Model: library/environment-models/sdn-environment-model.md
-    - Binaural Filters:
-      - library/binaural-filters/index.md
+    - Bilateral Filters:
+      - library/bilateral-filters/index.md
     - Services Modules: 
       - library/service-modules/index.md
       - HRTF: library/service-modules/service-hrtf.md

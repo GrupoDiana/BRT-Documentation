@@ -20,8 +20,8 @@ $attenuation = 10^{(Distance Attenuation Factor/ -3 dB) * log_{10}(ReferenceDist
 
 The internal block diagram of this class is as follows:
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerEnvironmentBRIRModel_InternalBlock diagram.png" alt="Listener & Environment BRIR Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Listener & Environment BRIR Model Internal diagram.</p>
+    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerDirectBRIRConvolutionModel Internal Block diagram.png" alt="Listener Direct BRIR Convolution Model Internal diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Listener Direct BRIR Convolution Model Internal diagram.</p>
 </div>
 
 <!--The operation of the convolucionator as well as its block diagram can be seen in this link (:warning:URL).-->
@@ -45,15 +45,15 @@ Modules to which it supports connections:
 Modules to which it connects:
 
     - Listener
-    - Binaural Filter
+    - Bilateral Filter
 
 
 <details>
 <summary>For C++ developer</summary>
 
 <ul>
-<li><strong>File</strong>: /include/ListenerModels/ListenerEnvironmentBRIRModel.hpp</li>
-<li><strong>Class name</strong>: CListenerHRTFModel</li>
+<li><strong>File</strong>: /include/ListenerModels/ListenerAmbisonicVirtualLoudspeakersModel.hpp</li>
+<li><strong>Class name</strong>: CListenerAmbisonicVirtualLoudspeakersModel</li>
 <li><strong>Inheritance</strong>: CListenerModelBase</li>
 <li><strong>Namespace</strong>: BRTListenerModel</li>
 <li><strong>Classes that instance</strong>:
@@ -65,8 +65,8 @@ Modules to which it connects:
 
 <h2>Class inheritance diagram</h2>
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Listener HRTF Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Listener HRTF Model Internal diagram.</p>
+    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Listener Direct BRIR Convolution Model Internal diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Listener Direct BRIR Convolution Model Internal diagram.</p>
 </div>
 <br>
 
@@ -75,7 +75,7 @@ Modules to which it connects:
 ```cpp
 // Assuming that the ID of this listener model is contained in _listenerModelID.
 brtManager.BeginSetup();
-std::shared_ptr<BRTListenerModel::CListenerEnvironmentBRIRModel>listenerModel = brtManager.CreateListenerModel<BRTListenerModel::CListenerEnvironmentBRIRModel>(_listenerModelID);
+std::shared_ptr<BRTListenerModel::CListenerAmbisonicVirtualLoudspeakersModel>listenerModel = brtManager.CreateListenerModel<BRTListenerModel::CListenerAmbisonicVirtualLoudspeakersModel>(_listenerModelID);
 brtManager.EndSetup();
 if (listenerModel == nullptr) {
     // ERROR
