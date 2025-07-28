@@ -1,4 +1,4 @@
-# Bilatera Filters
+# Bilateral Filters
 
 The CBilateralFilter class provides a mechanism for filtering binaural audio signals, with support for configurable filter stages. It can process signals considering both static and dynamic listener and source positions. The class allows for flexibility in enabling or disabling the processor, adjusting filter coefficients, and resetting buffers for new processing cycles.
 
