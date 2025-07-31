@@ -112,7 +112,7 @@ This modular approach provides flexibility while ensuring that all components in
 
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="../assets/BRTLibraryUsageDiagram.png" alt="Generic connection diagram of the BRT models." style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Generic connection diagram of the BRT models.</p>
+    <p style="text-align: center;">Generic connection diagram of the BRT models</p>
 </div>
 
 Below are examples of configurations that can be created:
@@ -120,19 +120,25 @@ Below are examples of configurations that can be created:
 **Example 1 - Basic Anechoic Simulation**: Combine a listener model with source models for anechoic rendering.
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="../assets/anechoic-simulation.png" alt="Configuration with an anechoic simulation" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Configuration with an anechoic simulation.</p>
+    <p style="text-align: center;">Configuration for direct path simulation (anechoic simulation)</p>
 </div>
 
 **Example 2 - Propagation simulation**: Add an environment model to simulate propagation.
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="../assets/anechoic-freefield-environment.png" alt="Configuration with anechoic and free field environment simulation." style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Configuration with anechoic and free field simulation.</p>
+    <p style="text-align: center;">Configuration for direct path simulation adding propagation in a free environment (anechoic simulation + propagation)</p>
 </div>
 
-**Example 3 - Room Simulation and Custom Filters**: Incorporate a room simulation and binaural filters for simulating specific devices like headphones or earmuffs.
+**Example 3 - Hybrid simulation and custom filters**: Independent simulation for direct sound and room reverberation, using a hybrid approach. In addition, a bilateral filter is added to simulate hearing protectors or to compensate for headphones.
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="../assets/anechoic-reverb-binaural-simulation.png" alt="Configuration with anechoic and reverberation simulation, plus filtering." style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Configuration with anechoic and reverberation simulation, plus filtering.</p>
+    <p style="text-align: center;">Configuration with direct path (anechoic) and reverberation (room) simulation, plus filtering.</p>
+</div>
+
+**Example 4 - Simultaneous rendering of two listeners**: Simultaneous and independent rendering of two listeners. Each can have their own position in space, HRTF, etc. In addition, filtering is added to one of the listeners to simulate ear protective devices.
+<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
+    <img src="../assets/two-listener-example.png" alt="Configuration with anechoic and reverberation simulation, plus filtering." style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Simultaneous rendering of two listeners</p>
 </div>
 
 
