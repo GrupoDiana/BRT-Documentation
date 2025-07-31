@@ -1,6 +1,6 @@
-# Listener Acoustic Model based on BRIR convolution in the Ambisonics domain
+# Listener Model based on BRIR convolution in the Ambisonics domain
 
-The **Ambisonic BRIR Convolution Model** enables spatial audio rendering from multiple sound sources. It performs convolution in the ambisonic domain using binaural room impulse responses (BRIR[^1]) and the selected ambisonic order (currently up to third order). This process simulates both direct sound and reverberation, providing a complete representation of the acoustic interaction between the source and the listener. If the impulse responses do not include information about the direct path, the simulation is limited to the reverberation of the environment[^2]. The process consists of two main stages: ambisonic encoding and ambisonic convolution/decoding.
+The **Listener Ambisonic Reverberant Virtual Loudspeakers (RVL) Model** enables spatial audio rendering from multiple sound sources. It performs convolution in the ambisonic domain using binaural room impulse responses (BRIR[^1]) and the selected ambisonic order (currently up to third order). This process simulates both direct sound and reverberation, providing a complete representation of the acoustic interaction between the source and the listener. If the impulse responses do not include information about the direct path, the simulation is limited to the reverberation of the environment[^2]. The process consists of two main stages: ambisonic encoding and ambisonic convolution/decoding.
 
 [^1]: A BRIR captures the acoustic characteristics of a room from the perspective of a specific listener, as it is recorded using microphones placed in the listener's ears. This is why we refer to this model as both a listener and environment model.
 [^2]: This is the standard way we use the library.
@@ -26,8 +26,8 @@ $attenuation = 10^{(Distance Attenuation Factor/ -3 dB) * log_{10}(ReferenceDist
 
 The internal block diagram of this class is as follows:
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerAmbisonicEnvironmentBRIRModel_InternalBlockDiagram.png" alt="Ambisonic BRIR Convolution Model - Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Ambisonic BRIR Convolution Model - Internal diagram.</p>
+    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerAmbisonicReverberantVirtualLoudspeakersModel Internal Block diagram.png" alt="Listener Ambisonic Reverberant Virtual Loudspeakers (RVL) Model - Internal diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Listener Ambisonic Reverberant Virtual Loudspeakers (RVL) Model - Internal diagram.</p>
 </div>>
 
 
@@ -51,7 +51,7 @@ Modules to which it supports connections:
 Modules to which it connects:
 
     - Listener
-    - Binaural Filter
+    - Bilateral Filter
 
 
 
@@ -59,8 +59,8 @@ Modules to which it connects:
 <summary>For C++ developer</summary>
 
 <ul>
-<li><strong>File</strong>: /include/ListenerModels/ListenerAmbisonicEnvironmentBRIRModel.hpp</li>
-<li><strong>Class name</strong>: CListenerAmbisonicEnvironmentBRIRModel</li>
+<li><strong>File</strong>: /include/ListenerModels/ListenerAmbisonicReverberantVirtualLoudspeakersModel.hpp</li>
+<li><strong>Class name</strong>: CListenerAmbisonicReverberantVirtualLoudspeakersModel</li>
 <li><strong>Inheritance</strong>: CListenerModelBase</li>
 <li><strong>Namespace</strong>: BRTListenerModel</li>
 <li><strong>Classes that instance</strong>:
@@ -73,8 +73,8 @@ Modules to which it connects:
 
 <h2>Class inheritance diagram</h2>
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="ListenerAmbisonicEnvironmentBRIRModel class diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">ListenerAmbisonicEnvironmentBRIRModel class diagram.</p>
+    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Listener Ambisonic Reverberant Virtual Loudspeakers (RVL) Model class diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Listener Ambisonic Reverberant Virtual Loudspeakers (RVL) Model - class diagram.</p>
 </div>
 <br>
 
@@ -84,7 +84,7 @@ Modules to which it connects:
 ```cpp
 // Assuming that the ID of this listener model is contained in _listenerModelID.
 brtManager.BeginSetup();
-std::shared_ptr<BRTListenerModel::CListenerAmbisonicEnvironmentBRIRModel>listenerModel = brtManager.CreateListenerModel<BRTListenerModel::CListenerAmbisonicEnvironmentBRIRModel>(_listenerModelID);
+std::shared_ptr<BRTListenerModel::CListenerAmbisonicReverberantVirtualLoudspeakersModel>listenerModel = brtManager.CreateListenerModel<BRTListenerModel::CListenerAmbisonicReverberantVirtualLoudspeakersModel>(_listenerModelID);
 brtManager.EndSetup();
 if (listenerModel == nullptr) {
     // ERROR

@@ -58,7 +58,7 @@ The library is organized into three layers, as previously discussed. From the pe
 High-level modules are responsible for audio rendering. Each module models specific physical and/or psychoacoustic phenomena, depending on the use case. The following types of models have been implemented, grouped into four categories:
 
 - **Source Models**: Each monaural sound source to be rendered requires the instantiation of a source model. These models serve as the main entry points to the library for applications during rendering. At a minimum, applications must provide the audio samples of each source for every frame and, if applicable, update their position and orientation.
-    - [Simple Omnidirectional Source Model](../library/source-models/simple-omnidirectional-source-model.md)
+    - [Omnidirectional Source Model](../library/source-models/simple-omnidirectional-source-model.md)
     - [Directional Source Model](../library/source-models/directivity-source-model.md)
 
 - **Listener Models**: Listener models generate binaural audio by receiving a single audio channel per source and producing two output channels (left and right ears). They can actually include Listener+Environment models using Binaural Room Impulse Responses (BRIR). They are categorized as follows:
@@ -70,12 +70,13 @@ High-level modules are responsible for audio rendering. Each module models speci
 - **Environment Models**: These models simulate various acoustic environments:
     - [Free Field](../library/environment-models/freefield-environment-model.md): Simulates propagation in a free-field environment, including propagation delay, attenuation, and filtering.
     - [SDN](../library/environment-models/sdn-environment-model.md): Simulates room reverberation using the Scattering Delay Networks method.
-    - *ISM*: Simulates room reverberation using the Image Source Method *(Under development)*.
-    - *Hybrid: ISM + Convolution*: Simulates room reverberation where early reflections are modeled using the Image Source Method, and the reverberant tail is simulated through convolution with a BRIR *(Under development)*.
+    - *ISM*: Simulates room reverberation using the Image Source Method *(under development)*.
+    - *Hybrid: ISM + Convolution*: Simulates room reverberation where early reflections are modeled using the Image Source Method, and the reverberant tail is simulated through convolution with a BRIR *(under development)*.
 
-- **Binaural Filters**: They perform filtering on binaural signals.
-    - [SOS Filters](../library/binaural-filters/sos-filters.md): Generic module to perform binaural filtering based on second-order sections, enabling the simulation of devices such as ear protection devices of headphone compensations.
-    - *Hearing Loss Models*: simulate different type of hearing loss *(Under development)*.
+- **Bilateral Filters**: They perform filtering on binaural signals.
+    - [SOS Filters](../library/bilateral-filters/sos-filters.md): Generic module to perform binaural filtering based on second-order sections, enabling the simulation of devices such as ear protection devices of headphone compensations.
+    - _Non-linear filters: support advanced models such as **hearing loss simulation** (under development)_.
+    - _FIR filters: support applications such as **headphone compensation** (under development)_.
 
 - **Listener**: Each listener instantiated in the BRT library represents a “real” listener for which you want to render binaural audio. The application must keep its position/orientation updated and must at the end of each audio frame collect the output samples. 
  
@@ -104,7 +105,7 @@ The diagram below outlines the modular interconnections in the BRT Library and t
 
 3. **Environment Models (Optional)**: These models simulate acoustic spaces and produce virtual sources, which are then connected to the listener models. Applications only need to connect the modules; the library handles virtual source generation.
 
-4. **Binaural Filters (Optional)**: To simulate auditory devices, such as headphones, connect a binaural filter between listener models and listener outputs.
+4. **Bilateral Filters (Optional)**: To simulate auditory devices, such as headphones, connect a bilateral filter between listener models and listener outputs.
 
 5. **Listeners**: Instantiate one listener module for each real listener. The application must collect the output samples from each listener at the end of every audio frame.
 
@@ -112,7 +113,7 @@ This modular approach provides flexibility while ensuring that all components in
 
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="../assets/BRTLibraryUsageDiagram.png" alt="Generic connection diagram of the BRT models." style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Generic connection diagram of the BRT models.</p>
+    <p style="text-align: center;">Generic connection diagram of the BRT models</p>
 </div>
 
 Below are examples of configurations that can be created:
@@ -120,19 +121,25 @@ Below are examples of configurations that can be created:
 **Example 1 - Basic Anechoic Simulation**: Combine a listener model with source models for anechoic rendering.
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="../assets/anechoic-simulation.png" alt="Configuration with an anechoic simulation" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Configuration with an anechoic simulation.</p>
+    <p style="text-align: center;">Configuration for direct path simulation (anechoic simulation)</p>
 </div>
 
 **Example 2 - Propagation simulation**: Add an environment model to simulate propagation.
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="../assets/anechoic-freefield-environment.png" alt="Configuration with anechoic and free field environment simulation." style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Configuration with anechoic and free field simulation.</p>
+    <p style="text-align: center;">Configuration for direct path simulation adding propagation in a free environment (anechoic simulation + propagation)</p>
 </div>
 
-**Example 3 - Room Simulation and Custom Filters**: Incorporate a room simulation and binaural filters for simulating specific devices like headphones or earmuffs.
+**Example 3 - Hybrid simulation and custom filters**: Independent simulation for direct sound and room reverberation, using a hybrid approach. In addition, a bilateral filter is added to simulate hearing protectors or to compensate for headphones.
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="../assets/anechoic-reverb-binaural-simulation.png" alt="Configuration with anechoic and reverberation simulation, plus filtering." style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Configuration with anechoic and reverberation simulation, plus filtering.</p>
+    <p style="text-align: center;">Configuration with direct path (anechoic) and reverberation (room) simulation, plus filtering.</p>
+</div>
+
+**Example 4 - Simultaneous rendering of two listeners**: Simultaneous and independent rendering of two listeners. Each can have their own position in space, HRTF, etc. In addition, filtering is added to one of the listeners to simulate ear protective devices.
+<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
+    <img src="../assets/two-listener-example.png" alt="Configuration with anechoic and reverberation simulation, plus filtering." style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Simultaneous rendering of two listeners</p>
 </div>
 
 

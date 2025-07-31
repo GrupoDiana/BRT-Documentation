@@ -16,7 +16,7 @@ The BRT Library provides an integrated HRTF loader, capable of reading SOFA file
 
 Currently, the following listener models based on HRTFs have been implemented:  
 
-- [HRTF Convolution Model](./listener-acoustic-model-hrtf.md): Simulates the direct sound path using convolution with HRTFs.  
-- [Ambisonic HRTF Convolution Model](./listener-acoustic-model-ambisonic-hrtf.md): Simulates the direct sound path using convolution with HRTFs in the ambisonic domain.  
+- [Direct HRTF Convolution Model](./listener-acoustic-model-hrtf.md): Simulates the direct sound path using convolution with HRTFs.  
+- [HRTF Convolution model in the Ambisonics Domain](./listener-acoustic-model-ambisonic-hrtf.md): Simulates the direct sound path using convolution with HRTFs in the ambisonic domain.  
 
 These models are designed to provide flexibility and precision for a variety of psychoacoustic experiments and immersive audio applications.

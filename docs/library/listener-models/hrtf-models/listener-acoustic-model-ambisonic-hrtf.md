@@ -1,6 +1,6 @@
-# Listener Acoustic Model based on HRTF convolution in the Ambisonics domain
+# Listener Model based on HRTF convolution in the Ambisonics domain
 
-The **Ambisonic HRTF Convolution Model** module enables spatial audio rendering from multiple sound sources by simulating the direct path between the source and the listener through convolution in the ambisonic domain. This is based on the impulse responses stored in an HRTF and the selected ambisonic order (currently implemented up to order 3). The process involves two main stages: a bilateral ambisonic encoding and an ambisonic convolution/decoding. 
+The **Listener Ambisonic Virtual Loudspeakers Model** module enables spatial audio rendering from multiple sound sources by simulating the direct path between the source and the listener through convolution in the ambisonic domain. This is based on the impulse responses stored in an HRTF and the selected ambisonic order (currently implemented up to order 3). The process involves two main stages: a bilateral ambisonic encoding and an ambisonic convolution/decoding. 
 
 In the first stage, a bilateral ambisonic encoding is performed for each input sound source. This encoding generates (N) ambisonic channels per ear, where (N) depends on the selected ambisonic order. The encoding process begins by introducing independent delays for each ear to simulate interaural time differences (ITD). Subsequently, a near-field correction is applied through independent filtering of the signals for each ear, with filter coefficients determined by the distance between the source and the listener as well as the interaural azimuth. Finally, ambisonic encoding is carried out separately for each ear, resulting in (N) ambisonic channels for each ear per sound source.
 
@@ -16,8 +16,8 @@ For further details on the functionality of the [Bilateral Ambisonic Encoder](..
 
 The internal block diagram of this class is as follows:
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerAmbisonicHRTFModelInternalBlockDiagram.png" alt="Ambisonic HRTF Convolution Model - Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Ambisonic HRTF Convolution Model - Internal diagram.</p>
+    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerAmbisonicVirtualLoudspeakersModel Internal Block diagram.png" alt="Listener Ambisonic Virtual LoudSpeakers Model - Internal diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Listener Ambisonic Virtual LoudSpeakers Model - Internal diagram</p>
 </div>
 
 ## Configuration Options
@@ -45,7 +45,7 @@ Modules to which it supports connections:
 Modules to which it connects:
 
     - Listener
-    - Binaural Filter
+    - Bilateral Filter
 
 
 
@@ -53,8 +53,8 @@ Modules to which it connects:
 <summary>For C++ developer</summary>
 
 <ul>
-<li><strong>File</strong>: \include\ListenerModels\ListenerAmbisonicHRTFModel.hpp</li>
-<li><strong>Class name</strong>: CListenerAmbisonicHRTFModel</li>
+<li><strong>File</strong>: \include\ListenerModels\ListenerAmbisonicVirtualLoudspeakersModel.hpp</li>
+<li><strong>Class name</strong>: CListenerAmbisonicVirtualLoudspeakersModel</li>
 <li><strong>Inheritance</strong>: CListenerModelBase</li>
 <li><strong>Namespace</strong>: BRTListenerModel</li>
 <li><strong>Classes that instance</strong>:
@@ -67,8 +67,8 @@ Modules to which it connects:
 
 <h2>Class inheritance diagram</h2>
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Listener HRTF Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Listener HRTF Model Internal diagram.</p>
+    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Listener Ambisonic Virtual LoudSpeakers class diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Listener Ambisonic Virtual LoudSpeakers class diagram</p>
 </div>
 <br>
 
@@ -78,7 +78,7 @@ Modules to which it connects:
 ```cpp
 // Assuming that the ID of this listener model is contained in _listenerModelID.
 brtManager.BeginSetup();
-std::shared_ptr<BRTListenerModel::CListenerAmbisonicHRTFModel>listenerModel = brtManager.CreateListenerModel<BRTListenerModel::CListenerAmbisonicHRTFModel>(_listenerModelID);
+std::shared_ptr<BRTListenerModel::CListenerAmbisonicVirtualLoudspeakersModel>listenerModel = brtManager.CreateListenerModel<BRTListenerModel::CListenerAmbisonicVirtualLoudspeakersModel>(_listenerModelID);
 brtManager.EndSetup();
 if (listenerModel == nullptr) {
     // ERROR

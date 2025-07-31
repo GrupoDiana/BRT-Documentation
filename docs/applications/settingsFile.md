@@ -37,7 +37,7 @@ Example:
 This section defines the models used for sound rendering, including listeners and environment models.
 
 - **Listeners**: Defines the physical listener(s) by ID. Example: `["DefaultListener"]`.
-- **ListenerModels**: Specifies the listener models, identified by an ID and model type. The available types include `ListenerHRTFModel`, `ListenerAmbisonicHRTFModel`, `ListenerEnvironmentBRIRModel`, and `ListenerAmbisonicEnvironmentBRIRModel`.
+- **ListenerModels**: Specifies the listener models, identified by an ID and model type. The available types include `ListenerDirectHRTFConvolution`, `ListenerDirectBRIRConvolutionModel`, `ListenerAmbisonicVirtualLoudspeakersModel`, and `ListenerAmbisonicReverberantVirtualLoudspeakersModel`.
 - **EnvironmentModels**: Specifies the environment models, such as the `SDNEnvironmentModel` and the `FreeFieldEnvironmentModel`.
 - **Binaural Filters**: Specifies the binaural filter used. The available binaural filter model is the `SOSBinauralFilter`.
 - **ConnectSourcesTo**: Defines which models the audio sources connect to when loaded. Sources can be connected to either listener models or environment models.
@@ -50,8 +50,8 @@ Example:
 	"ModelsArchitecture": {	
 		"Listeners": ["DefaultListener"],		
 		"ListenerModels": [
-			{"ID": "DirectPath", "Model": "ListenerHRTFModel"},							
-			{"ID": "ReverbPath", "Model": "ListenerAmbisonicEnvironmentBRIRModel"}	
+			{"ID": "DirectPath", "Model": "ListenerDirectHRTFConvolution"},							
+			{"ID": "ReverbPath", "Model": "ListenerAmbisonicReverberantVirtualLoudspeakersModel"}	
 		],
 		"EnvironmentModels": [{"ID": "FreeField", "Model": "FreeFieldEnvironmentModel"}],
 		"BinauralFilters":[],
@@ -88,18 +88,18 @@ Example:
 
 ### 4. Sound Sources
 
-This section defines the sound sources to be loaded at startup. Each source must specify the full filename and the model used for rendering. The available source model options are `SimpleModel` or `DirectivityModel`.
+This section defines the sound sources to be loaded at startup. Each source must specify the full filename and the model used for rendering. The available source model options are `OmnidirectionalModel` or `DirectivityModel`.
 
 - **ID**: A unique identifier for each sound source.
 - **fileName**: The full path to the sound file to be used.
-- **sourceModel**: Specifies the rendering model for the sound source. The two available models are `SimpleModel` and `DirectivityModel`.
+- **sourceModel**: Specifies the rendering model for the sound source. The two available models are `OmnidirectionalModel` and `DirectivityModel`.
 
 Example: 
 
 ```
 	"SoundSources": [
-		{"ID": "SoundSource1", "fileName": "resources//MusArch_Sample_48kHz_Anechoic_FemaleSpeech.wav", "sourceModel":"SimpleModel"},
-		{"ID": "SoundSource2", "fileName": "resources//MusArch_Sample_48kHz_Anechoic_MaleSpeech.wav", "sourceModel":"SimpleModel"}
+		{"ID": "SoundSource1", "fileName": "resources//MusArch_Sample_48kHz_Anechoic_FemaleSpeech.wav", "sourceModel":"OmnidirectionalModel"},
+		{"ID": "SoundSource2", "fileName": "resources//MusArch_Sample_48kHz_Anechoic_MaleSpeech.wav", "sourceModel":"OmnidirectionalModel"}
 	],
 ```
 

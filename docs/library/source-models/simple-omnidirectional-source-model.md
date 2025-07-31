@@ -17,16 +17,16 @@ Modules to which it connects:
 <summary>For C++ developer</summary>
 
 <ul>
-<li><strong>File</strong>: /include/SourceModels/SourceSimpleModel.hpp</li>
-<li><strong>Class name</strong>: CSourceSimpleModel</li>
+<li><strong>File</strong>: /include/SourceModels/SourceOmnidirectionalModel.hpp</li>
+<li><strong>Class name</strong>: CSourceOmnidirectionalModel</li>
 <li><strong>Inheritance</strong>: CSourceModelBase</li>
 <li><strong>Namespace</strong>: BRTSourceModel</li>
 </ul> 
 
 <h2>Class inheritance diagram</h2>
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Free field Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Free field Model Internal diagram.</p>
+    <img src="/BRT-Documentation/assets/sysmldiagrams/SourceModelsClassDiagram.png" alt="Omnidirectional Source Model Class diagram" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">Omnidirectional Source Model Class diagram.</p>
 </div>
 <br>
 
@@ -35,9 +35,9 @@ Modules to which it connects:
 ```cpp
 // Assuming that the ID of this environment model is contained in _environmentID.
 brtManager.BeginSetup();
-std::shared_ptr<BRTSourceModel::CSourceSimpleModel> brtSoundSource = brtManager->CreateSoundSource<BRTSourceModel::CSourceSimpleModel>(soundSourceID);
+std::shared_ptr<BRTSourceModel::CSourceOmnidirectionalModel> soundSource = brtManager->CreateSoundSource<BRTSourceModel::CSourceOmnidirectionalModel>(soundSourceID);
 brtManager.EndSetup();
-if (brtSoundSource == nullptr) {
+if (soundSource == nullptr) {
 	// error	
 }
 ```
