@@ -1,0 +1,2649 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation site of the entire BRT ecosystem">
+      
+      
+        <meta name="author" content="Diana Research Group - University of Malaga">
+      
+      
+        <link rel="canonical" href="https://grupodiana.github.io/BRT-Documentation/osc/source/">
+      
+      
+        <link rel="prev" href="../resources/">
+      
+      
+        <link rel="next" href="../listener/">
+      
+      
+      <link rel="icon" href="../../assets/logos/SONICOMwave.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Source commands - BRT Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sourceloadsource" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+  
+  <header class="md-header" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="Header">
+      <a href="../.." title="BRT Documentation" class="md-header__button md-logo" aria-label="BRT Documentation" data-md-component="logo">
+        
+  <img src="../../assets/logos/SONICOMwave.png" alt="logo">
+
+      </a>
+      <label class="md-header__button md-icon" for="__drawer">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      </label>
+      <div class="md-header__title" data-md-component="header-title">
+        <div class="md-header__ellipsis">
+          <div class="md-header__topic">
+            <span class="md-ellipsis">
+              BRT Documentation
+            </span>
+          </div>
+          <div class="md-header__topic" data-md-component="header-topic">
+            <span class="md-ellipsis">
+              
+                Source commands
+              
+            </span>
+          </div>
+        </div>
+      </div>
+      
+        
+          <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+        
+      
+      
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      
+      
+      
+        <div class="md-header__source">
+          <a href="https://github.com/GrupoDiana/BRTLibrary" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GrupoDiana/BRTLibrary
+  </div>
+</a>
+        </div>
+      
+      <div class="md-header__download">
+        <a href="assets/brt-documentation.pdf" title="Download PDF documentation" download class="md-icon md-icon--download">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12v7H5v-7H3v9h18v-9h-2m-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/></svg>
+        </a>
+      </div>
+    </nav>
+    
+  </header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../library/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  BRT Library
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../applications/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Applications
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BRT Documentation" class="md-nav__button md-logo" aria-label="BRT Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logos/SONICOMwave.png" alt="logo">
+
+    </a>
+    BRT Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GrupoDiana/BRTLibrary" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GrupoDiana/BRTLibrary
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    BRT Library
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            BRT Library
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/source-models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Source Models
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Source Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/source-models/simple-omnidirectional-source-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Omnidirectional Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/source-models/directivity-source-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Directivity Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/source-models/virtual-source-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Source Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/listener-models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Listener Models
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Listener Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/listener-models/hrtf-models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    HRTF Models
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            HRTF Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/listener-models/hrtf-models/listener-acoustic-model-hrtf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Direct HRTF Convolution
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ambisonic Virtual Loudspeakers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/listener-models/rir-models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    RIR models
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            RIR models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/listener-models/rir-models/listener-acoustic-environment-model-brir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Direct BRIR Convolution Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/listener-models/rir-models/listener-acoustic-environment-model-ambisonic-brir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ambisonic Reverberant Virtual Loudspeakers (RVL)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/environment-models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Environment Models
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Environment Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/environment-models/freefield-environment-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Free Field Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/environment-models/sdn-environment-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SDN Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/bilateral-filters/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Bilateral Filters
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bilateral Filters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/service-modules/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Services Modules
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Services Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/service-modules/service-hrtf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HRTF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/service-modules/service-hrbrir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BRIR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/service-modules/service-directivity-tf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Directivity TF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/service-modules/service-sos-filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SOS Filters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/service-modules/service-ambisonic-bir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AmbisonicBIR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/readers/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    SOFA Readers
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            SOFA Readers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/infrastructure-entities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure Entities
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Infrastructure Entities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/processing-modules/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Processing Modules
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8_2" id="__nav_2_8_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Processing Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/processing-modules/ambisonic-domain-convolver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ambisonic Domain Convolver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/processing-modules/bilateral-ambisonic-encoder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bilateral Ambisonic Encoder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/processing-modules/uniform-partitioned-convolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Uniform Partitioned Convolution
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/common/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Common
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../applications/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Applications
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../applications/berta-renderer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    BeRTA Rendeder
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            BeRTA Rendeder
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/berta-gui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BeRTA GUI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    OSC Commands
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            OSC Commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Control commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overall commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resources commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Source commands
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Source commands
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sourceloadsource" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/loadSource
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourceaddlinein" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/addLineIn
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourceremovesource" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/removeSource
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourceplay" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/play
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourcestop" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/stop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourcepause" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/pause
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourcemute" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/mute
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourceunmute" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/unmute
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourcesolo" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/solo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourceunsolo" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/unsolo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourceloop" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/loop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourcelocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/location
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourceorientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/orientation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourcegain" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/gain
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourceenabledirectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/enableDirectivity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourcesetdirectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/setDirectivity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourceplayandrecord" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/playAndRecord
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sourcerecord" class="md-nav__link">
+    <span class="md-ellipsis">
+      /source/record
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../listener/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Listener commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Environment commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../binaural-filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Binaural Filter commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/unity-osc-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BRT OSC API for Unity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/matlab-osc-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BRT OSC API for Matlab
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/settingsFile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings File
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/annotated-audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotated Receiver Audio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calibration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/safety-limiter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Safety Limiter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Source commands</h1>
+
+<p>These commands provide a comprehensive set of tools for managing and controlling audio sources within the virtual scene. These commands allow for the addition, manipulation, and control of sound sources, including their playback, position, orientation, and various audio properties.</p>
+<hr style="border:1px solid gray">
+<!----------------------------------------------------------------------------------->
+
+<h3 id="sourceloadsource"><strong>/source/loadSource</strong></h3>
+<p>Adds a new source loading a sound file (wav, mp3 and aif formats supported). Adding a new source does not imply playing it back. When adding the source an ID string is associated. That ID can be used later to control the source using other OSC commands.</p>
+<h4 id="syntax">Syntax</h4>
+<p><code>/source/loadSource &lt;string source_id&gt; &lt;string source_path&gt; &lt;string source_model&gt; [&lt;string modelToConnectTo&gt;]</code></p>
+<p>Specifying a sound file with <code>source_path</code>, a new sound file is loaded from the specified path and an identifier <code>source_id</code> is assigned to it. If there is already another source with the same identifier, it is substituted by the new one. Otherwise, a new source is created. </p>
+<p><code>source_model</code> indicates the source model to be used, possible values are: <code>OmnidirectionalModel</code>, <code>DirectivityModel</code>. See <a href="/BRT-Documentation/library/source/models/">Source Models</a> for more details.</p>
+<p><code>modelToConnectTo</code> is optional and indicates to which listener model this source will be connected. If left blank, the source will be connected to all listener models that have been indicated in the application configuration.</p>
+<h4 id="return">Return</h4>
+<p><code>/control/actionResult /source/loadSource &lt;string source_id&gt; &lt;bool loaded&gt; &lt;string description&gt;</code> .</p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>loaded=true</code>if the source is successfuly loaded and <code>loaded=false</code> if not. In both cases a <code>description</code>is added to give more details.</p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/loadSource source1 speech.wav</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/loadSource source1 true Audio source source1 loop enabled</code> or <code>/source/loadSource source1 ERROR: The audio source source1 doesn't exist.</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourceaddlinein"><strong>/source/addLineIn</strong></h3>
+<p>Adds a new source getting it from an audio input channel. Adding a new source does not imply playing it back. When adding the source an ID string is associated. That ID can be used later to control the source using other OSC commands.</p>
+<h4 id="syntax_1">Syntax</h4>
+<p><code>/source/addLineIn &lt;string source_id&gt; &lt;int linein_channel&gt; &lt;string source_model&gt; [&lt;string modelToConnectTo&gt;]</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<p><code>linein_channel</code>: indicates the input channel of the selected audio device to be linked to this sound source. </p>
+<p><code>source_model</code> indicates the source model to be used, possible values are: <code>SimpleModel</code>, <code>DirectivityModel</code>. See <a href="/BRT-Documentation/library/source/models/">Source Models</a> for more details.</p>
+<p><code>modelToConnectTo</code> is optional and indicates to which listener model this source will be connected. If left blank, the source will be connected to all listener models that have been indicated in the application configuration.</p>
+<h4 id="return_1">Return</h4>
+<p><code>/control/actionResult /source/addLineIn &lt;string source_id&gt; &lt;bool loaded&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>loaded=true</code>if the source is successfuly loaded and <code>loaded=false</code> if not. In both cases a <code>description</code>is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_1">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender:<code>/source/addLineIn source1 1 DirectivityModel</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/addLineIn source1 true AUDIO LINE-IN source1 configured succesfully</code> or <code>/source/addLineIn source1 false error: not a valid channel</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourceremovesource"><strong>/source/removeSource</strong></h3>
+<p>Removes a sound source from the system. </p>
+<h4 id="syntax_2">Syntax</h4>
+<p><code>/source/removeSource &lt;string source_id&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<h4 id="return_2">Return</h4>
+<p><code>/control/actionResult /source/removeSource &lt;string source_id&gt; &lt;bool removed&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>removed=true</code>if the source is successfuly removed and <code>removed=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_2">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender:<code>/source/remove source1</code></p>
+<p>BeRTA sends back to the sender : <code>/control/actionResult /source/remove source1 true Audio source removed: source1</code> or <code>/control/actionResult /source/remove source1 false ERROR: The audio source source1 doesn't exist.</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourceplay"><strong>/source/play</strong></h3>
+<p>Plays a specific source, starting to send frames to the library from either the audio file or the input channel. In the first case, it starts from the beginning of the file unless the source was previously started and a <code>/source/pause</code> command was sent before. In such case it resumes at the point it was paused. </p>
+<h4 id="syntax_3">Syntax</h4>
+<p><code>/source/play &lt;string source_id&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<h4 id="return_3">Return</h4>
+<p><code>/control/actionResult /source/play &lt;string source_id&gt; &lt;bool played&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>played=true</code>if the source is successfuly played and <code>played=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_3">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/play source1</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/play source1 true Audio source source1 played back</code> </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourcestop"><strong>/source/stop</strong></h3>
+<p>Stops a specific source. In the case of a source comming from a file, this resets the source so that the next <code>/source/play</code> command will start at the beginning of the file. </p>
+<h4 id="syntax_4">Syntax</h4>
+<p><code>/source/stop &lt;string source_id&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<h4 id="return_4">Return</h4>
+<p><code>/control/actionResult /source/stop &lt;string source_id&gt; &lt;bool stopped&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>stopped=true</code> if the action has been successfully performed and <code>stopped=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_4">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender:  <code>/source/stop source1</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/stop source1 true Audio source source1 removed.</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourcepause"><strong>/source/pause</strong></h3>
+<p>Pauses a specific source. In the case of a source comming from a file, the next <code>/source/play</code> command will resume, sarting at the same point where it was paused. If the <code>source_id</code> does not exist, the command is ignored.</p>
+<h4 id="syntax_5">Syntax</h4>
+<p><code>/source/pause &lt;string source_id&gt;</code></p>
+<p><code>sourc e_id</code>: identifier assigned to the sound source for further references to it</p>
+<h4 id="return_5">Return</h4>
+<p><code>/control/actionResult /source/pause &lt;string source_id&gt; &lt;bool paused&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>,  indicating <code>paused=true</code> if the action has been successfully performed and <code>paused=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_5">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/pause source1</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/pause source1 true Audio source source1 paused.</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourcemute"><strong>/source/mute</strong></h3>
+<p>Mutes a specific source. In the case of a source comming from a file, the application keeps getting the sound stream from the file at the same rate, but silently. The <code>/source/unmute</code> command will make the source sound again. If the <code>source_id</code> does not exist, the command is ignored.</p>
+<h4 id="syntax_6">Syntax</h4>
+<p><code>/source/mute &lt;string source_id&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<h4 id="return_6">Return</h4>
+<p><code>/control/actionResult /source/mute &lt;string source_id&gt; &lt;bool muted&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>muted=true</code> if the action has been successfully performed and <code>muted=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_6">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/mute source1</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/mute source1 true Audio source source1 muted.</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourceunmute"><strong>/source/unmute</strong></h3>
+<p>Unmutes a specific source. In the case of a source comming from a file previously muted, the application has kept getting the sound stream from the file at the same rate, but silently. The <code>/source/unmute</code> command will make the source sound again. If the <code>source_id</code> does not exist, the command is ignored.</p>
+<h4 id="syntax_7">Syntax</h4>
+<p><code>/source/unmute &lt;string source_id&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<h4 id="return_7">Return</h4>
+<p><code>/control/actionResult /source/unmute &lt;string source_id&gt; &lt;bool unmuted&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>unmuted=true</code> if the action has been successfully performed and <code>unmuted=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_7">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/unmute source1</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/unmute source1 true Audio source source1 unmuted.</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourcesolo"><strong>/source/solo</strong></h3>
+<p>Mutes all sources but the the one indicated by this command. In the case of sources comming from files, the application keeps getting the sound stream from them at the same rate, but silently. The <code>/source/unsolo</code> command will make all the sources sound again. Individual commands <code>/source/unmute</code> addressed to those sources muted as a consecuence of an <code>/source/solo</code>command will have the same effect making them sound again. If the <code>source_id</code> does not exist, the command is ignored.</p>
+<h4 id="syntax_8">Syntax</h4>
+<p><code>/source/solo &lt;string source_id&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<h4 id="return_8">Return</h4>
+<p><code>/control/actionResult /source/solo &lt;string source_id&gt; &lt;bool solo&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>solo=true</code> if the action has been successfully performed and <code>solo=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_8">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/solo source1</code></p>
+<p>BeRTA sends back to the sender:  <code>/control/actionResult /source/solo source1 true Audio source source1 playing solo.</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourceunsolo"><strong>/source/unsolo</strong></h3>
+<p>Unmutes all sources but the the one indicated by this command. If the <code>source_id</code> does not exist, the command is ignored.</p>
+<h4 id="syntax_9">Syntax</h4>
+<p><code>/source/unsolo &lt;string source_id&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<h4 id="return_9">Return</h4>
+<p><code>/control/actionResult /source/unsolo &lt;string source_id&gt; &lt;bool unsolo&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>unsolo=true</code> if the action has been successfully performed and <code>unsolo=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_9">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/unsolo source1</code></p>
+<p>BeRTA sends back to the sender:  <code>/control/actionResult /source/unsolo source1 true All audio sources unmuted.</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourceloop"><strong>/source/loop</strong></h3>
+<p>Sets loop mode for the identified source. If loop mode is enabled, when reaching the end, the source will start again. If loop mode is disabled, when reaching the end, the source will stop.</p>
+<h4 id="syntax_10">Syntax</h4>
+<p><code>/source/loop &lt;string source_id&gt; &lt;boolean enable&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<p><code>enable</code>: if true (1) loop mode is enabled. If false (0), loop mode is disabled</p>
+<h4 id="return_10">Return</h4>
+<p><code>/control/actionResult /source/loop &lt;string source_id&gt; &lt;bool loop&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>loop=true</code> if the action has been successfully performed and <code>loop=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_10">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/loop source1</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/loop source1 true Audio source source1 enabled.</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourcelocation"><strong>/source/location</strong></h3>
+<p>Set location of source. Position is set in global x,y,z coordinates, expressed in meters. The new location is sent to all remotes except the one has sent the message.</p>
+<h4 id="syntax_11">Syntax</h4>
+<p><code>/source/location &lt;string source_id&gt; &lt;float x&gt; &lt;float y&gt; &lt;float z&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<p><code>x</code>: X global coordinate, expressed in metres. As a reference, X axis is positive to the front.</p>
+<p><code>y</code>: Y global coordinate, expressed in metres. As a reference, Y axis is positive to the left.</p>
+<p><code>z</code>: Z global coordinate, expressed in metres. As a reference, Z axis is positive to up.</p>
+<h4 id="return_11">Return</h4>
+<p>Any confirmation message is sent back to the sender.</p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_11">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/location source1 2 0 0</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourceorientation"><strong>/source/orientation</strong></h3>
+<p>Set orientation of the source. Orientation is set in egocentric coordinates yaw, pitch and roll, expressed in radians and applied in that order (Yaw, Pitch and Roll). An orinetation of (0, 0, 0) corresponds to be oriented towards positive X. The new orientation is sent to all remotes except the one has sent the message.</p>
+<h4 id="syntax_12">Syntax</h4>
+<p><code>/source/orientation &lt;string source_id&gt; &lt;float yaw&gt; &lt;float pitch&gt; &lt;float roll&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<p><code>yaw</code>: Yaw, expressed in radians. Positive to the right.</p>
+<p><code>pitch</code>: Pitch, expressed in radians. Positive upwards.</p>
+<p><code>roll</code>: Roll, expressed in radians. Positive to the right.</p>
+<h4 id="return_12">Return</h4>
+<p>Any confirmation message is sent back to the sender.</p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_12">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/orientation source1 0 0 0</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourcegain"><strong>/source/gain</strong></h3>
+<p>Sets source gain in dB. 0 dB indicates that the source is kept as it is read from the file or the input channel.</p>
+<h4 id="syntax_13">Syntax</h4>
+<p><code>/source/gain &lt;string source_id&gt; &lt;float gain&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it. If the source doesn't exist, the command is ignored.</p>
+<p><code>gain</code>: Gain, expressed in dB. the source, as red from the file or the input channel is multiplied by 10^(gain/20)</p>
+<h4 id="return_13">Return</h4>
+<p><code>/control/actionResult /source/gain &lt;string source_id&gt; &lt;bool setGain&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>setGain=true</code> if the action has been successfully performed and <code>setGain=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_13">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/gain source1 -3</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/gain source1 true Audio source source1 gain updated to -3 dB</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourceenabledirectivity"><strong>/source/enableDirectivity</strong></h3>
+<p>Switch on or off the directivity of the source. For directivity to work, a DirectivityTF must first be loaded from a SOFA file (<code>/resources/loadDirectivityTF</code>) and then assigned to the source (<code>/source/setDirectivity</code>).</p>
+<h4 id="syntax_14">Syntax</h4>
+<p><code>/source/enableDirectivity &lt;string source_id&gt; &lt;boolean enable&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source. if this the source doesn't exist, the command is ignored</p>
+<p><code>enable</code>: if true (1) directivity is enabled. If false (0), directivity is disabled</p>
+<h4 id="return_14">Return</h4>
+<p><code>/control/actionResult /source/enableDirectivity &lt;string source_id&gt; &lt;bool enableDirectivity&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>,  indicating <code>enableDirectivity=true</code> if the action has been successfully performed and <code>enableDirectivity=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_14">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/enableDirectivity source1 true</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/enableDirectivity source1 true Audio source source1 directivity enabled</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourcesetdirectivity"><strong>/source/setDirectivity</strong></h3>
+<p>Assigns a directivity which has been previously loaded using the command <code>/resources/loadDirectivityTF</code>. </p>
+<h4 id="syntax_15">Syntax</h4>
+<p><code>/source/setDirectivity &lt;string source_id&gt; &lt;string DirectivityTF_id&gt;</code></p>
+<p><code>source_id</code>: identifier assigned to the sound source for further references to it</p>
+<p><code>DirectivityTF_id</code>: identifier of the directivity which was assigned when using the command <code>/resources/loadDirectivityTF</code></p>
+<h4 id="return_15">Return</h4>
+<p><code>/control/actionResult /source/setDirectivity &lt;string DirectivityTF_id&gt; &lt;bool setDirectivity&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>setDirectivity=true</code> if the action has been successfully performed and <code>setDirectivity=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_15">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/setDirectivityTF source1 DirectivityTF1</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/setDirectivityTF DirectivityTF1 true DirectivityTF: DirectivityTF1 has been set to SoundSource: source1</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourceplayandrecord"><strong>/source/playAndRecord</strong></h3>
+<p>Records a file of the specified duration with the delivered binaural sound and all the spatial information of one source and listener (location and orientation). The sound corresponds to the playback of this source from the beginning. The  file includes the structure needed to create a SOFA file with the new <a href="https://www.sofaconventions.org/mediawiki/index.php/AnnotatedReceiverAudio">AnnotatedReceiverAudio</a> convention</p>
+<h4 id="syntax_16">Syntax</h4>
+<p><code>/source/playAndRecord &lt;string source_id&gt; &lt;string filename&gt; &lt;string type&gt; &lt;float seconds&gt;</code></p>
+<p><code>source_id</code>: identifier of the source to be played back and recorded.</p>
+<p><code>string filename</code>: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten, an ordinal number will be added to the end of the new file name.</p>
+<p><code>type</code>: indicates the extension of the file:  wav (not implemented yet) or a mat (matlab binary data container).</p>
+<p><code>seconds</code>: indicates the duration of the recording. If seconds is -1 the recording will finish automatically when the source stops.</p>
+<h4 id="return_16">Return</h4>
+<p><code>/control/actionResult /source/playAndRecord &lt;string source_id&gt; &lt;bool recorded&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>recorded=true</code> if the action has been successfully performed and <code>recorded=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_16">Example</h4>
+<p>BeRTA receives and echoes back to all subscribiers but the sender: <code>/source/playAndRecord SoundSource1 C:/tmp/testingRecord mat 3</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /source/playAndRecord source1 true "Recording completed. File saved: C:/tmp/testingRecord</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="sourcerecord"><strong>/source/record</strong></h3>
+<p><span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span></p>
+<p>Generates a file of the specified duration with the delivered binaural sound and all the spatial information of one source and listener (location and orientation), by processing the source from the beginning <em>without real-time playback</em>. This allows the operation to be executed significantly faster. The file includes the structure needed to create a SOFA file with the new <a href="https://www.sofaconventions.org/mediawiki/index.php/AnnotatedReceiverAudio">AnnotatedReceiverAudio</a> convention.</p>
+<h4 id="syntax_17">Syntax</h4>
+<p><code>/source/record &lt;string source_id&gt; &lt;string filename&gt; &lt;string type&gt; &lt;float seconds&gt;</code></p>
+<p><code>source_id</code>: identifier of the source to be processed and recorded.</p>
+<p><code>filename</code>: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten—an ordinal number will be added to the end of the new file name.</p>
+<p><code>type</code>: indicates the extension of the file: wav (not implemented yet) or mat (MATLAB binary data container).</p>
+<p><code>seconds</code>: indicates the duration of the recording. <strong>This value must be greater than 0.</strong> Unlike <code>/source/playAndRecord</code>, the special value <code>-1</code> is <em>not</em> allowed.</p>
+<h4 id="return_17">Return</h4>
+<p><code>/control/actionResult /source/record &lt;string source_id&gt; &lt;bool recorded&gt; &lt;string description&gt;</code></p>
+<p>The return confirmation refers to the <code>source_id</code>, indicating <code>recorded=true</code> if the action has been successfully performed and <code>recorded=false</code> if not. In both cases a <code>description</code> is added to give more details.</p>
+<p>In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.</p>
+<h4 id="example_17">Example</h4>
+<p>BeRTA receives and echoes back to all subscribers except the sender:<br />
+<code>/source/record SoundSource1 C:/tmp/testingRecord mat 3</code></p>
+<p>BeRTA sends back to the sender:<br />
+<code>/control/actionResult /source/record SoundSource1 true "Recording completed. File saved: C:/tmp/testingRecord"</code><br />
+or<br />
+<code>/control/actionResult /source/record SoundSource1 false "ERROR: Recording failed. File could not be created."</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://www.diana.uma.es/" target="_blank" rel="noopener"> Diana Research Group</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.tabs", "navigation.top", "navigation.tracking", "navigation.path", "toc.integrate", "toc.follow", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

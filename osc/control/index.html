@@ -1,0 +1,2565 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation site of the entire BRT ecosystem">
+      
+      
+        <meta name="author" content="Diana Research Group - University of Malaga">
+      
+      
+        <link rel="canonical" href="https://grupodiana.github.io/BRT-Documentation/osc/control/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../overall/">
+      
+      
+      <link rel="icon" href="../../assets/logos/SONICOMwave.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Control commands - BRT Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#controlconnect" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+  
+  <header class="md-header" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="Header">
+      <a href="../.." title="BRT Documentation" class="md-header__button md-logo" aria-label="BRT Documentation" data-md-component="logo">
+        
+  <img src="../../assets/logos/SONICOMwave.png" alt="logo">
+
+      </a>
+      <label class="md-header__button md-icon" for="__drawer">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      </label>
+      <div class="md-header__title" data-md-component="header-title">
+        <div class="md-header__ellipsis">
+          <div class="md-header__topic">
+            <span class="md-ellipsis">
+              BRT Documentation
+            </span>
+          </div>
+          <div class="md-header__topic" data-md-component="header-topic">
+            <span class="md-ellipsis">
+              
+                Control commands
+              
+            </span>
+          </div>
+        </div>
+      </div>
+      
+        
+          <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+        
+      
+      
+        <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+      
+      
+      
+      
+        <div class="md-header__source">
+          <a href="https://github.com/GrupoDiana/BRTLibrary" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GrupoDiana/BRTLibrary
+  </div>
+</a>
+        </div>
+      
+      <div class="md-header__download">
+        <a href="assets/brt-documentation.pdf" title="Download PDF documentation" download class="md-icon md-icon--download">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12v7H5v-7H3v9h18v-9h-2m-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/></svg>
+        </a>
+      </div>
+    </nav>
+    
+  </header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../library/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  BRT Library
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../applications/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Applications
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BRT Documentation" class="md-nav__button md-logo" aria-label="BRT Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logos/SONICOMwave.png" alt="logo">
+
+    </a>
+    BRT Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GrupoDiana/BRTLibrary" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GrupoDiana/BRTLibrary
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    BRT Library
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            BRT Library
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/source-models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Source Models
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Source Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/source-models/simple-omnidirectional-source-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Omnidirectional Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/source-models/directivity-source-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Directivity Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/source-models/virtual-source-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Source Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/listener-models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Listener Models
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Listener Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/listener-models/hrtf-models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    HRTF Models
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            HRTF Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/listener-models/hrtf-models/listener-acoustic-model-hrtf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Direct HRTF Convolution
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/listener-models/hrtf-models/listener-acoustic-model-ambisonic-hrtf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ambisonic Virtual Loudspeakers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/listener-models/rir-models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    RIR models
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            RIR models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/listener-models/rir-models/listener-acoustic-environment-model-brir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Direct BRIR Convolution Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/listener-models/rir-models/listener-acoustic-environment-model-ambisonic-brir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ambisonic Reverberant Virtual Loudspeakers (RVL)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/environment-models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Environment Models
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Environment Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/environment-models/freefield-environment-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Free Field Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/environment-models/sdn-environment-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SDN Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/bilateral-filters/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Bilateral Filters
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bilateral Filters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/service-modules/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Services Modules
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Services Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/service-modules/service-hrtf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HRTF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/service-modules/service-hrbrir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BRIR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/service-modules/service-directivity-tf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Directivity TF
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/service-modules/service-sos-filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SOS Filters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/service-modules/service-ambisonic-bir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AmbisonicBIR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/readers/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    SOFA Readers
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            SOFA Readers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/infrastructure-entities/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure Entities
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Infrastructure Entities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/processing-modules/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Processing Modules
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8_2" id="__nav_2_8_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Processing Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/processing-modules/ambisonic-domain-convolver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ambisonic Domain Convolver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/processing-modules/bilateral-ambisonic-encoder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bilateral Ambisonic Encoder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/processing-modules/uniform-partitioned-convolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Uniform Partitioned Convolution
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../library/common/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Common
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../applications/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Applications
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Applications
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../applications/berta-renderer/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    BeRTA Rendeder
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            BeRTA Rendeder
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/berta-gui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BeRTA GUI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    OSC Commands
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            OSC Commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Control commands
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Control commands
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#controlconnect" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/connect
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controldisconnect" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/disconnect
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlping" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/ping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlsamplerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/sampleRate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlframesize" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/frameSize
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlbufferframes" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/bufferFrames
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controlactionresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/actionResult
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calibration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controlplaycalibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/playCalibration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controlsetcalibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/setCalibration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controlplaycalibrationtest" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/playCalibrationTest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controlstopcalibrationtest" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/stopCalibrationTest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controlgetsoundlevel" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/getSoundLevel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safety-limiter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safety Limiter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Safety Limiter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controlsetsoundlevellimit" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/setSoundLevelLimit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controlsoundlevelalert" class="md-nav__link">
+    <span class="md-ellipsis">
+      /control/soundLevelAlert
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overall commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Resources commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../source/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Source commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../listener/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Listener commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Environment commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../binaural-filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Binaural Filter commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/unity-osc-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BRT OSC API for Unity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/matlab-osc-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BRT OSC API for Matlab
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/settingsFile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Settings File
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/annotated-audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Annotated Receiver Audio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calibration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/safety-limiter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Safety Limiter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Control commands</h1>
+
+<p>The OSC control commands allow to establish and manage connections with BeRTA over the network or locally. Below are detailed the basic commands for initiating and closing connections, as well as obtaining system and audio configuration information. Each command is designed to provide immediate feedback.</p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlconnect"><strong>/control/connect</strong></h3>
+<p>Open an OSC connection to the indicated IP and port to send the information back. After opening the communicating the following response is sent back: same command with the IP and listening port of BeRTA. Once the connection is stablished, the sender is considered as a suscriber to all the updates which berta sends back.</p>
+<h4 id="syntax">Syntax</h4>
+<p><code>/control/connect &lt;string ip&gt; &lt;int port&gt;</code></p>
+<p><code>ip</code>: IP address of the sender which BeRTA will use to send back messages. Use <code>localhost</code> if it is running in the same machine</p>
+<p><code>port</code>: OSC port in which the sender islistening for reply and update messages. BeRTA will send all replies and update messages to this port. </p>
+<h4 id="return">Return</h4>
+<p>A message is sent back to the sender indicating IP and listening port of BeRTA: <code>/control/connect &lt;string ip&gt; &lt;int port&gt;</code>. Although this information is already known by the sender, this is away of acknowdeging that the connection is stablished and the sender is subscribed to updates.</p>
+<h4 id="example">Example</h4>
+<p>BeRTA receives: <code>/control/connect localhost 10011</code>.</p>
+<p>BeRTA sends back to the sender: <code>/control/connect localhost 10017</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controldisconnect"><strong>/control/disconnect</strong></h3>
+<p>Stops the communication through which BeRTA sent information back. This is equivalent to unsibscribe the sender from updates sent back by BrRTA. When this message is received the same message is sent back.</p>
+<h4 id="syntax_1">Syntax</h4>
+<p><code>/control/disconnect</code></p>
+<h4 id="return_1">Return</h4>
+<p>An echo is sent back to the sender to confirm the reception of the command: <code>/control/disconnect</code>.</p>
+<h4 id="example_1">Example</h4>
+<p>BeRTA receives: <code>/control/disconnect</code>.</p>
+<p>BeRTA sends back to the sender: <code>/control/disconnect</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlping"><strong>/control/ping</strong></h3>
+<p>Responds with the same message to indicate that BeRTA is listening to the external app. </p>
+<h4 id="syntax_2">Syntax</h4>
+<p><code>/control/ping</code></p>
+<h4 id="return_2">Return</h4>
+<p>An echo is sent back to the sender to confirm the reception of the command: <code>/control/ping</code>.</p>
+<h4 id="example_2">Example</h4>
+<p>BeRTA receives: <code>/control/ping</code>.</p>
+<p>BeRTA sends back to the sender: <code>/control/ping</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlversion"><strong>/control/version</strong></h3>
+<p>Responds with a message to indicate the version of BeRTA. </p>
+<h4 id="syntax_3">Syntax</h4>
+<p><code>/control/version</code></p>
+<h4 id="return_3">Return</h4>
+<p>An echo is sent back to the sender including the version of BeRTA: <code>/control/version &lt;string version&gt;</code>.</p>
+<h4 id="example_3">Example</h4>
+<p>BeRTA receives: <code>/control/version</code>.</p>
+<p>BeRTA sends back to the sender: <code>/control/version BeRTA-Renderer v3.0.0</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlsamplerate"><strong>/control/sampleRate</strong></h3>
+<p>Asks for the sample rate which BeRTA is using. This parameter is defined in the used <a href="/BRT-Documentation/setup/settingsFile">settings file</a>.</p>
+<h4 id="syntax_4">Syntax</h4>
+<p><code>/control/sampleRate</code></p>
+<h4 id="return_4">Return</h4>
+<p>An echo is sent back to the sender including the sample rate: <code>/control/sampleRate &lt;int sample_rate&gt;</code>.</p>
+<p><code>sample_rate</code>: Sample rate used by BeRTA in samples per second.</p>
+<h4 id="example_4">Example</h4>
+<p>BeRTA receives: <code>/control/sampleRate</code></p>
+<p>BeRTA sends back to the sender: <code>/control/sampleRate 48000</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlframesize"><strong>/control/frameSize</strong></h3>
+<p>Asks for the size of the audio frame which BeRTA is using. This parameter is defined in the used <a href="/BRT-Documentation/setup/settingsFile">settings file</a>.</p>
+<h4 id="syntax_5">Syntax</h4>
+<p><code>/control/frameSize</code></p>
+<h4 id="return_5">Return</h4>
+<p>An echo is sent back to the sender including the frame size: <code>/control/frameSize &lt;int frame_size&gt;</code>.</p>
+<p><code>frame_size</code>: size of the audio frame in bytes per channel (BeRTA produces a stereo output for each listener. This parameter indicated the size of the frame of only one channel).</p>
+<h4 id="example_5">Example</h4>
+<p>BeRTA receives: <code>/control/frameSize</code>.</p>
+<p>BeRTA sends back to the sender: <code>/control/frameSize 512</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlbufferframes"><strong>/control/bufferFrames</strong></h3>
+<p>Asks for the number of audio frames that are stored in the buffer to prevent audio dropout or system failure due to frame underrun. Since the operating system is not real-time, there can be instances where it prioritizes other tasks, potentially delaying the provision of a new audio frame. By setting an adequate buffer size, the system ensures continuous audio playback, even if the operating system momentarily allocates resources to higher-priority processes. This buffer acts as a safeguard against timing inconsistencies, allowing the audio processing thread to retrieve preloaded frames, maintaining uninterrupted audio output. However, as a trade-off, increasing the number of buffered frames results in higher system latency. To minimize latency, this parameter should be set to 0, which eliminates buffering but requires the system to deliver new audio frames in real time without delay. This parameter is defined in the used <a href="/BRT-Documentation/setup/settingsFile">settings file</a>.</p>
+<h4 id="syntax_6">Syntax</h4>
+<p><code>/control/bufferFrames</code> </p>
+<h4 id="return_6">Return</h4>
+<p>An echo is sent back to the sender including the number of frames buffered: <code>/control/bufferFrames &lt;int buffer_frames&gt;</code>.</p>
+<p><code>buffer_frames</code>: number of buffered frames.</p>
+<h4 id="example_6">Example</h4>
+<p>BeRTA receives: <code>/control/bufferFrames</code>.</p>
+<p>BeRTA sends back to the sender: <code>/control/bufferFrames 2</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlactionresult"><strong>/control/actionResult</strong></h3>
+<p>Command received when an action has been carried out from the application (triggered by a previously received OSC command). It informs about the outcome of the executed action.</p>
+<h4 id="syntax_7">Syntax</h4>
+<p><code>/control/actionResult &lt;string actionCommand&gt; &lt;string id&gt; &lt;bool success&gt; &lt;string description&gt;</code></p>
+<h4 id="example_7">Example</h4>
+<p>BeRTA receives: <code>/control/actionResult /resources/removeHRTF HRTF1 true HRTF HRTF1 removed</code></p>
+<hr style="border:1px solid gray">
+<!----------------------------------------------------------------------------------->
+
+<h2 id="calibration"><strong>Calibration</strong></h2>
+<h3 id="controlplaycalibration"><strong>/control/playCalibration</strong></h3>
+<p><span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span></p>
+<p>Start the calibration process by playing an audio file at the dBFS volume specified in the parameter. For more details, refer to the <a href="/BRT-Documentation/applications/calibration/">calibration</a> section. </p>
+<h4 id="syntax_8">Syntax</h4>
+<p><code>/control/playCalibration &lt;float leveldBFS&gt; &lt;int channelNumber&gt;</code></p>
+<p><code>leveldBFS</code>: The signal level at which the calibration audio was played, measured in dBFS.</p>
+<p><code>channelNumber</code>: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead. </p>
+<h4 id="return_7">Return</h4>
+<p><code>/control/actionResult /control/playCalibration &lt;string actionName&gt; &lt;boolean success&gt; &lt;string description&gt;</code>. </p>
+<p>The return confirmation refers to the action <code>calibration</code>, indicating <code>success=true</code> if the calibration has been successfully performed and <code>success=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<h4 id="example_8">Example</h4>
+<p>BeRTA receives: <code>/control/playCalibration -40 0</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /control/playCalibration calibration true "Calibration sound played"</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlsetcalibration"><strong>/control/setCalibration</strong></h3>
+<p><span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span></p>
+<p>Set the calibration values using the dBFS playback volume and the dBSPL output level measured in the headphones, both specified in the parameters. For more details, refer to the <a href="/BRT-Documentation/applications/calibration/">calibration</a> section.</p>
+<h4 id="syntax_9">Syntax</h4>
+<p><code>/control/setCalibration &lt;float leveldBFS&gt; &lt;float leveldBSPL&gt; &lt;int channelNumber&gt;</code></p>
+<p><code>leveldBFS</code>: The signal level at which the calibration audio was played, measured in dBFS.</p>
+<p><code>leveldBSPL</code>: The output sound level measured at the headphones (expressed in dBSPL) when the system is calibrated and delivering the dBFS specified in the leveldBFS parameter.</p>
+<p><code>channelNumber</code>: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.</p>
+<h4 id="return_8">Return</h4>
+<p><code>/control/actionResult /control/setCalibration &lt;string actionName&gt; &lt;boolean success&gt; &lt;string description&gt;</code>. </p>
+<p>The return confirmation refers to the action <code>calibrationDone</code>, indicating <code>success=true</code> if the calibration has been successfully performed and <code>success=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<h4 id="example_9">Example</h4>
+<p>BeRTA receives: <code>/control/setCalibration -40 60 0</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /control/setCalibration calibrationDone true "Calibration done with -40 dB FS and 60 dB SPL."</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlplaycalibrationtest"><strong>/control/playCalibrationTest</strong></h3>
+<p><span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span></p>
+<p>Play the calibration test sound at a volume adjusted to match the dBSPL specified in the parameter, allowing verification with the sound level meter. See the <a href="/BRT-Documentation/applications/calibration/">calibration</a> section for more details.</p>
+<h4 id="syntax_10">Syntax</h4>
+<p><code>/control/playCalibrationTest  &lt;float leveldBSPL&gt; &lt;int channelNumber&gt;</code></p>
+<p><code>leveldBSPL</code>: The signal level (in dBSPL) measured at the headphones when reproducing the calibration audio.</p>
+<p><code>channelNumber</code>: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.</p>
+<h4 id="return_9">Return</h4>
+<p><code>/control/actionResult /control/playCalibrationTest &lt;string actionName&gt; &lt;boolean success&gt; &lt;string description&gt;</code>. </p>
+<p>The return confirmation refers to the action <code>calibrationTest</code>, indicating <code>success=true</code> if the calibration has been successfully performed and <code>success=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<h4 id="example_10">Example</h4>
+<p>BeRTA receives: <code>/control/playCalibrationTest 80 2</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /control/playCalibrationTest calibrationTest false "ERROR BeRTA has not been calibrated yet"</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlstopcalibrationtest"><strong>/control/stopCalibrationTest</strong></h3>
+<p><span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span></p>
+<p>Stop the calibration test sound playback.</p>
+<h4 id="syntax_11">Syntax</h4>
+<p><code>/control/stopCalibrationTest &lt;int channelNumber&gt;</code></p>
+<p><code>channelNumber</code>: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.</p>
+<h4 id="return_10">Return</h4>
+<p><code>/control/actionResult /control/stopCalibrationTest &lt;string actionName&gt; &lt;boolean success&gt; &lt;string description&gt;</code>. </p>
+<p>The return confirmation refers to the action <code>calibrationTest</code>, indicating <code>success=true</code> if the stop of the calibration has been successfully performed and <code>success=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<h4 id="example_11">Example</h4>
+<p>BeRTA receives: <code>/control/stopCalibrationTest 0</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /control/stopCalibrationTest calibrationTest true "Calibration test stopped."</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlgetsoundlevel"><strong>/control/getSoundLevel</strong></h3>
+<p><span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span></p>
+<p>Get the current sound level in dBSPL for left and right channel. For more details, refer to the <a href="/BRT-Documentation/applications/calibration/">calibration</a> section.</p>
+<h4 id="syntax_12">Syntax</h4>
+<p><code>/control/getSoundLevel &lt;string listener_id&gt;</code></p>
+<p><code>listener_id</code>: identifier assigned to the listener.</p>
+<h4 id="return_11">Return</h4>
+<p><code>/resources/getSoundLevel &lt;string listener_id&gt; &lt;float leftChannelSoundLevel&gt; &lt;float rightChannelSoundLevel&gt;</code></p>
+<p>The return confirmation refers to the <code>listener_id</code>, indicating the sound level for the left (<code>leftChannelSoundLevel</code>) and the right channel (<code>rightChannelSoundLevel</code>). </p>
+<h4 id="example_12">Example</h4>
+<p>BeRTA receives: <code>/control/getSoundLevel</code></p>
+<p>BeRTA sends: <code>/control/getSoundLevel 60 62</code></p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h2 id="safety-limiter"><strong>Safety Limiter</strong></h2>
+<h3 id="controlsetsoundlevellimit"><strong>/control/setSoundLevelLimit</strong></h3>
+<p><span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span></p>
+<p>Set the sound level limit to the dBSPL value specified in the parameter. See the <a href="/BRT-Documentation/applications/safety-limiter/">safety limitter</a> for more details.</p>
+<h4 id="syntax_13">Syntax</h4>
+<p><code>/control/setSoundLevelLimit &lt;float levelLimitdBSPL&gt; &lt;int channelNumber&gt;</code></p>
+<p><code>levelLimitdBSPL</code>: The maximum allowable sound level, in dBSPL, used by the limiter to ensure safe listening levels for the user.</p>
+<p><code>channelNumber</code>: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.</p>
+<h4 id="return_12">Return</h4>
+<p><code>/control/actionResult /control/setSoundLevelLimit &lt;string actionName&gt; &lt;boolean success&gt; &lt;string description&gt;</code>. </p>
+<p>The return confirmation refers to the action <code>calibrationTest</code>, indicating <code>success=true</code> if the set has been successfully performed and <code>success=false</code> if not. In both cases a <code>description</code> is added to give more details. </p>
+<h4 id="example_13">Example</h4>
+<p>BeRTA receives: <code>/control/setSoundLevelLimit 100 0</code></p>
+<p>BeRTA sends back to the sender: <code>/control/actionResult /control/setSoundLevelLimit calibrationTest false "ERROR Sound level limit has not been set becasuse BeRTA has not been calibrated."</code>. </p>
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+<h3 id="controlsoundlevelalert"><strong>/control/soundLevelAlert</strong></h3>
+<p><span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span></p>
+<p>Sent when the output sound level exceeds the threshold set in the sound level limiter. This is a send-only command from BeRTA. It does not receive any parameters but triggers an alert when the limit is surpassed. See the <a href="/BRT-Documentation/applications/safety-limiter/">safety limitter</a> for more details.</p>
+<h4 id="syntax_14">Syntax</h4>
+<p><code>/control/soundLevelAlert</code></p>
+<h4 id="example_14">Example</h4>
+<p>BeRTA sends: <code>/control/soundLevelAlert 60 62</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://www.diana.uma.es/" target="_blank" rel="noopener"> Diana Research Group</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.tabs", "navigation.top", "navigation.tracking", "navigation.path", "toc.integrate", "toc.follow", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
