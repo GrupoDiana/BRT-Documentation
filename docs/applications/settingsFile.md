@@ -70,8 +70,9 @@ This section lists the resources such as HRTFs, BRIRs, NearField Filters, and Di
 
 - **HRTFs**: A list of HRTFs (Head-Related Transfer Functions) to load. If no HRTFs should be loaded, leave the list empty (`[]`).
 - **BRIRs**: A list of BRIRs (Binaural Room Impulse Responses) to load. BRIRs can provide spatial audio information specific to a particular room. If none should be loaded, leave this list empty (`[]`).
-- **SOSFilters**: Defines the SOS filters to load. If no SOS Filter should be loaded, leave the list empty (`[]`)
-- **DirectivityTFs**: A list of Directivity Transfer Functions (TFs) to apply to sound sources. These describe how sound is emitted in different directions from a sound source.
+- **SOSFilters**: Defines the SOS filters to load. If no SOS Filter should be loaded, leave the list empty (`[]`).
+- **DirectivityTFs**: A list of Directivity Transfer Functions (TFs) to apply to sound sources. These describe how sound is emitted in different directions from a sound source. If no Directivity should be loaded, leave the list empty (`[]`).
+- **Rooms**: A list of room definitions to be loaded. You can specify the loading of an OBJ file, or define a shoebox-type room (indicating the dimensions). If no Rooms should be loaded, leave the list empty (`[]`).
 
 Example: 
 
@@ -80,9 +81,15 @@ Example:
 		"HRTFs": [{"ID": "HRTF1", "fileName": "resources//HRTF//3DTI_HRTF_SADIE_II_D2_256s_48000Hz_resampled5.sofa", "spatialResolution": 5}],		
 		"BRIRs": [{"ID": "BRIR1", "fileName": "resources//BRIR//3DTI_BRIR_Trapezoid_48000Hz_3D.sofa", "spatialResolution": 15, "fadeInWindowThreshold" : 0, "fadeInWindowRiseTime": 0, "fadeOutWindowThreshold" : 0, "fadeOutWindowRiseTime": 0}],		
 		"SOSFilters": [
-			{"ID": "DefaultNFFilters", "fileName": "resources//SOSFilters//NearFieldCompensation_ILD_1.2m_48Khz.sofa"},
+			{"ID": "DefaultNFFilters", "fileName": "resources//SOSFilters//NearFieldCompensation_ILD_1.2m_48Khz.sofa"}
 			],
-		"DirectivityTFs": [], 
+		"DirectivityTFs": [
+			{"ID": "Directivity1", "fileName": "resources//DirectivityTF//Cardioid_LP_30dB_256s_resampled10.sofa"}
+		],
+		Rooms":[
+			{"ID": "Room1", "length": 3, "width":5.5, "height": 3},
+			{"ID": "Room2", "fileName": "resources//OBJ//A108_room.obj"}
+		]
 	},
 ```
 
