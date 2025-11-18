@@ -35,23 +35,24 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 ### Resources Commands 
 
-- [`/resources/enableWoodworthITD`](resources.md#resourcesenablewoodworthitd): Enables or disables the calculation of the ITD using the Woodworth formula.
-- [`/resources/getBRIRInfo`](resources.md#resourcesgetbririnfo): Gets information about one of the loaded Binaural Room Impulse Responses (BRIR).
-- [`/resources/getDirectivityTFInfo`](resources.md#resourcesgetdirectivitytfinfo): Gets information about one of the loaded Directivity Transfer Functions.
-- [`/resources/getHRTFHeadRadius`](resources.md#resourcesgethrtfheadradius): Retrieves the head radius of one of the loaded HRTFs.
-- [`/resources/getHRTFInfo`](resources.md#resourcesgethrtfinfo): Gets information about one of the loaded HRTFs.
-- [`/resources/getSOSFiltersInfo`](resources.md#resourcesgetsosfiltersinfo): Gets information about one of the loaded sets of Near Field Compensation filters.
-- [`/resources/loadBRIR`](resources.md#resourcesloadbrir): Loads a new Binaural Room Impulse Response from a SOFA file.
-- [`/resources/loadDirectivityTF`](resources.md#resourcesloaddirectivitytf): Loads a Directivity Transfer Function from a SOFA file.
 - [`/resources/loadHRTF`](resources.md#resourcesloadhrtf): Loads a new HRTF from a SOFA file and assigns an identifier.
-- [`/resources/loadSOSFilters`](resources.md#resourcesloadsosfilters): Loads a set of Second Order Section filters from a SOFA file.
-- [`/resources/removeBRIR`](resources.md#resourcesremovebrir): Removes a Binaural Room Impulse Response from the loaded resources.
-- [`/resources/removeDirectivityTF`](resources.md#resourcesremovedirectivitytf): Removes a Directivity Transfer Function from the loaded resources.
 - [`/resources/removeHRTF`](resources.md#resourcesremovehrtf): Removes an HRTF from the loaded resources.
-- [`/resources/removeSOSFilters`](resources.md#resourcesremovesosfilters): Removes a set of Near Field Compensation filters from the loaded resources.
-- [`/resources/restoreHRTFHeadRadius`](resources.md#resourcesrestorehrtfheadradius): Sets the HRTF head radius to the value stored in the SOFA file.
+- [`/resources/getHRTFInfo`](resources.md#resourcesgethrtfinfo): Gets information about one of the loaded HRTFs.
 - [`/resources/setHRTFHeadRadius`](resources.md#resourcessethrtfheadradius): Sets the head radius to be stored in the HRTF.
-
+- [`/resources/getHRTFHeadRadius`](resources.md#resourcesgethrtfheadradius): Retrieves the head radius of one of the loaded HRTFs.
+- [`/resources/restoreHRTFHeadRadius`](resources.md#resourcesrestorehrtfheadradius): Sets the HRTF head radius to the value stored in the SOFA file.
+- [`/resources/enableWoodworthITD`](resources.md#resourcesenablewoodworthitd): Enables or disables the calculation of the ITD using the Woodworth formula.
+- [`/resources/loadBRIR`](resources.md#resourcesloadbrir): Loads a new Binaural Room Impulse Response from a SOFA file.
+- [`/resources/removeBRIR`](resources.md#resourcesremovebrir): Removes a Binaural Room Impulse Response from the loaded resources.
+- [`/resources/getBRIRInfo`](resources.md#resourcesgetbririnfo): Gets information about one of the loaded Binaural Room Impulse Responses (BRIR).
+- [`/resources/loadDirectivityTF`](resources.md#resourcesloaddirectivitytf): Loads a Directivity Transfer Function from a SOFA file.
+- [`/resources/removeDirectivityTF`](resources.md#resourcesremovedirectivitytf): Removes a Directivity Transfer Function from the loaded resources.
+- [`/resources/getDirectivityTFInfo`](resources.md#resourcesgetdirectivitytfinfo): Gets information about one of the loaded Directivity Transfer Functions.
+- [`/resources/loadSOSFilters`](resources.md#resourcesloadsosfilters): Loads a set of Second Order Section filters from a SOFA file.
+- [`/resources/removeSOSFilters`](resources.md#resourcesremovesosfilters): Removes a set of Near Field Compensation filters from the loaded resources.
+- [`/resources/getSOSFiltersInfo`](resources.md#resourcesgetsosfiltersinfo): Gets information about one of the loaded sets of Near Field Compensation filters.
+- [`/resources/loadRoom`](resources.md#loadroom): Loads a new room from a OBJ file
+- [`/resources/loadShoeBoxRoom`](resources.md#loadshoeboxroom): Set up a shoebox-shaped room with specified dimensions.
 
 
 ### Source Models Commands 

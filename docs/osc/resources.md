@@ -3,6 +3,8 @@ These commands are responsible for managing the resources used in the virtual au
 <hr style="border:1px solid gray">
 <!----------------------------------------------------------------------------------->
 
+## **HRTF**
+
 ### **/resources/loadHRTF**
 
 Loads a new HRTF in a SOFA file from the specified path and assign an identifier to it. If there is already another HRTF with the same identifier, it is substituted by the new one. The SOFA file must use FIR or FIR-E as data type but can follow any convention using these data types. When loading, the HRTF is spatially resampled to fit the [HRTF grids](). This way the real time processor can get fast enough the three HRIRs to be interpolated and convolved.
@@ -196,175 +198,10 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/resources/e
 
 BeRTA sends back to the sender: `/control/actionResult /resources/enableWoodworthITD HRTF1 true success` 
 
-
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-### **/resources/loadDirectivityTF**
-
-Loads a new Directivity Transfer Function in a SOFA file from the specified path and assign an identifier to it. If there is already another Directivity with the same identifier, it is substituted by the new one. The SOFA file must use TF as data type with the same number of frequency bins as the frame size configured in BeRTA. When loading, the DirectivityTF is spatially resampled to fit the [BRT grids](). This way the real time processor can get fast enough the three Directivities to be interpolated and convolved.
-
-#### Syntax
-
-`/resources/loadDirectivityTF <string directivityTF_id> <string directivityTF_SOFAFile_path> <float spatialResolution>`
-
-`directivityTF_id`: Identifier to be assigned to the directivityTF for later references to it. If there is already another directivityTF with the same identifier, it is substituted by the new one. Otherwise, a new directivityTF is created.
-
-`directivityTF_SOFAFile_path`: Specifies a SOFA file containing a directivityTF. it can be either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable.  
-
-`spatialResolution`: This parameter indicates the interpolation step in the horizontal plane of zero elevation. To learn more about this grid and the interpolation mechanism, please refer to the [BRT grids]().
-
-#### Return
-
-`/control/actionResult /resources/loadDirectivityTF <string directivityTF_id> <boolean loaded> <string description>`
-
-The return confirmation refers to the `directivityTF_id`, indicating `loaded=true`if the directivityTF is successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
-
-In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
-
-
-#### Example
-
-BeRTA receives and echoes back to all subscribiers but the sender:`/resources/loadDirectivityTF DirectivityTF1 c:/tmp/directivityTF.sofa 15`
-
-BeRTA sends back to the sender: `/control/actionResult /resources/loadDirectivityTF DirectivityTF1 true Directivity directivityTF1 loaded` or `/control/actionResult /resources/loadDirectivityTF DirectivityTF1 false Directivity sofa file couldn't be loaded from c:/tmp/directivityTF.sofa`. 
-
-
-<!----------------------------------------------------------------------------------->
-<hr style="border:1px solid gray">
-
-### **/resources/removeDirectivityTF**
-
-Removes a Directivity Transfer Function from the loaded resources. 
-
-#### Syntax
-
-`/resources/removeDirectivityTF <string directivityTF_id>`
-
-`directivityTF_id`: Identifier of the directivityTF to be removed.
-
-#### Return
-
-`/control/actionResult /resources/removeDirectivityTF <string directivityTF_id> <bool removed>`
-
-The return confirmation refers to the `directivityTF_id`, indicating `removed=true`if the directivityTF is successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details.
-
-In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
-
-#### Example
-
-BeRTA receives and echoes back to all subscribiers but the sender: `/resources/removeDirectivityTF directivityTF1`
-
-BeRTA sends back to the sender: ` /control/actionResult /resources/removeDirectivityTF directivityTF1 true DirectivityTF directivityTF1 removed` or `/control/actionResult /resources/removeDirectivityTF directivityTF1 false ERROR deleting DirectivityTF.  directivityTF1 not found in the list`
-
-<!----------------------------------------------------------------------------------->
-<hr style="border:1px solid gray">
-
-### **/resources/getDirectivityTFInfo**
-
-Gets some information about one of the loaded Directivity Transfer Functions. This information consists of the filename and the spatial resolution used to resample it in the [BRT grid]().
-#### Syntax
-
-`/resources/getDirectivityTFInfo <string directivityTF_id>`
-
-`directivityTF_id`: Identifier of the DirectivityTF of which we are requesting information.
-
-#### Return
-
-`/resources/getDirectivityTFInfo <string directivityTF_id> <string directivityTF_SOFAFile> <float spatialResolution>`
-
-The return message is sent back to the sender and refers to the `directivityTF_id`, indicating the name of the SOFA file (`directivityTF_SOFAFile`) from which the directivity was loaded, as well as the `spatialResolution` used to resample it when loaded. 
-
-#### Example
-
-BeRTA receives: `/resources/getDirectivityTFInfo directivityTF1`
-
-BeRTA sends back: `/resources/getDirectivityTFInfo directivityTF1 directivityTF.sofa 15` 
-
-<!----------------------------------------------------------------------------------->
-<hr style="border:1px solid gray">
-
-### **/resources/loadSOSFilters**
-
-Loads a new set of Second Order Section (SOS) filters in a SOFA file from the specified path and assign an identifier to it. If there is already another set of SOS filters with the same identifier, it is substituted by the new one. The SOFA file must use SOS as data type. 
-
-#### Syntax
-
-`/resources/loadSOSFilters <string SOSFilters_id> <string SOSFilters_SOFAFile_path>`
-
-`SOSFilters_id`: Identifier to be assigned to the NFC Filters for later references to it. If there is already another set of NFC Filters with the same identifier, it is substituted by the new one. Otherwise, a new set of NFC Filters is created.
-
-`SOSFilters_SOFAFile_path`: Specifies a SOFA file containing a set of NFC Filters. It can be either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable.  
-
-#### Return
-
- `/control/actionResult /resources/loadSOSFilters <string SOSFilters_id> <boolean loaded>`
- 
- The return confirmation refers to the `SOSFilters_id`, indicating `loaded=true`if SOS NFC Filters are successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
-
-In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
-
-#### Example
-
-BeRTA receives and echoes back to all subscribiers but the sender:`/resources/loadSOSFilters SOSF1 c:/tmp/SOSilters.sofa`
-
-BeRTA sends back to the sender: `/control/actionResult /resources/loadSOSFilters NFCF1 true SOS filter SOSF1 loaded successfully, from the file: c:/tmp/SOSilters.sofa` or `/resources/loadSOSFilters SOSF1 false ERROR deleting SOS filter.  SOSF1 not found in the list`. 
-
-
-<!----------------------------------------------------------------------------------->
-<hr style="border:1px solid gray">
-
-### **/resources/removeSOSFilters**
-
-Removes a set of Near Field Compensation (NFC) filters from the loaded resources. 
-
-#### Syntax
-
-`/resources/removeSOSFilters <string SOSFilters_id>`
-
-`SOSFilters_id`: Identifier of the NFC Filters to be removed.
-
-#### Return
-
- `/control/actionResult /resources/removeSOSFilters <string SOSFilters_id> <bool removed> <string description>`
- 
- The return confirmation refers to the `SOSFilters_id`, indicating `removed=true`if the NFC Filters are successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details.
-
-In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
-
-#### Example
-
-BeRTA receives and echoes back to all subscribiers but the sender: `/resources/removeSOSFilters SOSF1`
-
-BeRTA sends back to the sender: `/control/actionResult /resources/removeSOSFilters SOSF1 true SOSF1 removed from the list` or `/control/actionResult /resources/removeSOSFilters SOSF1 false ERROR deleting SOS Filters.  SOSF1 not found in the SOS Filters list`
-
-<!----------------------------------------------------------------------------------->
-<hr style="border:1px solid gray">
-
-
-### **/resources/getSOSFiltersInfo**
-
-Gets some information about one of the loaded set of Near Field Compensation (NFC) filters. This information consists of the name of the file from which it was loaded.
-#### Syntax
-
-`/resources/getSOSFiltersInfo <string SOSFilters_id>`
-
-`SOSFilters_id`: Identifier of the NFC Filters of which we are requesting information.
-
-#### Return
-
-`/resources/getSOSFiltersInfo <string SOSFilters_id> <string SOSFilters_SOFAFile>`
-
-The return message is sent back to the sender and refers to the `SOSFilters_id`, indicating the name of the SOFA file (`SOSFilters_SOFAFile`) from which the filters were loaded. 
-
-#### Example
-
-BeRTA receives: `/resources/getSOSFiltersInfo NFCF1`
-
-BeRTA sends back: `/resources/getSOSFiltersInfo NFCF1 NFCFilters.sofa` 
-
-<!----------------------------------------------------------------------------------->
-<hr style="border:1px solid gray">
+## **BRIR**
 
 ### **/resources/loadBRIR**
 <span style="font-size: 0.8em; color: grey; font-style: italic;">Parameters renamed from BeRTA v3.6.0</span>
@@ -453,3 +290,365 @@ BeRTA sends back: `/resources/getBRIRInfo BRIR1 BRIR.sofa 15 0.005 0.001 0.5 0.0
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
+## **Directivity**
+
+### **/resources/loadDirectivityTF**
+
+Loads a new Directivity Transfer Function in a SOFA file from the specified path and assign an identifier to it. If there is already another Directivity with the same identifier, it is substituted by the new one. The SOFA file must use TF as data type with the same number of frequency bins as the frame size configured in BeRTA. When loading, the DirectivityTF is spatially resampled to fit the [BRT grids](). This way the real time processor can get fast enough the three Directivities to be interpolated and convolved.
+
+#### Syntax
+
+`/resources/loadDirectivityTF <string directivityTF_id> <string directivityTF_SOFAFile_path> <float spatialResolution>`
+
+`directivityTF_id`: Identifier to be assigned to the directivityTF for later references to it. If there is already another directivityTF with the same identifier, it is substituted by the new one. Otherwise, a new directivityTF is created.
+
+`directivityTF_SOFAFile_path`: Specifies a SOFA file containing a directivityTF. it can be either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable.  
+
+`spatialResolution`: This parameter indicates the interpolation step in the horizontal plane of zero elevation. To learn more about this grid and the interpolation mechanism, please refer to the [BRT grids]().
+
+#### Return
+
+`/control/actionResult /resources/loadDirectivityTF <string directivityTF_id> <boolean loaded> <string description>`
+
+The return confirmation refers to the `directivityTF_id`, indicating `loaded=true`if the directivityTF is successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender:`/resources/loadDirectivityTF DirectivityTF1 c:/tmp/directivityTF.sofa 15`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/loadDirectivityTF DirectivityTF1 true Directivity directivityTF1 loaded` or `/control/actionResult /resources/loadDirectivityTF DirectivityTF1 false Directivity sofa file couldn't be loaded from c:/tmp/directivityTF.sofa`. 
+
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/resources/removeDirectivityTF**
+
+Removes a Directivity Transfer Function from the loaded resources. 
+
+#### Syntax
+
+`/resources/removeDirectivityTF <string directivityTF_id>`
+
+`directivityTF_id`: Identifier of the directivityTF to be removed.
+
+#### Return
+
+`/control/actionResult /resources/removeDirectivityTF <string directivityTF_id> <bool removed>`
+
+The return confirmation refers to the `directivityTF_id`, indicating `removed=true`if the directivityTF is successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details.
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/resources/removeDirectivityTF directivityTF1`
+
+BeRTA sends back to the sender: ` /control/actionResult /resources/removeDirectivityTF directivityTF1 true DirectivityTF directivityTF1 removed` or `/control/actionResult /resources/removeDirectivityTF directivityTF1 false ERROR deleting DirectivityTF.  directivityTF1 not found in the list`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/resources/getDirectivityTFInfo**
+
+Gets some information about one of the loaded Directivity Transfer Functions. This information consists of the filename and the spatial resolution used to resample it in the [BRT grid]().
+#### Syntax
+
+`/resources/getDirectivityTFInfo <string directivityTF_id>`
+
+`directivityTF_id`: Identifier of the DirectivityTF of which we are requesting information.
+
+#### Return
+
+`/resources/getDirectivityTFInfo <string directivityTF_id> <string directivityTF_SOFAFile> <float spatialResolution>`
+
+The return message is sent back to the sender and refers to the `directivityTF_id`, indicating the name of the SOFA file (`directivityTF_SOFAFile`) from which the directivity was loaded, as well as the `spatialResolution` used to resample it when loaded. 
+
+#### Example
+
+BeRTA receives: `/resources/getDirectivityTFInfo directivityTF1`
+
+BeRTA sends back: `/resources/getDirectivityTFInfo directivityTF1 directivityTF.sofa 15` 
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+## **SOS Filters**
+
+### **/resources/loadSOSFilters**
+
+Loads a new set of Second Order Section (SOS) filters in a SOFA file from the specified path and assign an identifier to it. If there is already another set of SOS filters with the same identifier, it is substituted by the new one. The SOFA file must use SOS as data type. 
+
+#### Syntax
+
+`/resources/loadSOSFilters <string SOSFilters_id> <string SOSFilters_SOFAFile_path>`
+
+`SOSFilters_id`: Identifier to be assigned to the NFC Filters for later references to it. If there is already another set of NFC Filters with the same identifier, it is substituted by the new one. Otherwise, a new set of NFC Filters is created.
+
+`SOSFilters_SOFAFile_path`: Specifies a SOFA file containing a set of NFC Filters. It can be either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable.  
+
+#### Return
+
+ `/control/actionResult /resources/loadSOSFilters <string SOSFilters_id> <boolean loaded>`
+ 
+ The return confirmation refers to the `SOSFilters_id`, indicating `loaded=true`if SOS NFC Filters are successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender:`/resources/loadSOSFilters SOSF1 c:/tmp/SOSilters.sofa`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/loadSOSFilters NFCF1 true SOS filter SOSF1 loaded successfully, from the file: c:/tmp/SOSilters.sofa` or `/resources/loadSOSFilters SOSF1 false ERROR deleting SOS filter.  SOSF1 not found in the list`. 
+
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/resources/removeSOSFilters**
+
+Removes a set of Near Field Compensation (NFC) filters from the loaded resources. 
+
+#### Syntax
+
+`/resources/removeSOSFilters <string SOSFilters_id>`
+
+`SOSFilters_id`: Identifier of the NFC Filters to be removed.
+
+#### Return
+
+ `/control/actionResult /resources/removeSOSFilters <string SOSFilters_id> <bool removed> <string description>`
+ 
+ The return confirmation refers to the `SOSFilters_id`, indicating `removed=true`if the NFC Filters are successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details.
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/resources/removeSOSFilters SOSF1`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/removeSOSFilters SOSF1 true SOSF1 removed from the list` or `/control/actionResult /resources/removeSOSFilters SOSF1 false ERROR deleting SOS Filters.  SOSF1 not found in the SOS Filters list`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+
+### **/resources/getSOSFiltersInfo**
+
+Gets some information about one of the loaded set of Near Field Compensation (NFC) filters. This information consists of the name of the file from which it was loaded.
+#### Syntax
+
+`/resources/getSOSFiltersInfo <string SOSFilters_id>`
+
+`SOSFilters_id`: Identifier of the NFC Filters of which we are requesting information.
+
+#### Return
+
+`/resources/getSOSFiltersInfo <string SOSFilters_id> <string SOSFilters_SOFAFile>`
+
+The return message is sent back to the sender and refers to the `SOSFilters_id`, indicating the name of the SOFA file (`SOSFilters_SOFAFile`) from which the filters were loaded. 
+
+#### Example
+
+BeRTA receives: `/resources/getSOSFiltersInfo NFCF1`
+
+BeRTA sends back: `/resources/getSOSFiltersInfo NFCF1 NFCFilters.sofa` 
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+## **Room**
+
+### **/resources/loadRoom**
+
+Loads a new room from a OBJ file from the specified path and assign an identifier to it. If there is already another set of room with the same identifier, it is substituted by the new one. Please note the considerations regarding OBJ files specified in the OBJ services section.
+
+#### Syntax
+
+`/resources/loadRoom <string Room_id> <string OBJ_File_path>`
+
+`Room_id`: Identifier to be assigned to the Room for later references to it. If there is already another room with the same identifier, it is substituted by the new one. 
+
+`OBJ_File_path`: Specifies an OBJ file containing a room (see the OBJ Services section for more information). It can be either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. 
+
+#### Return
+
+ `/control/actionResult /resources/loadRoom <string Room_id> <boolean loaded>`
+ 
+ The return confirmation refers to the `Room_id`, indicating `loaded=true`if room are successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender:`/resources/loadRoom room1 c:/tmp/Room1.obj`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/loadRoom room1 true Room (room1) loaded successfully, from the file: c:/tmp/Room1.obj` or `/resources/loadRoom room1 false ERROR File path could not be found: c:/tmp/Room1.obj`. 
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+
+### **/resources/loadShoeBoxRoom**
+
+Sets up a shoebox room with six walls (four walls, plus floor and ceiling). The six walls are automatically created with the centre of the room at (0, 0, 0).  The following ID are assigned for each wall: 
+
+- `0` front wall (positive x)
+
+- `1` left wall (positive y)
+
+- `2` right wall (negative y)
+
+- `3` back wall (negative x)
+
+- `4` floor (negative z)
+
+- `5` ceiling (positive z)
+
+#### Syntax
+
+`/resources/setShoeBoxRoom <string Room_id> <float length> <float width> <float height>`
+
+`Room_id`: identifier to be assigned to the Room for later references to it. If there is already another room with the same identifier, it is substituted by the new one. .
+
+`length`: floating value expressing the length of the room on the X axis, expressed in metres.
+
+`width`: Floating value expressing the length of the room on the Y axis, expressed in metres.
+
+`heigth`: Floating value expressing the length of the room on the Z axis, expressed in metres.
+
+#### Return
+
+`/control/actionResult /resources/setShoeBoxRoom <string Room_id> <bool set> <string description>`
+
+The return confirmation refers to the `Room_id`, indicating `set=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/resources/setShoeBoxRoom room1 6 8 3`
+
+BeRTA sends back to the sender: `/control/actionResult /environment/setShoeBoxRoom room1 true "ShoeBox Room (room1) created succesfully with dimensions Length 6m, Width 8m, Height 3m`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/resources/removeRoom**
+
+Removes a room from the loaded resources. 
+
+#### Syntax
+
+`/resources/removeRoom <string Room_id>`
+
+`Room_id`: Identifier of the room to be removed.
+
+#### Return
+
+ `/control/actionResult /resources/removeRoom <string Room_id> <bool removed> <string description>`
+ 
+ The return confirmation refers to the `Room_id`, indicating `removed=true`if the room are successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details.
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/resources/removeRoom room1`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/removeRoom room1 true Room (room1) removed from the resources list` or `/control/actionResult /resources/removeRoom room1 false ERROR deleting Room. Room1 not found in list.`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/resources/setRoomWallAbsorption**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.X.X, previously called /environment/setWallAbsorption.</span>
+
+Sets the absorption coefficients of a room wall. It supports two modes of operation: 
+
+- Specify a frequency-independent absorption coefficient. That is, using a single number between 0 and 1, which is used for all bands. 
+- Specify absorption coefficients for each of the 9 simulated bands. In other words, in this case, nine numbers between 0 and 1 are used, with absorptions corresponding to 62.5 Hz, 125 Hz, 250 Hz, 500 Hz, 1 kHz, 2 kHz, 4 kHz, 8 kHz and 16 kHz.
+
+#### Syntax
+
+Two options available:
+
+- `/resources/setRoomWallAbsorption <string Room_id> <int wall_id> <float absorption_fullband>`
+- `/resources/setRoomWallAbsorption <string Room_id> <int wall_id> <float abs62> <float abs125> <float abs250> <float abs500> <float abs1K> <float abs2K> <float abs4K> <float abs8K> <float abs16K>`
+
+`Room_id`: identifier of the room.
+
+`wall_id`: index of the wall to which the absorption apllies.
+
+`absoption_fulband`: absorption coefficient which is frequency independent.
+
+`abs62`: absorption coefficient of the band centered at 62.5Hz.
+
+`abs125`: absorption coefficient of the band centered at 125Hz.
+
+`abs250`: absorption coefficient of the band centered at 250Hz.
+
+`abs500`: absorption coefficient of the band centered at 500Hz.
+
+`abs1K`: absorption coefficient of the band centered at 1KHz.
+
+`abs2K`: absorption coefficient of the band centered at 2KHz.
+
+`abs4K`: absorption coefficient of the band centered at 4KHz.
+
+`abs8K`: absorption coefficient of the band centered at 8KHz.
+
+`abs16K`: absorption coefficient of the band centered at 16KHz.
+
+#### Return
+
+`/control/actionResult /resources/setRoomWallAbsorption <string Room_id> <bool set> <string description>`
+
+The return confirmation refers to the `Room_id`, indicating `set=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Examples
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/resources/setRoomWallAbsorption Room1 0 0.1 0.2 0.3 0.4 0.5 0.4 0.3 0.2 0.1`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/setRoomWallAbsorption Room1 true "The absortion coefficients of the wall (0) of the room (Room1) have been updated: [0.100000, ...]"`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/resources/enableRoomWall**
+
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.X.X.</span>
+
+Enables or disables a wall in the room. Disabling it has the same effect as not having defined it. By default, all walls are activated after defining the geometry of a room.
+
+#### Syntax
+
+`/resources/enableRoomWall <string Room_id> <int wall_id> <boolean enable>`
+
+
+`Room_id`: identifier assigned to the model.
+
+`wall_id`: index of the wall to which the absorption apllies.
+
+`enable`: If false (0), disable the simulation of the indicated room wall. If true (1), enables the simulation of the indicated room wall. By default, all walls are enabled.
+
+
+#### Return
+
+`/control/actionResult /resources/enableRoomWall <string Room_id> <bool set> <string description>`
+
+The return confirmation refers to the `Room_id`, indicating `set=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/resources/enableRoomWall Room1 1 false`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/enableRoomWall Room1 true "The wall (1) of the room (Room1) has been disabled."`. 

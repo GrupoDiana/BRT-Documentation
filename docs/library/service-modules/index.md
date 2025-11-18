@@ -9,3 +9,4 @@ Currently, five service modules are implemented:
 - [Directivity TF](service-directivity-tf.md): Stores transfer functions of a sound source based on the position of the listener and the sources.
 - [SOS Filters](service-sos-filters.md): Stores coefficients for second-order sections of a filter, which can be fixed or vary based on distance, azimuth, and/or elevation.
 - [Ambisonincs BIR](./service-ambisonic-bir.md): Stores the impulse responses of the virtual loudspeakers in the ambisonic domains, in order to achieve a process with simultaneous impulse responses convolution and ambisonic decoding.
+- [Room](./service-room.md): It stores the vertices and walls of a room. It also stores the absorption coefficients per band for each of the walls.
