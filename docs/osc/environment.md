@@ -214,7 +214,7 @@ BeRTA sends back to the sender: `/control/actionResult /environment/setDistanceA
 
 <div style="overflow: auto;">
   <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible models: ISM</span>  
-  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.X.X</span>
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0</span>
 </div>
 
 
@@ -250,7 +250,7 @@ BeRTA sends back to the sender: `/control/actionResult /environment/setReflectio
 
 <div style="overflow: auto;">
   <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible models: ISM</span>  
-  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.X.X</span>
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0</span>
 </div>
 
 
@@ -285,7 +285,7 @@ BeRTA sends back to the sender: `/control/actionResult /environment/setMaxDistan
 
 <div style="overflow: auto;">
   <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible models: ISM</span>  
-  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.X.X</span>
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0</span>
 </div>
 
 This command allows you to change the size of the fade zone used by the model for simulation. This value is used to fade out samples from virtual sources that enter that zone. Its value must be a positive number and is expressed in metres. By default, this parameter has a value of 0.6m (equivalent to 2ms). For more information, see the section on environment models, for example, the [ISM](/BRT-Documentation/library/environment-models/ism-environment-model/).
