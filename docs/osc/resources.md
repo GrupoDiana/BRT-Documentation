@@ -463,6 +463,9 @@ BeRTA sends back: `/resources/getSOSFiltersInfo NFCF1 NFCFilters.sofa`
 ## **Room**
 
 ### **/resources/loadRoom**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0.</span>
+</div>
 
 Loads a new room from a OBJ file from the specified path and assign an identifier to it. If there is already another set of room with the same identifier, it is substituted by the new one. Please note the considerations regarding OBJ files specified in the OBJ services section.
 
@@ -493,6 +496,9 @@ BeRTA sends back to the sender: `/control/actionResult /resources/loadRoom room1
 
 
 ### **/resources/loadShoeBoxRoom**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0.</span>
+</div>
 
 Sets up a shoebox room with six walls (four walls, plus floor and ceiling). The six walls are automatically created with the centre of the room at (0, 0, 0).  The following ID are assigned for each wall: 
 
@@ -538,6 +544,9 @@ BeRTA sends back to the sender: `/control/actionResult /environment/setShoeBoxRo
 <hr style="border:1px solid gray">
 
 ### **/resources/removeRoom**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0.</span>
+</div>
 
 Removes a room from the loaded resources. 
 
@@ -565,7 +574,12 @@ BeRTA sends back to the sender: `/control/actionResult /resources/removeRoom roo
 <hr style="border:1px solid gray">
 
 ### **/resources/setRoomWallAbsorption**
-<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.X.X, previously called /environment/setWallAbsorption.</span>
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible models: SDN, ISM</span>  
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0, previously called /environment/setWallAbsorption.</span>
+</div>
+
+
 
 Sets the absorption coefficients of a room wall. It supports two modes of operation: 
 
@@ -621,8 +635,11 @@ BeRTA sends back to the sender: `/control/actionResult /resources/setRoomWallAbs
 <hr style="border:1px solid gray">
 
 ### **/resources/enableRoomWall**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible models: ISM</span>  
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0</span>
+</div>
 
-<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.X.X.</span>
 
 Enables or disables a wall in the room. Disabling it has the same effect as not having defined it. By default, all walls are activated after defining the geometry of a room.
 

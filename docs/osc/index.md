@@ -100,10 +100,6 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/environment/enableDirectPath`](environment.md#environmentenabledirectpath): Toggle the direct path source in the environment model.
 - [`/environment/enableReverbPath`](environment.md#environmentenablereverbpath): Toggle the reverb path sources in the environment model.
 
-- [`/environment/setShoeBoxRoom`](environment.md#environmentsetshoeboxroom): Set up a shoebox-shaped room with specified dimensions.
-- [`/environment/setRoomWallAbsorption`](environment.md#environmentsetRoomWallabsorption): Set absorption coefficients for a wall.
-- [`/environment/enableRoomWall`](environment.md#environmentenableRoomWall): Enables or disables the simulation of a wall in the room.
-
 - [`/environment/enablePropagationDelay`](environment.md#environmentenablePropagationDelay): Enable or disable propagation delay.
 - [`/environment/enableDistanceAttenuation`](environment.md#environmentenableDistanceAttenuation): Enable or disable distance attenuation.
 - [`/environment/setDistanceAttenuationFactor`](environment.md#environmentDistanceAttenuationFactor): Establish the attenuation factor, which is used for calculating attenuation.
