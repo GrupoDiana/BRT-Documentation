@@ -1,17 +1,9 @@
-# Bilateral Filters
+# Bilateral Filters Models
 
-The CBilateralFilter class provides a mechanism for filtering binaural audio signals, with support for configurable filter stages. It can process signals considering both static and dynamic listener and source positions. The class allows for flexibility in enabling or disabling the processor, adjusting filter coefficients, and resetting buffers for new processing cycles.
+The objective of this model is to provide capabilities for filtering binaural audio signals. In other words, the filters can be adjusted separately for each channel, and these are processed independently. The implementation of this filtering is not spatially oriented, which means that the filter coefficients do not depend on the position of the source or the listener. Filtering is performed either using IIR filters based on second-order sections or by convolution with impulse responses. 
 
-## Functional Overview
+The BRT library currently offers two models of bilateral filters: 
 
-This model implements binaural filtering through [second-order sections (SOS)](../service-modules/service-sos-filters.md). It applies filtering based on the source and listener positions, allowing for spatially accurate sound filtering in 3D environments. The filter uses a chain of second-order filters for both the left and right ears and applies various methods to configure, enable, disable, and process the audio signals.
+- [SOS Bilateral Filter Model](./bilateral-sos-filter-model.md): Generic module to perform binaural filtering based on second-order sections, enabling the simulation of devices such as ear protection devices. The SOS coeficients are loaded from SOFA file via a dedicated service module (see [SOS Coeficients Service Module](../service-modules/service-sos-coefficients.md)).
 
-### Key Methods:
-
-- **Setup** : Initializes the binaural filter by setting up the number of filter stages for both left and right ears.
-- **Set Coefficients** : Stores the filter coefficients for the left and right ears.
-- **Enable Processor** : Enables the filter processor, allowing it to process signals.
-- **Disable Processor** : Disables the filter processor, preventing it from processing audio signals.
-- **Is Processor Enabled** : Returns a boolean indicating whether the processor is enabled.
-- **Process** : Filters the input audio signal using the binaural filter, considering the positions and orientations of the source and listener.
-- **Reset Process Buffers** : Resets the buffers used in the processing chain for both left and right ears, clearing any previous signal data.
+- [FIR Bilateral Filter Model](./bilateral-fir-filter-model.md): Perform binaural filtering through convolution (in the frequency domain) with finite impulse responses, enabling applications such as **headphone compensation**, device equalization, or other binaural transfer function processing. The impulse responses are loaded from SOFA files via dedicated service modules (see [GeneralFIR](../service-modules/service-general-fir.md)).

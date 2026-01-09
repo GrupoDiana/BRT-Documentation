@@ -48,9 +48,15 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/resources/loadDirectivityTF`](resources.md#resourcesloaddirectivitytf): Loads a Directivity Transfer Function from a SOFA file.
 - [`/resources/removeDirectivityTF`](resources.md#resourcesremovedirectivitytf): Removes a Directivity Transfer Function from the loaded resources.
 - [`/resources/getDirectivityTFInfo`](resources.md#resourcesgetdirectivitytfinfo): Gets information about one of the loaded Directivity Transfer Functions.
-- [`/resources/loadSOSFilters`](resources.md#resourcesloadsosfilters): Loads a set of Second Order Section filters from a SOFA file.
-- [`/resources/removeSOSFilters`](resources.md#resourcesremovesosfilters): Removes a set of Near Field Compensation filters from the loaded resources.
-- [`/resources/getSOSFiltersInfo`](resources.md#resourcesgetsosfiltersinfo): Gets information about one of the loaded sets of Near Field Compensation filters.
+
+- [`/resources/loadFilter`](resources.md#resourcesloadfilter): Load a new set of filter coefficients (IIR or FIR) from a SOFA file.
+- [`/resources/removeFilter`](resources.md#resourcesremovefilter): Removes a set of filter coefficientes from the loaded resources.
+- [`/resources/getFilterInfo`](resources.md#resourcesgetfilterinfo): Gets some information about one of the loaded set of filters coefficients.
+
+- [`/resources/loadSOSFilters`](resources.md#resourcesloadsosfilters): Loads a set of SOS filters from a SOFA file.<span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/resources/loadFilter' instead.)</span>
+- [`/resources/removeSOSFilters`](resources.md#resourcesremovesosfilters): Removes a set of SOS filters from the loaded resources.<span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/resources/removeFilter' instead.)</span>
+- [`/resources/getSOSFiltersInfo`](resources.md#resourcesgetsosfiltersinfo): Gets information about one of the loaded sets of SOS filters.<span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/resources/getFilterInfo' instead.)</span>
+
 - [`/resources/loadRoom`](resources.md#loadroom): Loads a new room from a OBJ file
 - [`/resources/loadShoeBoxRoom`](resources.md#loadshoeboxroom): Set up a shoebox-shaped room with specified dimensions.
 
@@ -104,13 +110,18 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/environment/enableDistanceAttenuation`](environment.md#environmentenableDistanceAttenuation): Enable or disable distance attenuation.
 - [`/environment/setDistanceAttenuationFactor`](environment.md#environmentDistanceAttenuationFactor): Establish the attenuation factor, which is used for calculating attenuation.
 
+- [`/environment/setShoeBoxRoom`](environment.md#environmentsetshoeboxroom): Set up a shoebox-shaped room with specified dimensions.
+- [`/environment/setRoomWallAbsorption`](environment.md#environmentsetRoomWallabsorption): Set absorption coefficients for a wall.
+- [`/environment/enableRoomWall`](environment.md#environmentenableRoomWall): Enables or disables the simulation of a wall in the room.
+
 - [`/environment/setReflectionOrder`](environment.md#environmentsetReflectionOrder): Set the order of reflection used in the simulation.
 - [`/environment/setMaxDistanceSourcesToListener`](environment.md#environmentMaxDistanceSourcesToListener): Set the maximum distance between the sources and the listener.
 - [`/environment/setFadeZoneMargin`](environment.md#environmentsetFadeZoneMargin): Set the size of the fade zone used by some models for simulation.
 
 
 
-### Binaural Filters Commands 
+### Bilateral Filters Commands 
 
-- [`/binauralFilter/setSOSFilter`](binaural-filter.md#binauralfiltersetsosfilter): Set up sos filter for an specific listener.
-- [`/binauralFilter/enableModel`](binaural-filter.md#binauralfilterenablemodel): Enable or disable a specified binaural filter. <span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/enableModel' instead.)</span>
+- [`/binauralFilter/enableModel`](bilateral-filter.md#binauralfilterenablemodel): Enable or disable a specified binaural filter. <span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/enableModel' instead.)</span>
+- [`/binauralFilter/setSOSFilter`](bilateral-filter.md#binauralfiltersetsosfilter): Set up sos filter for an specific listener. <span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/bilateralFilter/setFilter' instead.)</span>
+- [`/bilateralFilter/setFilter`](bilateral-filter.md#bilateralfiltersetfilter): Set up the filter coefficient database.

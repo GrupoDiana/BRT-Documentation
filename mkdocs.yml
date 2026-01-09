@@ -140,15 +140,19 @@ nav:
       - library/environment-models/index.md   
       - Free Field Model: library/environment-models/freefield-environment-model.md   
       - SDN Model: library/environment-models/sdn-environment-model.md
-    - Bilateral Filters:
+      - ISM Model: library/environment-models/ism-environment-model.md
+    - Bilateral Filter Models:
       - library/bilateral-filters/index.md
+      - SOS Filter Model: library/bilateral-filters/bilateral-sos-filter-model.md
+      - FIR Filter Model: library/bilateral-filters/bilateral-fir-filter-model.md
     - Services Modules: 
       - library/service-modules/index.md
       - HRTF: library/service-modules/service-hrtf.md
       - BRIR: library/service-modules/service-hrbrir.md
       - Directivity TF: library/service-modules/service-directivity-tf.md
-      - SOS Filters: library/service-modules/service-sos-filters.md
+      - SOS Coefficients: library/service-modules/service-sos-coefficients.md
       - AmbisonicBIR: library/service-modules/service-ambisonic-bir.md
+      - General FIR: library/service-modules/service-general-fir.md
       - Room: library/service-modules/service-room.md
     - Readers: 
       - library/readers/index.md            
@@ -182,7 +186,7 @@ nav:
       - Source commands: osc/source.md
       - Listener commands: osc/listener.md
       - Environment commands: osc/environment.md
-      - Binaural Filter commands: osc/binaural-filter.md
+      - Bilateral Filter commands: osc/bilateral-filter.md
     - BRT OSC API for Unity: applications/unity-osc-package.md
     - BRT OSC API for Matlab: applications/matlab-osc-package.md
     - Settings File: applications/settingsFile.md

@@ -374,12 +374,115 @@ BeRTA receives: `/resources/getDirectivityTFInfo directivityTF1`
 BeRTA sends back: `/resources/getDirectivityTFInfo directivityTF1 directivityTF.sofa 15` 
 
 <!----------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------->
+
 <hr style="border:1px solid gray">
 
-## **SOS Filters**
+## **Filters Coeffs. (SOS and FIR)**
+
+### **/resources/loadFilter**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible services: SOS Coefficients and General FIR</span>  
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available since BeRTA v3.10.0.</span>
+</div>
+
+Load a new set of filter coefficients (IIR or FIR) from a SOFA file, from the specified path, and assign it an identifier. This SOFA file can be: 
+
+- SOS type, i.e. it contains second-order sections (SOS) coefficients. They are loaded into an [SOS-type](../library/service-modules/service-sos-coefficients.md) service module.
+- FIR type, i.e. it contains impulse responses. They are loaded into a [GeneralFIR-type](../library/service-modules/service-general-fir.md) service module. 
+
+On the other hand, if another set of filter coefficients with the same identifier already exists, it is replaced by this new one. 
+
+
+#### Syntax
+
+`/resources/loadFilter <string filter_id> <string filter_SOFAFile_path>`
+
+`filter_id`: Identifier to be assigned to filter coefficients for later references to it. If there is already another set of coefficientes with the same identifier, it is substituted by the new one. Otherwise, a new set of filters coefficientes is created.
+
+`filter_SOFAFile_path`: Specifies a SOFA file containing a set of filters coefficientes, either IIR (SOS data type) or FIR (FIR or FIR-E data type). It can be either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable.  
+
+#### Return
+
+ `/control/actionResult /resources/loadFilter <string filter_id> <boolean loaded>`
+ 
+ The return confirmation refers to the `filter_id`, indicating `loaded=true`if SOS NFC Filters are successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender:`/resources/loadFilters EarMuffFilter resources//SOSFilters//EarMuffFilter_48Khz.sofa`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/loadFilters EarMuffFilter true SOS filter coef. (EarMuffFilter) loaded successfully, from the file: resources//SOSFilters//EarMuffFilter_48Khz.sofa` or `/resources/loadSOSFilters EarMuffFilter false File path could not be found: resources//SOSFilters//EarMuffFilte11r_48Khz.sofa.`. 
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/resources/removeFilter**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible services: SOS Coefficients and General FIR</span>  
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available since BeRTA v3.10.0.</span>
+</div>
+
+Removes a set of filter coefficientes from the loaded resources. Works for any type of SOS or FIR filter. If this set of filter coefficients was loaded into any model, they are unlinked from the model before being deleted.
+
+#### Syntax
+
+`/resources/removeFilter <string filter_id>`
+
+`filter_id`: Identifier of the filters to be removed.
+
+#### Return
+
+ `/control/actionResult /resources/removeFilter <string filter_id> <bool removed> <string description>`
+ 
+ The return confirmation refers to the `filter_id`, indicating `removed=true`if the set of filters coeffients are successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details.
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/resources/removeFilter EarMuffFilter`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/removeFilter EarMuffFilter true Filter coefs. (EarMuffFilter) removed from the resource list.` or `/control/actionResult /resources/removeFilter EarMuffFilter false ERROR deleting coefs. (EarMuffFilter) not found in thel list.`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/resources/getFilterInfo**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible services: SOS Coefficients and General FIR</span>  
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available since BeRTA v3.10.0.</span>
+</div>
+
+Gets some information about one of the loaded set of filters coefficients. This information consists of the name of the file from which it was loaded.
+#### Syntax
+
+`/resources/getFilterInfo <string filter_id>`
+
+`filter_id`: Identifier of the set of filters coeffs. of which we are requesting information.
+
+#### Return
+
+`/resources/getFilterInfo <string filter_id> <string fltersCoefs_SOFAFile>`
+
+The return message is sent back to the sender and refers to the `filter_id`, indicating the name of the SOFA file (`fltersCoefs_SOFAFile`) from which the filters were loaded. 
+
+#### Example
+
+BeRTA receives: `/resources/getFilterInfo NFCF1`
+
+BeRTA sends back: `/resources/getFilterInfo NFCF1 NFCFilters.sofa` 
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
 
 ### **/resources/loadSOSFilters**
-
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible services: SOS Coefficients</span>  
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Deprecated since BeRTA v3.10.0, use '/resources/loadFilter' instead.</span>
+</div>
 Loads a new set of Second Order Section (SOS) filters in a SOFA file from the specified path and assign an identifier to it. If there is already another set of SOS filters with the same identifier, it is substituted by the new one. The SOFA file must use SOS as data type. 
 
 #### Syntax
@@ -409,6 +512,10 @@ BeRTA sends back to the sender: `/control/actionResult /resources/loadSOSFilters
 <hr style="border:1px solid gray">
 
 ### **/resources/removeSOSFilters**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible services: SOS Coefficients</span>  
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Deprecated since BeRTA v3.10.0, use '/resources/removeFilter' instead.</span>
+</div>
 
 Removes a set of Near Field Compensation (NFC) filters from the loaded resources. 
 
@@ -435,8 +542,11 @@ BeRTA sends back to the sender: `/control/actionResult /resources/removeSOSFilte
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-
 ### **/resources/getSOSFiltersInfo**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible services: SOS Coefficients</span>  
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Deprecated since BeRTA v3.10.0, use '/resources/getFilterInfo' instead.</span>
+</div>
 
 Gets some information about one of the loaded set of Near Field Compensation (NFC) filters. This information consists of the name of the file from which it was loaded.
 #### Syntax
@@ -458,6 +568,8 @@ BeRTA receives: `/resources/getSOSFiltersInfo NFCF1`
 BeRTA sends back: `/resources/getSOSFiltersInfo NFCF1 NFCFilters.sofa` 
 
 <!----------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------->
+
 <hr style="border:1px solid gray">
 
 ## **Room**
