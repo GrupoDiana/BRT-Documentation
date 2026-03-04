@@ -56,7 +56,11 @@ markdown_extensions:
       generic: true
   - footnotes
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.mark
   - attr_list
   - pymdownx.emoji:
@@ -64,6 +68,7 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.arithmatex:
       generic: true
+ 
 
 extra_javascript:
   - javascripts/katex.js
@@ -147,6 +152,7 @@ nav:
       - FIR Filter Model: library/bilateral-filters/bilateral-fir-filter-model.md
     - Services Modules: 
       - library/service-modules/index.md
+      - Spherical FIR Table: library/service-modules/service-spherical-fir-table.md                                                     
       - HRTF: library/service-modules/service-hrtf.md
       - BRIR: library/service-modules/service-hrbrir.md
       - Directivity TF: library/service-modules/service-directivity-tf.md
