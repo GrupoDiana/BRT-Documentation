@@ -92,7 +92,7 @@ Its hierarchical structure supports multiple reference positions, multiple measu
 
 This design allows BRT to manage complex spatial datasets such as multi-distance HRTFs and room-based BRIR measurements in a flexible and scalable way.
  
-
+## For C++ developer
 <details>
 <summary>For C++ developer</summary>
 
