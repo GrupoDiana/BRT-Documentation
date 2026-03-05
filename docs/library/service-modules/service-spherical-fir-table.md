@@ -30,22 +30,20 @@ Inside each distance bucket, FIR filters are organized by **azimuth and elevatio
 The stored impulse responses can also be **[temporally windowed](../listener-models/rir-models/index.md#refining-the-impulse-response)**. Samples at the beginning of the IR may be replaced with zeros to delay the response, while the tail of the impulse response can be **truncated** to reduce its duration. This allows the dataset to be adapted to different rendering requirements without modifying the original measurements.
 
 This hierarchical structure enables flexible storage of datasets with **arbitrary spatial sampling distributions**, without requiring a regular directional grid.
-## Typical Use Cases
 
-A common use case is **binaural rendering of virtual sound sources**, where the Processing Model queries the table using the source direction relative to the listener. The system retrieves the closest available FIR measurement and applies it during convolution.
+**Internal FIR Representation**
 
-For **multi-distance HRTF datasets**, the renderer selects the sphere whose radius best matches the current source distance. This enables more accurate rendering when datasets include near-field measurements.
-
-For **room acoustics datasets such as BRIRs**, the system selects the reference position closest to the current source position in the environment. In these cases, the impulse responses can also be **windowed or truncated** to remove unwanted portions of the response, enabling efficient implementation of **hybrid rendering approaches** that combine early reflections and late reverberation models.
+Before being stored in the module, the HRIRs are transformed into a representation optimized for real-time convolution. Each HRIR is partitioned into fragments matching the input buffer size in order to support **[Uniformly Partitioned Overlap-Save (UPOLS) convolution](../processing-modules/uniform-partitioned-convolution.md)**. An FFT is then applied to every partition and the resulting spectra are stored in memory by the Service Module. As a result, the binaural rendering stage performs convolution directly in the **frequency domain**, significantly improving computational efficiency.
 
 ### Data hierarchy
 
 ```mermaid
-graph TD
+graph LR
 
 A[Reference Position] --> B[Distance Sphere]
 B --> C[Direction: Azimuth / Elevation]
-C --> D[FIR Filter]
+C --> D[Partitioned FR of the left ear]
+C --> E[Partitioned FR of the right ear]
 ```
 
 ## Supported Data Types
@@ -65,7 +63,7 @@ A common use case is **binaural rendering of virtual sound sources**, where the 
 
 For **multi-distance HRTF datasets**, the renderer selects the sphere whose radius best matches the current source distance. This enables more accurate rendering when datasets include near-field measurements.
 
-For room acoustics datasets such as **BRIRs**, the system selects the reference position closest to the current source position in the environment.
+For **room acoustics datasets such as BRIRs**, the system selects the reference position closest to the current source position in the environment. In these cases, the impulse responses can also be **windowed or truncated** to remove unwanted portions of the response, enabling efficient implementation of **hybrid rendering approaches** that combine early reflections and late reverberation models.
 
 ## Related Service Modules
 
