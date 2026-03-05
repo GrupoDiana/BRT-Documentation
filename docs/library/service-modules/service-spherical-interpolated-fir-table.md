@@ -99,3 +99,179 @@ Stores spatial filters represented as **second-order section (SOS) filter banks*
 ## Summary
 
 _SphericalInterpolatedFIRTable_ provides a structured container for **spatial FIR datasets resampled onto a regular spherical grid**. By separating spatial resource management from rendering algorithms, it supports modular and flexible binaural processing pipelines. The module enables predictable spatial lookup and simplifies interpolation during runtime. Within the BRT architecture, it acts as a bridge between **dataset Readers and binaural Processing Models**, supporting reproducible research in spatial audio rendering.
+
+## For C++ developer
+<details>
+<summary>For C++ developer</summary>
+
+<ul>
+<li><strong>File</strong>: /include/ServiceModules/SphericalInterpolatedFIRTable.hpp</li>
+<li><strong>Class name</strong>: CSphericalInterpolatedFIRTable</li>
+<li><strong>Inheritance</strong>: CServicesBase</li>
+<li><strong>Namespace</strong>: BRTServices</li>
+</ul> 
+
+<h2>Class inheritance diagram</h2>
+```mermaid
+classDiagram
+direction TB
+
+class CServicesBase 
+    <<interface>> CServicesBase
+class CSphericalFIRTable
+class CSphericalInterpolatedFIRTable
+class CSphericalSOSTable
+class CAmbisonicBIR
+
+CServicesBase <|-- CSphericalFIRTable
+CServicesBase <|-- CSphericalInterpolatedFIRTable
+CServicesBase <|-- CSphericalSOSTable
+CServicesBase <|-- CAmbisonicBIR
+```
+
+<h2>How to instantiate and load</h2>
+```cpp
+// Assuming SOFA_FILEPATH contains the SOFA filename including the path
+std::shared_ptr<BRTServices::CSphericalInterpolatedFIRTable> hrtf = std::make_shared<BRTServices::CSphericalInterpolatedFIRTable>();
+bool hrtfSofaLoaded = LoadSofaFile(SOFA_FILEPATH, hrtf);        
+    if (!hrtfSofaLoaded) {
+        // ERROR
+    }
+```
+
+<h2>How to connect it to a listener</h2>
+```cpp
+// Assuming that the ID of this listener is contained in _listenerID and 
+// that the HRTF is already lsuccessfuly loaded into hrtf.
+std::shared_ptr<BRTBase::CListener> listener = brtManager->GetListener(listenerID);
+listener->SetHRTF(hrtf);
+```
+
+<h2>Public Methods of <code>CSphericalInterpolatedFIRTable</code></h2>
+
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Constructor</td>
+<td><code>CSphericalInterpolatedFIRTable()</code></td>
+<td>Creates an empty spherical FIR table with interpolation support.</td>
+</tr>
+
+<tr>
+<td rowspan="3">ITD Customization</td>
+<td><code>void EnableWoodworthITD() override</code></td>
+<td>Enables Woodworth ITD model for interaural delay estimation.</td>
+</tr>
+<tr>
+<td><code>void DisableWoodworthITD() override</code></td>
+<td>Disables the Woodworth ITD model.</td>
+</tr>
+<tr>
+<td><code>bool IsWoodworthITDEnabled() const override</code></td>
+<td>Returns whether the Woodworth ITD model is currently enabled.</td>
+</tr>
+
+<tr>
+<td rowspan="2">FIR Partition Info</td>
+<td><code>const int32_t GetNumberOfSubfiltersFR() const override</code></td>
+<td>Returns the number of frequency-domain FIR partitions.</td>
+</tr>
+<tr>
+<td><code>const int32_t GetSubfilterLengthFR() const override</code></td>
+<td>Returns the length of each partitioned FIR subfilter.</td>
+</tr>
+
+<tr>
+<td rowspan="6">Cranial Geometry</td>
+<td><code>void SetHeadRadius(float _headRadius) override</code></td>
+<td>Sets the head radius used for spatial calculations.</td>
+</tr>
+<tr>
+<td><code>float GetHeadRadius() const override</code></td>
+<td>Returns the current head radius.</td>
+</tr>
+<tr>
+<td><code>void RestoreHeadRadius() override</code></td>
+<td>Restores the default head radius value.</td>
+</tr>
+<tr>
+<td><code>void SetEarPosition(Common::T_ear _ear, Common::CVector3 _earPosition) override</code></td>
+<td>Sets the local position of the specified ear.</td>
+</tr>
+<tr>
+<td><code>Common::CVector3 GetEarLocalPosition(Common::T_ear _ear) const override</code></td>
+<td>Returns the local position of the specified ear.</td>
+</tr>
+<tr>
+<td><code>void SetCranialGeometryAsDefault() override</code></td>
+<td>Resets cranial geometry parameters to default values.</td>
+</tr>
+
+<tr>
+<td>Measurement Metadata</td>
+<td><code>double GetDistanceOfMeasurement(const Common::CTransform &amp; _referenceLocation, const double &amp; _azimuth, const double &amp; _elevation, const double &amp; _distance) const override</code></td>
+<td>Returns the distance associated with the selected/nearest measurement for the given spatial query.</td>
+</tr>
+
+<tr>
+<td rowspan="2">IR Windowing</td>
+<td><code>void SetWindowingParameters(float _fadeInBegin, float _riseTime, float _fadeOutCutoff, float _fallTime) override</code></td>
+<td>Configures fade-in and fade-out window parameters applied to impulse responses.</td>
+</tr>
+<tr>
+<td><code>void GetWindowingParameters(float &amp; _fadeInWindowThreshold, float &amp; _fadeInWindowRiseTime, float &amp; _fadeOutWindowThreshold, float &amp; _fadeOutWindowRiseTime) const override</code></td>
+<td>Returns the current impulse response windowing parameters.</td>
+</tr>
+
+<tr>
+<td rowspan="2">Interpolation Grid</td>
+<td><code>void SetGridSamplingStep(int _samplingStep) override</code></td>
+<td>Sets the sampling step of the internal interpolation grid.</td>
+</tr>
+<tr>
+<td><code>int GetGridSamplingStep() const override</code></td>
+<td>Returns the current interpolation grid sampling step.</td>
+</tr>
+
+<tr>
+<td rowspan="3">FIR Table Setup</td>
+<td><code>bool BeginSetup(const int32_t &amp; _HRIRLength, const BRTServices::TEXTRAPOLATION_METHOD &amp; _extrapolationMethod) override</code></td>
+<td>Initializes the table configuration before inserting impulse responses.</td>
+</tr>
+<tr>
+<td><code>void AddIR(const Common::CVector3 &amp; _referencePosition, const double &amp; _azimuth, const double &amp; _elevation, const double &amp; _distance, TIRStruct &amp;&amp; _newIR) override</code></td>
+<td>Adds a new impulse response measurement to the table.</td>
+</tr>
+<tr>
+<td><code>bool EndSetup() override</code></td>
+<td>Finalizes the table structure after all impulse responses have been added.</td>
+</tr>
+
+<tr>
+<td rowspan="2">FIR Retrieval</td>
+<td><code>const TFRPartitions GetFR_SpatiallyOriented(const float &amp; _azimuth, const float &amp; _elevation, const float &amp; _distance, const Common::CTransform &amp; _referenceLocation, const Common::T_ear &amp; ear, bool _runTimeInterpolation) const override</code></td>
+<td>Returns the frequency-domain FIR partitions for one ear at a given spatial direction (with optional runtime interpolation).</td>
+</tr>
+<tr>
+<td><code>const Common::CEarPair&lt;TFRPartitions&gt; GetFR_SpatiallyOriented_2Ears(const float &amp; _azimuth, const float &amp; _elevation, const float &amp; _distance, const Common::CTransform &amp; _referenceLocation, bool _runTimeInterpolation) const override</code></td>
+<td>Returns the frequency-domain FIR partitions for both ears (with optional runtime interpolation).</td>
+</tr>
+
+<tr>
+<td>Delay Retrieval</td>
+<td><code>const Common::CEarPair&lt;uint64_t&gt; GetFR_Delay(const float &amp; _azimuthCenter, const float &amp; _elevationCenter, const float &amp; _distance, const Common::CTransform &amp; _referenceLocation, bool _runTimeInterpolation) const override</code></td>
+<td>Returns the interaural delays associated with the selected FIR responses (with optional runtime interpolation).</td>
+</tr>
+
+</tbody>
+</table>
+</details>
