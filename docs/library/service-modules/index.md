@@ -38,6 +38,7 @@ E[OBJ Files]
 
 F -->|use different processing modules| A
 A -->|request resources during rendering| B
+B -->|get resources during rendering| A
 C -->|pre-load data| B
 D --> C
 E --> C

@@ -67,7 +67,9 @@ For applications requiring **smooth and continuous 3DoF binaural rendering**, BR
 
 To address this limitation, _SphericalInterpolatedFIRTable_ estimates HRIRs for the **exact direction and distance of the sound source**. During an **offline preprocessing stage**, the algorithm identifies the three closest measured directions surrounding each target grid point. A **barycentric interpolation** is then performed between the corresponding HRIRs to estimate the impulse response at that location.
 
-The result of this preprocessing step is a **regular spherical grid of FIR responses**, which is stored internally by the module. The density of this grid is controlled by a configurable parameter called **spatial resolution**, which defines the angular sampling of the generated spherical mesh. Higher spatial resolutions produce denser grids and more accurate spatial reconstruction, at the cost of increased memory usage and preprocessing time.  This regularization allows Processing Models to perform efficient spatial lookups during rendering. Additional real-time interpolation between neighboring grid points can also be applied when smoother directional transitions are required. You can find more details on how this grid is generated in this <a href="../../../assets/technical-report/SONICOM_TR3.1_BRT REGULAR GRID DISTRIBUTION OF POINTS IN THE SPHERE USED BY THE BRT.pdf" target="_blank">document</a>.
+The result of this preprocessing step is a **regular spherical grid of FIR responses**, which is stored internally by the module. The density of this grid is controlled by a configurable parameter called spatial resolution[^1], being the intended  angular separation between two adjacent points at the equator or two adjacent points in the median plane (azimuth=0).  Lowerr spatial resolutions produce denser grids and more accurate spatial reconstruction, at the cost of increased memory usage and preprocessing time. This regularization allows Processing Models to perform efficient spatial lookups during rendering. Additional real-time interpolation between neighboring grid points can also be applied when smoother directional transitions are required. You can find more details on how this grid is generated in this <a href="../../../assets/technical-report/SONICOM_TR3.1_BRT REGULAR GRID DISTRIBUTION OF POINTS IN THE SPHERE USED BY THE BRT.pdf" target="_blank">document</a>.
+
+[^1]: For historical reasons that are irrelevant here, it is also referred to as _SamplingStep_ in some older parts of the C++ code and documents.
 
 Interpolating HRIRs with different **interaural time differences (ITDs)** can introduce audible artifacts and degrade rendering quality. To avoid this issue, the HRTF Service Module handles **ITDs independently from the FIR interpolation and convolution processes**. This separation prevents temporal inconsistencies when combining impulse responses from different measurement directions. For this reason, user-imported HRIR datasets should provide **ITD information stored separately from the impulse responses**. 
 
@@ -95,6 +97,15 @@ Stores FIR responses indexed by spherical coordinates but **preserves the origin
 **SphericalSOSTable**
 
 Stores spatial filters represented as **second-order section (SOS) filter banks** instead of FIR impulse responses. This representation is typically used when parametric or IIR filter models are preferred over impulse responses.
+
+## Configuration Options
+
+This service allows you to configure the following parameters:
+
+- **Set Grid Spatial Resolution**: Set the spatial resolution that allows the grid to be defined.
+- **Enable/Disable Woodworth ITD**: Toggles the application of the Woodworth ITD formula for HRTF processing.
+- **Set/Get Head Radius**: Configures or retrieves the radius of the listener's head model.
+- **Set parameters for the windowing IR process**: Defined the windowing paremeters.
 
 ## Summary
 
