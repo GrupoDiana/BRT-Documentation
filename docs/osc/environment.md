@@ -206,42 +206,39 @@ BeRTA receives and echoes back to all subscribiers but the sender: `/environment
 
 BeRTA sends back to the sender: `/control/actionResult /environment/setDistanceAttenuationFactor FreeField true "Distance Attenuation Factor updated in the model (FreeField) to -3".`
 
-
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-### **/environment/setReflectionOrder**
+### **/environment/setFadeZoneMargin**
 
 <div style="overflow: auto;">
   <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible models: ISM</span>  
   <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0</span>
 </div>
 
-
-This command allows you to change the reflection order used by the model for simulation. Its value determines the number of virtual sources used in the simulation. Its value must be a positive integer. By default, the reflection order is set to zero in the model, which means that the simulation is not performed. For more information, see the section on environment models, for example the [ISM](/BRT-Documentation/library/environment-models/ism-environment-model/).
+This command allows you to change the size of the fade zone used by the model for simulation. This value is used to fade out samples from virtual sources that enter that zone. Its value must be a positive number and is expressed in metres. By default, this parameter has a value of 0.6m (equivalent to 2ms). For more information, see the section on environment models, for example, the [ISM](/BRT-Documentation/library/environment-models/ism-environment-model/).
 
 #### Syntax
 
-`/environment/setReflectionOrder <string environmentModel_id> <int reflectionOrder>`
+`/environment/setFadeZoneMargin <string environmentModel_id> <float fadeZoneMargin>`
 
 `environmentModel_id`: identifier assigned to the model.
 
-`reflectionOrder`: a int value, representing the reflection order to be used by the model simulation. This value must be positive.
+`fadeZoneMargin`: a float value, which represents the size of the fading zone used in the model simulation. This value must be positive and is expressed in metres.
 
 #### Return
 
-`/control/actionResult /environment/setReflectionOrder <string environmentModel_id> <bool set> <string description>`
+`/control/actionResult /environment/setFadeZoneMargin <string environmentModel_id> <bool set> <string description>`
 
-The return confirmation refers to the `environmentModel_id`, indicating if the reflection order has been set or not. In both cases a `description` is added to give more details. 
+The return confirmation refers to the `environmentModel_id`, indicating if the maximum distance between the sources and the listener has been set or not. In both cases a `description` is added to give more details. 
 
 In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives and echoes back to all subscribiers but the sender: `/environment/setReflectionOrder ISM 3`
+BeRTA receives and echoes back to all subscribiers but the sender: `/environment/setFadeZoneMargin ISM 10.5`
 
-BeRTA sends back to the sender: `/control/actionResult /environment/setReflectionOrder ISM true "Reflection Order updated in the model (ISM) to 3.`
-
+BeRTA sends back to the sender: `/control/actionResult /environment/setFadeZoneMargin ISM true "Max Distance Sources to Listener updated in the model (ISM) to 10.5m.`
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
@@ -281,35 +278,75 @@ BeRTA sends back to the sender: `/control/actionResult /environment/setMaxDistan
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-### **/environment/setFadeZoneMargin**
+### **/environment/setReflectionOrder**
 
 <div style="overflow: auto;">
   <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible models: ISM</span>  
   <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0</span>
 </div>
 
-This command allows you to change the size of the fade zone used by the model for simulation. This value is used to fade out samples from virtual sources that enter that zone. Its value must be a positive number and is expressed in metres. By default, this parameter has a value of 0.6m (equivalent to 2ms). For more information, see the section on environment models, for example, the [ISM](/BRT-Documentation/library/environment-models/ism-environment-model/).
+
+This command allows you to change the reflection order used by the model for simulation. Its value determines the number of virtual sources used in the simulation. Its value must be a positive integer. By default, the reflection order is set to zero in the model, which means that the simulation is not performed. For more information, see the section on environment models, for example the [ISM](/BRT-Documentation/library/environment-models/ism-environment-model/).
 
 #### Syntax
 
-`/environment/setFadeZoneMargin <string environmentModel_id> <float fadeZoneMargin>`
+`/environment/setReflectionOrder <string environmentModel_id> <int reflectionOrder>`
 
 `environmentModel_id`: identifier assigned to the model.
 
-`fadeZoneMargin`: a float value, which represents the size of the fading zone used in the model simulation. This value must be positive and is expressed in metres.
+`reflectionOrder`: a int value, representing the reflection order to be used by the model simulation. This value must be positive.
 
 #### Return
 
-`/control/actionResult /environment/setFadeZoneMargin <string environmentModel_id> <bool set> <string description>`
+`/control/actionResult /environment/setReflectionOrder <string environmentModel_id> <bool set> <string description>`
 
-The return confirmation refers to the `environmentModel_id`, indicating if the maximum distance between the sources and the listener has been set or not. In both cases a `description` is added to give more details. 
+The return confirmation refers to the `environmentModel_id`, indicating if the reflection order has been set or not. In both cases a `description` is added to give more details. 
 
 In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
 
 #### Example
 
-BeRTA receives and echoes back to all subscribiers but the sender: `/environment/setFadeZoneMargin ISM 10.5`
+BeRTA receives and echoes back to all subscribiers but the sender: `/environment/setReflectionOrder ISM 3`
 
-BeRTA sends back to the sender: `/control/actionResult /environment/setFadeZoneMargin ISM true "Max Distance Sources to Listener updated in the model (ISM) to 10.5m.`
+BeRTA sends back to the sender: `/control/actionResult /environment/setReflectionOrder ISM true "Reflection Order updated in the model (ISM) to 3.`
+
+<!----------------------------------------------------------------------------------->
+
+<hr style="border:1px solid gray">
+
+### **/environment/setRoom**
+
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible models: SDN, ISM</span>  
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0</span>
+</div>
+
+Establishes a room in an environment model. The definition of the room and the model are referenced by two identifiers. The room must have been previously loaded using a command of the class /resources/.... After establishing the room, the environment model is reconfigured accordingly, which may require heavy processing and cause rendering to be interrupted. A room can be assigned to more than one environment model at a time. See environment models for more information. Currently, these are the listener models that accept it:
+
+- [**SND Environment Model**](../library/environment-models/sdn-environment-model.md)
+- [**ISM Model**](../library/environment-models/ism-environment-model.md)
+
+
+#### Syntax
+
+`/environment/setRoom <string environmentModel_id> <string room_id>`
+
+`environmentModel_id`: identifier assigned to the model.
+
+`room_id`: indentifier assigned to a room definition.
+
+#### Return
+
+`/control/actionResult /environment/setRoom <string room_id> <bool set> <string description>`
+
+The return confirmation refers to the `room_id`, indicating if the room definition has been set or not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/environment/setRoom SDN room1`
+
+BeRTA sends back to the sender: `/control/actionResult /environment/setRoom SDN false "ERROR setting Room to the environment room1 not found in the Room list'].`
 
 <!----------------------------------------------------------------------------------->
