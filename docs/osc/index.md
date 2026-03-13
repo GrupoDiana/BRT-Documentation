@@ -35,7 +35,8 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 ### Resources Commands 
 
-- [`/resources/loadHRTF`](resources.md#resourcesloadhrtf): Loads a new HRTF from a SOFA file and assigns an identifier.
+- [`/resources/loadHRTF`](resources.md#resourcesloadhrtf): Loads a new HRTF, with interpolation, from a SOFA file and assigns an identifier.
+- [`/resources/loadHRTFRaw`](resources.md#resourcesloadhrtf): Loads a new HRTF, without interpolation, from a SOFA file and assigns an identifier.
 - [`/resources/removeHRTF`](resources.md#resourcesremovehrtf): Removes an HRTF from the loaded resources.
 - [`/resources/getHRTFInfo`](resources.md#resourcesgethrtfinfo): Gets information about one of the loaded HRTFs.
 - [`/resources/setHRTFHeadRadius`](resources.md#resourcessethrtfheadradius): Sets the head radius to be stored in the HRTF.
@@ -45,9 +46,13 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/resources/loadBRIR`](resources.md#resourcesloadbrir): Loads a new Binaural Room Impulse Response from a SOFA file.
 - [`/resources/removeBRIR`](resources.md#resourcesremovebrir): Removes a Binaural Room Impulse Response from the loaded resources.
 - [`/resources/getBRIRInfo`](resources.md#resourcesgetbririnfo): Gets information about one of the loaded Binaural Room Impulse Responses (BRIR).
-- [`/resources/loadDirectivityTF`](resources.md#resourcesloaddirectivitytf): Loads a Directivity Transfer Function from a SOFA file.
-- [`/resources/removeDirectivityTF`](resources.md#resourcesremovedirectivitytf): Removes a Directivity Transfer Function from the loaded resources.
-- [`/resources/getDirectivityTFInfo`](resources.md#resourcesgetdirectivitytfinfo): Gets information about one of the loaded Directivity Transfer Functions.
+- [`/resources/loadDirectivity`](resources.md#resourcesloaddirectivity): Loads a Directivity Transfer Function from a SOFA file.
+- [`/resources/removeDirectivity`](resources.md#resourcesremovedirectivity): Removes a Directivity Transfer Function from the loaded resources.
+- [`/resources/getDirectivityInfo`](resources.md#resourcesgetdirectivityinfo): Gets information about one of the loaded Directivity Transfer Functions.
+
+- [`/resources/loadDirectivityTF`](resources.md#resourcesloaddirectivitytf): Loads a Directivity Transfer Function from a SOFA file.<span style="font-size: 1em; color: grey; font-style: italic;">(Removed, use '/resources/loadDirectivity' instead.)</span>
+- [`/resources/removeDirectivityTF`](resources.md#resourcesremovedirectivitytf): Removes a Directivity Transfer Function from the loaded resources.<span style="font-size: 1em; color: grey; font-style: italic;">(Removed, use '/resources/removeDirectivity' instead.)</span>
+- [`/resources/getDirectivityTFInfo`](resources.md#resourcesgetdirectivitytfinfo): Gets information about one of the loaded Directivity Transfer Functions.<span style="font-size: 1em; color: grey; font-style: italic;">(Removed, use '/resources/getDirectivityInfo' instead.)</span>
 
 - [`/resources/loadFilter`](resources.md#resourcesloadfilter): Load a new set of filter coefficients (IIR or FIR) from a SOFA file.
 - [`/resources/removeFilter`](resources.md#resourcesremovefilter): Removes a set of filter coefficientes from the loaded resources.

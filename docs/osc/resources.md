@@ -7,7 +7,7 @@ These commands are responsible for managing the resources used in the virtual au
 
 ### **/resources/loadHRTF**
 
-Loads a new HRTF in a SOFA file from the specified path and assign an identifier to it. If there is already another HRTF with the same identifier, it is substituted by the new one. The SOFA file must use FIR or FIR-E as data type but can follow any convention using these data types. When loading, the HRTF is spatially resampled to fit the [HRTF grids](). This way the real time processor can get fast enough the three HRIRs to be interpolated and convolved.
+Loads a new HRTF in a SOFA file from the specified path and assign an identifier to it. If there is already another HRTF with the same identifier, it is substituted by the new one. The SOFA file must use FIR or FIR-E as data type but can follow any convention using these data types. When loading, the HRTF is spatially resampled to fit a grid using the [SphericalInterpolatedFIRTable](../library/service-modules/service-spherical-interpolated-fir-table.md) service module. This way the real time processor can get fast enough the three HRIRs to be interpolated and convolved.
 
 #### Syntax
 
@@ -17,7 +17,7 @@ Loads a new HRTF in a SOFA file from the specified path and assign an identifier
 
 `HRTF_SOFAFile_path`: Specifies a SOFA file containing an HRTF. it can be either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable.  
 
-`spatialResolution`: This parameter indicates the interpolation step in the horizontal plane of zero elevation. To learn more about this grid and the interpolation mechanism, please refer to the [HRTF grids]().
+`spatialResolution`: This parameter indicates the interpolation step in the horizontal plane of zero elevation. To learn more about this grid and the interpolation mechanism, please refer to the [SphericalInterpolatedFIRTable](../library/service-modules/service-spherical-interpolated-fir-table.md) service module.
 
 #### Return
 
@@ -31,7 +31,40 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 BeRTA receives and echoes back to all subscribiers but the sender: `/resources/loadHRTF HRTF1 c:/tmp/hrtf.sofa 5`
 
-BeRTA sends back to the sender: `/control/actionResult /resources/loadHRTF HRTF1 true HRTF HRTF1 loaded successfully, with a spatial resolution of 5, from the file: c:/tmp/hrtf.sofa` or `/control/actionResult /resources/loadHRTF HRTF1 false HRTF sofa file couldn't be loaded from HRTF1;`. 
+BeRTA sends back to the sender: `/control/actionResult /resources/loadHRTF HRTF1 true HRTF HRTF1 loaded successfully, with a spatial resolution of 5, from the file: c:/tmp/hrtf.sofa` or `/control/actionResult /resources/loadHRTF HRTF1 false HRTF sofa file couldn't be loaded from HRTF1`. 
+
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/resources/loadHRTFRaw**
+<div style="overflow: auto;"> 
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.10.0</span>
+</div>
+
+Loads a new HRTF in a SOFA file from the specified path and assign an identifier to it. If there is already another HRTF with the same identifier, it is substituted by the new one. The SOFA file must use FIR or FIR-E as data type but can follow any convention using these data types. The data is stored without any resampling, using the [ShericalFIRTable](../library/service-modules/service-spherical-fir-table.md) service module.
+
+#### Syntax
+
+`/resources/loadHRTFRaw <string HRTF_id> <string HRTF_SOFAFile_path>`
+
+`HRTF_id`: Identifier to be assigned to the HRTF for later references to it. If there is already another HRTF with the same identifier, it is substituted by the new one. Otherwise, a new HRTF is created.
+
+`HRTF_SOFAFile_path`: Specifies a SOFA file containing an HRTF. it can be either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable.  
+
+#### Return
+
+`/control/actionResult /resources/loadHRTFRaw <string HRTF_id> <boolean loaded> <string description>`
+
+The return confirmation refers to the `HRTF_id`,indicating `loaded=true`if the HTYF is successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/resources/loadHRTF HRTF1 c:/tmp/hrtf.sofa`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/loadHRTF HRTF1 true HRTF HRTF1 loaded successfully from the file: c:/tmp/hrtf.sofa` or `/control/actionResult /resources/loadHRTF HRTF1 false HRTF sofa file couldn't be loaded from HRTF1`. 
 
 
 <!----------------------------------------------------------------------------------->
@@ -204,19 +237,19 @@ BeRTA sends back to the sender: `/control/actionResult /resources/enableWoodwort
 ## **BRIR**
 
 ### **/resources/loadBRIR**
-<span style="font-size: 0.8em; color: grey; font-style: italic;">Parameters renamed from BeRTA v3.6.0</span>
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.9.0. / Changed in BeRTA 3.11.0</span>
+</div>
 
-Loads a new Binaural Room Impulse Response (BRIR) from a SOFA file at the specified path and assign an identifier to it. If there is already another BRIR with the same identifier, it is substituted by the new one. The SOFA file must use FIR or FIR-E as data type but can follow any convention using these data types. When loading, the HRTF is spatially resampled to fit the [BRT grids](). 
+Loads a new Binaural Room Impulse Response (BRIR) from a SOFA file at the specified path and assign an identifier to it. If there is already another BRIR with the same identifier, it is substituted by the new one. The SOFA file must use FIR or FIR-E as data type but can follow any convention using these data types. The data is stored without any resampling, using the [ShericalFIRTable](../library/service-modules/service-spherical-fir-table.md) service module.
 
 #### Syntax
 
-`/resources/loadBRIR <string BRIR_id> <string BRIR_SOFAFile_path> <float spatialResolution> <float fadeInBegin> <float riseTime> <float fadeOutCutoff> <float fallTime>`
+`/resources/loadBRIR <string BRIR_id> <string BRIR_SOFAFile_path> <float fadeInBegin> <float riseTime> <float fadeOutCutoff> <float fallTime>`
 
 `BRIR_id`: Identifier to be assigned to the BRIR for later references to it. If there is already another BRIR with the same identifier, it is substituted by the new one. Otherwise, a new BRIR is created.
 
 `BRIR_SOFAFile_path`: Specifies a SOFA file containing a BRIR. It can be either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable.  
-
-`spatialResolution`: This parameter indicates the interpolation step in the horizontal plane of zero elevation. To learn more about the interpolation mechanism, please refer to [BRT grids]().
 
 The loaded BRIR can be windowed. For this purpose, a fade-in and fade-out mechanism has been enabled using raised-cosines. The parameter `fadeInBegin` indicates the midpoint (50%) of the rising slope of the window, in seconds, the `risetime` indicates the rising time, also in seconds. Analogously, the parameter `fadeOutCutoff` indicates the midpoint (50%) of the falling slope of the window, and `fallTime` indicates the falling time, all in seconds.
 
@@ -230,10 +263,12 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 #### Example
 
-BeRTA receives and echoes back to all subscribiers but the sender: `/resources/loadBRIR BRIR1 c:/tmp/BRIR.sofa 15 0.005 0.001 0.5 0.01`
+BeRTA receives and echoes back to all subscribiers but the sender: `/resources/loadBRIR BRIR1 c:/tmp/BRIR.sofa 0.005 0.001 0.5 0.01`
 
-BeRTA sends back to the sender: `/control/actionResult /resources/loadBRIR BRIR1 true BRIR BRIR1 loaded successfully, with a spatial resolution of 15, from the file: c:/tmp/BRIR.sofa` or `/control/actionResult /resources/loadBRIR BRIR1 false BRIR sofa file couldn't be loaded from c:/tmp/BRIR.sofa`. 
+BeRTA sends back to the sender: `/control/actionResult /resources/loadBRIR BRIR1 true BRIR BRIR1 loaded successfully from the file: c:/tmp/BRIR.sofa` or `/control/actionResult /resources/loadBRIR BRIR1 false BRIR sofa file couldn't be loaded from c:/tmp/BRIR.sofa`. 
 
+!!! alert "Changes from BeRTA v3.11.0"
+    From BeRTA v3.11.0 onwards, the _spatial resolution_ parameter has been removed, as a BRIR is no longer interpolated when loaded.
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
@@ -292,7 +327,136 @@ BeRTA sends back: `/resources/getBRIRInfo BRIR1 BRIR.sofa 15 0.005 0.001 0.5 0.0
 
 ## **Directivity**
 
+### **/resources/loadDirectivity**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.11.0</span>
+</div>
+
+Loads a new Directivity Transfer Function in a SOFA file from the specified path and assign an identifier to it. If there is already another Directivity with the same identifier, it is substituted by the new one. The SOFA file must use FreeFieldDirectivityFIR convention. When loading, the directivity is spatially resampled to fit a grid using the [SphericalInterpolatedFIRTable](../library/service-modules/service-spherical-interpolated-fir-table.md) service module.
+
+#### Syntax
+
+`/resources/loadDirectivity <string directivity_id> <string directivity_SOFAFile_path> <float spatialResolution>`
+
+`directivity_id`: Identifier to be assigned to the directivityTF for later references to it. If there is already another directivityTF with the same identifier, it is substituted by the new one. Otherwise, a new directivityTF is created.
+
+`directivity_SOFAFile_path`: Specifies a SOFA file containing a directivityTF. it can be either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable.  
+
+`spatialResolution`: This parameter indicates the interpolation step in the horizontal plane of zero elevation. To learn more about this grid and the interpolation mechanism, please refer to the [SphericalInterpolatedFIRTable](../library/service-modules/service-spherical-interpolated-fir-table.md) service module.
+
+#### Return
+
+`/control/actionResult /resources/loadDirectivity <string directivity_id> <boolean loaded> <string description>`
+
+The return confirmation refers to the `directivity_id`, indicating `loaded=true`if the directivityTF is successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender:`/resources/loadDirectivity Directivity1 c:/tmp/directivity.sofa 15`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/loadDirectivity Directivity1 true Directivity directivity1 loaded` or `/control/actionResult /resources/loadDirectivity Directivity1 false Directivity sofa file couldn't be loaded from c:/tmp/directivityTF.sofa`. 
+
+<hr style="border:1px solid gray">
+<!----------------------------------------------------------------------------------->
+
+### **/resources/loadDirectivityRaw**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.11.0</span>
+</div>
+
+Loads a new Directivity Transfer Function in a SOFA file from the specified path and assign an identifier to it. If there is already another Directivity with the same identifier, it is substituted by the new one. The SOFA file must use FreeFieldDirectivityFIR convention. The data is stored without any resampling, using the [ShericalFIRTable](../library/service-modules/service-spherical-fir-table.md) service module.
+
+#### Syntax
+
+`/resources/loadDirectivity <string directivity_id> <string directivity_SOFAFile_path>`
+
+`directivity_id`: Identifier to be assigned to the directivityTF for later references to it. If there is already another directivityTF with the same identifier, it is substituted by the new one. Otherwise, a new directivityTF is created.
+
+`directivity_SOFAFile_path`: Specifies a SOFA file containing a directivityTF. it can be either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable.  
+
+#### Return
+
+`/control/actionResult /resources/loadDirectivity <string directivity_id> <boolean loaded> <string description>`
+
+The return confirmation refers to the `directivity_id`, indicating `loaded=true`if the directivityTF is successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender:`/resources/loadDirectivity Directivity1 c:/tmp/directivity.sofa`
+
+BeRTA sends back to the sender: `/control/actionResult /resources/loadDirectivity Directivity1 true Directivity directivity1 loaded` or `/control/actionResult /resources/loadDirectivity Directivity1 false Directivity sofa file couldn't be loaded from c:/tmp/directivity.sofa`. 
+
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/resources/removeDirectivity**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.11.0</span>
+</div>
+
+Removes a Directivity Transfer Function from the loaded resources. 
+
+#### Syntax
+
+`/resources/removeDirectivity <string directivity_id>`
+
+`directivity_id`: Identifier of the directivity to be removed.
+
+#### Return
+
+`/control/actionResult /resources/removeDirectivity <string directivity_id> <bool removed>`
+
+The return confirmation refers to the `directivity_id`, indicating `removed=true`if the directivityTF is successfuly removed and `removed=false` if not. In both cases a `description` is added to give more details.
+
+In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
+
+#### Example
+
+BeRTA receives and echoes back to all subscribiers but the sender: `/resources/removeDirectivity directivity1`
+
+BeRTA sends back to the sender: ` /control/actionResult /resources/removeDirectivity directivity1 true Directivity directivity1 removed` or `/control/actionResult /resources/removeDirectivity directivity1 false ERROR deleting Directivity.  directivity1 not found in the list`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/resources/getDirectivityInfo**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Available from BeRTA v3.11.0</span>
+</div>
+
+Gets some information about one of the loaded Directivity Transfer Functions. This information consists of the filename and the spatial resolution used if it was loaded using interpolation.
+#### Syntax
+
+`/resources/getDirectivityInfo <string directivity_id>`
+
+`directivity_id`: Identifier of the Directivity of which we are requesting information.
+
+#### Return
+
+`/resources/getDirectivityInfo <string directivity_id> <string directivity_SOFAFile> <float spatialResolution>`
+
+The return message is sent back to the sender and refers to the `directivity_id`, indicating the name of the SOFA file (`directivity_SOFAFile`) from which the directivity was loaded, as well as the `spatialResolution` used to resample it when loaded. 
+
+#### Example
+
+BeRTA receives: `/resources/getDirectivityInfo directivity1`
+
+BeRTA sends back: `/resources/getDirectivityInfo directivity1 directivity.sofa 15` 
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
 ### **/resources/loadDirectivityTF**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: red; font-style: italic; float: right; margin-right: 15px;">Deleted from BeRTA v3.11.0</span>
+</div>
 
 Loads a new Directivity Transfer Function in a SOFA file from the specified path and assign an identifier to it. If there is already another Directivity with the same identifier, it is substituted by the new one. The SOFA file must use TF as data type with the same number of frequency bins as the frame size configured in BeRTA. When loading, the DirectivityTF is spatially resampled to fit the [BRT grids](). This way the real time processor can get fast enough the three Directivities to be interpolated and convolved.
 
@@ -326,6 +490,9 @@ BeRTA sends back to the sender: `/control/actionResult /resources/loadDirectivit
 <hr style="border:1px solid gray">
 
 ### **/resources/removeDirectivityTF**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: red; font-style: italic; float: right; margin-right: 15px;">Deleted from BeRTA v3.11.0</span>
+</div>
 
 Removes a Directivity Transfer Function from the loaded resources. 
 
@@ -353,6 +520,9 @@ BeRTA sends back to the sender: ` /control/actionResult /resources/removeDirecti
 <hr style="border:1px solid gray">
 
 ### **/resources/getDirectivityTFInfo**
+<div style="overflow: auto;">
+  <span style="font-size: 0.8em; color: red; font-style: italic; float: right; margin-right: 15px;">Deleted from BeRTA v3.11.0</span>
+</div>
 
 Gets some information about one of the loaded Directivity Transfer Functions. This information consists of the filename and the spatial resolution used to resample it in the [BRT grid]().
 #### Syntax
