@@ -43,3 +43,116 @@ _SphericalFIRTable_ stores **impulse responses (FIR filters)** organized spatial
 
 ## Summary
 _SphericalSOSTable_ provides a structured way to store and access **spatially organized parametric filters** within BRT. By representing filters as SOS coefficients and organizing them over spherical coordinates, the module supports efficient retrieval of direction-dependent filtering resources. It complements FIR-based resource modules and enables Processing Models to integrate parametric acoustic corrections into binaural rendering pipelines.
+
+## For C++ developer
+<details>
+<summary>For C++ developer</summary>
+
+<ul>
+<li><strong>File</strong>: /include/ServiceModules/SphericalSOSTable.hpp</li>
+<li><strong>Class name</strong>: CSphericalSOSTable</li>
+<li><strong>Inheritance</strong>: CServicesBase</li>
+<li><strong>Namespace</strong>: BRTServices</li>
+</ul> 
+
+<h2>Class inheritance diagram</h2>
+```mermaid
+classDiagram
+direction TB
+
+class CServicesBase 
+    <<interface>> CServicesBase
+class CSphericalFIRTable
+class CSphericalInterpolatedFIRTable
+class CSphericalSOSTable
+class CAmbisonicBIR
+
+CServicesBase <|-- CSphericalFIRTable
+CServicesBase <|-- CSphericalInterpolatedFIRTable
+CServicesBase <|-- CSphericalSOSTable
+CServicesBase <|-- CAmbisonicBIR
+```
+
+<h2>How to instantiate and load</h2>
+```cpp
+// Assuming SOFA_FILEPATH contains the SOFA filename including the path
+std::shared_ptr<BRTServices::CSphericalSOSTable> sosFilter = std::make_shared<BRTServices::CSphericalSOSTable>();
+bool sofaLoaded = LoadSofaFile(SOFA_FILEPATH, sosFilter);        
+    if (!sofaLoaded) {
+        // ERROR
+    }
+```
+
+<h2>How to connect it to a listener model </h2>
+```cpp
+// Assuming that the ID of this listener is contained in _listenerID and 
+// that the HRTF is already lsuccessfuly loaded into hrtf.
+std::shared_ptr<BRTBase::CListener> listener = brtManager->GetListener(listenerID);
+listener->SetNearFieldCompensationFilters(hrtf);
+```
+
+<h2>How to connect it to a bilateral filter by the listener ID</h2>
+```cpp
+std::shared_ptr<BRTBase::CListener> listener = brtManager->GetListener(listenerID);
+listener->SetBilateralSOSFilter(filter);
+```
+
+<h2>How to connect it directly to a bilateral filter</h2>
+```cpp
+std::shared_ptr<BBRTBilateralFilter::CBilateralFilterModelBase> filter = brtManager->GetBilateralFilter(bilateralFilterID);
+filter->SetSOSFilterCoefficients(filter);
+```
+
+<h2>Public Methods of <code>CSphericalSOSTable</code></h2>
+
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Constructor</td>
+<td><code>CSphericalSOSTable()</code></td>
+<td>Creates an empty spherical SOS table service.</td>
+</tr>
+
+<tr>
+<td>Ear Geometry</td>
+<td><code>void SetEarPosition(Common::T_ear _ear, Common::CVector3 _earPosition)</code></td>
+<td>Sets the local position of the specified ear relative to the listener head center.</td>
+</tr>
+
+<tr>
+<td rowspan="3">SOS Table Setup</td>
+<td><code>bool BeginSetup()</code></td>
+<td>Initializes the SOS table setup process and clears previously loaded data.</td>
+</tr>
+<tr>
+<td><code>void AddCoefficients(float _azimuth, float _elevation, float _distance, Common::CEarPair&lt;CMonoBuffer&lt;float&gt;&gt; &amp;&amp; newCoefs)</code></td>
+<td>Adds a new set of SOS coefficients for a given azimuth, elevation, and distance.</td>
+</tr>
+<tr>
+<td><code>bool EndSetup()</code></td>
+<td>Finalizes the SOS table, sorts distance buckets, builds search trees, and marks the data as ready.</td>
+</tr>
+
+<tr>
+<td rowspan="2">SOS Retrieval</td>
+<td><code>const std::vector&lt;float&gt; GetSOSCoefficients_SpatiallyOriented(float _azimuth, float _elevation, float _distance, Common::T_ear ear) const</code></td>
+<td>Returns the SOS coefficients for one ear using a spatial query defined by azimuth, elevation, and distance.</td>
+</tr>
+<tr>
+<td><code>const Common::CEarPair&lt;CMonoBuffer&lt;float&gt;&gt; GetSOSCoefficients_2Ears() const</code></td>
+<td>Returns the SOS coefficients for both ears when the table is not spatially oriented.</td>
+</tr>
+
+</tbody>
+</table>
+
+</details>

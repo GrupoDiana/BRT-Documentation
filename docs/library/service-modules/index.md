@@ -2,6 +2,9 @@
 
 Service modules are auxiliary components responsible for managing and providing the resources required by the **Processing Models** to execute **binaural audio rendering algorithms** efficiently.
 
+!!! alert "About the service modules"
+    We have made a major change to the service modules starting with version 3.0.0, in order to resolve limitations we had and also simplify the code. You can find the documentation for the previous service modules, present in the library up to version 2.5.0, at this [link](./service-old.md).  
+
 These resources include several key elements used during spatial audio processing:
 
 * **[Head-Related Transfer Functions (HRTFs)](../concepts/index.md#conceptsHRTF)**, which simulate the direct sound path perceived by the listener model.
@@ -9,7 +12,7 @@ These resources include several key elements used during spatial audio processin
 * **Source directivity data**, which represent the directional radiation patterns of sound sources.
 * **Second-order filter section (SOS) coefficients**, which allow accurate modeling of, for example, near-field effects.
 * **FIR filter coefficients**, which can be used for headphone equalization or hearing-protection simulations.
-* **Impulse responses of virtual loudspeakers in the [Ambisonics](../concepts/ambisonics.md) domain**, enabling simultaneous convolution and ambisonic decoding.
+* **Impulse responses of virtual loudspeakers in the [Ambisonics](../concepts/index.md#ambisonics) domain**, enabling simultaneous convolution and ambisonic decoding.
 * **Geometric and acoustic descriptions of rooms**, used to simulate acoustic environments.
 
 !!! info "Spatial organization"
@@ -63,5 +66,5 @@ The following service modules are available for storing and managing spatial aud
 | **[SphericalFIRTable](./service-spherical-fir-table.md)**             | Stores FIR-based spatial data such as **HRTFs, BRIRs, source directivity information, and general FIR filter coefficients**.                                                              |
 | **[SphericalInterpolatedFIRTable](./service-spherical-interpolated-fir-table.md)** | Stores **HRTF and source directivity data** and generates a **regular spherical grid** through interpolation, providing a predictable spatial structure.                                  |
 | **[SphericalSOSTable](./service-spherical-sos-table.md)**             | Stores **second-order filter section (SOS) coefficients**, which may be constant or vary depending on **distance, azimuth, and/or elevation**.                                            |
-| **AmbisonicBRIR**                 | Stores the **impulse responses of virtual loudspeakers in the ambisonic domain**, enabling a pipeline where **impulse response convolution and ambisonic decoding occur simultaneously**. |
-| **Room**                          | Stores the **geometric and acoustic description of a room**, including its **vertices, walls, and frequency-band absorption coefficients** for each surface. An addition to the MTL format has been defined in order to store this acoustic information.                              |
+| **[AmbisonicBRIR](./service-ambisonic-bir.md)**                 | Stores the **impulse responses of virtual loudspeakers in the ambisonic domain**, enabling a pipeline where **impulse response convolution and ambisonic decoding occur simultaneously**. |
+| **[Room](./service-room.md)**                          | Stores the **geometric and acoustic description of a room**, including its **vertices, walls, and frequency-band absorption coefficients** for each surface. An addition to the MTL format has been defined in order to store this acoustic information.                              |
