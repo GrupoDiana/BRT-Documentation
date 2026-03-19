@@ -40,7 +40,7 @@ BeRTA sends back to the sender: `/control/actionResult /binauralFilter/enableMod
 ### **/binauralFilter/setSOSFilter**
 <div style="overflow: auto;">
   <span style="font-size: 0.8em; color: green; font-style: italic; float: left;">Compatible models: BilateralSOS</span>  
-  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Deprecated since BeRTA v3.10.0, use '/binauralFilter/setSOSFilter' instead.</span>
+  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Deprecated since BeRTA v3.10.0, use '/binauralFilter/setFilter' instead.</span>
 </div>
 
 
