@@ -5,7 +5,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 ### OSC Control Commands 
 
-- [`/control/actionResult`](control.md#controlbufferframes): Retrieve the result of the action performed in another application after receiving an OSC command.
+- [`/control/actionResult`](control.md#controlactionresult): Retrieve the result of the action performed in another application after receiving an OSC command.
 - [`/control/bufferFrames`](control.md#controlbufferframes): Query the number of buffered audio frames.
 - [`/control/connect`](control.md#controlconnect): Establish a connection with an IP and port.
 - [`/control/disconnect`](control.md#controldisconnect): Terminate the connection and unsubscribe from updates.
@@ -36,7 +36,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 ### Resources Commands 
 
 - [`/resources/loadHRTF`](resources.md#resourcesloadhrtf): Loads a new HRTF, with interpolation, from a SOFA file and assigns an identifier.
-- [`/resources/loadHRTFRaw`](resources.md#resourcesloadhrtf): Loads a new HRTF, without interpolation, from a SOFA file and assigns an identifier.
+- [`/resources/loadHRTFRaw`](resources.md#resourcesloadhrtfraw): Loads a new HRTF, without interpolation, from a SOFA file and assigns an identifier.
 - [`/resources/removeHRTF`](resources.md#resourcesremovehrtf): Removes an HRTF from the loaded resources.
 - [`/resources/getHRTFInfo`](resources.md#resourcesgethrtfinfo): Gets information about one of the loaded HRTFs.
 - [`/resources/setHRTFHeadRadius`](resources.md#resourcessethrtfheadradius): Sets the head radius to be stored in the HRTF.
@@ -47,6 +47,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/resources/removeBRIR`](resources.md#resourcesremovebrir): Removes a Binaural Room Impulse Response from the loaded resources.
 - [`/resources/getBRIRInfo`](resources.md#resourcesgetbririnfo): Gets information about one of the loaded Binaural Room Impulse Responses (BRIR).
 - [`/resources/loadDirectivity`](resources.md#resourcesloaddirectivity): Loads a Directivity Transfer Function from a SOFA file.
+- [`/resources/loadDirectivityRaw`](resources.md#resourcesloaddirectivityraw): Loads a Directivity Transfer Function without interpolation from a SOFA file.
 - [`/resources/removeDirectivity`](resources.md#resourcesremovedirectivity): Removes a Directivity Transfer Function from the loaded resources.
 - [`/resources/getDirectivityInfo`](resources.md#resourcesgetdirectivityinfo): Gets information about one of the loaded Directivity Transfer Functions.
 
@@ -62,8 +63,11 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/resources/removeSOSFilters`](resources.md#resourcesremovesosfilters): Removes a set of SOS filters from the loaded resources.<span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/resources/removeFilter' instead.)</span>
 - [`/resources/getSOSFiltersInfo`](resources.md#resourcesgetsosfiltersinfo): Gets information about one of the loaded sets of SOS filters.<span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/resources/getFilterInfo' instead.)</span>
 
-- [`/resources/loadRoom`](resources.md#loadroom): Loads a new room from a OBJ file
-- [`/resources/loadShoeBoxRoom`](resources.md#loadshoeboxroom): Set up a shoebox-shaped room with specified dimensions.
+- [`/resources/loadRoom`](resources.md#resourcesloadroom): Loads a new room from a OBJ file
+- [`/resources/loadShoeBoxRoom`](resources.md#resourcesloadshoeboxroom): Set up a shoebox-shaped room with specified dimensions.
+- [`/resources/removeRoom`](resources.md#resourcesremoveroom): Removes a loaded room resource.
+- [`/resources/setRoomWallAbsorption`](resources.md#resourcessetroomwallabsorption): Sets absorption coefficients for the walls of a room resource.
+- [`/resources/enableRoomWall`](resources.md#resourcesenableroomwall): Enables or disables specific room walls in a room resource.
 
 
 ### Source Models Commands 
@@ -96,11 +100,14 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/listener/enableModel`](listener.md#listenerenablemodel): Enable or disable a listener model. <span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/enableModel' instead.)</span>
 - [`/listener/enableNearFieldEffect`](listener.md#listenerenablenearfieldeffect): Enable or disable Near Field Compensation (NFC) with HRTF.
 - [`/listener/enableParallaxCorrection`](listener.md#listenerenableparallaxcorrection): Enable or disable parallax correction for direction of arrival.
+- [`/listener/enableSpatialization`](listener.md#listenerenablespatialization): Enables or disables listener spatialization processing.
 - [`/listener/location`](listener.md#listenerlocation): Set the global location of the listener in x, y, z coordinates.
 - [`/listener/orientation`](listener.md#listenerorientation): Set the orientation of the listener in yaw, pitch, roll.
 - [`/listener/setAmbisonicsNormalization`](listener.md#listenersetambisonicsnormalization): Set the Ambisonics normalization type.
 - [`/listener/setAmbisonicsOrder`](listener.md#listenersetambisonicsorder): Set the Ambisonic encoding order.
 - [`/listener/setBRIR`](listener.md#listenersetbrir): Set a Binaural Room Impulse Response (BRIR) for the listener.
+- [`/listener/enableDistanceAttenuation`](listener.md#listenerenabledistanceattenuation): Enable or disable distance attenuation for listener models that support it.
+- [`/listener/setDistanceAttenuationFactor`](listener.md#listenersetdistanceattenuationfactor): Set the attenuation factor used for distance attenuation.
 - [`/listener/setHRTF`](listener.md#listenersethrtf): Set a Head-Related Transfer Function (HRTF) for the listener.
 - [`/listener/setSOSFilters`](listener.md#listenersetsosfilters): Set filters for Near Field Compensation (NFC) after HRTF convolution.
 
@@ -113,11 +120,8 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 - [`/environment/enablePropagationDelay`](environment.md#environmentenablePropagationDelay): Enable or disable propagation delay.
 - [`/environment/enableDistanceAttenuation`](environment.md#environmentenableDistanceAttenuation): Enable or disable distance attenuation.
-- [`/environment/setDistanceAttenuationFactor`](environment.md#environmentDistanceAttenuationFactor): Establish the attenuation factor, which is used for calculating attenuation.
-
-- [`/environment/setShoeBoxRoom`](environment.md#environmentsetshoeboxroom): Set up a shoebox-shaped room with specified dimensions.
-- [`/environment/setRoomWallAbsorption`](environment.md#environmentsetRoomWallabsorption): Set absorption coefficients for a wall.
-- [`/environment/enableRoomWall`](environment.md#environmentenableRoomWall): Enables or disables the simulation of a wall in the room.
+- [`/environment/setDistanceAttenuationFactor`](environment.md#environmentsetdistanceattenuationfactor): Establish the attenuation factor, which is used for calculating attenuation.
+- [`/environment/setRoom`](environment.md#environmentsetroom): Set the room resource to be used by the environment model.
 
 - [`/environment/setReflectionOrder`](environment.md#environmentsetReflectionOrder): Set the order of reflection used in the simulation.
 - [`/environment/setMaxDistanceSourcesToListener`](environment.md#environmentMaxDistanceSourcesToListener): Set the maximum distance between the sources and the listener.
