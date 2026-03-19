@@ -99,14 +99,19 @@ High-level modules are responsible for audio rendering. Each module models speci
 
 Service modules store the essential data required for rendering. This data typically comes from SOFA files, although other formats could be used. Key service modules include:
 
+- [SphericalFIRTable](../library/service-modules/service-spherical-fir-table.md): Stores spherical FIR datasets indexed by direction for fast directional lookup and convolution.
+- [SphericalInterpolatedFIRTable](../library/service-modules/service-spherical-interpolated-fir-table.md): Stores spherical FIR datasets prepared for interpolation to provide smooth directional transitions.
+- [SphericalSOSTable](../library/service-modules/service-spherical-sos-table.md): Stores spherical SOS filter coefficients indexed by direction for directional IIR filtering.
+- [AmbisonicsBIR](./service-modules/service-ambisonic-bir.md): Stores the impulse responses of the virtual loudspeakers in the ambisonic domains, in order to achieve a process with simultaneous impulse responses convolution and ambisonic decoding.
+- [Room](../library/service-modules/service-room.md): Provides the geometric and acoustic room definition (walls, absorption, and convex enclosure) used by ISM and SDN environment simulations.
+
+#### Old Service Modules (Old services present in the library up to version 2.5.0)
 - [HRTF](../library/service-modules/service-hrtf.md): Stores head-related impulse responses indexed by azimuth and elevation.
 - [BRIR](../library/service-modules/service-hrbrir.md): Stores room-related impulse responses indexed by azimuth and elevation.
 - [DirectivityTF](../library/service-modules/service-directivity-tf.md): Stores transfer functions of a sound source based on the position of the listener and the sources.
-- [SOSCoefficients](../library/service-modules/service-sos-coefficients.md): Stores coefficients for second-order sections of a filter, which can be fixed or vary based on distance, azimuth, and/or elevation.
-- [AmbisonicBIR](./service-modules/service-ambisonic-bir.md): Stores the impulse responses of the virtual loudspeakers in the ambisonic domains, in order to achieve a process with simultaneous impulse responses convolution and ambisonic decoding.
-- [GenericFIR](../library/service-modules/service-general-fir.md): Stores impulse responses indexed by azimuth and elevation.
-- [Room](../library/service-modules/service-room.md): Stores room definitions.
----
+- SOSCoefficients: Stores coefficients for second-order sections of a filter, which can be fixed or vary based on distance, azimuth, and/or elevation.
+- GenericFIR: Stores impulse responses indexed by azimuth and elevation.
+
 
 ## Usage
 

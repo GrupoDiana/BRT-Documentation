@@ -157,7 +157,11 @@ nav:
       - Spherical SOS Table: library/service-modules/service-spherical-sos-table.md      
       - Ambisonic BIR: library/service-modules/service-ambisonic-bir.md      
       - Room definition: library/service-modules/service-room.md
-      - Old services: library/service-modules/service-old.md
+      - Old services: 
+        - library/service-modules/service-modules-old/index.md
+        - HRTF: library/service-modules/service-hrtf.md
+        - BRIR: library/service-modules/service-brir.md
+        - Directivity TF: library/service-modules/service-directivity-tf.md
     - Readers: 
       - library/readers/index.md            
       - SOFA Reader: library/readers/sofa-reader.md
