@@ -40,7 +40,7 @@ This section defines the models used for sound rendering, including listeners an
 - **ListenerModels**: Specifies the listener models, identified by an ID and model type. The available types include `ListenerDirectHRTFConvolution`, `ListenerDirectBRIRConvolutionModel`, `ListenerAmbisonicVirtualLoudspeakersModel`, and `ListenerAmbisonicReverberantVirtualLoudspeakersModel`.
 - **EnvironmentModels**: Specifies the environment models, such as the `SDNEnvironmentModel` and the `FreeFieldEnvironmentModel`.
 - **Binaural Filters**: Specifies the binaural filter used. The available binaural filter model is the `SOSBinauralFilter`.
-- **ConnectSourcesTo**: Defines which models the audio sources connect to when loaded. Sources can be connected to either listener models or environment models.
+- **ConnectSourcesTo**: Defines the default models (listener or environment) to which audio sources are connected upon loading, unless otherwise specified. If, when loading a source using the [loadSoundSource](../osc/source.md#sourceloadsource) OSC command or via the ‘Sound Sources’ [section](#4-sound-sources) of this file, the models to be connected are not specified, the list defined here is used.
 - **Model2ModelConnections**: Defines how are the interconnections between the different models (environment, listening and binaural filters).  The outputs of the `OriginID` models will be connected to the inputs of the `DestinationID` models.
 - **ConnectToListener**: Specifies how the listener models are connected to the listener. The output of the listener models is connected to the listener for mixing.
 
@@ -100,12 +100,13 @@ This section defines the sound sources to be loaded at startup. Each source must
 - **ID**: A unique identifier for each sound source.
 - **fileName**: The full path to the sound file to be used.
 - **sourceModel**: Specifies the rendering model for the sound source. The two available models are `OmnidirectionalModel` and `DirectivityModel`.
+- **modelToConnectTo**: This is an optional parameter that specifies the listener or environment models to which the source will be connected. If it is not specified, the sourcet will be connected to the models listed in the [‘ConnectSourcesTo’](#2-models-architecture) field of the ‘ModelsArchitecture’ section of this configuration file.
 
 Example: 
 
 ```
 	"SoundSources": [
-		{"ID": "SoundSource1", "fileName": "resources//MusArch_Sample_48kHz_Anechoic_FemaleSpeech.wav", "sourceModel":"OmnidirectionalModel"},
+		{"ID": "SoundSource1", "fileName": "resources//MusArch_Sample_48kHz_Anechoic_FemaleSpeech.wav", "sourceModel":"OmnidirectionalModel", "modelToConnectTo": "DirectPath"},
 		{"ID": "SoundSource2", "fileName": "resources//MusArch_Sample_48kHz_Anechoic_MaleSpeech.wav", "sourceModel":"OmnidirectionalModel"}
 	],
 ```

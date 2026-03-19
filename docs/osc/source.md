@@ -15,7 +15,7 @@ Specifying a sound file with `source_path`, a new sound file is loaded from the 
 
 `source_model` indicates the source model to be used, possible values are: `OmnidirectionalModel`, `DirectivityModel`. See [Source Models](/BRT-Documentation/library/source/models/) for more details.
 
-`modelToConnectTo` is optional and indicates to which listener model this source will be connected. If left blank, the source will be connected to all listener models that have been indicated in the application configuration.
+`modelToConnectTo` is optional and specifies which model (listener or environment) this source will connect to. If left blank, the source will connect to the default models, i.e. those specified via the ‘ConnectSourcesTo’ field in the ‘ModelsArchitecture’ [section](../applications/settingsFile.md#2-models-architecture) of the application’s configuration file (settings.json).
 
 #### Return
 
