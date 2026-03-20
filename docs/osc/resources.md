@@ -371,7 +371,7 @@ Loads a new Directivity Transfer Function in a SOFA file from the specified path
 
 #### Syntax
 
-`/resources/loadDirectivity <string directivity_id> <string directivity_SOFAFile_path>`
+`/resources/loadDirectivityRaw <string directivity_id> <string directivity_SOFAFile_path>`
 
 `directivity_id`: Identifier to be assigned to the directivityTF for later references to it. If there is already another directivityTF with the same identifier, it is substituted by the new one. Otherwise, a new directivityTF is created.
 
@@ -379,7 +379,7 @@ Loads a new Directivity Transfer Function in a SOFA file from the specified path
 
 #### Return
 
-`/control/actionResult /resources/loadDirectivity <string directivity_id> <boolean loaded> <string description>`
+`/control/actionResult /resources/loadDirectivityRaw <string directivity_id> <boolean loaded> <string description>`
 
 The return confirmation refers to the `directivity_id`, indicating `loaded=true`if the directivityTF is successfuly loaded and `loaded=false` if not. In both cases a `description` is added to give more details. 
 

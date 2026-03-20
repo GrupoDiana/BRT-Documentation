@@ -55,13 +55,15 @@ BRT Toolbox also includes applications designed for portable, low-latency render
 ### Future Applications
 
 Several additional tools are under development or planned for future releases, including:
-    - Multi-listener rendering applications.
-    - Tools for simulating advanced reverberation models (e.g., convolution-based and hybrid approaches).
-    - Hearing loss and hearing aid simulations.
+
+- Multi-listener rendering applications.
+- Tools for simulating advanced reverberation models (e.g., convolution-based and hybrid approaches).
+- Hearing loss and hearing aid simulations.
 
 ## Usage
 
 BRT Applications are ideal for:
+
 - Psychoacoustic experiments requiring dynamic spatial configurations.
 - Integration into existing experimental setups with OSC-controlled workflows.
 - Real-time virtual acoustics rendering for VR/AR applications and wearable devices.

@@ -427,19 +427,19 @@ BeRTA sends back to the sender: `/control/actionResult /source/enableDirectivity
 
 ### **/source/setDirectivity**
 
-Assigns a directivity which has been previously loaded using the command `/resources/loadDirectivityTF`. 
+Assigns a directivity which has been previously loaded using the command `/resources/setDirectivity`. 
 
 #### Syntax
 
-`/source/setDirectivity <string source_id> <string DirectivityTF_id>`
+`/source/setDirectivity <string source_id> <string directivity_id>`
 
 `source_id`: identifier assigned to the sound source for further references to it
 
-`DirectivityTF_id`: identifier of the directivity which was assigned when using the command `/resources/loadDirectivityTF`
+`directivity_id`: identifier of the directivity which was assigned when using the command `/resources/setDirectivity`
 
 #### Return
 
-`/control/actionResult /source/setDirectivity <string DirectivityTF_id> <bool setDirectivity> <string description>`
+`/control/actionResult /source/setDirectivity <string directivity_id> <bool setDirectivity> <string description>`
 
 The return confirmation refers to the `source_id`, indicating `setDirectivity=true` if the action has been successfully performed and `setDirectivity=false` if not. In both cases a `description` is added to give more details. 
 
@@ -447,9 +447,9 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 #### Example
 
-BeRTA receives and echoes back to all subscribiers but the sender: `/source/setDirectivityTF source1 DirectivityTF1`
+BeRTA receives and echoes back to all subscribiers but the sender: `/source/setDirectivity source1 Directivity1`
 
-BeRTA sends back to the sender: `/control/actionResult /source/setDirectivityTF DirectivityTF1 true DirectivityTF: DirectivityTF1 has been set to SoundSource: source1`
+BeRTA sends back to the sender: `/control/actionResult /source/setDirectivity Directivity1 true setDirectivity: Directivity1 has been set to SoundSource: source1`
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">

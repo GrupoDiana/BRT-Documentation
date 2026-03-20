@@ -32,17 +32,17 @@ This software is being developed by a team coordinated by
 
 The current members of the core development team are (in alphabetical order):
 
-* [Daniel Gonzalez-Toledo](https://github.com/dgonzalezt) ([University of Malaga](https://www.uma.es/))
-
 * [Maria Cuevas-Rodriguez](https://github.com/mariacuevas) ([University of Malaga](https://www.uma.es/))
+
+* [Daniel Gonzalez-Toledo](https://github.com/dgonzalezt) ([University of Malaga](https://www.uma.es/))
 
 * [Luis Molina-Tanco](https://github.com/lmtanco) ([University of Malaga](https://www.uma.es/))
 
 Other contributors:
 
-* [Francisco Morales Benítez](https://github.com/FranMoraUma) (Former contributor at the [University of Malaga](https://www.uma.es/) mainly in BeRTA GUI and BeRTA renderer)
-
 * [Marco Fontana](https://github.com/MarcoFontana) (Developer of SDN Environment Model at the [Laboratorio di Informatica Musicale](https://www.lim.di.unimi.it), Università degli Studi di Milano)
+
+* [Francisco Morales Benítez](https://github.com/FranMoraUma) (Former contributor at the [University of Malaga](https://www.uma.es/) mainly in BeRTA GUI and BeRTA renderer)
 
 
 ## Copyright and License

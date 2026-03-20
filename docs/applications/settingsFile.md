@@ -71,7 +71,7 @@ This section lists the resources such as HRTFs, BRIRs, NearField Filters, and Di
 - **HRTFs**: A list of HRTFs (Head-Related Transfer Functions) to load. If no HRTFs should be loaded, leave the list empty (`[]`).
 - **BRIRs**: A list of BRIRs (Binaural Room Impulse Responses) to load. BRIRs can provide spatial audio information specific to a particular room. If none should be loaded, leave this list empty (`[]`).
 - **SOSFilters**: Defines the SOS filters to load. If no SOS Filter should be loaded, leave the list empty (`[]`).
-- **DirectivityTFs**: A list of Directivity Transfer Functions (TFs) to apply to sound sources. These describe how sound is emitted in different directions from a sound source. If no Directivity should be loaded, leave the list empty (`[]`).
+- **Directivities**: A list of directivity to apply to sound sources. These describe how sound is emitted in different directions from a sound source. If no Directivity should be loaded, leave the list empty (`[]`).
 - **Rooms**: A list of room definitions to be loaded. You can specify the loading of an OBJ file, or define a shoebox-type room (indicating the dimensions). If no Rooms should be loaded, leave the list empty (`[]`).
 
 Example: 
@@ -83,8 +83,8 @@ Example:
 		"SOSFilters": [
 			{"ID": "DefaultNFFilters", "fileName": "resources//SOSFilters//NearFieldCompensation_ILD_1.2m_48Khz.sofa"}
 			],
-		"DirectivityTFs": [
-			{"ID": "Directivity1", "fileName": "resources//DirectivityTF//Cardioid_LP_30dB_256s_resampled10.sofa"}
+		"Directivities": [
+			{"ID": "Directivity1", "fileName": "resources//Directivity//Cardioid_LP_30dB_512s_resampled10_normalized_fir_512.sofa"}
 		],
 		Rooms":[
 			{"ID": "Room1", "length": 3, "width":5.5, "height": 3},

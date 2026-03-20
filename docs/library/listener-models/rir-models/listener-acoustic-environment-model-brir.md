@@ -7,7 +7,7 @@ The **Listener Direct BRIR Convolution Model** module enables spatial audio rend
 
 Each sound source is processed independently, considering its relative position with respect to the listener. In the final step, the model combines all channels, left and right separately, to produce a single output per ear.
 
-Convolutions are performed in the frequency domain using the uniform partitioned convolution algorithm. These impulse responses are provided by the **BRIR service module** for each audio frame. To ensure proper functioning, the service module must be configured beforehand. More information can be found in the [service section](../../service-modules/service-hrbrir.md).
+Convolutions are performed in the frequency domain using the uniform partitioned convolution algorithm. These impulse responses are provided by the **BRIR service module** for each audio frame. To ensure proper functioning, the service module must be configured beforehand. More information can be found in the [service section](../../service-modules/service-spherical-fir-table.md).
 
 ### Distance Attenuation
 While not entirely accurate, this model also includes a distance simulation, which is disabled by default. This is a simulation of the distance attenuation due to propagation in space. It is based on the **inverse square law**, which states that the intensity of sound decreases proportionally to the square of the distance to the source. This phenomenon, termed d**distance-based attenuation**, is a critical factor in our perception of sound intensity.

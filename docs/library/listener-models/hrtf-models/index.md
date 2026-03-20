@@ -6,7 +6,7 @@ By convolving the signals from the sound sources with the binaural HRTFs, these 
 
 ### Data Source for HRTFs
 
-These HRTF rendering models require HRTF data to be preloaded and preprocessed in the HRTF service module. For more details, see the documentation on the [HRTF service module](../../service-modules/service-hrtf.md).  
+These HRTF rendering models require HRTF data to be preloaded and pre-processed in a service module. More specifically, this is done in the SphericalFIRTable or the SphericalInterpolatedFIRTable, depending on whether or not the data was interpolated upon loading. For more details, see the documentation on the [service modules](../../service-modules/index.md).  
 
 The HRTFs used by these models are typically read from files formatted in the <a href="https://www.sofaconventions.org/mediawiki/index.php/SOFA_(Spatially_Oriented_Format_for_Acoustics)" target="_blank">SOFA (Spatially Oriented Format for Acoustics)</a>. This standard is widely adopted in the audio research community for storing spatially oriented acoustic data, including head-related impulse responses.  
 
