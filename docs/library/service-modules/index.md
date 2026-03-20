@@ -3,7 +3,7 @@
 Service modules are auxiliary components responsible for managing and providing the resources required by the **Processing Models** to execute **binaural audio rendering algorithms** efficiently.
 
 !!! alert "About the service modules"
-    We have made a major change to the service modules starting with version 3.0.0, in order to resolve limitations we had and also simplify the code. You can find the documentation for the previous service modules, present in the library up to version 2.5.0, at this [link](./service-old.md).  
+    We have made a major change to the service modules starting with version 3.0.0, in order to resolve limitations we had and also simplify the code. You can find the documentation for the previous service modules, present in the library up to version 2.5.0, at this [link](./service-modules-old/index.md).  
 
 These resources include several key elements used during spatial audio processing:
 
