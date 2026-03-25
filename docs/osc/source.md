@@ -13,7 +13,7 @@ Adds a new source loading a sound file (wav, mp3 and aif formats supported). Add
 
 Specifying a sound file with `source_path`, a new sound file is loaded from the specified path and an identifier `source_id` is assigned to it. If there is already another source with the same identifier, it is substituted by the new one. Otherwise, a new source is created. 
 
-`source_model` indicates the source model to be used, possible values are: `OmnidirectionalModel`, `DirectivityModel`. See [Source Models](/BRT-Documentation/library/source/models/) for more details.
+`source_model` indicates the source model to be used, possible values are: `OmnidirectionalModel`, `DirectivityModel`. See [Source Models](../library/source-models/index.md) for more details.
 
 `modelToConnectTo` is optional and specifies which model (listener or environment) this source will connect to. If left blank, the source will connect to the default models, i.e. those specified via the ‘ConnectSourcesTo’ field in the ‘ModelsArchitecture’ [section](../applications/settingsFile.md#2-models-architecture) of the application’s configuration file (settings.json).
 
@@ -44,11 +44,11 @@ Adds a new source getting it from an audio input channel. Adding a new source do
 
 `source_id`: identifier assigned to the sound source for further references to it
 
-`linein_channel`: indicates the input channel of the selected audio device to be linked to this sound source. 
+`linein_channel`: indicates the input channel of the selected audio device to be linked to this sound source. The channels are numbered starting from 1. 
 
-`source_model` indicates the source model to be used, possible values are: `SimpleModel`, `DirectivityModel`. See [Source Models](/BRT-Documentation/library/source/models/) for more details.
+`source_model` indicates the source model to be used, possible values are: `OmnidirectionalModel`, `DirectivityModel`. See [Source Models](../library/source-models/index.md) for more details.
 
-`modelToConnectTo` is optional and indicates to which listener model this source will be connected. If left blank, the source will be connected to all listener models that have been indicated in the application configuration.
+`modelToConnectTo` is optional and indicates to which listener model this source will be connected. If left blank, the source will be connected to all listener models that have been indicated in the application [settings menu](../applications/berta-renderer/settings-menu.md#audio-interfaces). See 
 
 #### Return
 
