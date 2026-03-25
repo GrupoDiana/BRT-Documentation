@@ -2,6 +2,11 @@
 
 BeRTA Renderer is the flagship application of the BRT Toolbox, providing a high degree of configurability for real-time spatial audio rendering. The application integrates the BRT library and works for Windows x64 (Windows 10 and 11) and MacOS Universal. 
 
+<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
+    <img src="/BRT-Documentation/assets/berta_renderer.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
+    <p style="text-align: center;">BeRTA Renderer Interface</p>
+</div>
+
 Key functionalities include:
 
 - **Real-time Rendering**:
@@ -17,7 +22,7 @@ Key functionalities include:
 
 The application is fully controlled through  <a href="https://en.wikipedia.org/wiki/Open_Sound_Control" target="_blank">OSC</a> (Open Sound Control), resulting in a graphical interface focused primarily on reporting rendering status. The GUI consists of terminal-like sections that display critical information, such as rendering parameters (e.g., enabled or disabled features) and the settings of audio sources and the listener. Additional terminals provide detailed logs of OSC commands received and sent, actions executed by BeRTA, and error messages detected by BeRTA's built-in diagnostic system.
 
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/berta_renderer.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">BeRTA Renderer Interface</p>
-</div>
+Some of the relevant menus are:
+
+- [**Settings menu**](settings-menu.md): allows users to view and configure general application parameters.
+- [**Resources menu**](resources-menu.md): displays all resources currently loaded in the application.

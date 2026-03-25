@@ -185,6 +185,8 @@ nav:
     - applications/index.md
     - BeRTA Rendeder: 
       - applications/berta-renderer/index.md      
+      - Settings Menu: applications/berta-renderer/settings-menu.md
+      - Resources Menu: applications/berta-renderer/resources-menu.md
     - BeRTA GUI: applications/berta-gui.md
     - OSC Commands: 
       - osc/index.md
