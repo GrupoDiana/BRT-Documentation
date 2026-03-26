@@ -53,6 +53,26 @@ The BRT Library is actively maintained and continuously evolving. Current and pl
 
 The library is organized into three layers, as previously discussed. From the perspective of a C++ programmer[^1], using the library mainly involves working with high-level and service modules.
 
+### Architecture Overview
+
+```mermaid
+flowchart TD
+
+F[High-Level Models]
+A[Processing Modules]
+B[(Service Modules)]
+C[Readers]
+D[SOFA Files]
+E[OBJ Files]
+
+F -->|use different processing modules| A
+A -->|request resources during rendering| B
+B -->|get resources during rendering| A
+C -->|pre-load data| B
+D --> C
+E --> C
+```
+
 [^1]: If you prefer a higher-level approach, you can use our applications and control them via OSC commands. For more details, see [Applications](/BRT-Documentation/applications/).
 
 ### High-Level Modules
@@ -60,7 +80,7 @@ The library is organized into three layers, as previously discussed. From the pe
 High-level modules are responsible for audio rendering. Each module models specific physical and/or psychoacoustic phenomena, depending on the use case. The following types of models have been implemented, grouped into four categories:
 
 - **Source Models**: Each monaural sound source to be rendered requires the instantiation of a source model. These models serve as the main entry points to the library for applications during rendering. At a minimum, applications must provide the audio samples of each source for every frame and, if applicable, update their position and orientation.
-    - [Omnidirectional Source Model](../library/source-models/simple-omnidirectional-source-model.md)
+    - [Omnidirectional Source Model](../library/source-models/omnidirectional-source-model.md)
     - [Directional Source Model](../library/source-models/directivity-source-model.md)
 
 - **Listener Models**: Listener models generate binaural audio by receiving a single audio channel per source and producing two output channels (left and right ears). They can actually include Listener+Environment models using Binaural Room Impulse Responses (BRIR). They are categorized as follows:

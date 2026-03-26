@@ -34,7 +34,7 @@ flowchart TD
 
 F[Models]
 A[Processing Modules]
-B[Service Modules]
+B[(Service Modules)]
 C[Readers]
 D[SOFA Files]
 E[OBJ Files]

@@ -12,10 +12,28 @@ When the model receives the audio samples, it performs a convolution with the di
 ## Architecture
 
 The internal block diagram of this class is as follows:
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Directivity Sound Source Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Directivity Sound Source Model Internal diagram.</p>
-</div>
+
+```mermaid
+flowchart TD
+    A[Audio Samples]    
+    
+    subgraph B[CSourceDirectivityModel]
+            
+        subgraph D[CDirectivityConvolver]
+            E[CUniformPartitionedConvolution]
+        end                        
+
+    end
+    A -->|input| B
+        
+    G[(Service Module)]
+    G -->|Directivity IR| D
+
+    F[Audio Samples]
+    E -->|output| F
+```
+
+
 
 ## Configuration Options
 
@@ -42,11 +60,33 @@ Modules to which it connects:
 </ul> 
 
 <h2>Class inheritance diagram</h2>
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/SourceModelsClassDiagram.png" alt="Directivity Source Model Class diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Directivity Source Model Class diagram.</p>
-</div>
-<br>
+```mermaid
+classDiagram
+direction TB
+
+class CSourceModelBase 
+    <<interface>> CSourceModelBase
+class CSourceOmnidirectionalModel
+class CSourceDirectivityModel
+class CVirtualSourceModel
+
+CSourceModelBase <|-- CSourceOmnidirectionalModel
+CSourceModelBase <|-- CSourceDirectivityModel
+CSourceOmnidirectionalModel <|-- CVirtualSourceModel
+
+class CBRTConnectivity
+class CAdvancedEntryPointManager
+class CEntryPointManager
+class CExitPointManager
+class CCommandEntryPointManager
+
+
+CEntryPointManager <|-- CAdvancedEntryPointManager
+CAdvancedEntryPointManager <|--CBRTConnectivity
+CExitPointManager <|-- CBRTConnectivity
+CCommandEntryPointManager <|-- CBRTConnectivity
+CBRTConnectivity <|-- CSourceModelBase
+```
 
 <h2>How to instantiate</h2>
 

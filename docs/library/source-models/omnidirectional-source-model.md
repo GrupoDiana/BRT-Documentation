@@ -24,11 +24,34 @@ Modules to which it connects:
 </ul> 
 
 <h2>Class inheritance diagram</h2>
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/SourceModelsClassDiagram.png" alt="Omnidirectional Source Model Class diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Omnidirectional Source Model Class diagram.</p>
-</div>
-<br>
+
+```mermaid
+classDiagram
+direction TB
+
+class CSourceModelBase 
+    <<interface>> CSourceModelBase
+class CSourceOmnidirectionalModel
+class CSourceDirectivityModel
+class CVirtualSourceModel
+
+CSourceModelBase <|-- CSourceOmnidirectionalModel
+CSourceModelBase <|-- CSourceDirectivityModel
+CSourceOmnidirectionalModel <|-- CVirtualSourceModel
+
+class CBRTConnectivity
+class CAdvancedEntryPointManager
+class CEntryPointManager
+class CExitPointManager
+class CCommandEntryPointManager
+
+
+CEntryPointManager <|-- CAdvancedEntryPointManager
+CAdvancedEntryPointManager <|--CBRTConnectivity
+CExitPointManager <|-- CBRTConnectivity
+CCommandEntryPointManager <|-- CBRTConnectivity
+CBRTConnectivity <|-- CSourceModelBase
+```
 
 <h2>How to instantiate</h2>
 
