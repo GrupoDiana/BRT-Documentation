@@ -3,15 +3,11 @@
 This section documents how the BRT interprets and loads room geometries defined in **Wavefront OBJ** files together with their associated **MTL** material files.
 The loading process is implemented through the `COBJReader` class.
 
----
-
 ## Overview
 
 The OBJ loader provides a way to define room geometry using external modeling tools. The objective is to convert each face in the mesh into a `CWall` object and assemble a complete `CRoom` instance.
 
 The loader is based on the **rapidobj** parser and supports a minimal subset of the OBJ/MTL specification—enough to define walls and their acoustic absorption properties.
-
----
 
 ## 1. OBJ File Requirements and Behaviour
 
@@ -65,7 +61,6 @@ Each wall must satisfy the constraints of the `CWall` class:
 * Any coordinate origin is acceptable; the room does **not** need to be centered at (0,0,0).
 * No attempt is made to reposition or normalize the geometry.
 
----
 
 ## 2. MTL File Requirements and Acoustic Properties
 
@@ -105,15 +100,17 @@ All standard optical or texture-related MTL properties are **ignored** (e.g., co
 * Malformed or incomplete `X-acoustic-coeffs`: the directive is ignored and defaults applied.
 * Values outside [0,1] are rejected and replaced with default absorption.
 
----
 
 ## 3. Conversion to the Room Model
 
 Once the OBJ and MTL content has been parsed, a room (CRoom) is created and the corresponding absorption coefficients are applied to each wall of the room. All walls are **active** by default, unless they are subsequently deactivated manually.
 
----
+## 4. Example
 
-## 4. Summary of Constraints
+You can see all this in the following example, [link](../../assets/room_example.zip). 
+
+
+## 5. Summary of Constraints
 
 To ensure correct binaural reverberation simulations:
 
