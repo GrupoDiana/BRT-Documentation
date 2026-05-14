@@ -187,6 +187,9 @@ nav:
       - applications/berta-renderer/index.md      
       - Settings Menu: applications/berta-renderer/settings-menu.md
       - Resources Menu: applications/berta-renderer/resources-menu.md
+      - Settings File: applications/settingsFile.md
+      - Calibration: applications/calibration.md
+      - Safety Limiter: applications/safety-limiter.md
     - BeRTA GUI: applications/berta-gui.md
     - OSC Commands: 
       - osc/index.md
@@ -199,10 +202,8 @@ nav:
       - Bilateral Filter commands: osc/bilateral-filter.md
     - BRT OSC API for Unity: applications/unity-osc-package.md
     - BRT OSC API for Matlab: applications/matlab-osc-package.md
-    - Settings File: applications/settingsFile.md
     - Annotated Receiver Audio: applications/annotated-audio.md
-    - Calibration: applications/calibration.md
-    - Safety Limiter: applications/safety-limiter.md
+    
   #- Examples: 
    # - Code blocks: example-code.md    
    # - Icons: example-emoji.md

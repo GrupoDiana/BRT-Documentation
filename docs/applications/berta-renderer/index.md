@@ -26,3 +26,9 @@ Some of the relevant menus are:
 
 - [**Settings menu**](settings-menu.md): allows users to view and configure general application parameters.
 - [**Resources menu**](resources-menu.md): displays all resources currently loaded in the application.
+
+Other important features:
+
+- [**Settings file**](../settingsFile.md): How to define an application configuration file that is read when the application starts.
+- [**Calibration**](../calibration.md): BeRTA provides a calibration option, which allows establishing the relationship between the system's dBFS (Decibels Full Scale) and the SPL (Sound Pressure Level) in dB of the output signal.
+- [**Safety Limiter**](../safety-limiter.md): BeRTA includes a Safety Limiter that allows users to define a maximum SPL threshold, preventing output levels from exceeding safe limits. 
