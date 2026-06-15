@@ -39,7 +39,7 @@ This section defines the models used for sound rendering, including listeners an
 - **Listeners**: Defines the physical listener(s) by ID. Example: `["DefaultListener"]`.
 - **ListenerModels**: Specifies the listener models, identified by an ID and model type. The available types include `ListenerDirectHRTFConvolution`, `ListenerDirectBRIRConvolutionModel`, `ListenerAmbisonicVirtualLoudspeakersModel`, and `ListenerAmbisonicReverberantVirtualLoudspeakersModel`.
 - **EnvironmentModels**: Specifies the environment models, such as the `SDNEnvironmentModel` and the `FreeFieldEnvironmentModel`.
-- **Binaural Filters**: Specifies the binaural filter used. The available binaural filter model is the `SOSBinauralFilter`.
+- **Bilateral Filters**: Specifies the bilateral filter used. The two binaural filter model availabled : `SOSBinauralFilter` and `FIRBilateralFilter`.
 - **ConnectSourcesTo**: Defines the default models (listener or environment) to which audio sources are connected upon loading, unless otherwise specified. If, when loading a source using the [loadSoundSource](../osc/source.md#sourceloadsource) OSC command or via the ‘Sound Sources’ [section](#4-sound-sources) of this file, the models to be connected are not specified, the list defined here is used.
 - **Model2ModelConnections**: Defines how are the interconnections between the different models (environment, listening and binaural filters).  The outputs of the `OriginID` models will be connected to the inputs of the `DestinationID` models.
 - **ConnectToListener**: Specifies how the listener models are connected to the listener. The output of the listener models is connected to the listener for mixing.
@@ -54,7 +54,7 @@ Example:
 			{"ID": "ReverbPath", "Model": "ListenerAmbisonicReverberantVirtualLoudspeakersModel"}	
 		],
 		"EnvironmentModels": [{"ID": "FreeField", "Model": "FreeFieldEnvironmentModel"}],
-		"BinauralFilters":[],
+		"BilateralFilters":[{"ID": "Bilateral1", "Model": "SOSBilateralFilter"}],
 		"ConnectSourcesTo":["FreeField", "ReverbPath"],				
 		"Model2ModelConnections": [{"OriginID":"FreeField", "DestinationID":"DirectPath"}],		
 		"ConnectToListener":[
@@ -70,7 +70,7 @@ This section lists the resources such as HRTFs, BRIRs, NearField Filters, and Di
 
 - **HRTFs**: A list of HRTFs (Head-Related Transfer Functions) to load. If no HRTFs should be loaded, leave the list empty (`[]`).
 - **BRIRs**: A list of BRIRs (Binaural Room Impulse Responses) to load. BRIRs can provide spatial audio information specific to a particular room. If none should be loaded, leave this list empty (`[]`).
-- **SOSFilters**: Defines the SOS filters to load. If no SOS Filter should be loaded, leave the list empty (`[]`).
+- **Filters**: Defines the filters to load.  The filters can be either SOS or FIR filters. If no should be loaded, leave the list empty (`[]`).
 - **Directivities**: A list of directivity to apply to sound sources. These describe how sound is emitted in different directions from a sound source. If no Directivity should be loaded, leave the list empty (`[]`).
 - **Rooms**: A list of room definitions to be loaded. You can specify the loading of an OBJ file, or define a shoebox-type room (indicating the dimensions). If no Rooms should be loaded, leave the list empty (`[]`).
 
@@ -80,8 +80,9 @@ Example:
 "Resources" : {
 		"HRTFs": [{"ID": "HRTF1", "fileName": "resources//HRTF//3DTI_HRTF_SADIE_II_D2_256s_48000Hz_resampled5.sofa", "spatialResolution": 5}],		
 		"BRIRs": [{"ID": "BRIR1", "fileName": "resources//BRIR//3DTI_BRIR_Trapezoid_48000Hz_3D.sofa", "spatialResolution": 15, "fadeInWindowThreshold" : 0, "fadeInWindowRiseTime": 0, "fadeOutWindowThreshold" : 0, "fadeOutWindowRiseTime": 0}],		
-		"SOSFilters": [
-			{"ID": "DefaultNFFilters", "fileName": "resources//SOSFilters//NearFieldCompensation_ILD_1.2m_48Khz.sofa"}
+		"Filters": [
+			{"ID": "DefaultNFFilters", "fileName": "resources//SOSFilters//NearFieldCompensation_ILD_1.2m_48Khz.sofa"},
+			{"ID": "JBLCompensation", "fileName": "resources//Filters//Phone_Compensation_JBLQuantum100_48000.sofa"}
 			],
 		"Directivities": [
 			{"ID": "Directivity1", "fileName": "resources//Directivity//Cardioid_LP_30dB_512s_resampled10_normalized_fir_512.sofa"}
