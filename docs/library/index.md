@@ -186,7 +186,7 @@ How can you do everything we are going to show you now?. If you are a C++ progra
 
 #### Hybrid Simulations
 
-**Example 4 - Hybrid simulation and custom filters**: Independent simulation for direct sound and room reverberation, using a hybrid approach. A simulation of the direct path using convolution with HRTF and a simulation of the room using BRIR in the ambisonic domain, employing the Reverberant Virtual Loudspeakers method.
+**Example 4 - Hybrid simulation**: Independent simulation for direct sound and room reverberation, using a hybrid approach. A simulation of the direct path using convolution with HRTF and a simulation of the room using BRIR in the ambisonic domain, employing the Reverberant Virtual Loudspeakers method.
 
 <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
     <img src="../assets/example4_RealisticAcousticSimulationBRIR.png" alt="Configuration with anechoic and reverberation simulation, plus filtering." style="display: block; margin: 0 auto;">
