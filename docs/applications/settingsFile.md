@@ -15,6 +15,8 @@ These settings control general application parameters.
 - **BufferFrames**: Controls stream latency. Larger values may provide better performance but increase latency.
 - **OSCListenPort**: The port on which the OSC server listens for messages.
 - **ExtrapolationMethod**: The method of extrapolation. Available options: `ZeroInsertion`, `NearestPoint`.
+- **DefaultInputAudioInterface**: The identifier of the input audio interface to be selected by default. These identifiers can be viewed in the application console when the application is running. If set to -1 (default) or if the identifier cannot be found, the interface selected by default in the operating system is chosen.		
+- **DefaultOutputAudioInterface**: The identifier of the output audio interface to be selected by default. These identifiers can be viewed in the application console when the application is running. If set to -1 (default) or if the identifier cannot be found, the interface selected by default in the operating system is chosen.
 - **LogFile** : Selects whether to save a log file or not. `true`, `false`.
 - **LogFilePath** : Folder where the log file is stored. By default the application saves the log files in the subfolder ‘data’ inside the installation folder. On Windows, if the installation folder is ‘Program Files’, you will need to run the program with administrator permissions.
 
@@ -27,6 +29,8 @@ Example:
   "BufferFrames": 4,
   "OSCListenPort": 10017,
   "ExtrapolationMethod": "NearestPoint",
+  "DefaultInputAudioInterface": -1,
+  "DefaultOutputAudioInterface": -1,
   "LogFile": true,
   "LogFilePath" : "",
 },

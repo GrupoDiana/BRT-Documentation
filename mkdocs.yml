@@ -190,7 +190,6 @@ nav:
       - Settings File: applications/settingsFile.md
       - Calibration: applications/calibration.md
       - Safety Limiter: applications/safety-limiter.md
-    - BeRTA GUI: applications/berta-gui.md
     - OSC Commands: 
       - osc/index.md
       - Control commands: osc/control.md

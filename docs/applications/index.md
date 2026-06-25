@@ -36,10 +36,6 @@ The BRT Applications are standalone software tools built around the BRT Library,
     - Saves all parameters and audio in the annotated audio format for reproducibility.
     - Exports simulation data for further analysis or use in auditory modeling.
 
-### BeRTA GUI (BRT Audio Renderer GUI)
-
-**BeRTA GUI** is a graphical interface (Windows x64 and MacOS) to control BeRTA Renderer via OSC. 
-
 ### Wearable Solutions
 
 BRT Toolbox also includes applications designed for portable, low-latency rendering on wearable devices:
