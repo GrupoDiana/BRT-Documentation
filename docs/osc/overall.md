@@ -72,7 +72,7 @@ Records a file of the specified duration with spatialised sound (wav) and other 
 
 `filename`: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten, an ordinal number will be added to the end of the new file name.
 
-`type`: indicates the extension of the file: wav (not implemented yet)  or a mat (matlab binary data container).
+`type`: indicates the extension of the file: **mat** (MATLAB binary data container) or **wav** (32-bit IEEE floating-point stereo).
 
 `time`: indicates the duration of the recording in seconds. If time is -1 the recording will finish automatically when the source stops.
 
@@ -101,7 +101,7 @@ Generates a file of the specified duration with spatialised sound (wav) and othe
 
 `filename`: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten—an ordinal number will be added to the end of the new file name.
 
-`type`: indicates the extension of the file: wav (not implemented yet) or mat (MATLAB binary data container).
+`type`: indicates the extension of the file: **mat** (MATLAB binary data container) or **wav** (32-bit IEEE floating-point stereo).
 
 `time`: indicates the duration of the recording in seconds. **This value must be greater than 0**. Unlike `/playAndRecord`, the special value `-1` is *not* allowed.
 
@@ -178,3 +178,46 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 BeRTA receives and echoes back to all subscribiers but the sender:`/modelGain DirectPath -3`
 
 BeRTA sends back to the sender: `/control/actionResult /modelGain DirectPath true "Listener model DirectPath gain updated to -3dB."`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/recordIR**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.13.0</span>
+
+Generates a file of the specified duration containing the **system’s impulse response**, as configured at that moment. The applied impulse can be adjusted using various parameters. Any sound sources present in the simulation will be removed to carry out the measurement. This processing and recording will take place *without real-time playback*.
+If the generated file is of the wav type, only the impulse response is saved. If the type is mat, additional data will be saved; the generated file will follow the structure of the [SOFA AnnotatedReceiverAudio convention](https://www.sofaconventions.org/mediawiki/index.php/AnnotatedReceiverAudio). 
+
+#### Syntax
+`/record <String filename> <String type> <float time> <int period> <int delay> <float x> <float y> <float z>`
+
+`filename`: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten—an ordinal number will be added to the end of the new file name.
+
+`type`: indicates the extension of the file: **mat** (MATLAB binary data container) or **wav** (32-bit IEEE floating-point stereo).
+
+`time`: indicates the duration of the recording in seconds. *This value must be greater than 0*. The special value `-1` is *not* allowed.
+
+`period`: indicates the number of samples between pulses. If this value is zero, the response to a single pulse is recorded. However, if you wish to record the response to a *impulse train*, this value must indicate the number of samples between impulses. This value must be less than the duration of the recording.
+
+`delay`: indicates the number of samples by which the impulse is delayed relative to the origin. This value must be less than the duration of the recording.
+
+`x`: global coordinate of the impulse’s position on the X-axis, expressed in metres. As a reference, X axis is positive to the front.
+
+`y`: global coordinate of the impulse’s position on the Y-axis. As a reference, Y axis is positive to the left.
+
+`z`: global coordinate of the impulse’s position on the Z-axis, expressed in metres. As a reference, Z axis is positive to up.
+
+#### Return 
+`/control/actionResult /recordIR <string filename> <boolean success> <string description>`.
+
+The return confirmation refers to the `filename`, indicating `success=true` if the action has been successfully performed and `success=false` if not. In both cases a `description` is added to give more details.
+
+It sends an echo to all subscribers except the sender: `/recordIR <String filename> <String type> <float time> <int period> <int delay> <float x> <float y> <float z>`
+
+#### Example
+BeRTA receives and echoes back to all subscribers except the sender: `/recordIR "record/sytem_conf_IR.wav" "wav" 2 0 0 1 0 0`
+
+When the processing is finished (in this example after 2 seconds), BeRTA sends back to all subscribers:  
+`/control/actionResult /recordIR record/sytem_conf_IR.wav true Recording completed. File saved: record/sytem_conf_IR.wav`  
+or  
+`/control/actionResult /recordIR record/sytem_conf_IR.wav false ERROR:Recording failed. File could not be created.`

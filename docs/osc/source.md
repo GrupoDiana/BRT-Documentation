@@ -48,7 +48,7 @@ Adds a new source getting it from an audio input channel. Adding a new source do
 
 `source_model` indicates the source model to be used, possible values are: `OmnidirectionalModel`, `DirectivityModel`. See [Source Models](../library/source-models/index.md) for more details.
 
-`modelToConnectTo` is optional and indicates to which listener model this source will be connected. If left blank, the source will be connected to all listener models that have been indicated in the application [settings menu](../applications/berta-renderer/settings-menu.md#audio-interfaces). See 
+`modelToConnectTo` is optional and indicates to which listener model this source will be connected. If left blank, the source will be connected to all listener models that have been indicated in the application [settings menu](../applications/berta-renderer/settings-menu.md#audio-interfaces). 
 
 #### Return
 
@@ -467,7 +467,7 @@ Records a file of the specified duration with the delivered binaural sound and a
 
 `string filename`: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten, an ordinal number will be added to the end of the new file name.
 
-`type`: indicates the extension of the file:  wav (not implemented yet) or a mat (matlab binary data container).
+`type`: indicates the extension of the file: **mat** (MATLAB binary data container) or **wav** (32-bit IEEE floating-point stereo).
 
 `seconds`: indicates the duration of the recording. If seconds is -1 the recording will finish automatically when the source stops.
 
@@ -501,7 +501,7 @@ Generates a file of the specified duration with the delivered binaural sound and
 
 `filename`: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten—an ordinal number will be added to the end of the new file name.
 
-`type`: indicates the extension of the file: wav (not implemented yet) or mat (MATLAB binary data container).
+`type`: indicates the extension of the file: **mat** (MATLAB binary data container) or **wav** (32-bit IEEE floating-point stereo).
 
 `seconds`: indicates the duration of the recording. **This value must be greater than 0.** Unlike `/source/playAndRecord`, the special value `-1` is *not* allowed.
 

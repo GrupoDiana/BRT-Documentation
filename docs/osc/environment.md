@@ -2,40 +2,6 @@ This section covers the OSC commands responsible for /controlling the environmen
 
 <!--These are the models implemented so far:- SDN->
 
-
-<!----------------------------------------------------------------------------------->
-<hr style="border:1px solid gray">
-
-
-### **/environment/enableModel**
-<div style="overflow: auto;">
-    <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Deprecated since BeRTA v3.6.0, use '/enableModel' instead.</span>
-</div>
-
-This command switches on or off an environment model. When an environment model is disabled it does not process the input signal and provides silence at its output. this feature must be implemented in all environment models. The environment model to be enabled or disabled is didentified by an identifier defined in the [settings file](/BRT-Documentation/setup/settingsFile).
-
-#### Syntax
-
-`/environment/enableModel <string environmentModel_id> <boolean enable>`
-
-`environmentModel_id`: identifier assigned to the model.
-
-`enable`: If true (1), enables the model. If false (0), the model is disabled and its output will be silent.
-
-#### Return
-
-`/control/actionResult /environment/enableModel <string environmentModel_id> <bool enable> <string description>`
-
-The return confirmation refers to the `environmentModel_id`, indicating `enable=true` if the model has been enabled and `enable=false` if not. In both cases a `description` is added to give more details. 
-
-In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
-
-#### Example
-
-BeRTA receives and echoes back to all subscribiers but the sender: `/environment/enableModel SDN true`
-
-BeRTA sends back to the sender: `/control/actionResult /environment/enableModel SDN true "Environment model SDN enabled".`
-
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 

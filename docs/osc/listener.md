@@ -317,35 +317,6 @@ BeRTA receives and echoes back to all subscribiers but the sender:`/listener/ena
 
 BeRTA sends back to the sender: `/control/actionResult /listener/enableParallaxCorrection DefaultListener true "Parallax Correction enabled to DefaultListener"`
 
-<!----------------------------------------------------------------------------------->
-<hr style="border:1px solid gray">
-
-### **/listener/enableModel**
-<span style="font-size: 0.8em; color: grey; font-style: italic;">Deprecated since BeRTA v3.6.0, use '/enableModel' instead.</span>
-
-This command switches on or off a listener model. When a listener model is disabled it does not process the input signal and provides silence at its output. This feature must be implemented in all listener models. The listener model to be enabled or disabled is didentified by an identifier defined in the used [settings file](../applications/settingsFile.md).
-
-#### Syntax
-
-`/listener/enableModel <string listenerModel_id> <boolean enable>`
-
-`listenerModel_id`: identifier assigned to the model.
-
-`enable`: If true (1), enables the model. If false (0), the model is disabled and its output will be silent.
-
-#### Return
-
-`/control/actionResult /listener/enableModel <string listenerModel_id> <bool enable> <string description>`
-
-The return confirmation refers to the `listenerModel_id`, indicating `enable=true` if the model has been enabled and `enable=false` if not. In both cases a `description` is added to give more details. 
-
-In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
-
-#### Example
-
-BeRTA receives and echoes back to all subscribiers but the sender:`/listener/enableModel DirectPath true`
-
-BeRTA sends back to the sender: `/control/actionResult /listener/enableModel DirectPath true "Listener model DirectPath enabled."`
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">

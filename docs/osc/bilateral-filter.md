@@ -1,38 +1,5 @@
 This section covers the OSC commands responsible for controlling the binaural filters using second order section filters.
 
-<!----------------------------------------------------------------------------------->
-<hr style="border:1px solid gray">
-
-### **/binauralFilter/enableModel**
-<div style="overflow: auto;"> 
-  <span style="font-size: 0.8em; color: grey; font-style: italic; float: right; margin-right: 15px;">Deprecated since BeRTA v3.6.0, use '/enableModel' instead.</span>
-</div>
-
-This command enables or disables the simulation of binaural filter.
-
-#### Syntax
-
-`/binauralFilter/enableModel <string sosfilter_id> <boolean enable>`
-
-`sosfilter_id`: identifier assigned to the model.
-
-`enable`: If true (1), enables the simulation of binaural filter. If false (0), disable the simulation of the binaural filter.
-
-#### Return
-
-`/control/actionResult /binauralFilter/enableModel <string sosfilter_id> <bool enabled> <string description>`
-
-The return confirmation refers to the `sosfilter_id`, indicating `enabled=true` if the binaural filter has been enabled and `enabled=false` if not. In both cases a `description` is added to give more details. 
-
-In case of success, an echo is sent to all subscribers except the sender, using the same syntax as the received message.
-
-
-#### Example
-
-BeRTA receives and echoes back to all subscribiers but the sender: `/binauralFilter/enableModel Earmuffs true`
-
-BeRTA sends back to the sender: `/control/actionResult /binauralFilter/enableModel Earmuffs true "Binaural filter (Earmuffs) enabled"`. 
-
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">

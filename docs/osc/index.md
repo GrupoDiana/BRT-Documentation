@@ -32,6 +32,7 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/record`](overall.md#record): Records spatialised sound and data without real-time playback.
 - [`/enableModel`](overall.md#enablemodel): Enables or disables a model.
 - [`/modelGain`](overall.md#modelgain): Sets the output gain of the model in dB.
+- [`/recordIR`](overall.md#recordIR): Record the system’s response to the stimulus as it is configured at that moment.
 
 ### Resources Commands 
 
@@ -97,7 +98,6 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 - [`/listener/enableInterpolation`](listener.md#listenerenableinterpolation): Enable or disable interpolation among HRIRs.
 - [`/listener/enableITD`](listener.md#listenerenableitd): Enable or disable the simulation of Interaural Time Difference (ITD).
-- [`/listener/enableModel`](listener.md#listenerenablemodel): Enable or disable a listener model. <span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/enableModel' instead.)</span>
 - [`/listener/enableNearFieldEffect`](listener.md#listenerenablenearfieldeffect): Enable or disable Near Field Compensation (NFC) with HRTF.
 - [`/listener/enableParallaxCorrection`](listener.md#listenerenableparallaxcorrection): Enable or disable parallax correction for direction of arrival.
 - [`/listener/enableSpatialization`](listener.md#listenerenablespatialization): Enables or disables listener spatialization processing.
@@ -114,7 +114,6 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 ### Environment Models Commands 
 
-- [`/environment/enableModel`](environment.md#environmentenablemodel): Enable or disable a specified environment model. <span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/enableModel' instead.)</span>
 - [`/environment/enableDirectPath`](environment.md#environmentenabledirectpath): Toggle the direct path source in the environment model.
 - [`/environment/enableReverbPath`](environment.md#environmentenablereverbpath): Toggle the reverb path sources in the environment model.
 
@@ -131,6 +130,5 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 
 ### Bilateral Filters Commands 
 
-- [`/binauralFilter/enableModel`](bilateral-filter.md#binauralfilterenablemodel): Enable or disable a specified binaural filter. <span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/enableModel' instead.)</span>
 - [`/binauralFilter/setSOSFilter`](bilateral-filter.md#binauralfiltersetsosfilter): Set up sos filter for an specific listener. <span style="font-size: 1em; color: grey; font-style: italic;">(Deprecated, use '/bilateralFilter/setFilter' instead.)</span>
 - [`/bilateralFilter/setFilter`](bilateral-filter.md#bilateralfiltersetfilter): Set up the filter coefficient database.
