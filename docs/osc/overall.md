@@ -189,7 +189,7 @@ Generates a file of the specified duration containing the **system’s impulse r
 If the generated file is of the wav type, only the impulse response is saved. If the type is mat, additional data will be saved; the generated file will follow the structure of the [SOFA AnnotatedReceiverAudio convention](https://www.sofaconventions.org/mediawiki/index.php/AnnotatedReceiverAudio). 
 
 #### Syntax
-`/record <String filename> <String type> <float time> <int period> <int delay> <float x> <float y> <float z>`
+`/recordIR <String filename> <String type> <float time> <int period> <int delay> <float x> <float y> <float z> <String directivity>`
 
 `filename`: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten—an ordinal number will be added to the end of the new file name.
 
@@ -207,15 +207,17 @@ If the generated file is of the wav type, only the impulse response is saved. If
 
 `z`: global coordinate of the impulse’s position on the Z-axis, expressed in metres. As a reference, Z axis is positive to up.
 
+`directivity`: indicates the ID of the directivity to be applied to the impulse source. If the specified ID corresponds to a previously loaded directivity, the recording is made using that directivity. If the specified ID is not valid or does not correspond to a loaded directivity, the recording is made without any directivity assigned. If this parameter is left empty, the impulse source is considered omnidirectional.
+
 #### Return 
 `/control/actionResult /recordIR <string filename> <boolean success> <string description>`.
 
 The return confirmation refers to the `filename`, indicating `success=true` if the action has been successfully performed and `success=false` if not. In both cases a `description` is added to give more details.
 
-It sends an echo to all subscribers except the sender: `/recordIR <String filename> <String type> <float time> <int period> <int delay> <float x> <float y> <float z>`
+It sends an echo to all subscribers except the sender: `/recordIR <String filename> <String type> <float time> <int period> <int delay> <float x> <float y> <float z> <String directivity>`
 
 #### Example
-BeRTA receives and echoes back to all subscribers except the sender: `/recordIR "record/sytem_conf_IR.wav" "wav" 2 0 0 1 0 0`
+BeRTA receives and echoes back to all subscribers except the sender: `/recordIR "record/sytem_conf_IR.wav" "wav" 2 0 0 1 0 0 Directivity1`
 
 When the processing is finished (in this example after 2 seconds), BeRTA sends back to all subscribers:  
 `/control/actionResult /recordIR record/sytem_conf_IR.wav true Recording completed. File saved: record/sytem_conf_IR.wav`  
