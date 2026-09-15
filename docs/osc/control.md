@@ -176,8 +176,88 @@ Command received when an action has been carried out from the application (trigg
 
 BeRTA receives: `/control/actionResult /resources/removeHRTF HRTF1 true HRTF HRTF1 removed`
 
-<hr style="border:1px solid gray">
+
 <!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+## **Listener output configuration**
+
+### **/control/setListenerOutput**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.15.0</span>
+
+Configure an existing listener's output assignment, Active/Standby state and calibration reference. 
+
+This command provides the output-routing configuration available in the Listeners tab of the Settings GUI. It does not create a listener. The listener type is determined by its output assignment: a non-negative channel selects a physical output pair, while `-1` makes the listener virtual.
+
+#### Syntax
+
+`/control/setListenerOutput <string listener_id> <int leftOutputChannel> <bool outputActive> <string calibrationReferenceListenerID>`
+
+All four arguments are required, including an empty string when no calibration reference is used.
+
+`listener_id`: Identifier of the existing listener to configure.
+
+`leftOutputChannel`: Zero-based left channel of an available physical stereo output pair. It must be a non-negative even number, such as `0` for channels 0–1 or `2` for channels 2–3. Use `-1` for a virtual listener.
+
+`outputActive`: For a listener with a physical output assignment, `true` selects Active and `false` selects Standby. Virtual listeners must use `false`. This controls physical output routing, not whether the listener's signal levels are calculated. Send this argument as an OSC boolean.
+
+`calibrationReferenceListenerID`: For a virtual listener, the ID of another listener with a direct output assignment, or `""` for no reference. A listener with a physical output assignment must use `""`.
+
+#### Behaviour
+
+- Activating a listener automatically puts other listeners assigned to the same output pair into Standby.
+- Listeners assigned to different output pairs may be active simultaneously.
+- A virtual listener may reference a routed listener in either Active or Standby.
+- A virtual listener cannot reference itself or another virtual listener.
+- Calibration references follow the referenced listener's current output assignment.
+- Converting a routed listener into a virtual listener automatically clears references from other listeners that depended on it.
+- An output pair does not need to be calibrated to configure its routing. Calibration is required to obtain a listener's theoretical dBSPL level.
+- The resulting routing configuration is validated before it is applied. If validation fails, the current routing configuration is preserved.
+
+#### Return
+
+`/control/actionResult /control/setListenerOutput <string listener_id> <bool success> <string description>`
+
+`listener_id`: Listener being configured. If the request cannot provide a usable listener ID, the response uses `listenerOutput`.
+
+`success`: `true` if the configuration was applied; otherwise, `false`.
+
+`description`: Description of the applied configuration or the reason for failure.
+
+#### Example
+
+Assign Listener A to channels 0–1 and activate its output:
+
+BeRTA receives: `/control/setListenerOutput A 0 true ""`
+
+BeRTA sends: `/control/actionResult /control/setListenerOutput A true "Listener A routed to output channels 0-1 (Active)."`
+
+Keep the assignment but put Listener A into Standby:
+
+BeRTA receives: `/control/setListenerOutput A 0 false ""`
+
+BeRTA sends: `/control/actionResult /control/setListenerOutput A true "Listener A routed to output channels 0-1 (Standby)."`
+
+Configure Listener B as virtual, using Listener A as its calibration reference:
+
+BeRTA receives: `/control/setListenerOutput B -1 false A`
+
+BeRTA sends: `/control/actionResult /control/setListenerOutput B true "Listener B configured as Virtual with A as calibration reference."`
+
+Remove Listener B's calibration reference while keeping it virtual:
+
+BeRTA receives: `/control/setListenerOutput B -1 false ""`
+
+BeRTA sends: `/control/actionResult /control/setListenerOutput B true "Listener B configured as Virtual without a calibration reference."`
+
+Attempt to activate a virtual listener:
+
+BeRTA receives: `/control/setListenerOutput B -1 true A`
+
+BeRTA sends: `/control/actionResult /control/setListenerOutput B false "ERROR: Virtual listener B cannot have an active physical output."`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
 
 ## **Calibration**
 
@@ -193,7 +273,7 @@ Start the calibration process by playing an audio file at the dBFS volume specif
 
 `leveldBFS`: The signal level at which the calibration audio was played, measured in dBFS.
 
-`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead. 
+`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. This argument is required. The command applies to the specified output pair independently of the listener selected in the GUI. 
 
 #### Return 
 
@@ -223,7 +303,7 @@ Set the calibration values using the dBFS playback volume and the dBSPL output l
 
 `leveldBSPL`: The output sound level measured at the headphones (expressed in dBSPL) when the system is calibrated and delivering the dBFS specified in the leveldBFS parameter.
 
-`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
+`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. This argument is required. The command applies to the specified output pair independently of the listener selected in the GUI.
 
 #### Return 
 
@@ -251,7 +331,7 @@ Play the calibration test sound at a volume adjusted to match the dBSPL specifie
 
 `leveldBSPL`: The signal level (in dBSPL) measured at the headphones when reproducing the calibration audio.
 
-`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
+`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. This argument is required. The command applies to the specified output pair independently of the listener selected in the GUI.
 
 #### Return 
 
@@ -277,7 +357,7 @@ Stop the calibration test sound playback.
 
 `/control/stopCalibrationTest <int channelNumber>`
 
-`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
+`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. This argument is required. The command applies to the specified output pair independently of the listener selected in the GUI.
 
 #### Return 
 
@@ -294,28 +374,157 @@ BeRTA sends back to the sender: `/control/actionResult /control/stopCalibrationT
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
 
-### **/control/getSoundLevel**
-<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
+## **Sound levels**
 
-Get the current sound level in dBSPL for left and right channel. For more details, refer to the [calibration](/BRT-Documentation/applications/calibration/) section.
+The following commands distinguish between the estimated physical output level after safety limiting, the theoretical calibrated level of a listener, and the digital signal level of a listener.
+
+They replace the removed `/control/getSoundLevel` command.
+
+Each query returns the requested output channel or listener ID, followed by `valid`, the left and right levels, and an `error` string.
+
+A valid silent signal is represented by `valid=true` and negative infinity for the corresponding level. An unavailable measurement is represented by `valid=false`, negative infinity for both levels, and an explanatory error message.
+
+In the examples below, `-inf` represents a floating-point negative infinity value, not an OSC string. `""` represents an empty OSC string.
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/control/getOutputSoundLeveldBSPL**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.15.0</span>
+
+Get the latest estimated sound level in dBSPL for a physical stereo output pair, after applying the safety limiter. The estimate uses the output calibration and the processed digital signal. It is not a live acoustic measurement from a sound level meter.
+
+This command queries the output pair independently of the listener selected in the GUI.
 
 #### Syntax
 
-`/control/getSoundLevel <string listener_id>`
+`/control/getOutputSoundLeveldBSPL <int leftOutputChannel>`
 
-`listener_id`: identifier assigned to the listener.
+`leftOutputChannel`: Zero-based index of the left output channel. It must be a non-negative even number identifying an available stereo pair in the selected audio interface. For example, `0` selects channels 0–1 and `2` selects channels 2–3.
 
 #### Return
 
-`/resources/getSoundLevel <string listener_id> <float leftChannelSoundLevel> <float rightChannelSoundLevel>`
+`/control/getOutputSoundLeveldBSPL <int leftOutputChannel> <bool valid> <float leftChannelSoundLevel> <float rightChannelSoundLevel> <string error>`
 
-The return confirmation refers to the `listener_id`, indicating the sound level for the left (`leftChannelSoundLevel`) and the right channel (`rightChannelSoundLevel`). 
+`leftOutputChannel`: Output channel requested.
+
+`valid`: `true` if a current output measurement is available; otherwise, `false`.
+
+`leftChannelSoundLevel`, `rightChannelSoundLevel`: Estimated left and right output levels in dBSPL, including the effect of the safety limiter.
+
+`error`: Empty when `valid=true`; otherwise, describes why the measurement is unavailable.
+
+When a valid silence measurement has been published for the output pair, both levels are `-inf`. This includes output pairs receiving no signal, and does not require calibration. If a signal is being processed but the output pair is not calibrated, the measurement is invalid. Invalid output pairs and unavailable current measurements also return `valid=false`.
 
 #### Example
 
-BeRTA receives: `/control/getSoundLevel`
+Assuming channels 0–1 are calibrated and the safety limiter is reducing their output to 80 dBSPL:
 
-BeRTA sends: `/control/getSoundLevel 60 62`
+BeRTA receives: `/control/getOutputSoundLeveldBSPL 0`
+
+BeRTA sends: `/control/getOutputSoundLeveldBSPL 0 true 80 80 ""`
+
+For a valid silent output pair:
+
+BeRTA sends: `/control/getOutputSoundLeveldBSPL 0 true -inf -inf ""`
+
+For an uncalibrated output pair processing a signal:
+
+BeRTA sends: `/control/getOutputSoundLeveldBSPL 0 false -inf -inf "Output channels 0-1 have an active signal but are not calibrated."`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/control/getListenerSoundLeveldBSPL**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.15.0</span>
+
+Get the latest theoretical sound level in dBSPL for a listener. The result is calculated from the listener's own digital signal level in dBFS and the calibration offset of its resolved output pair:
+
+`listener level in dBSPL = listener level in dBFS + calibration offset in dB`
+
+For a listener with a *direct output assignment*, its assigned pair provides the calibration. For a *virtual listener*, its calibration reference identifies another listener with a direct output assignment. The current output pair of that referenced listener provides the calibration. The reference follows the listener if its output assignment changes.
+
+The safety limiter is *not applied* to this result. The Active/Standby state of either listener does not affect the calculation. Consequently, the theoretical level may exceed the physical safety limit.
+
+#### Syntax
+
+`/control/getListenerSoundLeveldBSPL <string listener_id>`
+
+`listener_id`: Identifier of an existing listener.
+
+#### Return
+
+`/control/getListenerSoundLeveldBSPL <string listener_id> <bool valid> <float leftChannelSoundLevel> <float rightChannelSoundLevel> <string error>`
+
+`listener_id`: Listener requested.
+
+`valid`: `true` if a current listener measurement and a valid calibration are available; otherwise, `false`.
+
+`leftChannelSoundLevel`, `rightChannelSoundLevel`: Theoretical left and right levels in dBSPL, before physical output limiting.
+
+`error`: Empty when `valid=true`; otherwise, describes why the measurement is unavailable.
+
+The result is invalid if the listener does not exist, has no current digital measurement, has no direct output or valid calibration reference, or resolves to an unavailable or uncalibrated output pair.
+
+A silent listener returns `valid=true` and `-inf` levels only when the required measurement and calibration are available.
+
+#### Example
+
+Assume Listener A is assigned to channels 0–1 in Standby, and virtual Listener B references Listener A. Channels 0–1 have a calibration offset of 100 dB. If Listener B has digital levels of -30 dBFS and -28 dBFS:
+
+BeRTA receives: `/control/getListenerSoundLeveldBSPL B`
+
+BeRTA sends: `/control/getListenerSoundLeveldBSPL B true 70 72 ""`
+
+The result uses Listener B's signal and the calibration of channels 0–1. Listener A being in Standby does not affect it.
+
+If Listener B has no calibration reference:
+
+BeRTA sends: `/control/getListenerSoundLeveldBSPL B false -inf -inf "Listener B has no direct output or valid calibration reference."`
+
+<!----------------------------------------------------------------------------------->
+<hr style="border:1px solid gray">
+
+### **/control/getListenerSoundLeveldBFS**
+<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.15.0</span>
+
+Get the latest digital signal level in dBFS for a listener's left and right channels, before physical output limiting. This command applies to both routed and virtual listeners. It does not require an output assignment or calibration, and the listener's Active/Standby state does not affect the result.
+
+#### Syntax
+
+`/control/getListenerSoundLeveldBFS <string listener_id>`
+
+`listener_id`: Identifier of an existing listener.
+
+#### Return
+
+`/control/getListenerSoundLeveldBFS <string listener_id> <bool valid> <float leftChannelSoundLevel> <float rightChannelSoundLevel> <string error>`
+
+`listener_id`: Listener requested.
+
+`valid`: `true` if a current digital measurement is available; otherwise, `false`.
+
+`leftChannelSoundLevel`, `rightChannelSoundLevel`: Left and right digital signal levels in dBFS.
+
+`error`: Empty when `valid=true`; otherwise, describes why the measurement is unavailable.
+
+A valid silent signal returns `-inf` for the corresponding channel. A missing listener or an unavailable current measurement returns `valid=false`.
+
+#### Example
+
+BeRTA receives: `/control/getListenerSoundLeveldBFS B`
+
+BeRTA sends: `/control/getListenerSoundLeveldBFS B true -30 -28 ""`
+
+For a valid silent listener:
+
+BeRTA sends: `/control/getListenerSoundLeveldBFS B true -inf -inf ""`
+
+If the requested listener does not exist:
+
+BeRTA receives: `/control/getListenerSoundLeveldBFS Unknown`
+
+BeRTA sends: `/control/getListenerSoundLeveldBFS Unknown false -inf -inf "Listener Unknown does not exist."`
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
@@ -333,7 +542,7 @@ Set the sound level limit to the dBSPL value specified in the parameter. See the
 
 `levelLimitdBSPL`: The maximum allowable sound level, in dBSPL, used by the limiter to ensure safe listening levels for the user.
 
-`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. If no value is specified, the output channels of the first configured listener are used instead.
+`channelNumber`: <span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.7.0</span> This indicates the output channels of the audio interface to which the command applies. This value must always be an even number. For example, if channel 0 is selected, channels 0–1 are affected; if 2 is selected, channels 2–3 are affected. This argument is required. The command applies to the specified output pair independently of the listener selected in the GUI.
 
 #### Return 
 
