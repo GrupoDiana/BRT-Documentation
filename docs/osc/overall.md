@@ -189,7 +189,7 @@ Generates a file of the specified duration containing the **system’s impulse r
 If the generated file is of the wav type, only the impulse response is saved. If the type is mat, additional data will be saved; the generated file will follow the structure of the [SOFA AnnotatedReceiverAudio convention](https://www.sofaconventions.org/mediawiki/index.php/AnnotatedReceiverAudio). 
 
 #### Syntax
-`/recordIR <String filename> <String type> <float time> <int period> <int delay> <float x> <float y> <float z> <String directivity>`
+`/recordIR <String filename> <String type> <float time> <int period> <int delay> <float x> <float y> <float z> <String directivity> <bool enable_directivity>`
 
 `filename`: indicates the name of the file and must include the path, either relative or absolute. If a relative path is used it will be calculated from the data folder that can be found in the same folder as the BeRTA executable. The extension will be added by the application if necessary. If there is a file with the same name, it’ll not be overwritten—an ordinal number will be added to the end of the new file name.
 
@@ -209,17 +209,21 @@ If the generated file is of the wav type, only the impulse response is saved. If
 
 `directivity`: indicates the ID of the directivity to be applied to the impulse source. If the specified ID corresponds to a previously loaded directivity, the recording is made using that directivity. If the specified ID is not valid or does not correspond to a loaded directivity, the recording is made without any directivity assigned. If this parameter is left empty, the impulse source is considered omnidirectional.
 
+`enable_directivity`: indicates whether directivity is enabled for the impulse source. If set to true, the impulse source is created with the specified directivity enabled. If set to false, the impulse source is created with the specified directivity disabled. If this parameter is not specified, it defaults to true. If no valid directivity is specified, this parameter has no effect.
+
 #### Return 
 `/control/actionResult /recordIR <string filename> <boolean success> <string description>`.
 
 The return confirmation refers to the `filename`, indicating `success=true` if the action has been successfully performed and `success=false` if not. In both cases a `description` is added to give more details.
 
-It sends an echo to all subscribers except the sender: `/recordIR <String filename> <String type> <float time> <int period> <int delay> <float x> <float y> <float z> <String directivity>`
+It sends an echo to all subscribers except the sender: `/recordIR <String filename> <String type> <float time> <int period> <int delay> <float x> <float y> <float z> <String directivity> <bool enable_directivity>`
 
 #### Example
-BeRTA receives and echoes back to all subscribers except the sender: `/recordIR "record/sytem_conf_IR.wav" "wav" 2 0 0 1 0 0 Directivity1`
+BeRTA receives and echoes back to all subscribers except the sender: `/recordIR "record/sytem_conf_IR.wav" "wav" 2 0 0 1 0 0 Directivity1 true`
 
 When the processing is finished (in this example after 2 seconds), BeRTA sends back to all subscribers:  
-`/control/actionResult /recordIR record/sytem_conf_IR.wav true Recording completed. File saved: record/sytem_conf_IR.wav`  
+`/control/actionResult /recordIR record/system_conf_IR.wav true Recording completed. File saved: record/sytem_conf_IR.wav`  
 or  
 `/control/actionResult /recordIR record/sytem_conf_IR.wav false ERROR:Recording failed. File could not be created.`
+or  
+`/control/actionResult /recordIR Directivity1 false ERROR:setting Directivity to the source. Directivity not found into the directivity list.`
