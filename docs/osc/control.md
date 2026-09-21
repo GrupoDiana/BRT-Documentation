@@ -224,37 +224,37 @@ All four arguments are required, including an empty string when no calibration r
 
 `description`: Description of the applied configuration or the reason for failure.
 
-#### Example
+#### Examples
 
-Assign Listener A to channels 0–1 and activate its output:
+- Assign Listener A to channels 0–1 and activate its output:
 
-BeRTA receives: `/control/setListenerOutput A 0 true ""`
+    BeRTA receives: `/control/setListenerOutput A 0 true ""`
+    
+    BeRTA sends: `/control/actionResult /control/setListenerOutput A true "Listener A routed to output channels 0-1 (Active)."`
 
-BeRTA sends: `/control/actionResult /control/setListenerOutput A true "Listener A routed to output channels 0-1 (Active)."`
+- Keep the assignment but put Listener A into Standby:
 
-Keep the assignment but put Listener A into Standby:
+    BeRTA receives: `/control/setListenerOutput A 0 false ""`
+    
+    BeRTA sends: `/control/actionResult /control/setListenerOutput A true "Listener A routed to output channels 0-1 (Standby)."`
 
-BeRTA receives: `/control/setListenerOutput A 0 false ""`
+- Configure Listener B as virtual, using Listener A as its calibration reference:
 
-BeRTA sends: `/control/actionResult /control/setListenerOutput A true "Listener A routed to output channels 0-1 (Standby)."`
+    BeRTA receives: `/control/setListenerOutput B -1 false A`
 
-Configure Listener B as virtual, using Listener A as its calibration reference:
+    BeRTA sends: `/control/actionResult /control/setListenerOutput B true "Listener B configured as Virtual with A as calibration reference."`
 
-BeRTA receives: `/control/setListenerOutput B -1 false A`
+- Remove Listener B's calibration reference while keeping it virtual:
 
-BeRTA sends: `/control/actionResult /control/setListenerOutput B true "Listener B configured as Virtual with A as calibration reference."`
+    BeRTA receives: `/control/setListenerOutput B -1 false ""`
 
-Remove Listener B's calibration reference while keeping it virtual:
+    BeRTA sends: `/control/actionResult /control/setListenerOutput B true "Listener B configured as Virtual without a calibration reference."`
 
-BeRTA receives: `/control/setListenerOutput B -1 false ""`
+- Attempt to activate a virtual listener:
 
-BeRTA sends: `/control/actionResult /control/setListenerOutput B true "Listener B configured as Virtual without a calibration reference."`
+    BeRTA receives: `/control/setListenerOutput B -1 true A`
 
-Attempt to activate a virtual listener:
-
-BeRTA receives: `/control/setListenerOutput B -1 true A`
-
-BeRTA sends: `/control/actionResult /control/setListenerOutput B false "ERROR: Virtual listener B cannot have an active physical output."`
+    BeRTA sends: `/control/actionResult /control/setListenerOutput B false "ERROR: Virtual listener B cannot have an active physical output."`
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
@@ -416,21 +416,25 @@ This command queries the output pair independently of the listener selected in t
 
 When a valid silence measurement has been published for the output pair, both levels are `-inf`. This includes output pairs receiving no signal, and does not require calibration. If a signal is being processed but the output pair is not calibrated, the measurement is invalid. Invalid output pairs and unavailable current measurements also return `valid=false`.
 
-#### Example
+#### Examples
 
-Assuming channels 0–1 are calibrated and the safety limiter is reducing their output to 80 dBSPL:
+Assuming that BeRTA receives: `/control/getOutputSoundLeveldBSPL 0`. Then: 
 
-BeRTA receives: `/control/getOutputSoundLeveldBSPL 0`
+- For an uncalibrated output pair processing a signal:
+    
+    BeRTA sends: `/control/getOutputSoundLeveldBSPL 0 false -inf -inf "Output channels 0-1 have an active signal but are not calibrated."`
 
-BeRTA sends: `/control/getOutputSoundLeveldBSPL 0 true 80 80 ""`
+- If channels 0-1 are calibrated, they have a calibration offset of 100 dB and their digital levels are –24.6 dBFS and –18.7 dBFS. And that the safety limiter is not configured or is not working: 
 
-For a valid silent output pair:
+    BeRTA sends: `/control/getOutputSoundLeveldBSPL 0 true 75.4 81.3""`
 
-BeRTA sends: `/control/getOutputSoundLeveldBSPL 0 true -inf -inf ""`
+- If channels 0-1 are calibrated, they have a calibration offset of 100 dB and their digital levels are –24.6 dBFS and –18.7 dBFS. And that the safety limiter is reducing their output to 80 dBSPL: 
+    
+    BeRTA sends: `/control/getOutputSoundLeveldBSPL 0 true 75.4 80 ""`
 
-For an uncalibrated output pair processing a signal:
-
-BeRTA sends: `/control/getOutputSoundLeveldBSPL 0 false -inf -inf "Output channels 0-1 have an active signal but are not calibrated."`
+- For a valid silent output pair:    
+    
+    BeRTA sends: `/control/getOutputSoundLeveldBSPL 0 true -inf -inf ""`
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
@@ -470,17 +474,30 @@ A silent listener returns `valid=true` and `-inf` levels only when the required 
 
 #### Example
 
-Assume Listener A is assigned to channels 0–1 in Standby, and virtual Listener B references Listener A. Channels 0–1 have a calibration offset of 100 dB. If Listener B has digital levels of -30 dBFS and -28 dBFS:
+- Assuming:
+    - that Listener A is assigned to channels 0–1 in Active.
+    - that Channels 0–1 have a calibration offset of 100 dB. 
+    - that Listener A has digital levels of -29 dBFS and -27 dBFS.
 
-BeRTA receives: `/control/getListenerSoundLeveldBSPL B`
+    BeRTA receives: `/control/getListenerSoundLeveldBSPL B`
 
-BeRTA sends: `/control/getListenerSoundLeveldBSPL B true 70 72 ""`
+    BeRTA sends: `/control/getListenerSoundLeveldBSPL B true 71 73 ""`
 
-The result uses Listener B's signal and the calibration of channels 0–1. Listener A being in Standby does not affect it.
+- Assuming:
+    - that Listener A is assigned to channels 0–1 in Standby
+    - that Listener B is virtual and references Listener A. 
+    - that Channels 0–1 have a calibration offset of 100 dB. 
+    - that Listener B has digital levels of -30 dBFS and -28 dBFS.
 
-If Listener B has no calibration reference:
+    BeRTA receives: `/control/getListenerSoundLeveldBSPL B`
 
-BeRTA sends: `/control/getListenerSoundLeveldBSPL B false -inf -inf "Listener B has no direct output or valid calibration reference."`
+    BeRTA sends: `/control/getListenerSoundLeveldBSPL B true 70 72 ""`
+
+    The result uses Listener B's signal and the calibration of channels 0–1. Listener A being in Standby does not affect it.
+
+    If Listener B has no calibration reference:
+
+    BeRTA sends: `/control/getListenerSoundLeveldBSPL B false -inf -inf "Listener B has no direct output or valid calibration reference."`
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
@@ -512,19 +529,19 @@ A valid silent signal returns `-inf` for the corresponding channel. A missing li
 
 #### Example
 
-BeRTA receives: `/control/getListenerSoundLeveldBFS B`
+- BeRTA receives: `/control/getListenerSoundLeveldBFS B`
 
-BeRTA sends: `/control/getListenerSoundLeveldBFS B true -30 -28 ""`
+    BeRTA sends: `/control/getListenerSoundLeveldBFS B true -30 -28 ""`
 
-For a valid silent listener:
+- For a valid silent listener:
 
-BeRTA sends: `/control/getListenerSoundLeveldBFS B true -inf -inf ""`
+    BeRTA sends: `/control/getListenerSoundLeveldBFS B true -inf -inf ""`
 
-If the requested listener does not exist:
+- If the requested listener does not exist:
 
-BeRTA receives: `/control/getListenerSoundLeveldBFS Unknown`
+    BeRTA receives: `/control/getListenerSoundLeveldBFS Unknown`
 
-BeRTA sends: `/control/getListenerSoundLeveldBFS Unknown false -inf -inf "Listener Unknown does not exist."`
+    BeRTA sends: `/control/getListenerSoundLeveldBFS Unknown false -inf -inf "Listener Unknown does not exist."`
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">

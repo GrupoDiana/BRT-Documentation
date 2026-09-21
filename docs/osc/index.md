@@ -13,11 +13,27 @@ Part of the BRT components is the definition of a set of OSC commands which the 
 - [`/control/ping`](control.md#controlping): Check if BeRTA is listening by sending an echo.
 - [`/control/sampleRate`](control.md#controlsamplerate): Request the current audio sample rate.
 - [`/control/version`](control.md#controlversion): Retrieve the current BeRTA version.
+
+#### Listener output configuration
+
+- [`/control/setListenerOutput`](control.md#controlsetlisteneroutput): Configure an existing listener's output assignment.
+
+#### Calibration
+
 - [`/control/playCalibration`](control.md#controlplaycalibration): Start the calibration process.
 - [`/control/setCalibration`](control.md#controlsetcalibration): Set the calibration values.
 - [`/control/playCalibrationTest`](control.md#controlplaycalibrationtest): Play the calibration test sound at a specified volume.
 - [`/control/stopCalibrationTest`](control.md#controlstopcalibrationtest): Stop the calibration test sound playback.
-- [`/control/getSoundLevel`](control.md#controlgetsoundlevel): Get the current sound level.
+
+#### Sound levels
+
+- [`/control/getOutputSoundLeveldBSPL`](control.md#controlgetoutputsoundleveldbspl): Get the theoretical sound level in dBSPL for a physical stereo output pair.
+- [`/control/getListenerSoundLeveldBSPL`](control.md#controlgetlistenersoundleveldbspl): Get the theoretical sound level in dBSPL for a listener.
+- [`/control/getListenerSoundLeveldBFS`](control.md#controlgetlistenersoundleveldbfs): Get the digital signal level in dBFS for a listener's left and right channels.
+
+
+#### Safety Limiter
+
 - [`/control/setSoundLevelLimit`](control.md#controlsetsoundlevellimit): Set the sound level limit to a specified volume.
 - [`/control/soundLevelAlert`](control.md#controlsoundlevelalert): Alert sent when the output sound level exceeds the threshold set in the limiter. 
 
