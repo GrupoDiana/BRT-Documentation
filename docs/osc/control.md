@@ -262,7 +262,15 @@ All four arguments are required, including an empty string when no calibration r
 ## **Calibration**
 
 ### **/control/playCalibration**
-<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
+<div style="display: flex; justify-content: space-between; gap: 1em; flex-wrap: wrap; font-size: 0.8em; color: grey; font-style: italic;">
+    <span>Available since BeRTA v3.4.0</span>
+    <span>Updated in BeRTA v3.15.0</span>
+</div>
+
+!!! info "Changes in BeRTA v3.15.0"
+    The `channelNumber` argument is now required and explicitly selects the physical stereo output pair. The command no longer falls back to the first configured listener.
+
+    Calibration playback now uses the selected audio interface and enters an exclusive mode: normal playback is stopped, and new playback or recording cannot start until calibration ends. The command is rejected if recording is already in progress.
 
 Start the calibration process by playing an audio file at the dBFS volume specified in the parameter. For more details, refer to the [calibration](/BRT-Documentation/applications/calibration/) section. 
 
@@ -291,7 +299,14 @@ BeRTA sends back to the sender: `/control/actionResult /control/playCalibration 
 <hr style="border:1px solid gray">
 
 ### **/control/setCalibration**
-<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
+<div style="display: flex; justify-content: space-between; gap: 1em; flex-wrap: wrap; font-size: 0.8em; color: grey; font-style: italic;">
+    <span>Available since BeRTA v3.4.0</span>
+    <span>Updated in BeRTA v3.15.0</span>
+</div>
+
+!!! info "Changes in BeRTA v3.15.0"
+    The `channelNumber` argument is now required and explicitly selects the physical stereo output pair. The command no longer falls back to the first configured listener.
+
 
 Set the calibration values using the dBFS playback volume and the dBSPL output level measured in the headphones, both specified in the parameters. For more details, refer to the [calibration](/BRT-Documentation/applications/calibration/) section.
 
@@ -321,7 +336,15 @@ BeRTA sends back to the sender: `/control/actionResult /control/setCalibration c
 <hr style="border:1px solid gray">
 
 ### **/control/playCalibrationTest**
-<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
+<div style="display: flex; justify-content: space-between; gap: 1em; flex-wrap: wrap; font-size: 0.8em; color: grey; font-style: italic;">
+    <span>Available since BeRTA v3.4.0</span>
+    <span>Updated in BeRTA v3.15.0</span>
+</div>
+
+!!! info "Changes in BeRTA v3.15.0"
+    The `channelNumber` argument is now required and explicitly selects the physical stereo output pair. The command no longer falls back to the first configured listener.
+
+    Calibration playback now uses the selected audio interface and enters an exclusive mode: normal playback is stopped, and new playback or recording cannot start until calibration ends. The command is rejected if recording is already in progress.
 
 Play the calibration test sound at a volume adjusted to match the dBSPL specified in the parameter, allowing verification with the sound level meter. See the [calibration](/BRT-Documentation/applications/calibration/) section for more details.
 
@@ -349,7 +372,14 @@ BeRTA sends back to the sender: `/control/actionResult /control/playCalibrationT
 <hr style="border:1px solid gray">
 
 ### **/control/stopCalibrationTest**
-<span style="font-size: 0.8em; color: grey; font-style: italic;">Available from BeRTA v3.4.0</span>
+<div style="display: flex; justify-content: space-between; gap: 1em; flex-wrap: wrap; font-size: 0.8em; color: grey; font-style: italic;">
+    <span>Available since BeRTA v3.4.0</span>
+    <span>Updated in BeRTA v3.15.0</span>
+</div>
+
+!!! info "Changes in BeRTA v3.15.0"
+    The `channelNumber` argument is now required and explicitly selects the physical stereo output pair. The command no longer falls back to the first configured listener.
+
 
 Stop the calibration test sound playback.
 
