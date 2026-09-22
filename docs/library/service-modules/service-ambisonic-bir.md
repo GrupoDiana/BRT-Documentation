@@ -12,10 +12,12 @@ The diagram below illustrates the key components of the system and how they work
 - **Convolution**: Rather than convolving each virtual loudspeaker signal with the HRIR individually, the module convolves the ambisonic signal directly with the ambisonic mix of the BRIRs for the virtual loudspeakers.
 - **Channel Mixing**: The convoluted signals are mixed into separate left and right channels, resulting in the final binaural audio output.
 
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/AmbisonicBRIR.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Ambisonic BRIR model diagram.</p>
-</div>
+
+![HRTF offline process](../../assets/AmbisonicBRIR.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  Ambisonic BRIR model diagram.
+</p>
 
 <!--
 ## Architecture

@@ -22,10 +22,11 @@ Before being stored in the module, the HRIRs are transformed into a representati
 
 The following diagram summarizes the **preprocessing** and **runtime stages** involved in the internal representation of HRIR data.
 
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/HRTF_offlineProcess.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Offline interpolation process diagram.</p>
-</div>
+![HRTF offline process](../../assets/HRTF_offlineProcess.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  Offline interpolation process diagram.
+</p>
 
 <figure markdown style="width:100%; border: 1px solid #000;">
 ```mermaid

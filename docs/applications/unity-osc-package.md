@@ -2,10 +2,11 @@
 
 This package enables the integration of a Unity scene with applications from the BRT library ([BRT Application](../applications/berta-renderer/index.md)) using OSC commands. It can be download from our [repository](https://github.com/GrupoDiana/BRTLibrary/releases).
 
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/Unity_OSCPackage_communication.png" alt="OSC communication" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">OSC communication between Unity and BRT Application</p>
-</div>
+![OSC communication](../assets/Unity_OSCPackage_communication.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  OSC communication between Unity and BRT Application
+</p>
 
 ## Package Contents
 
@@ -25,12 +26,11 @@ A third-party library that implements the OSC protocol. Configure the IP and por
 
 For the scripts described above to work, they must be added to the same object, as illustrated in the following image.
 
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/scripts.png" alt="Scripts impoted in Unity." style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Scripts impoted in Unity.</p>
-</div>
+![Scripts impoted in Unity.](../assets/scripts.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
 
-<hr style="border:1px solid gray">
+<p style="text-align: center; font-size: 0.9em;">
+  Scripts imported in Unity.
+</p>
 
 ### `BRTAudioListener.cs`
 This script sends the listener's position and orientation to the BRT renderer via OSC commands.
@@ -43,10 +43,11 @@ To use this:
 ### `CenterEarAnchor.prefab`
 A prefab designed to be placed under the "center eye" object in a virtual reality scene. Its purpose is to apply an offset, positioning it virtually at the center of the listener's head. This prefab also includes the `BRTAudioListener.cs` script.
 
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/unity_AudioListener.png" alt="CenterEarAnchor prefab in the Unity inspector" style="display: block; margin: 0 auto;" width="500">
-    <p style="text-align: center;">CenterEarAnchor prefab in the Unity inspector.</p>
-</div>
+![CenterEarAnchor prefab in the Unity inspector](../assets/unity_AudioListener.png){ width="500" style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  CenterEarAnchor prefab in the Unity inspector.
+</p>
 
 <hr style="border:1px solid gray">
 
@@ -59,9 +60,11 @@ To use this:
 - Assign a unique ID
 - Enter the full name of the audio file that the BeRTA Renderer should load.
 
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/unity_AudioSource.png" alt="BRTAudioSource.cs" style="display: block; margin: 0 auto;" width="350"> <p style="text-align: center;">BRTAudioSource.cs</p>
-</div>
+![BRTAudioSource.cs](../assets/unity_AudioSource.png){ width="350" style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  BRTAudioSource.cs
+</p>
 
 <hr style="border:1px solid gray">
 

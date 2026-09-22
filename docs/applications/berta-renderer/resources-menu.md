@@ -10,10 +10,12 @@ Resources can be loaded in three ways:
 
 The content of this menu is updated **in real time** as new resources are loaded.
 
-<div style="border: 1px solid #000; padding: 10px; display: block; max-width: 900px; margin: 0 auto;">
-    <img src="/BRT-Documentation/assets/berta_renderer_resources_menu.png" alt="BeRTA Renderer - Resources menu" style="display: block; margin: 0 auto; max-width: 100%;">
-    <p style="text-align: center;">BeRTA Renderer - Resources menu</p>
-</div>
+![BeRTA Renderer - Resources menu](../../assets/berta_renderer_resources_menu.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  BeRTA Renderer - Resources menu
+</p>
+
 
 ## Resource Lists
 Resources are organized into separate tabs, one for each resource type:

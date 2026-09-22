@@ -19,10 +19,12 @@ $attenuation = 10^{(Distance Attenuation Factor/ -3 dB) * log_{10}(ReferenceDist
 ## Architecture
 
 The internal block diagram of this class is as follows:
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerDirectBRIRConvolutionModel Internal Block diagram.png" alt="Listener Direct BRIR Convolution Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Listener Direct BRIR Convolution Model Internal diagram.</p>
-</div>
+
+![Listener Direct BRIR Convolution Model Internal diagram](../../../assets/sysmldiagrams/ListenerDirectBRIRConvolutionModel%20Internal%20Block%20diagram.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  Listener Direct BRIR Convolution Model Internal diagram.
+</p>
 
 <!--The operation of the convolucionator as well as its block diagram can be seen in this link (:warning:URL).-->
 

@@ -5,12 +5,12 @@ The **Bilateral Ambisonic Encoder Processor** processes an audio source by apply
 ## Architecture
 
 The internal block diagram of this class is as follows:
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/BilateralAmbisonicEncoderProcessorInternalBlockDiagram.png" alt="Bilateral Ambisonic Encoder Processor - Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Bilateral Ambisonic Encoder Processor - Internal diagram.</p>
-</div>
 
+![Bilateral Ambisonic Encoder Processor - Internal diagram](../../assets/sysmldiagrams/BilateralAmbisonicEncoderProcessorInternalBlockDiagram.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
 
+<p style="text-align: center; font-size: 0.9em;">
+  Bilateral Ambisonic Encoder Processor - Internal diagram.
+</p>
 
 ### Key Components and Flow
 

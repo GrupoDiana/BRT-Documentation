@@ -5,10 +5,12 @@ The figure shows the whole process of the UPOLS in the case of the HRIR, but it 
 
 Additionally, UPOLS assumes a stable impulse response, which is suitable for static sources and listeners. To accommodate the changes in the HRIR caused by the movement of sources or the listener, the BRT introduces a new delay line for the partitioned impulse response (top-left grey box). For each audio frame, both delay lines (HRIR and input buffer signal) are shifted by one frame slot. This allows a new HRIR, corresponding to the source's position, to be inserted into the delay line at each frame, with its first segment multiplied by the current audio frame. In subsequent frames, the HRIR remains in the delay line, convolving its remaining segments with the incoming audio frames. This method significantly reduces the number and intensity of artifacts caused by the movement of sources.
 
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/partitioned_convolution.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Uniformly Partition Overlap-Save (UPOLS).</p>
-</div>
+![HRTF offline process](../../assets/partitioned_convolution.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  Uniformly Partition Overlap-Save (UPOLS).
+</p>
+
 
 ## Functional Overview
 

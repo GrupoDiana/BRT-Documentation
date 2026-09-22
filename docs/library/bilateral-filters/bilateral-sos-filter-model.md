@@ -17,10 +17,12 @@ The SOS coefficients are provided through the dedicated service module
 ## Architecture
 
 The internal block diagram of this class is as follows:
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="Bilateral SOS Filter Model Internal Block diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Bilateral SOS Filter Model Internal Block diagram.</p>
-</div>
+
+![Bilateral SOS Filter Model Internal Block diagram](../../assets/sysmldiagrams/none.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  Bilateral SOS Filter Model Internal Block diagram.
+</p>
 
 ### Inheritance
 - `CSOSBilateralFilterModel` derives from `CBilateralFilterModelBase`, which itself inherits from `BRTBase::CModelBase`.

@@ -18,9 +18,11 @@ Specifically, **BeRTA GUI** enables seamless setup and management of the rendere
 - **Scene display**:
     - Showing graphically the position and orientation of sources with respect to the listener.
     - Receiving and showing updates on the scene sent to BeRTA Renderer by a third application (e.g. an app running in Unity which updates the Listener position)
- 
- <div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/berta_gui.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">BeRTA GUI Interface</p>
-</div>
+
+
+![HRTF offline process](../assets/berta_gui.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  BeRTA GUI Interface
+</p>
 

@@ -5,10 +5,12 @@ The **Ambisonic Domain Convolver Processor** is a system designed for processing
 ## Architecture
 
 The internal block diagram of this class is as follows:
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/AmbisonicDomainConvolverProcessorInternalBlockDiagram.png" alt="BAmbisonic Domain Convolver Processor - Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Ambisonic Domain Convolver Processor - Internal diagram.</p>
-</div>
+
+![BAmbisonic Domain Convolver Processor - Internal diagram](../../assets/sysmldiagrams/AmbisonicDomainConvolverProcessorInternalBlockDiagram.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  Ambisonic Domain Convolver Processor - Internal diagram.
+</p>
 
 As it is shown in the diagram, the **Ambisonic Domain Convolver Processor** takes multiple Ambisonic channels, applies FFT processing, convolves with Ambisonic BIR to create spatial effects, mixes the processed channels, and delivers the final output as binaural ear samples, simulating an immersive listening experience for the listener.
 

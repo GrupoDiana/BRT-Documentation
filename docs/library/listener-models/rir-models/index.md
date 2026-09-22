@@ -27,9 +27,8 @@ To optimize the impulse response, the BRT Library allows for windowing technique
 
 This flexibility provides greater control over computational efficiency and ensures compatibility with hybrid modeling approaches.  
 
-![Windowing a Room Impulse Response](/BRT-Documentation/assets/windowing.bmp "Windowing a Room Impulse Response")
+![Windowing a Room Impulse Response](../../../assets/windowing.jpg){ style="display: block; margin: 0 auto; max-width: 100%;" }
 
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/windowing.jpg" alt="Windowing a Room Impulse Response" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Windowing a Room Impulse Response</p>
-</div>
+<p style="text-align: center; font-size: 0.9em;">
+  Windowing a Room Impulse Response
+</p>

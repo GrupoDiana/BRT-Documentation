@@ -9,19 +9,11 @@ Each BRIR is partitioned in chunks to match the input buffer length. This is don
 
 The following diagram illustrates the processing performed on the HRTF table before it is stored. This processing is performed offline, ensuring that, in real-time, we have a regular table that is faster to access.
 
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/BRIR_offlineProcess.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">BRIR offline process.</p>
-</div>
+![HRTF offline process](../../assets/BRIR_offlineProcess.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
 
-<!--
-## Architecture
-
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="HRTF offline process" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Head-Related BRIR class diagram.</p>
-</div>
--->
+<p style="text-align: center; font-size: 0.9em;">
+  BRIR offline process.
+</p>
 
 
 ## Functional Overview

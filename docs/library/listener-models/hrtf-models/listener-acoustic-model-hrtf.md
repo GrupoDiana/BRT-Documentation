@@ -15,10 +15,12 @@ The HRTF service module is responsible for providing the impulse responses in ea
 ## Architecture
 
 The internal block diagram of this class is as follows:
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerDirectHRTFConvolutionModel Internal Block diagram.png" alt="Listener Direct HRTF Convolution Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Listener Direct HRTF Convolution Model Internal Block diagram.</p>
-</div>
+
+![Listener Direct HRTF Convolution Model Internal diagram](../../../assets/sysmldiagrams/ListenerDirectHRTFConvolutionModel%20Internal%20Block%20diagram.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  Listener Direct HRTF Convolution Model Internal Block diagram.
+</p>
 
 <!--The operation of the convolucionator as well as its block diagram can be seen in this link (:warning:URL).-->
 

@@ -15,10 +15,12 @@ For further details on the functionality of the [Bilateral Ambisonic Encoder](..
 ## Architecture
 
 The internal block diagram of this class is as follows:
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/ListenerAmbisonicVirtualLoudspeakersModel Internal Block diagram.png" alt="Listener Ambisonic Virtual LoudSpeakers Model - Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">Listener Ambisonic Virtual LoudSpeakers Model - Internal diagram</p>
-</div>
+
+![Listener Ambisonic Virtual LoudSpeakers Model - Internal diagram](../../../assets/sysmldiagrams/ListenerAmbisonicVirtualLoudspeakersModel%20Internal%20Block%20diagram.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  Listener Ambisonic Virtual LoudSpeakers Model - Internal diagram
+</p>
 
 ## Configuration Options
 

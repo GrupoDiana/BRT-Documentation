@@ -10,10 +10,11 @@ The **Settings** menu allows users to view and configure application parameters,
 
 This section displays global parameters defined in the `settings.json` configuration file. Some of these parameters can be modified directly from the interface, while others are read-only.
 
-<div style="border: 1px solid #000; padding: 10px; display: block; max-width: 800px; margin: 0 auto;">
-    <img src="/BRT-Documentation/assets/berta_renderer_setting_menu_general.png" alt="BeRTA Renderer - General Settings menu" style="display: block; margin: 0 auto; max-width: 100%;">
-    <p style="text-align: center;">BeRTA Renderer - General Settings menu</p>
-</div>
+![BeRTA Renderer - General Settings menu](../../assets/berta_renderer_setting_menu_general.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  BeRTA Renderer - General Settings menu
+</p>
 
 ### Parameters
 
@@ -46,10 +47,11 @@ Each device entry includes:
 !!! info API limitation
     Both input and output devices must use the **same audio backend/API**.  This is a limitation imposed by the underlying audio library (audio backend).
 
-<div style="border: 1px solid #000; padding: 10px; display: block; max-width: 900px; margin: 0 auto;">
-    <img src="/BRT-Documentation/assets/berta_renderer_setting_menu_audio_interfaces.png" alt="BeRTA Renderer - Audio Interfaces menu" style="display: block; margin: 0 auto; max-width: 100%;">
-    <p style="text-align: center;">BeRTA Renderer - Audio Interfaces menu</p>
-</div>
+![BeRTA Renderer - Audio Interfaces menu](../../assets/berta_renderer_setting_menu_audio_interfaces.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  BeRTA Renderer - Audio Interfaces menu
+</p>
 
 ### Input Interface
 
@@ -101,10 +103,11 @@ Configure these assignments in the **Listeners** tab described below.
 
 The **Listeners** tab configures how existing listeners connect to the audio interface and how they obtain the calibration used to estimate sound levels. Each listener produces its own stereo signal from its position and orientation in the scene. The output configuration determines whether that signal is sent to a physical output pair, kept in Standby or used only for virtual measurements. This tab configures existing listeners. It does not create or delete them.
 
-<div style="border: 1px solid #000; padding: 10px; display: block; max-width: 1000px; margin: 0 auto;">
-    <img src="/BRT-Documentation/assets/berta_renderer_setting_menu_listeners.png" alt="BeRTA Renderer - Listeners menu" style="display: block; margin: 0 auto; max-width: 100%;">
-    <p style="text-align: center;">BeRTA Renderer - Listener menu</p>
-</div>
+![BeRTA Renderer - Listeners menu](../../assets/berta_renderer_setting_menu_listeners.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  BeRTA Renderer - Listener menu
+</p>
 
 ### Table columns
 
@@ -190,10 +193,11 @@ Points to note:
 - The reference dropdown lists eligible Routed listeners together with their assigned pairs, for example `A (0-1)`. A listener cannot reference itself or another Virtual listener.
 - A Virtual listener without a calibration reference is a valid configuration. Its dBFS measurements remain available, but its theoretical dBSPL level is unavailable.
 
-<div style="border: 1px solid #000; padding: 10px; display: block; max-width: 1000px; margin: 0 auto;">
-    <img src="/BRT-Documentation/assets/berta_renderer_setting_menu_listeners_calibration_reference.png" alt="BeRTA Renderer - Listeners menu Virtual listener's Calibration reference dropdown" style="display: block; margin: 0 auto; max-width: 100%;">
-    <p style="text-align: center;">BeRTA Renderer - Listener menu - Virtual listener's Calibration reference dropdown</p>
-</div>
+![BeRTA Renderer - Listeners menu Virtual listener's Calibration reference dropdown](../../assets/berta_renderer_setting_menu_listeners_calibration_reference.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  BeRTA Renderer - Listener menu - Virtual listener's Calibration reference dropdown
+</p>
 
 ### How calibration references work
 
@@ -302,11 +306,11 @@ Common causes include:
 
 If you reduce the number of output channels in **Audio Interfaces**, review the **Listeners** tab before applying. Reassign listeners whose pairs are no longer available, or convert them to Virtual and review their calibration references.
 
-<div style="border: 1px solid #000; padding: 10px; display: block; max-width: 1000px; margin: 0 auto;">
-    <img src="/BRT-Documentation/assets/berta_renderer_setting_menu_listeners_calibration_reference_error.png" alt="BeRTA Renderer - Listeners menu Virtual listener's Calibration error" style="display: block; margin: 0 auto; max-width: 100%;">
-    <p style="text-align: center;">BeRTA Renderer - Listener menu - Calibration error</p>
-</div>
+![BeRTA Renderer - Listeners menu Virtual listener's Calibration error](../../assets/berta_renderer_setting_menu_listeners_calibration_reference_error.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
 
+<p style="text-align: center; font-size: 0.9em;">
+  BeRTA Renderer - Listener menu - Calibration error
+</p>
 
 !!! note "Session configuration"
     Applying listener changes updates the running application. It does not automatically save those changes to `settings.json`.

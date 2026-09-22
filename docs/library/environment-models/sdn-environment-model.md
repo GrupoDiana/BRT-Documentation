@@ -21,10 +21,12 @@ Furthermore, the definition of absorption coefficients is required for each wall
 ## Architecture
 
 The internal block diagram of this class is as follows:
-<div style="border: 1px solid #000; padding: 10px; display: inline-block;">
-    <img src="/BRT-Documentation/assets/sysmldiagrams/none.png" alt="SDN environment Model Internal diagram" style="display: block; margin: 0 auto;">
-    <p style="text-align: center;">SDN environment Model Internal diagram.</p>
-</div>
+
+![SDN environment Model Internal diagram](../../assets/sysmldiagrams/none.png){ style="display: block; margin: 0 auto; max-width: 100%;" }
+
+<p style="text-align: center; font-size: 0.9em;">
+  SDN environment Model Internal diagram.
+</p>
 
 ## Configuration Options
 
