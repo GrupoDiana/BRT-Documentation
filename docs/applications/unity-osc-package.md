@@ -68,6 +68,13 @@ To use this:
 
 <hr style="border:1px solid gray">
 
+### `ExampleSendCommands.cs`
+A class designed to serve as an example of how to connect Unity with BeRTA and send OSC messages. It is advised to read and understand this class in order to experiment with it and change/add/modify the commands that are being send to see all the things BeRTA can do!
+
+Right know you can press 'p' to play the sound and use the mouse/arrow-keys to move the sound source around, but feel free to implement new features here.
+
+<hr style="border:1px solid gray">
+
 ## Getting Started: Basic Unity Setup
 
 This guide explains how to set up a basic Unity scene that communicates with **BeRTA** using our Unity integration package. The setup includes **one static audio source** and **one listener**.
