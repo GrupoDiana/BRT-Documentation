@@ -798,19 +798,19 @@ Sets up a shoebox room with six walls (four walls, plus floor and ceiling). The 
 
 #### Syntax
 
-`/resources/setShoeBoxRoom <string Room_id> <float length> <float width> <float height>`
+`/resources/loadShoeBoxRoom <string Room_id> <float length> <float width> <float height>`
 
 `Room_id`: identifier to be assigned to the Room for later references to it. If there is already another room with the same identifier, it is substituted by the new one. .
 
 `length`: floating value expressing the length of the room on the X axis, expressed in metres.
 
-`width`: Floating value expressing the length of the room on the Y axis, expressed in metres.
+`width`: Floating value expressing the width of the room on the Y axis, expressed in metres.
 
-`heigth`: Floating value expressing the length of the room on the Z axis, expressed in metres.
+`heigth`: Floating value expressing the heigth of the room on the Z axis, expressed in metres.
 
 #### Return
 
-`/control/actionResult /resources/setShoeBoxRoom <string Room_id> <bool set> <string description>`
+`/control/actionResult /resources/loadShoeBoxRoom <string Room_id> <bool set> <string description>`
 
 The return confirmation refers to the `Room_id`, indicating `set=true` if the action has been successfully performed and `set=false` if not. In both cases a `description` is added to give more details. 
 
@@ -818,9 +818,9 @@ In case of success, an echo is sent to all subscribers except the sender, using 
 
 #### Example
 
-BeRTA receives and echoes back to all subscribiers but the sender: `/resources/setShoeBoxRoom room1 6 8 3`
+BeRTA receives and echoes back to all subscribiers but the sender: `/resources/loadShoeBoxRoom room1 6 8 3`
 
-BeRTA sends back to the sender: `/control/actionResult /environment/setShoeBoxRoom room1 true "ShoeBox Room (room1) created succesfully with dimensions Length 6m, Width 8m, Height 3m`
+BeRTA sends back to the sender: `/control/actionResult /environment/loadShoeBoxRoom room1 true "ShoeBox Room (room1) created succesfully with dimensions Length 6m, Width 8m, Height 3m`
 
 <!----------------------------------------------------------------------------------->
 <hr style="border:1px solid gray">
